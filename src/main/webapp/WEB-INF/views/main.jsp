@@ -18,7 +18,7 @@
 	${fn:length(member)}
 		<!-- main -->
 
-	fdsfdasfsfsdfdsf
+fadfsafdsafdsafs
 <%-- footer --%>
 	<jsp:include page="main_footer.jsp" flush="false" />
 
