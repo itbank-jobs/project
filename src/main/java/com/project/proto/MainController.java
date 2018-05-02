@@ -30,7 +30,7 @@ public class MainController {
 		comm = new Main();
 		comm.execute(model,dao);
 	
-		return "main";
+		return "login";
 	}
 
 

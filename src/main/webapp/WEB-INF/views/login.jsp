@@ -30,15 +30,15 @@
                 <form class="login">
                 <input type="text" placeholder="Name" />
                 <input type="password" placeholder="Password" />
-                <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+                <input type="submit" value="SIGN IN" class="btn btn-success btn-sm" />
                 <div class="remember-forgot">
                     <div class="row">
                         <div class=" forgot-pass-content">
-                            <a  class="forgot-pass">Forgot Password</a>
+                            <a href="#" class="forgot-pass">Forgot Password</a>
+                                         
+                          	 <a href="register" class="sign-up">SIGN UP</a>
                         </div>
-                        <div class=" forgot-pass-content">
-                            <a  class="forgot-pass">Forgot Password</a>
-                        </div>
+                       
                     </div>
                 </div>
                 </form>
