@@ -5,8 +5,8 @@ import org.springframework.ui.Model;
 import com.project.proto.dao.Dao;
 
 
-
-public class Main implements Command {
+//로그인
+public class login implements Command {
 
 	@Override
 	public void execute(Model model,Dao dao) {
