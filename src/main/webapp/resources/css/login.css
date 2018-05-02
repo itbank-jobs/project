@@ -37,6 +37,7 @@ p {
 form {
 	width: 350px;
 	margin: 0 auto;
+	transition: background-color 1s ease;
 }
 
 form.login input[type="text"], form.login input[type="password"] {
@@ -198,15 +199,20 @@ form.login a:hover {
 	border-color: ##fff;
 }
 
-#emailCheck{
+#emailMessege{
 	color:#fff;
 	width:20%;
 	background-color:  initial;
 	transition: background-color 0.6s ease;
 	padding: 5px 0px;
 }
-#emailCheck:hover{
+#emailMessege:hover{
 	background-color:  #f7a666;
+}
+#passwordMessege{
+	height: 17px;
+	font-size:80%; 
+	margin-top:10px;
 }
 .btn {
 	display: inline-block;
@@ -224,6 +230,11 @@ a {
 	text-decoration: none;
 }
 
-#name, #rePassword {
+#name {
 	margin-bottom: 2em;
 }
+
+form:hover{
+	    background-color: #1c202963;
+}
+

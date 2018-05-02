@@ -26,8 +26,9 @@
 			<div class=" forgot-pass-content">
 				<a href="register" class="sign-up">SIGN UP</a>
 			</div>
-			<input type="text" placeholder="E-mail" /> <input type="password" placeholder="Password" />
-			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm" />
+			<input autocomplete="off" type="text" placeholder="E-mail" > 
+			<input type="password" placeholder="Password" autocomplete="new-password">
+			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm" >
 			<div class="remember-forgot">
 				<div class="row">
 					<div class=" forgot-pass-content">

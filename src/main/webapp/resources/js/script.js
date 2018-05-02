@@ -15,15 +15,33 @@ function writeErr() {
 }
 
 function emailCheck() {
-	if(${fail}){
-		$('#emailMessege').html('사용중인 아이디 입니다.')
+	
+	var Req_Email = $('#email').val();
+	
+	if($('#emailCheck_result').val() == fail){
+		$('#emailMessege').html('X')
 	}else if(Req_Email == null || Req_Email == ""){
-		$('#emailMessege').html('')
+		$('#emailMessege').html('중복확인')
 	}else{
-		$('#emailMessege').html('사용가능한 아이디 입니다.')
+		$('#emailMessege').html('OK')
 		
 	}
 }
+
+function passwordCheck() {
+	var pw1 = $('#password').val();
+	var pw2 = $('#rePassword').val();
+
+	if( pw1 == pw2){
+		$('#passwordMessege').html('<font color="#6fd5f1">비밀번호가 일치 합니다</font>')
+	}else if(pw2 == null || pw2 == ""){
+		$('#passwordMessege').html('')
+	}else{
+		$('#passwordMessege').html('비밀번호가 일치하지 않습니다.')
+		
+	}
+}
+
 
 function inputCheck() {
 
@@ -36,6 +54,7 @@ function inputCheck() {
 		document.register.name.focus();
 		return false;
 	}
+	
 
 	var str = document.register.email.value;
 
