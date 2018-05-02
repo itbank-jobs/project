@@ -36,6 +36,9 @@
                         <div class=" forgot-pass-content">
                             <a  class="forgot-pass">Forgot Password</a>
                         </div>
+                        <div class=" forgot-pass-content">
+                            <a  class="forgot-pass">Forgot Password</a>
+                        </div>
                     </div>
                 </div>
                 </form>

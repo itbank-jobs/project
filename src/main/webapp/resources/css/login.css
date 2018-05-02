@@ -3,10 +3,10 @@
 
 body
 {
-    background: url('../../resources/images/see.jpg');
-    width:100%;
-    height:100%;
+    background: url('../../resources/images/see.jpg') fixed;
+ 
     background-size: cover;
+    background-repeat:no-repeat;
     padding: 0;
     margin: 0;
 }
@@ -37,7 +37,7 @@ p.form-title
 
 form
 {
-    width: 250px;
+    width: 350px;
     margin: 0 auto;
 }
 
@@ -62,9 +62,9 @@ form.login input[type="text"], form.login input[type="password"]
 
 
 }
- input::-webkit-input-placeholder { color:#b1b1b1;
+ input::-webkit-input-placeholder { color:#76e0f0;
 }
- input::-ms-input-placeholder { color:#b1b1b1;
+ input::-ms-input-placeholder { color:#76e0f0;
  }
 
 form.login input[type="submit"]
