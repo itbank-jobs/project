@@ -18,8 +18,8 @@
 		<p class="form-title" id="signUp">Sign Up</p>
 		
 	
-		<form class="login" method="post" name="register" action="/proto" onsubmit="return inputCheck()">
-			<input type="hidden" id=emailCheck_result value="${emailCheck_result}">
+		<form class="login" method="post" name="register" action="registerProc" onsubmit="return inputCheck()">
+			
 				<div class=" forgot-pass-content">
 					<a href="/proto" class="sign-up">SIGN IN</a>
 				</div>
