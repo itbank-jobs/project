@@ -1,18 +1,6 @@
 ﻿
-function idCheck(email) {
-	if (email == "") {
-		document.register.email.focus();
-	} else {
-
-	}
-}
-
-function writeErr() {
-	alert("로그인 후에 이용해 주세요")
 
 
-	location.href = 'login';
-}
 function ck() {
 	var vemail = $('#email').val();
 	
@@ -40,9 +28,11 @@ function ck() {
 		success : function(result){
 			var chk = result;
 			if(chk == 0){
+				$('#eck').val('true');
 				$('#passwordMessege').html('<font color="#6fd5f1">사용가능한 아이디 입니다.')
 			}else{
 				$('#passwordMessege').html('사용 불가능한 아이디 입니다')
+				$('#eck').val('false');
 			}
 			
 		},
@@ -53,10 +43,10 @@ function ck() {
 	});//ajax}	
 	}
 	else if($('#email').val() == ''){
-		
+		$('#eck').val('false');
 	
 	}else{
-	
+		$('#eck').val('false');
 		$('#passwordMessege').html('E-Mail 형식이 아닙니다.');
 	}
 };
@@ -89,10 +79,12 @@ function inputCheck() {
 		return false;
 	}
 	
-	if (document.register.email.value == "") {
+	if ($('#eck').val() == "false") {
 		document.register.email.focus();
+		$('#passwordMessege').html('E-Mail을 확인해 주세요.');
 		return false;
 	}
+	
 
 	if (document.register.password.value == "") {
 		document.register.password.focus();
@@ -102,33 +94,10 @@ function inputCheck() {
 		document.register.rePassword.focus();
 		return false;
 	}
-
-}
-
-function writeSave() {
-	if (document.write_view.title.value == "") {
-
-		document.write_view.title.focus();
-		return false;
-	}
-	if (document.write_view.content.value == "") {
-
-		document.write_view.content.focus();
-		return false;
-	}
-	if (document.write_view.passwd.value == "") {
-
-		document.write_view.passwd.focus();
-		return false;
-	}
-
-}
-
-
-function deleteSave() {
-	if (document.deleteForm.passwd.value == "") {
-		alert("비밀번호를 입력하세요.")
-		document.deleteForm.passwd.focus();
+	if(document.register.password.value  !=document.register.rePassword.value ){
+		document.register.password.focus();
 		return false;
 	}
 }
+
+

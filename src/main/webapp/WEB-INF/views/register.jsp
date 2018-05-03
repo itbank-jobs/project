@@ -17,34 +17,34 @@
     <div class="wrap">
 		<p class="form-title" id="signUp">Sign Up</p>
 		
-			
+	
 		<form class="login" method="post" name="register" action="/proto" onsubmit="return inputCheck()">
 			<input type="hidden" id=emailCheck_result value="${emailCheck_result}">
 				<div class=" forgot-pass-content">
 					<a href="/proto" class="sign-up">SIGN IN</a>
 				</div>
 				<font color="#f0f0f0" style="text-shadow:aqua 0.1em 0.1em 0.2em; margin-bottom: 1em;">사원 정보</font>
-                <input autocomplete="off" type="text" name="employeeNumber" id="employeeNumber" placeholder="EmployeeNumber" />
-              	<input autocomplete="off" type="text" name="name" id="name" placeholder="Name" />
+                <input autocomplete="off" type="text" name="employeeNumber" id="employeeNumber" placeholder="EmployeeNumber"  />
+              	<input autocomplete="off" type="text" name="name" id="name" placeholder="Name"  />
 				
 				
-				<font color="#f0f0f0" style="text-shadow:aqua 0.1em 0.1em 0.2em;margin-bottom: 1em;">이메일 등록</font>
+				<font color="#f0f0f0" style="text-shadow:aqua 0.1em 0.1em 0.2em;margin-bottom: 1em;" >이메일 등록</font>
 			    <br>
 
-				<input autocomplete="off" type="text" name="email" id="email" placeholder="Email" onblur="ck()">
-
+				<input autocomplete="off" type="text" name="email" id="email" placeholder="Email" onblur="ck()" >
+				<label id = "eck" type="hidden" value="false"></label>
                 <input autocomplete="off" type="password" name="password" id="password" placeholder="Password" >
-                <input autocomplete="off" type="password" name="rePassword" id="rePassword" onkeyup="passwordCheck()" placeholder="Password" >
+                <input autocomplete="off" type="password" name="rePassword" id="rePassword" onkeyup="passwordCheck()" placeholder="Password"  >
          		
          		<div id=passwordMessege style="font:bold; color:red" > &nbsp</div>
          		
-               <input type="submit" value="Sign Up" class="btn btn-success btn-sm">
+               <input type="submit" value="Sign Up" class="btn btn-success btn-sm" >
                 
          
       
         </form>
-             
-     </div>
+       </div>
+
               
 </body>
 </html>
