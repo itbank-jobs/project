@@ -7,6 +7,11 @@
 	<select id="selectList" resultType="com.project.proto.dto.Dto">
 		SELECT * FROM MEMBER
 	</select>
+	
+	<!-- <select id = "emailList" parameterType="String" resultType="com.project.proto.dto.Dto"> -->
+	<select id = "emailList" parameterType="String" resultType = "int">
+	SELECT * FROM MEMBER WHERE EMAIL = #{PARAM1}
+	</select>
 		
 </mapper>
 
