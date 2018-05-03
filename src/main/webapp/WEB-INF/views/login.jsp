@@ -22,12 +22,13 @@
 	<div class="wrap">
 		<p class="form-title" id="signUp">Sign In</p>
 
-		<form class="login">
+		<form class="login" action = "loginCheck">
 			<div class=" forgot-pass-content">
 				<a href="register" class="sign-up">SIGN UP</a>
 			</div>
-			<input autocomplete="off" type="text" placeholder="E-mail" > 
-			<input type="password" placeholder="Password" autocomplete="new-password">
+			<input autocomplete="off" type="text" placeholder="E-mail" name = "email" > 
+			<input type="password" placeholder="Password" autocomplete="new-password" name = "password">
+			<div id = "passwordMessege">&nhsp</div>
 			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm" >
 			<div class="remember-forgot">
 				<div class="row">

@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.proto.command.Command;
 import com.project.proto.command.login;
+import com.project.proto.command.loginCheck;
 import com.project.proto.command.registerProc;
 import com.project.proto.dao.Dao;
 
@@ -34,12 +36,23 @@ public class MainController {
 	@RequestMapping(value = "/")
 	public String main(Model model) {
 		
-		/*comm = new login();
-		comm.execute(model,dao);*/
 	
 		return "login";
 
 
+	}
+	//로그인 아이디 비밀번호 체크
+	@RequestMapping("/loginCheck")
+	public void main(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
+		System.out.println("loginCheck()실행");
+		
+		model.addAttribute("req", req);
+		model.addAttribute("res", res);
+		model.addAttribute("session", session);
+	
+		comm = new loginCheck();
+		comm.execute(model, dao);
+		
 	}
 	
 	//회원가입, 회원정보 입력창
