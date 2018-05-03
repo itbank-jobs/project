@@ -3,6 +3,7 @@ package com.project.proto;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,18 +33,18 @@ public class MainController {
 	@Autowired
 	Dao dao;
 	
-	
-	
-	//로그인(첫화면)
+	//로그인(main)
 	@RequestMapping(value = "/")
-	public String login(Model model) {
+	public String main(Model model) {
 		
+	
 		return "login";
+
+
 	}
-		
 	//로그인 아이디 비밀번호 체크
 	@RequestMapping("/loginCheck")
-	public void loginCheck(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
+	public void main(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
 		System.out.println("loginCheck()실행");
 		
 		model.addAttribute("req", req);
@@ -52,15 +53,6 @@ public class MainController {
 	
 		comm = new loginCheck();
 		comm.execute(model, dao);
-		
-	}
-	
-	//로그인 성공시, 메인화면
-	@RequestMapping("/main")
-	public String main(Model model) {
-		System.out.println("main()실행");
-		
-		return "main";
 		
 	}
 	
@@ -99,17 +91,16 @@ public class MainController {
 	
 	//회원정보 입력값 받고 이동.
 	@RequestMapping("/registerProc")
-	public String registerProc(Model model, HttpServletRequest req) {
+	public String registerProc(Model model, HttpServletRequest req) throws UnsupportedEncodingException {
 		
 		System.out.println("registerProc()실행");
-		
+		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("req", req);
 		
 		comm = new registerProc();
 		comm.execute(model, dao);
 		
 		return "login";
-
 	}
 	
 	//main로그인 성공시, homepage이동
