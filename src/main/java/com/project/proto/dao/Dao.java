@@ -1,25 +1,40 @@
 package com.project.proto.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-
+import javax.activation.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.proto.dto.Dto;
+
 
 
 @Repository
 public class Dao {
+	
+	
 
 	@Autowired
 	private SqlSession sqlSession;
 	
-	/*��ü ��� ��*/ 
+
 	public List<Dao> selectMember() {
 		return sqlSession.selectList("selectList");
 	}
 	
+//emailCheck
+	public int emailList(String email){ //boolean으로 반환하는거 물어보기
+		return sqlSession.selectList("emailList",email).size();
+		//일치하는 값이 없으면 0반환?
+		
+	};
 	
 }

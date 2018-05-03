@@ -1,7 +1,11 @@
 package com.project.proto;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -44,6 +48,30 @@ public class MainController {
 		
 		System.out.println("register()실행");
 		return "register";
+		
+	}
+	
+	
+	@RequestMapping("/emailCheck")
+	public void emailCheck(HttpServletRequest req, HttpServletResponse res) {
+		System.out.println("emailCheck()실행");
+		
+		try {
+			PrintWriter out = res.getWriter();
+			String email = (req.getParameter("email")==null) ? "" : req.getParameter("email");
+			
+			
+			int chk = dao.emailList(email); //일치하는 값이 없으면 sql실행 결과 0
+			
+			out.print(chk); //=result
+			out.flush();
+			out.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
 		
 	}
 	
