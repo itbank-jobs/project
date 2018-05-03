@@ -35,6 +35,12 @@ public class Dao {
 		return sqlSession.selectList("emailList",email).size();
 		//일치하는 값이 없으면 0반환?
 		
+	}
+
+	public int loginCheck(Dto dto) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("loginCheckList", dto).size();
+	
 	};
 	
 }
