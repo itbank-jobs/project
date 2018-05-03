@@ -51,14 +51,17 @@ public class Dao {
 	
 //비밀번호 찾기
 	public Dto find_PW(int employeeNumber) {
-		
+		Dto dto;
 		try{
-			return(Dto) sqlSession.selectList("find_PW",employeeNumber).get(0);
-		}catch (IndexOutOfBoundsException e) {
-			e.printStackTrace();
-			return null;
+			dto = (Dto)sqlSession.selectList("find_PW",employeeNumber).get(0);
+			
+			
+		}catch (Exception e) {
+			dto = null;
 		}
-	
+		//확인후 지울것
+		System.out.println(dto.getPassword());
+	return dto;
 		
 	}
 }
