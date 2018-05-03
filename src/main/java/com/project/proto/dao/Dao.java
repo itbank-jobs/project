@@ -47,4 +47,18 @@ public class Dao {
 	public void register(Dto dto) {
 		sqlSession.insert("register", dto);
 	}
+
+	
+//비밀번호 찾기
+	public Dto find_PW(int employeeNumber) {
+		
+		try{
+			return(Dto) sqlSession.selectList("find_PW",employeeNumber).get(0);
+		}catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
+			return null;
+		}
+	
+		
+	}
 }
