@@ -43,4 +43,8 @@ public class Dao {
 	
 	};
 	
+//회원가입
+	public void register(Dto dto) {
+		sqlSession.insert("register", dto);
+	}
 }

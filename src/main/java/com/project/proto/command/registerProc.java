@@ -18,12 +18,14 @@ public class registerProc implements Command {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		
+		
 		int employeeNumber =  Integer.parseInt(req.getParameter("employeeNumber"));
 		String name =  req.getParameter("name");
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		
 		Dto dto = new Dto(employeeNumber,name,email,password);
+		dao.register(dto);
 	   
-
+	}
 }

@@ -10,12 +10,15 @@
 	
 	<!-- <select id = "emailList" parameterType="String" resultType="com.project.proto.dto.Dto"> -->
 	<select id = "emailList" parameterType="String" resultType = "int">
-		SELECT * FROM MEMBER WHERE EMAIL = #{PARAM1}
+	SELECT * FROM MEMBER WHERE EMAIL = #{PARAM1}
 	</select>
 	
 	<select id = "loginCheckList" parameterType="com.project.proto.dto.Dto" resultType = "int">
 	SELECT * FROM MEMBER WHERE EMAIL = #{email} AND PASSWORD = #{password}
 	</select>
 		
+	<insert id = "register" parameterType="com.project.proto.dto.Dto">
+	INSERT INTO MEMBER(employeeNumber,name,email,password,day)VALUES(#{employeeNumber},#{name},#{email},#{password},sysdate)
+	</insert>
 </mapper>
 

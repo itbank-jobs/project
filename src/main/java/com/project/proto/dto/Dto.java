@@ -8,13 +8,18 @@ package com.project.proto.dto;
 		private String name;
 		private String email;
 		private String password;
+		private String day;
 		
 		public Dto() {
 			
 		}
 		
 		public Dto(int employeeNumber ,String name ,String email,String password) {
-			
+			this.employeeNumber = employeeNumber;
+			this.name = name;
+			this.email = email;
+			this.password = password;
+
 		}
 		public int getEmployeeNumber() {
 			return employeeNumber;
@@ -39,6 +44,14 @@ package com.project.proto.dto;
 		}
 		public void setPassword(String password) {
 			this.password = password;
+		}
+
+		public String getDay() {
+			return day;
+		}
+
+		public void setDay(String day) {
+			this.day = day;
 		}
 		
 		
