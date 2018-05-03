@@ -193,11 +193,7 @@ form.login a:hover {
 	border-radius: 3px;
 }
 
-.btn-success {
-	color: #fff;
-	background-color: #f7a666;
-	border-color: ##fff;
-}
+
 
 #emailMessege{
 	color:#fff;
@@ -225,6 +221,15 @@ form.login a:hover {
 	background-image: none;
 	border: 1px solid transparent;
 }
+.btn-success {
+	color: #fff;
+	border:1px solid #f7a666;
+	background-color:initial;
+}
+.btn-success:hover{
+	background-color: #f7a666;
+}
+
 
 a {
 	text-decoration: none;
