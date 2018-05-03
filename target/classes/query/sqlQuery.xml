@@ -10,7 +10,7 @@
 	
 	<!-- <select id = "emailList" parameterType="String" resultType="com.project.proto.dto.Dto"> -->
 	<select id = "emailList" parameterType="String" resultType = "int">
-	SELECT * FROM MEMBER WHERE EMAIL = #{PARAM1}
+		SELECT * FROM MEMBER WHERE EMAIL = #{PARAM1}
 	</select>
 	
 	<select id = "loginCheckList" parameterType="com.project.proto.dto.Dto" resultType = "int">
