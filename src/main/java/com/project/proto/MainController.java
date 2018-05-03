@@ -32,18 +32,18 @@ public class MainController {
 	@Autowired
 	Dao dao;
 	
-	//로그인(main)
-	@RequestMapping(value = "/")
-	public String main(Model model) {
-		
 	
+	
+	//로그인(첫화면)
+	@RequestMapping(value = "/")
+	public String login(Model model) {
+		
 		return "login";
-
-
 	}
+		
 	//로그인 아이디 비밀번호 체크
 	@RequestMapping("/loginCheck")
-	public void main(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
+	public void loginCheck(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
 		System.out.println("loginCheck()실행");
 		
 		model.addAttribute("req", req);
@@ -52,6 +52,15 @@ public class MainController {
 	
 		comm = new loginCheck();
 		comm.execute(model, dao);
+		
+	}
+	
+	//로그인 성공시, 메인화면
+	@RequestMapping("/main")
+	public String main(Model model) {
+		System.out.println("main()실행");
+		
+		return "main";
 		
 	}
 	
@@ -99,7 +108,8 @@ public class MainController {
 		comm = new registerProc();
 		comm.execute(model, dao);
 		
-		return "registerProc";
+		return "login";
+
 	}
 	
 	//main로그인 성공시, homepage이동
