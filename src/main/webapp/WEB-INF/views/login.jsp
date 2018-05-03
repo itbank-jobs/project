@@ -28,8 +28,9 @@
 			</div>
 			<input autocomplete="off" type="text" placeholder="E-mail" name = "email" > 
 			<input type="password" placeholder="Password" autocomplete="new-password" name = "password">
-			<div id = "passwordMessege">&nbsp</div>
-			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm" >
+			<label id = "eck" type="hidden" value="false"></label>
+			<div id = "Message">&nbsp</div>
+			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm" onclick="loginCheck()">
 			<div class="remember-forgot">
 				<div class="row">
 					<div class=" forgot-pass-content">
