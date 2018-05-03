@@ -30,9 +30,8 @@
 				
 				<font color="#f0f0f0" style="text-shadow:aqua 0.1em 0.1em 0.2em;margin-bottom: 1em;">이메일 등록</font>
 			   <br>
-			<!--    <div style="font-size:80%; margin-top:10px ;" align="right" id="emailMessege"> dfsdf
-			   </div>
- -->			<input style="width:78%" type="text" name="email" id="email" placeholder="Email">
+
+				<input style="width:78%" type="text" name="email" id="email" placeholder="Email">
 			    <input id="emailMessege" class="btn btn-sm" onclick="emailCheck()" type="button" value="중복확인">  </button>
 			    
 			    
