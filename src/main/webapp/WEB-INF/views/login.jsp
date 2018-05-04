@@ -27,8 +27,8 @@
 			<div class=" forgot-pass-content">
 				<a href="register" class="sign-up">SIGN UP</a>
 			</div>
-			<input autocomplete="off" type="text" placeholder="EmployeeNumber" onkeydown="encodingNum()" onblur="encodingNum()" id = "employeeNumber" > 
-			<input type="password" placeholder="Password" autocomplete="new-password" id = "password">
+			<input autocomplete="off" type="text" maxlength="8" placeholder="EmployeeNumber" onkeydown="encodingNum()" onblur="encodingNum()" id = "employeeNumber" > 
+			<input type="password" placeholder="Password" maxlength="15" autocomplete="new-password" id = "password">
 			
 			<div id = "Message">&nbsp</div>
 			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm">

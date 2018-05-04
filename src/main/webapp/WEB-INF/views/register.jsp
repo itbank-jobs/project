@@ -10,6 +10,7 @@
 <script src="resources/js/register.js"></script>
 <script src="resources/js/emailCheck.js"></script>
 <script src="resources/js/encoding.js"></script>
+<script src="resources/js/employeeNumberCheck.js"></script>
 <title>Register</title>
 
 </head>
@@ -25,9 +26,9 @@
 					<a href="/proto" class="sign-up">SIGN IN</a>
 				</div>
 				<font color="#f0f0f0" style="text-shadow:aqua 0.1em 0.1em 0.2em; margin-bottom: 1em;">사원 정보</font>
-                <input autocomplete="off"  style="ime-mode:disabled" type="text" name="employeeNumber" id="employeeNumber" placeholder="EmployeeNumber"
+                <input autocomplete="off"  style="ime-mode:disabled" type="text"  maxlength="8" name="employeeNumber" id="employeeNumber" placeholder="EmployeeNumber"
                	 onkeyup="encodingNum(event)"/>
-              	<input autocomplete="off" type="text" name="name" id="name" placeholder="Name"  
+              	<input autocomplete="off" type="text" maxlength="5" name="name" id="name" placeholder="Name"  
               	 onkeyup="encodingName(event)"/>
 				
 				
@@ -37,8 +38,8 @@
 				<input autocomplete="off" type="text" name="email" id="email" placeholder="Email" onblur="ck()"
 				 onkeyup="encodingEmail(event)">
 				<label id = "eck" type="hidden" value="false"></label>
-	            <input autocomplete="off" type="password" name="password" id="password" placeholder="Password" >
-                <input autocomplete="off" type="password" name="rePassword" id="rePassword" onkeyup="passwordCheck()" placeholder="Password"  >
+	            <input autocomplete="off" type="password" maxlength="15" name="password" id="password" placeholder="Password" >
+                <input autocomplete="off" type="password" maxlength="15" name="rePassword" id="rePassword" onkeyup="passwordCheck()" placeholder="Password"  >
          		
          		<div id=Message style="color:red">&nbsp</div>
          		

@@ -40,6 +40,7 @@ public class LoginController {
 		
 		System.out.println("login()실행");
 		session.invalidate();
+		System.out.println("여기로 와?");
 		return "login";
 
 
