@@ -30,14 +30,14 @@ public class loginCheck implements Command {
 			PrintWriter out = res.getWriter();
 			
 			
-			String email = (req.getParameter("email")==null) ? "" : req.getParameter("email");
+			String employeeNumber = (req.getParameter("employeeNumber")==null) ? "" : req.getParameter("employeeNumber");
 			String password = (req.getParameter("password")==null) ? "" : req.getParameter("password");
-			dto.setEmail(email);
+			dto.setEmployeeNumber(Integer.parseInt(employeeNumber));
 			dto.setPassword(password);
 			
 			chk = dao.loginCheck(dto);
 			
-			System.out.println("email : "+ email );
+			System.out.println("employeeNumber : "+ employeeNumber );
 			System.out.println("password : "+ password);
 			System.out.println("CHK : " + chk);
 			out.print(chk);//=result

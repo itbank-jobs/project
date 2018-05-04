@@ -12,34 +12,13 @@
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="resources/js/login.js"></script>
+<script src="resources/js/encoding.js"></script>
 <title>Login</title>
 
 
 </head>
 
 <body>
-
-	<!-- <div class="wrap">
-		<p class="form-title" id="signUp">Sign In</p>
-
-		<form class="login" action = "/proto/main">
-			<div class=" forgot-pass-content">
-				<a href="register" class="sign-up">SIGN UP</a>
-			</div>
-			<input autocomplete="off" type="text" placeholder="E-mail" id = "email" > 
-			<input type="password" placeholder="Password" autocomplete="new-password" id = "password">
-			
-			<div id = "Message">&nbsp</div>
-			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm" id = "submit" >
-			<div class="remember-forgot">
-				<div class="row">
-					<div class=" forgot-pass-content">
-						<a href="#" class="forgot-pass">Forgot Password</a>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div> -->
 	
 	<div class="wrap">
 		<p class="form-title" id="signUp">Sign In</p>
@@ -48,7 +27,7 @@
 			<div class=" forgot-pass-content">
 				<a href="register" class="sign-up">SIGN UP</a>
 			</div>
-			<input autocomplete="off" type="text" placeholder="E-mail" id = "email" > 
+			<input autocomplete="off" type="text" placeholder="EmployeeNumber" onkeydown="encodingNum()" id = "employeeNumber" > 
 			<input type="password" placeholder="Password" autocomplete="new-password" id = "password">
 			
 			<div id = "Message">&nbsp</div>

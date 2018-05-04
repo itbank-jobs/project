@@ -14,7 +14,7 @@
 	</select>
 	
 	<select id = "loginCheckList" parameterType="com.project.proto.dto.Dto" resultType = "int">
-	SELECT * FROM MEMBER WHERE EMAIL = #{email} AND PASSWORD = #{password}
+	SELECT * FROM MEMBER WHERE EMPLOYEENUMBER = #{employeeNumber} AND PASSWORD = #{password}
 	</select>
 		
 	<insert id = "register" parameterType="com.project.proto.dto.Dto">
