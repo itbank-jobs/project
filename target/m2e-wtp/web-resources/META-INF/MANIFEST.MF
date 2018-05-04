@@ -1,5 +1,14 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: JY
 Build-Jdk: 1.8.0_161
+=======
+<<<<<<< HEAD
+Built-By: Administrator
+=======
+Built-By: garam
+>>>>>>> 9dc2ff04bf830be8a17d38c685af7c8316380322
+Build-Jdk: 1.8.0_151
+>>>>>>> 6d8699ae3aa99ad9a799aed4593239fc12116229
 Created-By: Maven Integration for Eclipse
 
