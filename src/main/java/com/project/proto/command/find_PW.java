@@ -50,8 +50,8 @@ public class find_PW implements Command {
 	
 		  String server = "smtp.gmail.com";
 		  String sendID = "luck9262@gmail.com";
-		  String sendPW = "";
-		  String sendMailAddr = "protoType-1@project.test";
+		  String sendPW = "quf7531!";
+		  String sendMailAddr = "luck9262@gmail.com";
 		  int smtpPort=465;
 		  
 		  String recEmailAddr=dto.getEmail();;
