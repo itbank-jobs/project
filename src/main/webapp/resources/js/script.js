@@ -1,6 +1,6 @@
 ﻿
 
-
+//회원가입 체크
 function ck() {
 	var vemail = $('#email').val();
 	
