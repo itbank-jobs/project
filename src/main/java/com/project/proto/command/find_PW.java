@@ -37,14 +37,14 @@ public class find_PW implements Command {
 
 			dto.setEmployeeNumber(Integer.parseInt(req.getParameter("employeeNumber")));
 			int employeeNumber = dto.getEmployeeNumber();
-
+			
 			dto = dao.find_PW(employeeNumber);
 
-			out.print(dto); // =result
+			out.print(dto.getEmail()); // =result
 			out.flush();
 			out.close();
 
-			model.addAttribute("empEmail", dto.getEmail());
+			
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

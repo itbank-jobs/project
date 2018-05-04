@@ -22,14 +22,14 @@
 	<div class="wrap">
 		<p class="form-title" id="signUp">Find</p>
 
-		<form class="login" name="find" action ="/proto" onsubmit ="return findFunction()">
+		<form class="login" name="find" action ="/proto">
 			<div class=" forgot-pass-content">
 				<a href="/proto" class="sign-up">SIGN IN</a>
 			</div>
 			<input type="text" placeholder="EmployeeNumber" autocomplete="new-password" name = "employeeNumber">
 			<div id = "Message">&nbsp</div>
 			
-			<input type="submit" value="FIND" class="btn btn-success btn-sm" >
+			<input type="button" id="find-btn" value="FIND" class="btn btn-success btn-sm" onclick="findFunction()" >
 			
 		</form>
 	</div>
