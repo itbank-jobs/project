@@ -30,7 +30,7 @@ function ck() {
 			if(chk == 0){
 				
 				$('#eck').val('true');
-				$('#Message').html('<font color="#6fd5f1">사용가능한 E-Mail 입니다.')
+				$('#Message').html('<font color="#9ec3f7">사용가능한 E-Mail 입니다.')
 			}else{
 				
 				$('#Message').html('사용 불가능한 E-Mail 입니다')
