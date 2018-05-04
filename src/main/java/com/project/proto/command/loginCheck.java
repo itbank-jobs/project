@@ -40,6 +40,21 @@ public class loginCheck implements Command {
 			System.out.println("employeeNumber : "+ employeeNumber );
 			System.out.println("password : "+ password);
 			System.out.println("CHK : " + chk);
+			
+			
+			if(chk >0) {
+				System.out.println("커멘드 : 로그인성공");
+				session.setAttribute("employeeNumber",dto.getEmployeeNumber());
+				session.setAttribute("password", dto.getPassword());
+				System.out.println("현재 session employeeNumber : "+session.getAttribute("employeeNumber"));
+				System.out.println("현재 session password : "+session.getAttribute("password"));
+			}
+			else {
+				System.out.println("커멘드 : 로그인 실패");
+				
+			}
+			
+			
 			out.print(chk);//=result
 			out.flush();
 			out.close();

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.project.proto.command.Command;
 
 import com.project.proto.command.loginCheck;
+import com.project.proto.command.loginSessionCheck;
 import com.project.proto.command.registerProc;
 import com.project.proto.dao.Dao;
 import com.project.proto.command.find_PW;;
@@ -35,8 +36,12 @@ public class MainController {
 	
 	//로그인(main)
 	@RequestMapping(value = "/")
-	public String main(Model model) {
+	public String main(Model model, HttpSession session) {
 		
+		/*session.setAttribute("employeeNumber", null);
+		session.setAttribute("password", null);*/
+	
+		session.invalidate();
 	
 		return "login";
 
@@ -58,9 +63,10 @@ public class MainController {
 	
 	//회원가입, 회원정보 입력창
 	@RequestMapping("/register")
-	public String register(Model model) {
+	public String register(Model model, HttpSession session) {
 		
 		System.out.println("register()실행");
+		session.invalidate();
 		return "register";
 		
 	}
