@@ -1,10 +1,10 @@
-//로그인 아이디 비밀번호 체크
+//로그인시 사원번호 비밀번호 체크
 	function loginCheck() {
-		var email = $('#email').val();
+		var employeeNumber = $('#employeeNumber').val();
 		var password = $('#password').val();
 		event.preventDefault();	
-		if(email ==""){
-			$('#email').focus();
+		if(employeeNumber ==""){
+			$('#employeeNumber').focus();
 			return false;
 		}
 		if(password ==""){
@@ -15,7 +15,7 @@
 		
 		$.ajax({
 			type : 'post',
-			data : {email:email, password:password},
+			data : {employeeNumber:employeeNumber, password:password},
 			dataType : 'text',
 			url : '/proto/loginCheck',
 			
