@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.project.proto.command.Command;
 
 import com.project.proto.command.loginCheck;
+import com.project.proto.command.loginSessionCheck;
 import com.project.proto.command.registerProc;
 import com.project.proto.dao.Dao;
 import com.project.proto.command.find_PW;;
@@ -35,16 +36,17 @@ public class MainController {
 	
 	//로그인(main)
 	@RequestMapping(value = "/")
-	public String main(Model model) {
+	public String login(Model model, HttpSession session) {
 		
-	
+		System.out.println("login()실행");
+		session.invalidate();
 		return "login";
 
 
 	}
 	//로그인 아이디 비밀번호 체크
 	@RequestMapping("/loginCheck")
-	public void main(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
+	public void loginCheck(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
 		System.out.println("loginCheck()실행");
 		
 		model.addAttribute("req", req);
@@ -58,9 +60,10 @@ public class MainController {
 	
 	//회원가입, 회원정보 입력창
 	@RequestMapping("/register")
-	public String register(Model model) {
+	public String register(Model model, HttpSession session) {
 		
 		System.out.println("register()실행");
+		session.invalidate();
 		return "register";
 		
 	}
@@ -104,9 +107,10 @@ public class MainController {
 	}
 	
 	//main로그인 성공시, homepage이동
+	
 	@RequestMapping("/main")
-	public String homepage(Model model) {
-		System.out.println("main()실행");
+	public String main(Model model) {
+		System.out.println("main페이지()실행");
 		return "main";
 
 	}
@@ -134,6 +138,7 @@ public class MainController {
 
 	}
 	
+
 
 
 }

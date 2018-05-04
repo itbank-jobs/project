@@ -6,13 +6,13 @@ function passwordCheck() {
 	var pw2 = $('#rePassword').val();
 
 	if( pw1 == pw2){
-		$('#Message').html('<font color="#6fd5f1">비밀번호가 일치 합니다</font>')
-	}
-	if(pw2 != null || pw2 != ""){
-		$('#Message').html('비밀번호가 일치하지 않습니다.')
+		$('#Message').html('<font color="#9ec3f7">비밀번호가 일치 합니다</font>')
 	}else{
+		$('#Message').html('비밀번호가 일치하지 않습니다.')
+	}
+	
+	if(pw2 == null || pw2 == ""){
 		$('#Message').html('')
-		
 	}
 }
 
@@ -75,7 +75,7 @@ function loginCheck(){
 			var chk = result;
 			if(chk == 0){
 				$('#eck').val('true');
-				$('#Message').html('<font color="#6fd5f1">사용가능한 E-Mail 입니다.')
+				$('#Message').html('<font color="#9ec3f7">사용가능한 E-Mail 입니다.')
 			}else{
 				$('#Message').html('사용 중인 E-Mail 입니다')
 				$('#eck').val('false');
@@ -97,33 +97,4 @@ function loginCheck(){
 	
 }
 
-//아이디 비밀번호 찾기
-function findFunction() {
-	
-	var eNum = $("input[name=employeeNumber]").val();
-	$.ajax({
-	type : 'post',
-	data : {employeeNumber:eNum},
-	dataType : 'text',
-	url : '/proto/find_PW',
-	
-	success : function(result){
-		var empEmail = result;
-		
-		if(empEmail != null){
-			$('#Message').html('<font color="#000000"> '+empEmail+' </font><font color="#9fc3f8">로 비밀번호를 전송했습니다</font>')
-		}else{
-			$('#Message').html('')
-			
-		}
-		
-	},
-	error : function(xhr, status, e){
-		alert(e);
-	}
-	
-});//5초후 서브밋
-	
-	setTimeout("document.find.submit()",10000);
-}
 

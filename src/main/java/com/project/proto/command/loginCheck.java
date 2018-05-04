@@ -30,16 +30,31 @@ public class loginCheck implements Command {
 			PrintWriter out = res.getWriter();
 			
 			
-			String email = (req.getParameter("email")==null) ? "" : req.getParameter("email");
+			String employeeNumber = (req.getParameter("employeeNumber")==null) ? "" : req.getParameter("employeeNumber");
 			String password = (req.getParameter("password")==null) ? "" : req.getParameter("password");
-			dto.setEmail(email);
+			dto.setEmployeeNumber(Integer.parseInt(employeeNumber));
 			dto.setPassword(password);
 			
 			chk = dao.loginCheck(dto);
 			
-			System.out.println("email : "+ email );
+			System.out.println("employeeNumber : "+ employeeNumber );
 			System.out.println("password : "+ password);
 			System.out.println("CHK : " + chk);
+			
+			
+			if(chk >0) {
+				System.out.println("커멘드 : 로그인성공");
+				session.setAttribute("employeeNumber",dto.getEmployeeNumber());
+				session.setAttribute("password", dto.getPassword());
+				System.out.println("현재 session employeeNumber : "+session.getAttribute("employeeNumber"));
+				System.out.println("현재 session password : "+session.getAttribute("password"));
+			}
+			else {
+				System.out.println("커멘드 : 로그인 실패");
+				
+			}
+			
+			
 			out.print(chk);//=result
 			out.flush();
 			out.close();
