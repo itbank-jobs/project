@@ -104,6 +104,7 @@ public class MainController {
 	}
 	
 	//main로그인 성공시, homepage이동
+	
 	@RequestMapping("/main")
 	public String homepage(Model model) {
 		System.out.println("main()실행");
@@ -134,6 +135,7 @@ public class MainController {
 
 	}
 	
+
 
 
 }
