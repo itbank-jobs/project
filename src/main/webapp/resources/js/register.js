@@ -97,33 +97,4 @@ function loginCheck(){
 	
 }
 
-//아이디 비밀번호 찾기
-function findFunction() {
-	
-	var eNum = $("input[name=employeeNumber]").val();
-	$.ajax({
-	type : 'post',
-	data : {employeeNumber:eNum},
-	dataType : 'text',
-	url : '/proto/find_PW',
-	
-	success : function(result){
-		var empEmail = result;
-		
-		if(empEmail != null){
-			$('#Message').html('<font color="#000000"> '+empEmail+' </font><font color="#9fc3f8">로 비밀번호를 전송했습니다</font>')
-		}else{
-			$('#Message').html('')
-			
-		}
-		
-	},
-	error : function(xhr, status, e){
-		alert(e);
-	}
-	
-});//5초후 서브밋
-	
-	setTimeout("document.find.submit()",10000);
-}
 

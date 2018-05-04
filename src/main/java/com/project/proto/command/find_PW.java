@@ -39,8 +39,11 @@ public class find_PW implements Command {
 			int employeeNumber = dto.getEmployeeNumber();
 			
 			dto = dao.find_PW(employeeNumber);
-
-			out.print(dto.getEmail()); // =result
+			if(dto != null) {
+			out.print(dto.getEmail()); 
+			}else {
+				out.print("not");
+			}
 			out.flush();
 			out.close();
 

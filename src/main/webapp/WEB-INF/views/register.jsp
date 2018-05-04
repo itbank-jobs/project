@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="resources/js/register.js"></script>
 <script src="resources/js/emailCheck.js"></script>
-<script src="resources/js/encodingNum.js"></script>
+<script src="resources/js/encoding.js"></script>
 <title>Register</title>
 
 </head>
