@@ -205,7 +205,7 @@ form.login a:hover {
 #emailMessege:hover{
 	background-color:  #f7a666;
 }
-#passwordMessege{
+#Message{
 	height: 17px;
 	font-size:80%; 
 	margin-top:10px;
@@ -243,3 +243,13 @@ form:hover{
 	    background-color: #1c202963;
 }
 
+#find-btn{
+	width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 16px;
+    outline: 0;
+    cursor: pointer;
+    letter-spacing: 1px;
+}

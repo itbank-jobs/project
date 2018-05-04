@@ -35,7 +35,7 @@
 	            <input autocomplete="off" type="password" name="password" id="password" placeholder="Password" >
                 <input autocomplete="off" type="password" name="rePassword" id="rePassword" onkeyup="passwordCheck()" placeholder="Password"  >
          		
-         		<div id= "Message" style="font:bold; color:red" > &nbsp</div>
+         		<div id=Message style="font:bold; color:red" > &nbsp</div>
          		
                <input type="submit" value="Sign Up" class="btn btn-success btn-sm" >
                 

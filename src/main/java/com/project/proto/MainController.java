@@ -15,12 +15,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 import com.project.proto.command.Command;
+
 import com.project.proto.command.loginCheck;
 import com.project.proto.command.registerProc;
 import com.project.proto.dao.Dao;
-
+import com.project.proto.command.find_PW;;
 
 
 
@@ -110,6 +110,75 @@ public class MainController {
 		return "main";
 
 	}
+	
+
+	@RequestMapping("/find")
+	public String find(Model model) {
+		System.out.println("find()실행");
+		return "find";
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	@RequestMapping("/find_PW")
+	public String find_PW(Model model , HttpServletRequest req, HttpServletResponse res) {
+		System.out.println("find()실행");
+		
+		
+		model.addAttribute("req", req);
+		model.addAttribute("res", res);
+		comm = new find_PW();
+		comm.execute(model, dao);
+		
+		
+		return "login";
+
+	}
+	
 
 
 }

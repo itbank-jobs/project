@@ -20,5 +20,9 @@
 	<insert id = "register" parameterType="com.project.proto.dto.Dto">
 	INSERT INTO MEMBER(employeeNumber,name,email,password,day)VALUES(#{employeeNumber},#{name},#{email},#{password},sysdate)
 	</insert>
+	
+	<select id = "find_PW" resultType="com.project.proto.dto.Dto">
+	SELECT EMAIL,PASSWORD FROM MEMBER WHERE EMPLOYEENUMBER = #{employeeNumber}
+	</select>
 </mapper>
 

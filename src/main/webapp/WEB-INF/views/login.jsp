@@ -56,7 +56,7 @@
 			<div class="remember-forgot">
 				<div class="row">
 					<div class=" forgot-pass-content">
-						<a href="#" class="forgot-pass">Forgot Password</a>
+						<a href="find" class="forgot-pass">Forgot Password</a>
 					</div>
 				</div>
 			</div>
