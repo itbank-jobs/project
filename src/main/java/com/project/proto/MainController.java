@@ -36,20 +36,17 @@ public class MainController {
 	
 	//로그인(main)
 	@RequestMapping(value = "/")
-	public String main(Model model, HttpSession session) {
+	public String login(Model model, HttpSession session) {
 		
-		/*session.setAttribute("employeeNumber", null);
-		session.setAttribute("password", null);*/
-	
+		System.out.println("login()실행");
 		session.invalidate();
-	
 		return "login";
 
 
 	}
 	//로그인 아이디 비밀번호 체크
 	@RequestMapping("/loginCheck")
-	public void main(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
+	public void loginCheck(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
 		System.out.println("loginCheck()실행");
 		
 		model.addAttribute("req", req);
@@ -112,8 +109,8 @@ public class MainController {
 	//main로그인 성공시, homepage이동
 	
 	@RequestMapping("/main")
-	public String homepage(Model model) {
-		System.out.println("main()실행");
+	public String main(Model model) {
+		System.out.println("main페이지()실행");
 		return "main";
 
 	}
