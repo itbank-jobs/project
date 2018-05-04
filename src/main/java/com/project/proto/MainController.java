@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import com.project.proto.command.Command;
-import com.project.proto.command.login;
 import com.project.proto.command.loginCheck;
 import com.project.proto.command.registerProc;
 import com.project.proto.dao.Dao;
+
 
 
 
@@ -104,10 +104,10 @@ public class MainController {
 	}
 	
 	//main로그인 성공시, homepage이동
-	@RequestMapping("/home")
+	@RequestMapping("/main")
 	public String homepage(Model model) {
-		System.out.println("homepage()실행");
-		return "homepage";
+		System.out.println("main()실행");
+		return "main";
 
 	}
 

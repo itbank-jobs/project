@@ -100,36 +100,122 @@ function inputCheck() {
 	}
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //로그인 아이디 비밀번호 체크
-function loginCheck(){
-	
-	var email = $('#email')
-	
-	if(document.login.email.value ==""){
-		document.login.email.focus();
+/*$(document).ready(function(){
+$('#submit').click(function(event){
+	var email = $('#email').val();
+	var password = $('#password').val();
+	event.preventDefault();	
+	if(email ==""){
+		$('#email').focus();
 		return false;
 	}
-	if(document.login.password.value ==""){
-		document.login.password.focus();
+	if(password ==""){
+		$('#password').focus();
 		return false;
 	}
 	
 	
 	$.ajax({
 		type : 'post',
-		data : {email:vemail},
+		data : {email:email, password:password},
 		dataType : 'text',
-		url : '/proto/emailCheck',
+		url : '/proto/loginCheck',
 		
-		success : function(result){
+		success : function(result){ //MainController-> loginCheck커멘드 에서 결과 가져옴.
 			var chk = result;
 			if(chk == 0){
-				$('#eck').val('true');
-				$('#Message').html('<font color="#6fd5f1">사용가능한 아이디 입니다.')
-			}else{
-				$('#Message').html('사용 불가능한 아이디 입니다')
-				$('#eck').val('false');
+				$('#Message').html('<font color="#6fd5f1">아이디 혹은 비밀번호가 틀렸습니다.');
+				return false;
 			}
+			else{
+				document.main.submit();
+				return true;
+				}
 			
 		},
 		error : function(xhr, status, e){
@@ -137,15 +223,55 @@ function loginCheck(){
 		}
 		
 	});//ajax}	
-	
-	if ($('#eck').val() == "false") {
-		document.register.email.focus();
-		$('#Message').html('E-Mail 혹은 password를 확인해 주세요.');
-		return false;
-	}
-	
-	
-}
+		
+});	
+
+});	
+*/
+
+//로그인 아이디 비밀번호 체크
+	function loginCheck() {
+		var email = $('#email').val();
+		var password = $('#password').val();
+		event.preventDefault();	
+		if(email ==""){
+			$('#email').focus();
+			return false;
+		}
+		if(password ==""){
+			$('#password').focus();
+			return false;
+		}
+		
+		
+		$.ajax({
+			type : 'post',
+			data : {email:email, password:password},
+			dataType : 'text',
+			url : '/proto/loginCheck',
+			
+			success : function(result){ //MainController-> loginCheck커멘드 에서 결과 가져옴.
+				var chk = result;
+				if(chk == 0){
+					$('#Message').html('<font color="#6fd5f1">아이디 혹은 비밀번호가 틀렸습니다.');
+					return false;
+				}
+				else{
+				
+					document.login.submit();
+					}
+				
+			},
+			error : function(xhr, status, e){
+				alert(e);
+			}
+			
+		});//ajax}	
+		
+
+	};	
+
+
 
 
 

@@ -19,18 +19,40 @@
 
 <body>
 
-	<div class="wrap">
+	<!-- <div class="wrap">
 		<p class="form-title" id="signUp">Sign In</p>
 
-		<form class="login" action = "loginCheck">
+		<form class="login" action = "/proto/main">
 			<div class=" forgot-pass-content">
 				<a href="register" class="sign-up">SIGN UP</a>
 			</div>
-			<input autocomplete="off" type="text" placeholder="E-mail" name = "email" > 
-			<input type="password" placeholder="Password" autocomplete="new-password" name = "password">
-			<label id = "eck" type="hidden" value="false"></label>
+			<input autocomplete="off" type="text" placeholder="E-mail" id = "email" > 
+			<input type="password" placeholder="Password" autocomplete="new-password" id = "password">
+			
 			<div id = "Message">&nbsp</div>
-			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm" onclick="loginCheck()">
+			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm" id = "submit" >
+			<div class="remember-forgot">
+				<div class="row">
+					<div class=" forgot-pass-content">
+						<a href="#" class="forgot-pass">Forgot Password</a>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div> -->
+	
+	<div class="wrap">
+		<p class="form-title" id="signUp">Sign In</p>
+
+		<form class="login" name="login" action = "main" onsubmit="loginCheck()">
+			<div class=" forgot-pass-content">
+				<a href="register" class="sign-up">SIGN UP</a>
+			</div>
+			<input autocomplete="off" type="text" placeholder="E-mail" id = "email" > 
+			<input type="password" placeholder="Password" autocomplete="new-password" id = "password">
+			
+			<div id = "Message">&nbsp</div>
+			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm">
 			<div class="remember-forgot">
 				<div class="row">
 					<div class=" forgot-pass-content">
@@ -40,6 +62,6 @@
 			</div>
 		</form>
 	</div>
-
+	
 </body>
 </html>

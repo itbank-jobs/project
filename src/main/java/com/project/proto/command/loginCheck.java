@@ -1,6 +1,7 @@
 package com.project.proto.command;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,14 +23,40 @@ public class loginCheck implements Command {
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
 		HttpSession session = (HttpSession) map.get("session");
-		
-		
+		int chk = 0;
 		Dto dto = new Dto();
-		dto.setEmail(req.getParameter("email"));
-		dto.setPassword(req.getParameter("password"));
-		int chk = dao.loginCheck(dto);
 		
-		if(chk >0) {
+		try {
+			PrintWriter out = res.getWriter();
+			
+			
+			String email = (req.getParameter("email")==null) ? "" : req.getParameter("email");
+			String password = (req.getParameter("password")==null) ? "" : req.getParameter("password");
+			dto.setEmail(email);
+			dto.setPassword(password);
+			
+			chk = dao.loginCheck(dto);
+			
+			System.out.println("email : "+ email );
+			System.out.println("password : "+ password);
+			System.out.println("CHK : " + chk);
+			out.print(chk);//=result
+			out.flush();
+			out.close();
+			
+		
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			
+			e.printStackTrace();
+		}
+	
+	
+		
+		
+		
+/*		if(chk >0) {
 			System.out.println("커멘드 : 로그인성공");
 			session.setAttribute("email",dto.getEmail());
 			session.setAttribute("password", dto.getEmail());
@@ -48,7 +75,9 @@ public class loginCheck implements Command {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-		}
+		}*/
+		
+		
 	}
 
 }
