@@ -22,7 +22,7 @@
 			success : function(result){ //MainController-> loginCheck커멘드 에서 결과 가져옴.
 				var chk = result;
 				if(chk == 0){
-					$('#Message').html('<font color="#6fd5f1">아이디 혹은 비밀번호가 틀렸습니다.');
+					$('#Message').html('<font color="#6fd5f1">아이디 혹은 비밀번호가 틀렸습니다.</font>');
 					return false;
 				}
 				else{
