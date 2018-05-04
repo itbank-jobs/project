@@ -63,9 +63,10 @@ public class MainController {
 	
 	//회원가입, 회원정보 입력창
 	@RequestMapping("/register")
-	public String register(Model model) {
+	public String register(Model model, HttpSession session) {
 		
 		System.out.println("register()실행");
+		session.invalidate();
 		return "register";
 		
 	}
