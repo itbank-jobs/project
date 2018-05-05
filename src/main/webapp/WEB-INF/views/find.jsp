@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="resources/css/login.css">
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="resources/js/script.js"></script>
+<script src="resources/js/find.js"></script>
 <title>Forgot Password</title>
 
 
@@ -22,14 +22,14 @@
 	<div class="wrap">
 		<p class="form-title" id="signUp">Find</p>
 
-		<form class="login" name="find" action ="/proto" onsubmit ="return findFunction()">
+		<form class="login" name="find" action ="/proto">
 			<div class=" forgot-pass-content">
 				<a href="/proto" class="sign-up">SIGN IN</a>
 			</div>
 			<input type="text" placeholder="EmployeeNumber" autocomplete="new-password" name = "employeeNumber">
 			<div id = "Message">&nbsp</div>
 			
-			<input type="submit" value="FIND" class="btn btn-success btn-sm" >
+			<input type="button" id="find-btn" value="FIND" class="btn btn-success btn-sm" onclick="findFunction()" >
 			
 		</form>
 	</div>

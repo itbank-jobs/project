@@ -37,14 +37,17 @@ public class find_PW implements Command {
 
 			dto.setEmployeeNumber(Integer.parseInt(req.getParameter("employeeNumber")));
 			int employeeNumber = dto.getEmployeeNumber();
-
+			
 			dto = dao.find_PW(employeeNumber);
-
-			out.print(dto); // =result
+			if(dto != null) {
+			out.print(dto.getEmail()); 
+			}else {
+				out.print("not");
+			}
 			out.flush();
 			out.close();
 
-			model.addAttribute("empEmail", dto.getEmail());
+			
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -74,6 +77,7 @@ public class find_PW implements Command {
 
 	private void sendMail(Dto dto) {
 		// TODO Auto-generated method stub
+
 
 		String server = "smtp.gmail.com";
 		String sendID = "Jobs.Project.Proto@gmail.com";

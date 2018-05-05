@@ -11,26 +11,27 @@
 <link rel="stylesheet" href="resources/css/login.css">
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="resources/js/script.js"></script>
+<script src="resources/js/login.js"></script>
+<script src="resources/js/encoding.js"></script>
 <title>Login</title>
 
 
 </head>
 
 <body>
-
+	
 	<div class="wrap">
 		<p class="form-title" id="signUp">Sign In</p>
 
-		<form class="login" action = "loginCheck">
+		<form class="login" name="login" action = "main" onsubmit="loginCheck()">
 			<div class=" forgot-pass-content">
 				<a href="register" class="sign-up">SIGN UP</a>
 			</div>
-			<input autocomplete="off" type="text" placeholder="E-mail" name = "email" > 
-			<input type="password" placeholder="Password" autocomplete="new-password" name = "password">
-			<label id = "eck" type="hidden" value="false"></label>
+			<input autocomplete="off" type="text" maxlength="8" placeholder="EmployeeNumber" onkeydown="encodingNum()" onblur="encodingNum()" id = "employeeNumber" > 
+			<input type="password" placeholder="Password" maxlength="15" autocomplete="new-password" id = "password">
+			
 			<div id = "Message">&nbsp</div>
-			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm" onclick="loginCheck()">
+			<input type="submit" value="SIGN IN" class="btn btn-success btn-sm">
 			<div class="remember-forgot">
 				<div class="row">
 					<div class=" forgot-pass-content">
@@ -40,6 +41,6 @@
 			</div>
 		</form>
 	</div>
-
+	
 </body>
 </html>
