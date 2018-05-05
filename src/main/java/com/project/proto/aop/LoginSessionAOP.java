@@ -6,10 +6,11 @@ import java.util.Enumeration;
 
 import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
+
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -26,8 +27,9 @@ public class LoginSessionAOP {
 		System.out.println("Before 입니다.");
 
 		HttpServletRequest request = null;
+		HttpServletResponse response = null;
 		Model model = null;
-		Session session = null;
+		HttpSession session = null;
 		String method = JoinPoint.getSignature().getName();
 
 		for (Object obj : JoinPoint.getArgs()) {
@@ -35,12 +37,14 @@ public class LoginSessionAOP {
 				request = (HttpServletRequest) obj;
 			} else if (obj instanceof Model) {
 				model = (Model) obj;
-			} else if (obj instanceof Session) {
-				session = (Session) obj;
+			} else if (obj instanceof HttpServletResponse) {
+				response = (HttpServletResponse) obj;
+			} else if (obj instanceof HttpSession) {
+				session = (HttpSession) obj;
 			}
 		}
 		System.out.println("method : " + method);
-
+		System.out.println("response : " + response);
 		System.out.println("req : " + request);
 		if (request != null) {
 			Enumeration e = request.getParameterNames();
@@ -53,6 +57,7 @@ public class LoginSessionAOP {
 
 		System.out.println("model : " + model);
 		System.out.println("session : " + session);
+
 		System.out.println("-----------Before 영역--------------");
 		System.out.println();
 	}
@@ -64,6 +69,7 @@ public class LoginSessionAOP {
 		System.out.println("After 입니다.");
 
 		HttpServletRequest request = null;
+		HttpServletResponse response = null;
 		Model model = null;
 		HttpSession session = null;
 		String method = JoinPoint.getSignature().getName();
@@ -73,12 +79,14 @@ public class LoginSessionAOP {
 				request = (HttpServletRequest) obj;
 			} else if (obj instanceof Model) {
 				model = (Model) obj;
-			} else if (obj instanceof Session) {
+			} else if (obj instanceof HttpServletResponse) {
+				response = (HttpServletResponse) obj;
+			} else if (obj instanceof HttpSession) {
 				session = (HttpSession) obj;
 			}
 		}
 		System.out.println("method : " + method);
-
+		System.out.println("response : " + response);
 		System.out.println("req : " + request);
 		if (request != null) {
 			Enumeration e = request.getParameterNames();
@@ -91,20 +99,20 @@ public class LoginSessionAOP {
 
 		System.out.println("model : " + model);
 		System.out.println("session : " + session);
+
 		System.out.println("-----------After<noneError>영역--------------");
 		System.out.println();
 
 	}
-
-
 
 	@AfterThrowing("within(com.project.proto.*)")
 	public void LoginSessionCheck3(JoinPoint JoinPoint) {
 		System.out.println();
 		System.out.println("-----------After<Error>영역--------------");
 		System.out.println("After 입니다.");
-
+		
 		HttpServletRequest request = null;
+		HttpServletResponse response = null;
 		Model model = null;
 		HttpSession session = null;
 		String method = JoinPoint.getSignature().getName();
@@ -114,12 +122,14 @@ public class LoginSessionAOP {
 				request = (HttpServletRequest) obj;
 			} else if (obj instanceof Model) {
 				model = (Model) obj;
-			} else if (obj instanceof Session) {
+			} else if (obj instanceof HttpServletResponse) {
+				response = (HttpServletResponse) obj;
+			} else if (obj instanceof HttpSession) {
 				session = (HttpSession) obj;
 			}
 		}
 		System.out.println("method : " + method);
-
+		System.out.println("response : " + response);
 		System.out.println("req : " + request);
 		if (request != null) {
 			Enumeration e = request.getParameterNames();
@@ -132,6 +142,7 @@ public class LoginSessionAOP {
 
 		System.out.println("model : " + model);
 		System.out.println("session : " + session);
+
 		System.out.println("-----------After<Error>영역--------------");
 		System.out.println();
 

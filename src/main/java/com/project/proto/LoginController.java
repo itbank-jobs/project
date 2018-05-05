@@ -39,8 +39,7 @@ public class LoginController {
 	public String login(Model model, HttpSession session) {
 		
 		System.out.println("login()실행");
-		String name = "제발 되자";
-		session.setAttribute("test", name);
+
 		return "login";
 
 
@@ -52,8 +51,6 @@ public class LoginController {
 		
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
-		String name = "loginCheck 제발 되자";
-		session.setAttribute("test", name);
 		model.addAttribute("session", session);
 		
 		comm = new loginCheck();
@@ -66,7 +63,6 @@ public class LoginController {
 	public String register(Model model, HttpSession session) {
 		
 		System.out.println("register()실행");
-		session.invalidate();
 		return "register";
 		
 	}
