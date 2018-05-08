@@ -13,7 +13,7 @@ import org.aspectj.lang.annotation.Before;
 @Aspect
 public class LoginSessionAOP {
 
-	@Before("within(com.project.proto.MainController)")
+//	@Before("within(com.project.proto.MainController)")
 	public void LoginSessionCheck(JoinPoint JoinPoint) {
 
 		HttpServletResponse response = null;
