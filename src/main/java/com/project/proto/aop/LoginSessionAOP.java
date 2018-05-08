@@ -71,17 +71,13 @@ public class LoginSessionAOP {
 		
 		System.out.println("-----------Before 영역 [TEST]--------------");
 		
-		try{
-		String sessionValue = session.getAttribute("employeeNumber") == null? "":(String) session.getAttribute("employeeNumber"); 
-		if( session.getAttribute("employeeNumber")  == null || sessionValue.equals("")){
+	
+		if( session == null){
 			System.out.println("----------- [Login1]--------------");
 			return "login";
 		}
-		}catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("----------- [Login2]--------------");
-			return "login";
-		}
+	
+		
 		System.out.println("----------- [method] --------------");
 		return '"'+method+'"';
 		

@@ -38,6 +38,7 @@ public class LoginController {
 	@RequestMapping(value = "/")
 	public String login(Model model, HttpSession session) {
 		
+	
 		System.out.println("login()실행");
 
 		return "login";
