@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.project.proto.command.Command;
 
 import com.project.proto.command.loginCheck;
-import com.project.proto.command.loginSessionCheck;
 import com.project.proto.command.registerProc;
 import com.project.proto.dao.Dao;
 import com.project.proto.command.find_PW;;
