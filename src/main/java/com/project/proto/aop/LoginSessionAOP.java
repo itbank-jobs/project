@@ -2,6 +2,7 @@ package com.project.proto.aop;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 
+import java.io.IOException;
 import java.util.Enumeration;
 
 import javax.mail.Session;
@@ -15,16 +16,16 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 @Aspect
 public class LoginSessionAOP {
 
-	@Before("within(com.project.proto.*)")
-	public void LoginSessionCheck(JoinPoint JoinPoint) {
+	@Before("within(com.project.proto.MainController)")
+	public Object LoginSessionCheck(JoinPoint JoinPoint) {
 		System.out.println();
 		System.out.println("-----------Before 영역--------------");
-		System.out.println("Before 입니다.");
 
 		HttpServletRequest request = null;
 		HttpServletResponse response = null;
@@ -45,7 +46,7 @@ public class LoginSessionAOP {
 		}
 		System.out.println("method : " + method);
 		System.out.println("response : " + response);
-		System.out.println("req : " + request);
+		System.out.println("request : " + request);
 		if (request != null) {
 			Enumeration e = request.getParameterNames();
 			while (e.hasMoreElements()) {
@@ -54,19 +55,44 @@ public class LoginSessionAOP {
 				System.out.println("key:" + name + "//" + request.getParameter(name));
 			}
 		}
-
 		System.out.println("model : " + model);
 		System.out.println("session : " + session);
+		if (session != null) {
+			Enumeration e = session.getAttributeNames();
+			while (e.hasMoreElements()) {
+				String name = e.nextElement().toString();
 
+				System.out.println("key:" + name + "//" + session.getAttribute(name));
+			}
+		}
 		System.out.println("-----------Before 영역--------------");
 		System.out.println();
+		
+		
+		System.out.println("-----------Before 영역 [TEST]--------------");
+		
+		try{
+		String sessionValue = session.getAttribute("employeeNumber") == null? "":(String) session.getAttribute("employeeNumber"); 
+		if( session.getAttribute("employeeNumber")  == null || sessionValue.equals("")){
+			System.out.println("----------- [Login1]--------------");
+			return "login";
+		}
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("----------- [Login2]--------------");
+			return "login";
+		}
+		System.out.println("----------- [method] --------------");
+		return '"'+method+'"';
+		
+		
 	}
+}
 
-	@AfterReturning("within(com.project.proto.*)")
+/*	@AfterReturning("within(com.project.proto.*)")
 	public void LoginSessionCheck2(JoinPoint JoinPoint) {
 		System.out.println();
 		System.out.println("-----------After<noneError>영역--------------");
-		System.out.println("After 입니다.");
 
 		HttpServletRequest request = null;
 		HttpServletResponse response = null;
@@ -99,7 +125,14 @@ public class LoginSessionAOP {
 
 		System.out.println("model : " + model);
 		System.out.println("session : " + session);
+		if (session != null) {
+			Enumeration e = session.getAttributeNames();
+			while (e.hasMoreElements()) {
+				String name = e.nextElement().toString();
 
+				System.out.println("key:" + name + "//" + session.getAttribute(name));
+			}
+		}
 		System.out.println("-----------After<noneError>영역--------------");
 		System.out.println();
 
@@ -109,7 +142,6 @@ public class LoginSessionAOP {
 	public void LoginSessionCheck3(JoinPoint JoinPoint) {
 		System.out.println();
 		System.out.println("-----------After<Error>영역--------------");
-		System.out.println("After 입니다.");
 		
 		HttpServletRequest request = null;
 		HttpServletResponse response = null;
@@ -142,10 +174,17 @@ public class LoginSessionAOP {
 
 		System.out.println("model : " + model);
 		System.out.println("session : " + session);
+		if (session != null) {
+			Enumeration e = session.getAttributeNames();
+			while (e.hasMoreElements()) {
+				String name = e.nextElement().toString();
 
+				System.out.println("key:" + name + "//" + session.getAttribute(name));
+			}
+		}
 		System.out.println("-----------After<Error>영역--------------");
 		System.out.println();
 
 	}
 
-}
+}*/

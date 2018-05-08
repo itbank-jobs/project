@@ -45,7 +45,7 @@ public class loginCheck implements Command {
 			if(chk >0) {
 //				System.out.println("커멘드 : 로그인성공");
 				session.setAttribute("employeeNumber",dto.getEmployeeNumber());
-				session.setAttribute("password", dto.getPassword());
+//				session.setAttribute("password", dto.getPassword());
 //				System.out.println("현재 session employeeNumber : "+session.getAttribute("employeeNumber"));
 //				System.out.println("현재 session password : "+session.getAttribute("password"));
 			}
