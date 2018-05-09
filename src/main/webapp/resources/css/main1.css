@@ -127,3 +127,6 @@ li:hover {
 .main-content>p>a {
 	color: white;
 }
+h4, .h4{
+	font-size: 14px;
+}

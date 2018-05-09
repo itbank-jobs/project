@@ -1,81 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/wepmake.css">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/script.js"></script>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 
 
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed"
-				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-				aria-expanded="false">
-				<span class="sr-only"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="main"> 공부방 </a>
-		</div>
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="list">저장소<span class="sr-only"></span></a></li>
-				<li><a href="list?project">프로젝트</a></li>
-				<li class="dropdown"><a href="language" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false"> 프로그래밍 언어 <span class="caret"></span>
-				</a>
-					<ul class="dropdown-menu">
-						<li><a href="language?lectureName=Java">JAVA</a></li>
-						<li><a href="language?lectureName=Jsp">JSP</a></li>
-						<li><a href="language?lectureName=Android">안드로이드</a></li>
-					</ul></li>
-				<li><span class="list"></span><a href="serbey">설문조사</a></li>
-			</ul>
-			<form class="navbar-form navbar-left">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="내용을 입력하세요.">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="resources/css/main1.css">
+<link rel="stylesheet" href="resources/css/mainNewsFeed.css">
+
+
+<link media="all" type="text/css" rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+	rel="stylesheet">
+<script src="resources/js/main_header.js"></script>
+<title>MainHeader</title>
+
+
+<div id="navigation" class=" col-sm-4 sidebar3">
+	<div class="left-navigation">
+		<ul>
+			<li id="home"><i class="fa fa-home"></i>Home</li>
+
+
+			<li id="news"><i class="fa fa-newspaper-o"></i>News <span
+				class="activebooks pull-right">3<!--기능 만들기 새글 등록 시 ++ 클릭하면 초기화   --></span></li>
+			<li id="schedule"><i class="fa fa-calendar"></i>Schedule</li>
+			<li class="list">
+				<div class="dropdown">
+					<i class="fa fa-users"></i>Team <i class="fa fa-plus pull-right"></i>
 				</div>
-				<button type="submit" class="btn btn-default">검색</button>
-			</form>
+				<ul class="submenu hide">
+					<li id="1team">경영지원팀</li>
+					<li id="2team">인사팀</li>
+					<li id="3team">개발팀</li>
+					<li id="4team">영업팀</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="category">
 
-
-			<c:choose>
-				<c:when test="${sessionScope.loginEmail == null}">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false"> Log-in <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="login">로그인</a></li>
-								<li><a href="register">회원가입</a></li>
-							</ul></li>
-					</ul>
-				</c:when>
-
-				<c:otherwise>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false"> ${sessionScope.loginEmail} <span
-								class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="modify">정보수정</a></li>
-								<li><a href="delete">회원탈퇴</a></li>
-								<li><a href="logout">로그아웃</a></li>
-							</ul></li>
-					</ul>
-				</c:otherwise>
-			</c:choose>
-
-		</div>
+			<li id="messenser"><i class="fa fa-wechat"></i>Messenser</li>
+			<li id="about"><i class="fa fa-circle-thin"></i>About</li>
+		</ul>
+		<ul>
+			<li id="settings"><i class="fa fa-cog"></i>Settings</li>
+			<li id="logout"><i class="fa fa-power-off"></i>Logout</li>
+		</ul>
 	</div>
-</nav>
+</div>
