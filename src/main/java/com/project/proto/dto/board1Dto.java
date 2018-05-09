@@ -4,38 +4,29 @@ import java.sql.Timestamp;
 
 	public class board1Dto {
 		int num;
-		String name;
-		String title;
+		String writer;
+		String subject;
 		String content;
-		Timestamp bdate; 
-		int hit;
-		int bgroup;
-		int step;
-		int indent;
-		String id;
-		
-		public board1Dto() {
-			
+		String pass;
+		int readcount;
+		Timestamp regdate;
+		public int getNum() {
+			return num;
 		}
-		
-		public board1Dto(int num, String name, String title, String content, Timestamp bdate, int hit, int bgroup, int step, int indent,String id) {
+		public void setNum(int num) {
 			this.num = num;
-			this.name = name;
-			this.title = title;
-			this.content = content;
-			this.bdate= bdate;
-			this.hit = hit;
-			this.bgroup = bgroup;
-			this.step = step;
-			this.indent = indent;
-			this.id = id;
 		}
-		
-		public String getId() {
-			return id;
+		public String getWriter() {
+			return writer;
 		}
-		public void setId(String id) {
-			this.id = id;
+		public void setWriter(String writer) {
+			this.writer = writer;
+		}
+		public String getSubject() {
+			return subject;
+		}
+		public void setSubject(String subject) {
+			this.subject = subject;
 		}
 		public String getContent() {
 			return content;
@@ -43,55 +34,27 @@ import java.sql.Timestamp;
 		public void setContent(String content) {
 			this.content = content;
 		}
-		public int getNum() {
-			return num;
+		public String getPass() {
+			return pass;
 		}
-		public void setNum(int num) {
-			this.num = num;
+		public void setPass(String pass) {
+			this.pass = pass;
 		}
-		public String getName() {
-			return name;
+		public int getReadcount() {
+			return readcount;
 		}
-		public void setName(String name) {
-			this.name = name;
+		public void setReadcount(int readcount) {
+			this.readcount = readcount;
 		}
-		public String getTitle() {
-			return title;
+		public Timestamp getRegdate() {
+			return regdate;
 		}
-		public void setTitle(String title) {
-			this.title = title;
+		public void setRegdate(Timestamp regdate) {
+			this.regdate = regdate;
 		}
-		public Timestamp getBdate() {
-			return bdate;
-		}
-		public void setBdate(Timestamp bdate) {
-			this.bdate = bdate;
-		}
-		public int getHit() {
-			return hit;
-		}
-		public void setHit(int hit) {
-			this.hit = hit;
-		}
-		public int getBgroup() {
-			return bgroup;
-		}
-		public void setBgroup(int bgroup) {
-			this.bgroup = bgroup;
-		}
-		public int getStep() {
-			return step;
-		}
-		public void setStep(int step) {
-			this.step = step;
-		}
-		public int getIndent() {
-			return indent;
-		}
-		public void setIndent(int indent) {
-			this.indent = indent;
-		}
-
+		
+		
+	
 
 	}
 

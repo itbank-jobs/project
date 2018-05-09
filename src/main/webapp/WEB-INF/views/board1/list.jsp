@@ -12,34 +12,20 @@
 <body>
 
 
-<div class="container">
+<div>
 
-		<button type = "button" class = "btn">글작성하러 가기</a></button>
+		<button type = "button">글작성하러 가기</a></button>
 
 
-	<table class = "table table-condensed">
+	<table>
 	<tr>
 		<td>번호</td>
-		<td>ID</td>
 		<td>작성자</td>
 		<td>제목</td>
-		<td>날짜</td>
-		<td>히트</td>
+		<td>등록일</td>
+		<td>조회수</td>
 	</tr>
-	
-<%-- 	<c:forEach var = "listdto" items = "${Blist }" ><!-- id,name,indent(들여쓰기),title,date,hit -->
-
-	<tr>
-		<td class = "titletd">${listdto.num }</td> 
-		<td class = "titletd">${listdto.name }</td>
-		<td class = "titletd">
-			<c:forEach begin = "1" end = "${listdto.indent }"> -</c:forEach>
-			<a href = "content?num=${listdto.num }">${listdto.title }</a></td>
-		<td class = "titletd">${listdto.bdate }</td>
-		<td class = "titletd">${listdto.hit }</td>
-	</tr>
-	</c:forEach> --%>
-	
+		
 	
 		
 
@@ -58,16 +44,6 @@
 	</c:forEach>
 	</table>
 </div>
-<script>
-
-$(".btn").click(function(){
-	if('${loginID}'!=''){
-		location.href='write_view';
-	}else{
-		alert("응 로그인해~");
-	}
-});
-</script>
 
 </body>
 </html>
