@@ -36,12 +36,6 @@ public class MainController {
 		return "news";
 
 	}
-	@RequestMapping("/schedule")
-	public String schedule(Model mv,HttpSession session,HttpServletResponse response) {
-		System.out.println("schedule페이지()실행");
-		return "schedule";
-
-	}
 	@RequestMapping("/team")
 	public String team(Model mv,HttpSession session,HttpServletResponse response) {
 		System.out.println("team페이지()실행");
