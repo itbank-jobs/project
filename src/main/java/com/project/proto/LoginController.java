@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.project.proto.command.Command;
 
 import com.project.proto.command.loginCheck;
-import com.project.proto.command.loginSessionCheck;
 import com.project.proto.command.registerProc;
 import com.project.proto.dao.Dao;
 import com.project.proto.command.find_PW;;
@@ -38,8 +37,13 @@ public class LoginController {
 	@RequestMapping(value = "/")
 	public String login(Model model, HttpSession session) {
 		
+	
 		System.out.println("login()실행");
+<<<<<<< HEAD
 		session.invalidate();
+=======
+
+>>>>>>> d6c5d91d047d989e5b876d57503156d02ecb0f32
 		return "login";
 
 
@@ -52,7 +56,7 @@ public class LoginController {
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
 		model.addAttribute("session", session);
-	
+		
 		comm = new loginCheck();
 		comm.execute(model, dao);
 		
@@ -63,7 +67,6 @@ public class LoginController {
 	public String register(Model model, HttpSession session) {
 		
 		System.out.println("register()실행");
-		session.invalidate();
 		return "register";
 		
 	}
