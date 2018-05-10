@@ -16,17 +16,30 @@ public class EchoHandler extends TextWebSocketHandler{
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		// TODO Auto-generated method stub
 		super.afterConnectionEstablished(session);
-		list.add(session);
-		System.out.println("연결 확인");
+		list.add(session);	
 	}
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		// TODO Auto-generated method stub
 		super.handleTextMessage(session, message);
-		for(WebSocketSession sess : list) {
-			sess.sendMessage(new TextMessage(message.getPayload()));
+		
+		if(session.getAttributes().get("id")!=null) {
+			String tmp[] = message.getPayload().split(":",2);	
+			System.out.println("1 : "+tmp[0]);
+			System.out.println("2 : "+tmp[1]);
+			for(WebSocketSession sess : list) {				
+				if(sess.getAttributes().get("id").equals(tmp[0])) {
+					sess.sendMessage(new TextMessage(tmp[0]+":"+tmp[1]));
+					}
+			}
+		}else {
+			session.getAttributes().put("id", message.getPayload());
 		}
+		
+	
+		
+		
 	}
 	
 	@Override
@@ -34,7 +47,7 @@ public class EchoHandler extends TextWebSocketHandler{
 		// TODO Auto-generated method stub
 		super.afterConnectionClosed(session, status);
 		list.remove(session);
-		System.out.println("연결 해제");
+		
 	}
 
 

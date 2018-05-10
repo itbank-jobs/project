@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="resources/css/calender.css">
 <link rel="stylesheet" href="resources/css/main1.css">
 <link rel="stylesheet" href="resources/css/mainNewsFeed.css">
+<link rel="stylesheet" href="resources/css/mainChat.css">
 
 
 <link media="all" type="text/css" rel="stylesheet"
