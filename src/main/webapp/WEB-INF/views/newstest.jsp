@@ -3,13 +3,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
 $(function() {
-	  $(".dark").click(function() {				// dark 클래스 클릭하면
-	    $("#feed").addClass('dark');			// #dark css적용
+	  $(".dark").click(function() {
+	    $("#feed").addClass('dark');
 	  });
 	  $(".light").click(function() {
 	    $("#feed").removeClass('dark');
@@ -23,8 +21,8 @@ $(function() {
 	    error: function() {
 	      $("#feed").after("<center>Unable to load feed, Incorrect path or invalid feed</center>");
 	    },
-	    success: function(result) {
-	      values = result.items;
+	    success: function(xml) {
+	      values = xml.items;
 
 	      for (var i = 0, j = values.length; i < j; i++) {
 	        // console.log(values[i]);
@@ -35,6 +33,8 @@ $(function() {
 	  });
 	});
 </script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 <style type="text/css">
 body {
   background: #aaa  url(https://images.unsplash.com/photo-1456428199391-a3b1cb5e93ab?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1425) center no-repeat;
@@ -171,17 +171,7 @@ li > div {
 </style>
 </head>
 <body>
-	<div class="container-fluid">
-		<div class="row" style="margin-bottom: 3%;">
-			<jsp:include page="main_header.jsp"></jsp:include>
-			<div class="col-md-9">
-				<hr>
-				<hr>
-				<hr>
-			</div>
-			
-			<div class="col-md-9">
-					<h1>News Board</h1>
+	<h1>Job Board</h1>
 	<div class="opt">
 		<a href="https://codepen.io/jobs/post/" target="_blank" class="post">Post
 			a Job</a> Change theme: <a href="#" class="dark">Dark</a> &mdash; <a
@@ -194,14 +184,6 @@ li > div {
 			style="color: #999">Twitter</a> new <a
 			href="http://codepen.com/nodws" target="_b" style="color: #999">Pen</a>
 		each week
-	</div>
-			</div>
-		</div>
-
-		<div class="row">
-		
-		</div>
-
 	</div>
 </body>
 </html>

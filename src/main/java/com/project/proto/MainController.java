@@ -77,4 +77,10 @@ public class MainController {
 	
 	
 	
+	@RequestMapping("/newstest")
+	public String newstest(Model mv,HttpSession session,HttpServletResponse response) {
+		System.out.println("main페이지()실행");
+		return "newstest";
+	}
+	
 }
