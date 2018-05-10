@@ -12,9 +12,6 @@ $(document).ready(function() {
 		$('#news').click(function() {
 			location.href = 'news';
 		});
-		$('#schedule').click(function() {
-			location.href = 'schedule';
-		});
 		$('#1team').click(function() {
 			location.href = 'team?home=1';
 		});

@@ -9,8 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-import com.project.proto.command.Command;
+import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
 
 @Controller
@@ -27,6 +26,7 @@ public class MainController {
 	@RequestMapping("/main")
 	public String main(Model mv,HttpSession session,HttpServletResponse response) {
 		System.out.println("main페이지()실행");
+		mv.addAttribute("chatList", dao.chatList());
 		return "main";
 	}
 	
@@ -34,12 +34,6 @@ public class MainController {
 	public String news(Model mv,HttpSession session,HttpServletResponse response) {
 		System.out.println("news페이지()실행");
 		return "news";
-
-	}
-	@RequestMapping("/schedule")
-	public String schedule(Model mv,HttpSession session,HttpServletResponse response) {
-		System.out.println("schedule페이지()실행");
-		return "schedule";
 
 	}
 	@RequestMapping("/team")

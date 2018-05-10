@@ -25,7 +25,7 @@ public class Dao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-
+	
 	public List<Dao> selectMember() {
 		return sqlSession.selectList("selectList");
 	}
@@ -48,7 +48,9 @@ public class Dao {
 		sqlSession.insert("register", dto);
 	}
 
-	
+	public List<Dto> chatList(){
+		return sqlSession.selectList("selectList");
+	}
 //비밀번호 찾기
 	public Dto find_PW(int employeeNumber) {
 		Dto dto;
