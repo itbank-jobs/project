@@ -26,6 +26,7 @@ public class MainController {
 	@RequestMapping("/main")
 	public String main(Model mv,HttpSession session,HttpServletResponse response) {
 		System.out.println("main페이지()실행");
+		mv.addAttribute("chatList", dao.chatList());
 		return "main";
 	}
 	
