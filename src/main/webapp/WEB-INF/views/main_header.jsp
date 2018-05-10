@@ -18,6 +18,7 @@
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
 <link rel="stylesheet" href="resources/css/main1.css">
+<link rel="stylesheet" href="resources/css/mainChat.css">
 <link rel="stylesheet" href="resources/css/mainNewsFeed.css">
 
 <script src="resources/js/main_header.js"></script>
