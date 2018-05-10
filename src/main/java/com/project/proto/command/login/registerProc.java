@@ -1,4 +1,4 @@
-package com.project.proto.command;
+package com.project.proto.command.login;
 
 import java.util.Map;
 

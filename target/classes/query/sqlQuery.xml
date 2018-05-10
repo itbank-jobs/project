@@ -24,5 +24,19 @@
 	<select id = "find_PW" resultType="com.project.proto.dto.Dto">
 	SELECT EMAIL,PASSWORD FROM MEMBER WHERE EMPLOYEENUMBER = #{employeeNumber}
 	</select>
+	
+	<select id ="List" resultType = "com.project.proto.dto.board_Dto">
+	SELECT * FROM BOARD
+	
+	</select>
+	
+	<select id ="contentList" parameterType="com.project.proto.dto.board_Dto" resultType = "com.project.proto.dto.board_Dto">
+	SELECT * FROM BOARD WHERE NUM = #{PARAM1}
+	</select>
+	
+	<select id = "write" parameterType="com.project.proto.dto.board_Dto" resultType = "int">
+<!-- 	INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, READCOUNT) VALUES(BOARD_SEQ.NEXTVAL,#{writer},#{subject},#{content},0) -->
+	INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, READCOUNT) VALUES( BOARD_SEQ.NEXTVAL, #{writer},#{subject},#{content},0)
+	</select> 
 </mapper>
 

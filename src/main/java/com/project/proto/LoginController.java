@@ -15,12 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.proto.command.Command;
-
-import com.project.proto.command.loginCheck;
-import com.project.proto.command.registerProc;
-import com.project.proto.dao.Dao;
-import com.project.proto.command.find_PW;;
+import com.project.proto.command.login.Command;
+import com.project.proto.command.login.find_PW;
+import com.project.proto.command.login.loginCheck;
+import com.project.proto.command.login.registerProc;
+import com.project.proto.dao.Dao;;
 
 
 
@@ -130,7 +129,12 @@ public class LoginController {
 
 	}
 	
+	@RequestMapping("/test")
+	public String test(Model model) {
+		System.out.println("test()실행");
+		return "testView";
 
+	}
 
 
 }
