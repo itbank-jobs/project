@@ -4,28 +4,29 @@
 }
 
 body {
-	 background: #4143A3;
-    /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, #1E1E45, #4143A3, #848FD8,#CFD5EE,#ECEDF9);
-    /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #1E1E45, #4143A3, #848FD8,#CFD5EE,#ECEDF9);
-    /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #1E1E45, #4143A3, #848FD8,#CFD5EE,#ECEDF9);
-    /* For Firefox 3.6 to 15 */
-    background: linear-gradient( to bottom right, #353232, #211d29, #0e0d19,#191c27,#2d2c2c);
-    /* Standard syntax */
-    height:99.8vh;
-    color: #fff;
+	background: #4143A3;
+	/* For browsers that do not support gradients */
+	background: -webkit-linear-gradient(left top, #1E1E45, #4143A3, #848FD8, #CFD5EE,
+		#ECEDF9);
+	/* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(bottom right, #1E1E45, #4143A3, #848FD8, #CFD5EE,
+		#ECEDF9);
+	/* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(bottom right, #1E1E45, #4143A3, #848FD8, #CFD5EE,
+		#ECEDF9);
+	/* For Firefox 3.6 to 15 */
+	background: linear-gradient(to bottom right, #353232, #211d29, #0e0d19, #191c27,
+		#2d2c2c);
+	/* Standard syntax */
+	height: 99.8vh;
+	color: #fff;
 }
 
 .sidebar3 {
-	width: 25%;
 	padding-top: 40px;
 	padding-left: 30px;
 	padding-right: 0px;
 }
-
-
 
 .logo {
 	float: left;
@@ -127,9 +128,18 @@ li:hover {
 .main-content>p>a {
 	color: white;
 }
-h4, .h4{
+
+h4, .h4 {
 	font-size: 14px;
 }
-#navigation{
+
+#navigation {
 	font-size: 12px;
 }
+
+
+
+
+
+
+

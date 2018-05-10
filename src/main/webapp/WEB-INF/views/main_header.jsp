@@ -25,7 +25,7 @@
 <title>MainHeader</title>
 
 
-<div id="navigation" class=" col-sm-4 sidebar3">
+<div id="navigation" class=" col-md-3 sidebar3">
 	<div class="left-navigation">
 		<ul>
 			<li id="home"><i class="fa fa-home"></i>Home</li>
