@@ -129,10 +129,18 @@ public class LoginController {
 
 	}
 	
+	
+	@RequestMapping("/view")
+	public String view(Model model) {
+		System.out.println("view()실행");
+		return "main/testView";
+
+	}
+	
 	@RequestMapping("/test")
 	public String test(Model model) {
 		System.out.println("test()실행");
-		return "testView";
+		return "main/mainTest";
 
 	}
 

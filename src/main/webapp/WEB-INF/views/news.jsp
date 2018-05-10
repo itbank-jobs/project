@@ -173,7 +173,7 @@ li > div {
 <body>
 	<div class="container-fluid">
 		<div class="row" style="margin-bottom: 3%;">
-			<jsp:include page="main_header.jsp"></jsp:include>
+			<jsp:include page="main/main_header.jsp"></jsp:include>
 			<div class="col-md-9">
 				<hr>
 				<hr>
