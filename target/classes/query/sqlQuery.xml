@@ -25,15 +25,15 @@
 	SELECT EMAIL,PASSWORD FROM MEMBER WHERE EMPLOYEENUMBER = #{employeeNumber}
 	</select>
 	
-	<select id ="List" resultType = "com.project.proto.dto.board1Dto">
+	<select id ="List" resultType = "com.project.proto.dto.board_Dto">
 	SELECT * FROM BOARD;
 	</select>
 	
-	<select id ="contentList" parameterType="com.project.proto.dto.board1Dto" resultType = "com.project.proto.dto.board1Dto">
+	<select id ="contentList" parameterType="com.project.proto.dto.board_Dto" resultType = "com.project.proto.dto.board_Dto">
 	SELECT * FROM BOARD WHERE NUM = #{PARAM1};
 	</select>
 	
-	<select id = "write" parameterType="com.project.proto.dto.board1Dto" resultType = "int">
+	<select id = "write" parameterType="com.project.proto.dto.board_Dto" resultType = "int">
 	insert into BOARD (NUM, WRITER, SUBJECT, CONTENT, PASS, READCOUNT) values(BOARD_seq.nextval,?,?,?,?,0)";
 	</select> 
 </mapper>
