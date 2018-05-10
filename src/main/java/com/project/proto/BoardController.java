@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.proto.command.board.Command;
 import com.project.proto.command.board.ListCommand;
-import com.project.proto.dao.board1Dao;
+import com.project.proto.dao.board_Dao;
 
 @Controller
 public class BoardController {
@@ -17,7 +17,7 @@ public class BoardController {
 	Command comm;
 	
 	@Autowired
-	board1Dao dao;
+	board_Dao dao;
 	
 	@RequestMapping("/list")
 	public String list(Model model, HttpSession session) {

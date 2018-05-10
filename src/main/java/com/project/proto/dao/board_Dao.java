@@ -4,11 +4,11 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.project.proto.dto.board1Dto;
+import com.project.proto.dto.board_Dto;
 
 
 @Repository
-public class board1Dao {
+public class board_Dao {
 
 	
 	@Autowired
@@ -20,12 +20,12 @@ public class board1Dao {
 	}
 	
 	//글 내용 불러오기
-	public board1Dto content(String num) {
-		return (board1Dto) sqlSession.selectList("contentList");
+	public board_Dto content(String num) {
+		return (board_Dto) sqlSession.selectList("contentList");
 	}
 	
 	//글쓰기
-	public void write(board1Dto dto) {
+	public void write(board_Dto dto) {
 	sqlSession.insert("write", dto);	
 	
 	}
