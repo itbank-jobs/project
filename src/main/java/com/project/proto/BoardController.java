@@ -6,10 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.HttpServerErrorException;
 
-import com.project.proto.board.Command;
-import com.project.proto.board.ListCommand;
+import com.project.proto.command.board.Command;
+import com.project.proto.command.board.ListCommand;
 import com.project.proto.dao.board1Dao;
 
 @Controller

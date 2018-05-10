@@ -9,8 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-import com.project.proto.command.Command;
+import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
 
 @Controller

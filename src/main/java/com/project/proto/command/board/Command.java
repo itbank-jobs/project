@@ -1,4 +1,4 @@
-package com.project.proto.board;
+package com.project.proto.command.board;
 import org.springframework.ui.Model;
 
 import com.project.proto.dao.board1Dao;

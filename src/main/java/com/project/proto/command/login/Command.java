@@ -1,4 +1,4 @@
-package com.project.proto.command;
+package com.project.proto.command.login;
 import org.springframework.ui.Model;
 
 import com.project.proto.dao.Dao;
