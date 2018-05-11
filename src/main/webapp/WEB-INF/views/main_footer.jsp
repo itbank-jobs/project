@@ -138,5 +138,4 @@ function onClose(evt){
 
 	function onClose(evt) {
 	}
->>>>>>> origin/master
 </script>

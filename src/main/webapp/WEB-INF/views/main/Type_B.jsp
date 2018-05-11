@@ -44,14 +44,20 @@ $(document).ready(function(){
 
 <title>Insert title here</title>
 </head>
-<body>
+
+
+<body style="overflow: hidden;">
+
+
+
+
 <nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
   <!-- top nav -->
   <nav class="navbar navbar-top hidden-xs">
     <div class="container">
       <!-- left nav top -->
       <ul class="nav navbar-nav pull-left">
-        <li id="home"><a href="#"><span class="text-white">Home</span></a></li>
+        <li id="home"><a href="#"><span class="text-white"><i class="fa fa-home"></i>Home</span></a></li>
         <li id="new"><a href="#"><span class="text-white">New</span></a></li>
         <li id="team"><a href="#"><span class="text-white">Team</span></a></li>
         

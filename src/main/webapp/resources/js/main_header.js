@@ -7,7 +7,7 @@
 
 $(document).ready(function() {
 		$('#home').click(function() {
-			location.href = 'main';
+			location.href = 'test';
 		});
 		$('#news').click(function() {
 			location.href = 'news';
@@ -45,3 +45,10 @@ $(document).ready(function() {
 
 		});
 	}
+	
+	
+	
+	
+	
+	
+	

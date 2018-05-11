@@ -105,6 +105,7 @@
 
 <script src="resources/js/main_header.js"></script>
 </head>
+
 <body>
 	<div id="fullpage">
 		<div class="section s01">
