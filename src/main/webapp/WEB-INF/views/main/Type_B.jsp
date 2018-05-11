@@ -28,15 +28,53 @@
 	// open link in new tab without ugly target="_blank"
 	$("a[href^='http']").attr("target", "_blank");
 
+	var h = false;
+	var n = false;
+	var t = false;
 	$(document).ready(function() {
 		$("#home").click(function() {
-			$("#h").toggle(1000);
+			h = true;
+			if (h) {
+				setTimeout('$("#h").toggle(1000)', '700');
+				if (n) {
+					$("#n").toggle(1000);
+					n = false;
+				}
+				if (t) {
+					$("#t").toggle(1000);
+					t = false;
+				}
+			}
 		});
 		$("#new").click(function() {
-			$("#n").toggle(1000);
+			n = true;
+			if (n) {
+				setTimeout('$("#n").toggle(1000)', '700');
+				n = true;
+				if (h) {
+					$("#h").toggle(1000);
+					h = false;
+				}
+				if (t) {
+					$("#t").toggle(1000);
+					t = false;
+				}
+			}
 		});
 		$("#team").click(function() {
-			$("#t").toggle(1000);
+			t = true;
+			if (t) {
+				setTimeout('$("#t").toggle(1000)', '700');
+				t = true;
+				if (n) {
+					$("#n").toggle(1000);
+					n = false;
+				}
+				if (h) {
+					$("#h").toggle(1000);
+					h = false;
+				}
+			}
 		});
 
 	});
@@ -57,7 +95,11 @@
 
 
 
-	<div -ms-overflow-style:none;>
+	<!-- <div-ms-overflow-style:none;> --> <!--스크롤바 없이 스크롤 가능하게 함   -->
+	
+	
+	
+	
 		<nav
 			class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
 		<!-- top nav --> <nav class="navbar navbar-top hidden-xs">
@@ -114,6 +156,6 @@
 		<header> <img
 			src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg"
 			style="width: 100%"> </header>
-	</div>
+		</div>
 </body>
 </html>
