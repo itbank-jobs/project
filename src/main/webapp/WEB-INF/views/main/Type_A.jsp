@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>full page, one page scroll event</title>
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/base.css" />
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -90,8 +92,6 @@
 	background: #fff00000;
 }
 </style>
-
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link media="all" type="text/css" rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link
@@ -103,7 +103,53 @@
 <link rel="stylesheet" href="resources/css/main1.css">
 <link rel="stylesheet" href="resources/css/mainNewsFeed.css">
 
-<script src="resources/js/main_header.js"></script>
+<script type="text/javascript">
+(function($, undefined) {
+
+});
+
+
+
+$(document).ready(function() {
+		$('#home').click(function() {
+			location.href = 'test';
+		});
+		$('#news').click(function() {
+			location.href = 'news';
+		});
+		$('#1team').click(function() {
+			location.href = 'team?home=1';
+		});
+		$('#2team').click(function() {
+			location.href = 'team?home=2';
+		});
+		$('#3team').click(function() {
+			location.href = 'team?home=3';
+		});
+		$('#4team').click(function() {
+			location.href = 'team?home=4';
+		});
+		$('#messenser').click(function() {
+			location.href = 'messenser';
+		});
+		$('#about').click(function() {
+			location.href = 'about';
+		});
+		$('#settings').click(function() {
+			location.href = 'settings';
+		});
+		$('#logout').click(function() {
+			location.href = 'logout';
+		});
+
+});
+	window.onload = function() {
+		$('.dropdown').click(function() {
+			$(this).siblings(".submenu").toggleClass('hide');
+
+		});
+	}
+</script>
 </head>
 
 <body>
