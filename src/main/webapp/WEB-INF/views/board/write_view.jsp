@@ -10,16 +10,17 @@
 	<table width = "500" cellpadding = "0" cellspacing = "0" border = "1">
 		<form action = "write" method = "post">
 			<tr>
-				<td>아이디</td>
-				<td><input type = "text"  name = "id" value="${loginID }" size = "50" readonly="readonly"></td>
+				<td>사원번호</td>
+				<td><input type = "text"  name = "employeeNumber" value="${employeeNumber }" size = "50" readonly="readonly"></td>
 			</tr>
 			<tr>
 			<td>작성자</td>
-				<td><input type = "text"  name = "Name" value="${name }" size = "50" readonly="readonly" ></td>
+				<%-- <td><input type = "text"  name = "Writer" value="${name }" size = "50" readonly="readonly" ></td> --%>
+				<td><input type = "text"  name = "Writer" size = "50"></td>
 			</tr>
 			<tr>
 				<td>제목</td>
-				<td><input type = "text" name = "Title" size = "50"></td>
+				<td><input type = "text" name = "subject" size = "50"></td>
 			</tr>
 				<td>내용</td>
 				<td><textarea name = "Content" rows = "10"></textarea></td>	

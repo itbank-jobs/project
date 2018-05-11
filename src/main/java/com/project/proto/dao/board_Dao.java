@@ -15,7 +15,10 @@ public class board_Dao {
 	private SqlSession sqlSession;
 	
 	//글 목록 불러오기
-	public List<Object> list() {
+	/*public List<Object> list() {
+		return sqlSession.selectList("List");
+	}*/
+	public List<board_Dto> list() {
 		return sqlSession.selectList("List");
 	}
 	

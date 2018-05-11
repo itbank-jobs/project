@@ -14,7 +14,8 @@
 
 <div>
 
-		<button type = "button">글작성하러 가기</a></button>
+	
+		<a href="write_view">글 작성하러가기</a>
 
 
 	<table>
@@ -28,17 +29,14 @@
 		
 	
 		
-
+	<c:forEach var = "listdto" items = "${list }">
 	<tr>
-	<c:forEach var = "listdto" items = "${Blist }" varStatus="status"><!-- id,name,indent(들여쓰기),title,date,hit -->
-		<td class = "titletd">${number-status.count +1}</td>
-		<td class = "titletd">${listdto.id }</td> 
-		<td class = "titletd">${listdto.name }</td>
-		<td class = "titletd">
-			<c:forEach begin = "1" end = "${listdto.indent }"> -</c:forEach>
-			<a href = "content?num=${listdto.num }">${listdto.title }</a></td>
-		<td class = "titletd">${listdto.bdate }</td>
-		<td class = "titletd">${listdto.hit }</td>
+		<td class = "titletd">${listdto.num}</td>
+		<td class = "titletd">${listdto.writer }</td> 
+		<td class = "titletd">${listdto.subject }</td>
+		<td class = "titletd">${listdto.regdate }</td>
+		<td class = "titletd">${listdto.readcount }</td>
+
 	
 	</tr>
 	</c:forEach>

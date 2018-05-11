@@ -26,15 +26,17 @@
 	</select>
 	
 	<select id ="List" resultType = "com.project.proto.dto.board_Dto">
-	SELECT * FROM BOARD;
+	SELECT * FROM BOARD
+	
 	</select>
 	
 	<select id ="contentList" parameterType="com.project.proto.dto.board_Dto" resultType = "com.project.proto.dto.board_Dto">
-	SELECT * FROM BOARD WHERE NUM = #{PARAM1};
+	SELECT * FROM BOARD WHERE NUM = #{PARAM1}
 	</select>
 	
 	<select id = "write" parameterType="com.project.proto.dto.board_Dto" resultType = "int">
-	insert into BOARD (NUM, WRITER, SUBJECT, CONTENT, PASS, READCOUNT) values(BOARD_seq.nextval,?,?,?,?,0)";
+<!-- 	INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, READCOUNT) VALUES(BOARD_SEQ.NEXTVAL,#{writer},#{subject},#{content},0) -->
+	INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, READCOUNT) VALUES( BOARD_SEQ.NEXTVAL, #{writer},#{subject},#{content},0)
 	</select> 
 </mapper>
 
