@@ -5,14 +5,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
 import com.project.proto.dao.board_Dao;
 import com.project.proto.dto.board_Dto;
 
-public class writeCommand implements Command {
+public class DeleteCommand implements Command {
 
 	@Override
 	public void execute(Model model, board_Dao dao) {
@@ -21,20 +20,10 @@ public class writeCommand implements Command {
 		Map<String, Object>map = model.asMap();
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
-		HttpSession session = (HttpSession) map.get("session");
-
-		int employeeNumber = (int) session.getAttribute("employeeNumber");
-		String subject = req.getParameter("subject");
-		String content = req.getParameter("Content");
 		
-		System.out.println(employeeNumber);
-	
-		dto.setSubject(subject);
-		dto.setContent(content);
-		dto.setEmployeeNumber(employeeNumber);
+		String num = req.getParameter("num");
 		
-		dao.write(dto);
-		
+		dao.delete(num);
 		try {
 			res.sendRedirect("list");
 		} catch (IOException e) {
@@ -43,7 +32,7 @@ public class writeCommand implements Command {
 		}
 		
 		
-
+		
 	}
 
 }

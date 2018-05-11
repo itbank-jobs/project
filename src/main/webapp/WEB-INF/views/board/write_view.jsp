@@ -7,28 +7,27 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form action = "write" method = "post">
 	<table width = "500" cellpadding = "0" cellspacing = "0" border = "1">
-		<form action = "write" method = "post">
+		
 			<tr>
 				<td>사원번호</td>
 				<td><input type = "text"  name = "employeeNumber" value="${employeeNumber }" size = "50" readonly="readonly"></td>
 			</tr>
 			<tr>
-			<td>작성자</td>
-				<%-- <td><input type = "text"  name = "Writer" value="${name }" size = "50" readonly="readonly" ></td> --%>
-				<td><input type = "text"  name = "Writer" size = "50"></td>
-			</tr>
-			<tr>
 				<td>제목</td>
 				<td><input type = "text" name = "subject" size = "50"></td>
 			</tr>
+			<tr>
 				<td>내용</td>
 				<td><textarea name = "Content" rows = "10"></textarea></td>	
+			</tr>	
 			<tr>
 				<td colspan = "2"><input type = "submit" value = "입력"><a href ="list" >목록보기</a>
 			</td>
 			</tr>
-		</form>
+		
 	</table>
+	</form>
 </body>
 </html>
