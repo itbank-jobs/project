@@ -25,6 +25,7 @@ public class EchoHandler extends TextWebSocketHandler{
 		super.handleTextMessage(session, message);
 		
 		if(session.getAttributes().get("id")!=null) {
+
 			String tmp[] = message.getPayload().split(":",3);	
 			System.out.println("목적지 : "+tmp[0]);
 			System.out.println("보낸넘 : "+tmp[1]);
@@ -32,6 +33,7 @@ public class EchoHandler extends TextWebSocketHandler{
 			for(WebSocketSession sess : list) {				
 				if(sess.getAttributes().get("id").equals(tmp[0])) {
 					sess.sendMessage(new TextMessage(tmp[1]+":"+tmp[2]));
+
 					}
 			}
 		}else {

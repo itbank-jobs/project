@@ -219,7 +219,7 @@
 				</div>
 			</div>
 
-			<jsp:include page="main_footer.jsp"></jsp:include>
+			<jsp:include page="../main_footer.jsp"></jsp:include>
 		</div>
 		<div class="section s02">2</div>
 		<div class="section s03">3</div>
