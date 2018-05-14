@@ -13,7 +13,7 @@
 	SELECT * FROM MEMBER WHERE EMAIL = #{PARAM1}
 	</select>
 	
-	<select id = "loginCheckList" parameterType="com.project.proto.dto.Dto" resultType = "int">
+	<select id = "loginCheckList" parameterType="com.project.proto.dto.Dto" resultType = "com.project.proto.dto.Dto">
 	SELECT * FROM MEMBER WHERE EMPLOYEENUMBER = #{employeeNumber} AND PASSWORD = #{password}
 	</select>
 		
@@ -45,6 +45,15 @@
 	<select id = "delete" parameterType="String" resultType = "int">
 	DELETE FROM BOARD WHERE NUM = #{PARAM1}
 	</select>
+	
+	<select id = "readcount" parameterType="String" resultType = "int">
+	UPDATE BOARD SET READCOUNT = READCOUNT+1 WHERE NUM = #{PARAM1}
+	</select>
+	
+	<select id = "insertReply">
+	INSERT INTO REPLY(RNO, BNO, REPLYTEXT, REPLYER) VALUES(reply_seq,nextval, #{bno}, #{replytext}, #{replyer})
+	</select>
+	
 
 </mapper>
 

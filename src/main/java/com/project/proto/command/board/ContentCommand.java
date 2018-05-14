@@ -15,12 +15,13 @@ public class ContentCommand implements Command {
 	@Override
 	public void execute(Model model, board_Dao dao) {
 		// TODO Auto-generated method stub
-		
+		board_Dto dto;
 		Map<String, Object>map = model.asMap();//?
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 
+		dao.readcount(req.getParameter("num"));
+		dto = dao.content(Integer.parseInt(req.getParameter("num"))).get(0);
 		
-		board_Dto dto = dao.content(Integer.parseInt(req.getParameter("num"))).get(0);
 
 		model.addAttribute("content",dto); 
 
