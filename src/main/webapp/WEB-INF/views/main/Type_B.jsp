@@ -36,7 +36,7 @@
 			h = true;
 			if (h) {
 				setTimeout('$("#h").toggle(700)', '700');
-				h = true;
+
 				if (n) {
 					$("#n").toggle(1000);
 					n = false;
@@ -51,7 +51,7 @@
 			n = true;
 			if (n) {
 				setTimeout('$("#n").toggle(700)', '700');
-				n = true;
+	
 				if (h) {
 					$("#h").toggle(1000);
 					h = false;
@@ -66,7 +66,7 @@
 			t = true;
 			if (t) {
 				setTimeout('$("#t").toggle(700)', '700');
-				t = true;
+
 				if (n) {
 					$("#n").toggle(1000);
 					n = false;

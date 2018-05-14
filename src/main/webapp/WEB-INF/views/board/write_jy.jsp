@@ -162,14 +162,18 @@ body {
 			<ul class="nav navbar-nav pull-left">
 				<li id="home"><a href="#"><span class="text-white"><i
 							class="fa fa-home"></i>&nbspHome</span></a></li>
-				<li id="new"><a href="#"><span class="text-white"><i class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
-				<li id="team"><a href="#"><span class="text-white"><i class="fa fa-users"></i>&nbsp Team</span></a></li>
+				<li id="new"><a href="#"><span class="text-white"><i
+							class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
+				<li id="team"><a href="#"><span class="text-white"><i
+							class="fa fa-users"></i>&nbsp Team</span></a></li>
 
 			</ul>
 			<!-- right nav top -->
 			<ul class="nav navbar-nav pull-right">
-				<li><a href="settings" class="text-white"><i class="fa fa-cog"></i>&nbspSettings</a></li>
-				<li><a href="logout" class="text-white"><i class="fa fa-power-off"></i>&nbspLogout</a></li>
+				<li><a href="settings" class="text-white"><i
+						class="fa fa-cog"></i>&nbspSettings</a></li>
+				<li><a href="logout" class="text-white"><i
+						class="fa fa-power-off"></i>&nbspLogout</a></li>
 			</ul>
 		</div>
 		<div class="dividline light-grey"></div>
@@ -201,8 +205,8 @@ body {
 					<li><a href="list?teamNum=4">영업팀</a></li>
 				</ul>
 				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-						<li><a href="messenser"><span class="text-white"><i
-							class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
+					<li><a href="messenser"><span class="text-white"><i
+								class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
 				</ul>
 			</div>
 		</div>
@@ -210,55 +214,60 @@ body {
 		</nav> <br>
 
 
-		<div class="container" style="background-color: #00000066; color: #ffffff;">
-	
+		<div class="container"
+			style="background-color: #00000066; color: #ffffff;">
+
 			<div class="row">
 				<div class="col-lg-3">
-					<h3>${listdto.team}[예제]경영지원팀</h3>
-				</div>
-
-				<div class="col-lg-7"></div>
-				<div class="col-lg-2">
-					<div class="container-1">
-						<a class="btn btn-1" style="margin-top: 18px;" href="write_jy?teamNum=${listdto.teamNum}">글 쓰기</a>
-					</div>
-				</div>
-
-			</div>
-			<br>
-
-			<div class="row">
-				<div class="col-lg-12">
-					<input type="search" id="search" value="" class="form-control"
-						placeholder="검색">
+					<h3>글 작성</h3>
 				</div>
 			</div>
-			<br>
+			<br> 
 			<div class="row">
 				<div class="col-lg-12">
 					<table class="table" id="table">
-						<thead>
-							<tr style="text-align: center">
-								<th>번호</th>
-								<th>사원번호</th>
-								<th>작성자</th>
-								<th>제목</th>
-								<th>등록일</th>
-								<th>조회</th>
-							</tr>
-						</thead>
 						<tbody>
-							<c:forEach var="listdto" items="${list}" varStatus="status">
-								<tr class="a">
-									<td>${fn:length(list)-status.count+1}</td>
-									<td>${listdto.employeeNumber }</td>
-									<td>${listdto.name }</td>
-									<td style="cursor: pointer"
-										onclick="location='content?num=${listdto.num }'">${listdto.subject }</a></td>
-									<td>${listdto.regdate }</td>
-									<td>${listdto.readcount }</td>
-								</tr>
-							</c:forEach>
+							<form action="write" method="post" name="write_view"
+								enctype="multipart/form-data" onsubmit="return writeSave()">
+								<input type="hidden" name="lectureName" value="${teamNum}">
+							<tr>
+								<th class="text-center">사원번호</th>
+								<td><input type="text" name="employeeNumber"
+									class="form-control" value="${employeeNumber}"
+									readonly="readonly"></td>
+							</tr>
+							<tr>
+								<th class="text-center">제목</th>
+								<td><input type="text" class="form-control" name="title"
+									size="50"></td>
+							</tr>
+							<tr>
+								<th class="text-center">내용</th>
+								<td><textarea name="content" class="form-control" rows="15"></textarea></td>
+							</tr>
+							<tr>
+								<th class="text-center">첨부파일</th>
+								<td style="text-align: left;"><input type="file"
+									name="uploadName"></td>
+							<tr>
+							<tr>
+								<th class="text-center">비밀번호</th>
+								<td><input type="password" placeholder="비밀번호를 입력하세요"
+									class="form-control" name="passwd" /></td>
+							</tr>
+							<tr>
+
+								<td colspan="2" style="text-align: center">
+									<div class="container-1">
+										<input type="submit" value="&nbsp&nbsp&nbsp등 록 &nbsp&nbsp"
+											class="btn btn-1 pull-right" />
+									</div> <a href="list"><input type="button"
+										value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
+										class="btn btn-info pull-left" /></a>
+							</tr>
+
+
+
 						</tbody>
 					</table>
 				</div>
