@@ -108,5 +108,7 @@ public class BoardController {
 		comm = new DeleteCommand();
 		comm.execute(model, dao);
 	}
+	
+
 
 }

@@ -30,16 +30,20 @@ public class board_Dao {
 	sqlSession.insert("write", dto);	
 	}
 	
-	
-	/*public void modify(board_Dto dto);*/
+	//글수정
 	public void modify(board_Dto dto) {
 		sqlSession.update("modify", dto); 
 	}
-
+	//글삭제
 	public void delete(String num) {
 		sqlSession.delete("delete", num);
 		
 	}
+	//조회수
+	public void readcount(String num) {
+		sqlSession.update("readcount", num);
+	}
+	
 	
 	
 }
