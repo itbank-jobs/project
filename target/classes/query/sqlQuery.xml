@@ -13,7 +13,7 @@
 	SELECT * FROM MEMBER WHERE EMAIL = #{PARAM1}
 	</select>
 	
-	<select id = "loginCheckList" parameterType="com.project.proto.dto.Dto" resultType = "int">
+	<select id = "loginCheckList" parameterType="com.project.proto.dto.Dto" resultType = "com.project.proto.dto.Dto">
 	SELECT * FROM MEMBER WHERE EMPLOYEENUMBER = #{employeeNumber} AND PASSWORD = #{password}
 	</select>
 		

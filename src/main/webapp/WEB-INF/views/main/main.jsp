@@ -133,6 +133,6 @@
 		</div>
 	</div>
 
-	<jsp:include page="../main_footer.jsp"></jsp:include>
+	
 </body>
 </html>

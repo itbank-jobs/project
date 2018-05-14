@@ -209,7 +209,7 @@ li>div {
 	<div class="container-fluid">
 		<div class="row" style="margin-bottom: 3%;">
 
-			<jsp:include page="main/main_header.jsp"></jsp:include>
+			
 
 			<div class="col-md-9">
 				<h1>News Board</h1>

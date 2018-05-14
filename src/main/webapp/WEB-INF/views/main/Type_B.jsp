@@ -3,6 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link
@@ -106,7 +108,7 @@ body {
 
 <body>
 
-
+<jsp:include page="chatting.jsp"></jsp:include>
 
  <div style="-ms-overflow-style:none;">  <!--스크롤바 없이 스크롤 가능하게 함   -->
 		
@@ -157,14 +159,13 @@ body {
 					<li><a href="list?teamNum=4">영업팀</a></li>
 				</ul>
 				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-					<li><a href="messenser"><span class="text-white"><i
-							class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
+					<li class="chatON"><span class="text-white"><i	class="fa fa-wechat"></i>&nbsp Messenser</span></li>					
 				</ul>
 			</div>
 		</div>
 		</nav> </nav>
 	
 	</div>
-		
+	
 </body>
 </html>

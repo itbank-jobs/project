@@ -45,7 +45,7 @@ public class MainController {
 		}
 		mv.addAttribute("chatListLive",list);
 		System.out.println(echoHandler.getList().size()!=0?echoHandler.getList().get(0).getAttributes().get("echoHandler"):null);
-		return "main";
+		return "main/Type_B";
 	}
 	
 	@RequestMapping("/news")

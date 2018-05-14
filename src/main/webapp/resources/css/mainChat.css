@@ -1,11 +1,10 @@
 .chatContainer{
 position: fixed;
-    bottom: 0;
-    right: 0;
-    top: 0;
-    width: 300px;
+    right: 30px;
+    top: 150px;
+    width: 150px;
     height: auto;
-    background-color: #ffffff33;
+      border: solid white 2px;
 }
 
 .liveChatContainer{
@@ -15,13 +14,15 @@ position: fixed;
 	    display: inline-block;
     border-color: white;
         cursor: pointer;
+            border-bottom: solid;
 }
 .chatController{
-	font-size: 30px;
+	font-size: 20px;
     text-align: center;
     border-bottom-color: white;
     border-bottom-width: 5px;
-        cursor: pointer;
+    cursor: pointer;
+    color:white;
 }
 .liveChat{
 	top: 0;
@@ -30,6 +31,7 @@ position: fixed;
 	width: 300px;
     height: 300px;
     background-color: #ffffff10;
+   	color: white;
 }
 
 
@@ -51,15 +53,21 @@ position: fixed;
 .employeeNumberList{
 	cursor: pointer;
 }
-.chatName{
 
+.chatList{
+	    margin: 30px 30px 0px 30px;
+	color : white;
 }
 .liveChatName{
-width: 96%;
+width: 96.5%;
     border-bottom-color: #ffffff;
     display: inline-block;
+        border-bottom: solid;
 }
-
+.chatON{
+	margin: 10px;
+    cursor: pointer;
+}
 @keyframes flush {
     from {background-color: #e0dada;}
     to {background-color: #ffffff33;}
