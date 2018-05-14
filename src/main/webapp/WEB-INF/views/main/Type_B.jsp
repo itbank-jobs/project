@@ -95,7 +95,7 @@
 
 
 
-	<!-- <div-ms-overflow-style:none;> --> <!--스크롤바 없이 스크롤 가능하게 함   -->
+ <div style="-ms-overflow-style:none;">  <!--스크롤바 없이 스크롤 가능하게 함   -->
 	
 	
 	
@@ -156,6 +156,7 @@
 		<header> <img
 			src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg"
 			style="width: 100%"> </header>
-		</div>
+	</div>
+		
 </body>
 </html>
