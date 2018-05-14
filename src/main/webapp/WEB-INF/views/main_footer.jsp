@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!-- footer부분 -->
 
-<div class="chatContainer">
-	<div id = "hide">list</div>
-	<div id = "chatList">
+<div class="chatContainer" style="width: 130px; height: 50px">
+	<div class = "chatController" >Chatting</div>
+	<div id = "chatList" style="display: none">
 	<c:forEach items="${chatList}" var="list">
 		<c:if test="${list.employeeNumber!=employeeNumber}">
-			<div class="employeeNumberList">
+			<div class="employeeNumberList" style="cursor:not-allowed">
+			<div id= "chatInfo${list.employeeNumber}" class="chatInfo">
 				<div class="chatName">${list.name}</div>
 				<div class="chatNumber">${list.employeeNumber}</div>
+			</div>
 			</div>
 			<br>
 		</c:if>
@@ -18,13 +21,12 @@
 	</div>
 </div>
 <div class="liveChatContainer">
-	<c:forEach items="${chatList}" var="list">
+	<c:forEach items="${chatListLive}" var="list" >
 		<c:if test="${list.employeeNumber!=employeeNumber}">
-			<div class="liveChat" style="display: none"
-				id="chatList${list.employeeNumber}">
-				<div class="chatName">${list.name}</div>
+			<div class="liveChat" style="display: none" id="chatList${list.employeeNumber}">
+				<div class="liveChatName">${list.name}</div><div class="liveChatClose">X</div>
 				<div class="chatArea" id="${list.employeeNumber}"></div>
-				<input type="text" class="chatMessage">
+				<input type="text" class="chatMessage" id="input${list.employeeNumber}">
 			</div>
 		</c:if>
 	</c:forEach>
@@ -36,27 +38,29 @@
 	sock.onmessage = onMessage;
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
-	var hide = false;
+	var hide = true;
+	var chatListLive =[<c:forEach items="${chatListLive}" var="list" varStatus = "status">${list.employeeNumber}<c:if test="${!status.last}">,</c:if></c:forEach>];
+	for(var i = 0; i<chatListLive.length;i++){
+		if(chatListLive[i]!=${employeeNumber}){
+			$('#chatInfo'+chatListLive[i]).attr('style','color:#8de08d; cursor : pointer');
+		}
+	}
 	$(function() {
 		var areaTmp;
 		$(".liveChat").draggable();
-		$('#hide').click(function() {
-			if(hide==false){
-				$('#chatList').attr('style','display: none');
-				$('.chatContainer').attr('style','width: 100px; height: 50px');
-				hide = true;
-			}else{
-				$('#chatList').attr('style','');
-				$('.chatContainer').attr('style','');
-				hide = false;	
-			}
-		})
-		$('.employeeNumberList').click(
-				function() {
-					console.log('1');
-					$('#chatList' + $(this).children('.chatNumber').html())
-							.attr('style', '');
-				});
+		
+		$('.chatController').click(function() {
+			$('#chatList').toggle(500);
+		});
+		
+		$('.liveChatClose').click(function() {
+			$(this).parent('.liveChat').toggle(500);
+		});
+	
+		$('.employeeNumberList').click(function() {
+			$('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).attr('style', '');
+		});
+		
 		$('.chatMessage').keypress(
 				function(e) {
 					if (e.keyCode == 13) {
@@ -67,21 +71,35 @@
 						$('#' + areaTmp).append(
 								'<div class=\'myComment\'>' + $(this).val()
 										+ '</div>');
+						$('#' + areaTmp).scrollTop($(".chatArea")[0].scrollHeight);
 						$(this).val('');
 					}
 				});
 	});
-
+	
+	 $('.liveChat').click(function(){
+		$(this).children('.liveChatName').attr('style','');
+		$('#chatInfo'+$(this).children('.chatArea').attr('id')).attr('style','');
+	});
+	 
+	 
 	function onOpen(evt) {
-		sock.send('${employeeNumber}');
+		sock.send('${employeeNumber}:${name}');
 	}
 
 	function onMessage(evt) {
 		var tmp = evt.data.split(':');
 		$('#' + tmp[0]).append('<div class=\'yourComment\'>'+tmp[1]+'</div>');
 		$('#' + tmp[0]).scrollTop($(".chatArea")[0].scrollHeight);
+		console.log($(document.activeElement).attr('id'));
+		if($(document.activeElement).attr('id')!='input'+tmp[0]){
+		$('#chatList' + tmp[0]).children('.liveChatName').attr('style',' animation-name:flush; animation-duration: 1s; animation-iteration-count: infinite;');
+		$('#chatInfo' + tmp[0]).attr('style',' animation-name:flush; animation-duration: 1s; animation-iteration-count: infinite;');
+		}
+		
 	}
 
 	function onClose(evt) {
+		console.log('close');
 	}
 </script>

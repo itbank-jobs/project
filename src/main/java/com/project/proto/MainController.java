@@ -1,6 +1,9 @@
 package com.project.proto;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.proto.chat.EchoHandler;
 import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
+import com.project.proto.dto.Dto;
 
 @Controller
 public class MainController {
@@ -20,6 +25,9 @@ public class MainController {
 	@Autowired
 	Dao dao;
 	
+	@Autowired
+	EchoHandler echoHandler;
+	
 	
 	//main로그인 성공시, homepage이동
 	
@@ -27,6 +35,15 @@ public class MainController {
 	public String main(Model mv,HttpSession session,HttpServletResponse response) {
 		System.out.println("main페이지()실행");
 		mv.addAttribute("chatList", dao.chatList());
+		List<Dto> list = new ArrayList<Dto>();
+		for(int i = 0; i<echoHandler.getList().size(); i ++) {
+			Dto dto = new Dto();
+			dto.setName((String)echoHandler.getList().get(i).getAttributes().get("name"));
+			dto.setEmployeeNumber(Integer.parseInt((String)echoHandler.getList().get(i).getAttributes().get("employeeNumber")));
+			list.add(dto);				
+		}
+		mv.addAttribute("chatListLive",list);
+		System.out.println(echoHandler.getList().size()!=0?echoHandler.getList().get(0).getAttributes().get("echoHandler"):null);
 		return "main";
 	}
 	
