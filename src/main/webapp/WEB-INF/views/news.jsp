@@ -208,12 +208,7 @@ li>div {
 <body>
 	<div class="container-fluid">
 		<div class="row" style="margin-bottom: 3%;">
-<<<<<<< HEAD
-			<jsp:include page="main/main_header.jsp"></jsp:include>
-=======
-			<jsp:include page="main_header.jsp"></jsp:include>
 
->>>>>>> 4584dd54f5994a3e53754b998781d779b4af790b
 			<div class="col-md-9">
 				<h1>News Board</h1>
 				<div class="opt">

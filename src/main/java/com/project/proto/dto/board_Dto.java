@@ -4,23 +4,33 @@ import java.sql.Timestamp;
 
 	public class board_Dto {
 		int num;
-		String writer;
+		int employeeNumber;
+		String name;
 		String subject;
 		String content;
 		String pass;
 		int readcount;
 		Timestamp regdate;
+		
+	
+		public String getName() {
+			return name;
+		}
+		public void setName(String name) {
+			this.name = name;
+		}
 		public int getNum() {
 			return num;
 		}
 		public void setNum(int num) {
 			this.num = num;
 		}
-		public String getWriter() {
-			return writer;
+		
+		public int getEmployeeNumber() {
+			return employeeNumber;
 		}
-		public void setWriter(String writer) {
-			this.writer = writer;
+		public void setEmployeeNumber(int employeeNumber) {
+			this.employeeNumber = employeeNumber;
 		}
 		public String getSubject() {
 			return subject;

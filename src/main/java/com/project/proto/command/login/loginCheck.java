@@ -2,6 +2,7 @@ package com.project.proto.command.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,6 +24,7 @@ public class loginCheck implements Command {
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
 		HttpSession session = (HttpSession) map.get("session");
+		List<Dto> list;
 		int chk = 1;
 		Dto dto = new Dto();
 		try {
@@ -36,7 +38,8 @@ public class loginCheck implements Command {
 			dto.setEmployeeNumber(Integer.parseInt(employeeNumber));
 			dto.setPassword(password);
 	
-			chk = dao.loginCheck(dto);
+			list = dao.loginCheck(dto);
+			chk = list.size();
 	
 			System.out.println("employeeNumber : "+ employeeNumber );
 			System.out.println("password : "+ password);
@@ -44,7 +47,9 @@ public class loginCheck implements Command {
 		
 			if(chk >0) {
 //				System.out.println("커멘드 : 로그인성공");
+				dto.setName(list.get(0).getName());
 				session.setAttribute("employeeNumber",dto.getEmployeeNumber());
+				session.setAttribute("name",dto.getName());
 //				session.setAttribute("password", dto.getPassword());
 //				System.out.println("현재 session employeeNumber : "+session.getAttribute("employeeNumber"));
 //				System.out.println("현재 session password : "+session.getAttribute("password"));

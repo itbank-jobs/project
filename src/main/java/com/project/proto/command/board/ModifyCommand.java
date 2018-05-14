@@ -5,35 +5,28 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
 import com.project.proto.dao.board_Dao;
 import com.project.proto.dto.board_Dto;
 
-public class writeCommand implements Command {
+public class ModifyCommand implements Command{
 
 	@Override
 	public void execute(Model model, board_Dao dao) {
 		// TODO Auto-generated method stub
-		board_Dto dto = new board_Dto();
+		
 		Map<String, Object>map = model.asMap();
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
-		HttpSession session = (HttpSession) map.get("session");
-
-		int employeeNumber = (int) session.getAttribute("employeeNumber");
-		String subject = req.getParameter("subject");
-		String content = req.getParameter("Content");
 		
-		System.out.println(employeeNumber);
-	
-		dto.setSubject(subject);
-		dto.setContent(content);
-		dto.setEmployeeNumber(employeeNumber);
+		board_Dto dto = new board_Dto();
+		dto.setSubject(req.getParameter("subject"));
+		dto.setContent(req.getParameter("content"));
+		dto.setNum(Integer.parseInt(req.getParameter("num")));
 		
-		dao.write(dto);
+		dao.modify(dto);
 		
 		try {
 			res.sendRedirect("list");
@@ -41,9 +34,8 @@ public class writeCommand implements Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 
+		
 	}
 
 }
