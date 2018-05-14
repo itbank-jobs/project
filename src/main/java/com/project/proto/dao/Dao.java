@@ -37,9 +37,9 @@ public class Dao {
 		
 	}
 
-	public int loginCheck(Dto dto) {
+	public List<Dto> loginCheck(Dto dto) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("loginCheckList", dto).size();
+		return sqlSession.selectList("loginCheckList", dto);
 	
 	};
 	

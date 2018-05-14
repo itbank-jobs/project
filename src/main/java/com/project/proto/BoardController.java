@@ -35,7 +35,7 @@ public class BoardController {
 		
 		comm = new ListCommand();
 		comm.execute(model, dao);
-		return "board/list";
+		return "board/team";
 		
 	}
 	
