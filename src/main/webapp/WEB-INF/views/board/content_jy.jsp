@@ -89,16 +89,6 @@ body {
 	});
 
 	$(function() {
-		/* 		$('#table').searchable({
-		 striped : true,
-		 oddRow : {
-		 'background-color' : '#f5f5f523'
-		 },
-		 evenRow : {
-		 'background-color' : '#ffffff23'
-		 },
-		 searchType : 'fuzzy'
-		 });  */
 
 		$('#searchable-container').searchable({
 			searchField : '#container-search',
@@ -112,6 +102,25 @@ body {
 			}
 		})
 	});
+
+	function writeSave() {
+		if (document.write_view.title.value == "") {
+
+			document.write_view.title.focus();
+			return false;
+		}
+		if (document.write_view.content.value == "") {
+
+			document.write_view.content.focus();
+			return false;
+		}
+		if (document.write_view.passwd.value == "") {
+
+			document.write_view.passwd.focus();
+			return false;
+		}
+
+	}
 </script>
 
 
@@ -132,6 +141,7 @@ body {
 							class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
 				<li id="team"><a href="#"><span class="text-white"><i
 							class="fa fa-users"></i>&nbsp Team</span></a></li>
+
 			</ul>
 			<!-- right nav top -->
 			<ul class="nav navbar-nav pull-right">
@@ -184,52 +194,61 @@ body {
 
 			<div class="row">
 				<div class="col-lg-3">
-					<h3>${listdto.team}[예제]경영지원팀</h3>
-				</div>
-
-				<div class="col-lg-7"></div>
-				<div class="col-lg-2">
-					<div class="container-1">
-						<a class="btn btn-1" style="margin-top: 18px;"
-							href="write_jy?teamNum=${listdto.teamNum}">글 쓰기</a>
-					</div>
-				</div>
-
-			</div>
-			<br>
-
-			<div class="row">
-				<div class="col-lg-12">
-					<input type="search" id="search" value="" class="form-control"
-						placeholder="검색">
+					<h3>${content.subject}</h3>
 				</div>
 			</div>
 			<br>
 			<div class="row">
 				<div class="col-lg-12">
 					<table class="table" id="table">
-						<thead>
-							<tr style="text-align: center">
-								<th>번호</th>
-								<th>사원번호</th>
-								<th>작성자</th>
-								<th>제목</th>
-								<th>등록일</th>
-								<th>조회</th>
-							</tr>
-						</thead>
 						<tbody>
-							<c:forEach var="listdto" items="${list}" varStatus="status">
-								<tr class="a">
-									<td>${fn:length(list)-status.count+1}</td>
-									<td>${listdto.employeeNumber }</td>
-									<td>${listdto.name }</td>
-									<td style="cursor: pointer"
-										onclick="location='content?num=${listdto.num }'">${listdto.subject }</a></td>
-									<td>${listdto.regdate }</td>
-									<td>${listdto.readcount }</td>
-								</tr>
-							</c:forEach>
+							<form action="modify" method="post">
+								<input type="hidden" name="num" value="${content.num}">
+								<input type="hidden" name="lectureName" value="${teamNum}">
+							<tr>
+								<th class="text-center">사원번호</th>
+								<td><input type="text" name="employeeNumber"
+									class="form-control" value="${employeeNumber}"
+									readonly="readonly" style="background-color: #ffffff33;"></td>
+							</tr>
+							<tr>
+								<th class="text-center">작성자</th>
+								<td><input type="text" name="name" class="form-control"
+									value="${content.name}" readonly="readonly"
+									style="background-color: #ffffff33;"></td>
+							</tr>
+							<tr>
+								<th class="text-center">작성자</th>
+								<td><textarea rows="15" name="content" class="form-control"
+										readonly="readonly" style="background-color: #ffffff33;"${content.name}"></textarea></td>
+							</tr>
+							<tr>
+								<th class="text-center">첨부파일</th>
+								<td style="text-align: left;"><c:choose>
+										<c:when test="${content.orgName == null}">
+											<td>첨부 파일이 없습니다.</td>
+										</c:when>
+										<c:when test="${content.orgName != null}">
+											<td style="text-align: left"><input type="button"
+												class="btn btn-info" value="${content.orgName}"
+												onclick="fnAction('download?name=${content.uploadName}')" /></td>
+
+										</c:when>
+									</c:choose></td>
+							</tr>
+	
+							<tr>
+								<td colspan="2" style="text-align: center">
+									<div class="container-1">
+										<input type="submit" value="&nbsp&nbsp&nbsp수 정 &nbsp&nbsp"
+											class="btn btn-1 pull-right" />
+									</div> <a href="list"><input type="button"
+										value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
+										class="btn btn-info pull-left" /></a>
+										 <a href="list"><input type="button"
+										value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
+										class="btn btn-info pull-left" /></a>
+							</tr>
 						</tbody>
 					</table>
 				</div>
