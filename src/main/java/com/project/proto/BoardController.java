@@ -109,4 +109,12 @@ public class BoardController {
 		comm.execute(model, dao);
 	}
 
+	
+	@RequestMapping("/write_jy")
+	public String write_jy(Model model, HttpSession session) {
+		System.out.println("write_jy()실행");
+		
+		return "board/write_jy";
+	}
+	
 }
