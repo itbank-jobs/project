@@ -24,14 +24,17 @@ public class EchoHandler extends TextWebSocketHandler{
 		// TODO Auto-generated method stub
 		super.handleTextMessage(session, message);
 		
+
 		if(session.getAttributes().get("employeeNumber")!=null) {
 			String tmp[] = message.getPayload().split(":",3);
+
 			System.out.println("목적지 : "+tmp[0]);
 			System.out.println("보낸넘 : "+tmp[1]);
 			System.out.println("왓 : "+tmp[2]);
 			for(WebSocketSession sess : list) {				
 				if(sess.getAttributes().get("employeeNumber").equals(tmp[0])) {
 					sess.sendMessage(new TextMessage(tmp[1]+":"+tmp[2]));
+
 					}
 			}
 		}else {
