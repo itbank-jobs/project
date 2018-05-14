@@ -92,6 +92,5 @@
 
 
 tr.a:hover{
-	background-color: rgb(152, 111, 97);
-	 color: #ffffff59;
+	background-color: rgba(0, 0, 0, 0.35);
 }

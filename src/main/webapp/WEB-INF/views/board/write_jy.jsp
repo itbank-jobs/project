@@ -123,16 +123,6 @@ body {
 	});
 
 	$(function() {
-		$('#table').searchable({
-			striped : true,
-			oddRow : {
-				'background-color' : '#f5f5f523'
-			},
-			evenRow : {
-				'background-color' : '#ffffff23'
-			},
-			searchType : 'fuzzy'
-		});
 
 		$('#searchable-container').searchable({
 			searchField : '#container-search',
@@ -146,6 +136,25 @@ body {
 			}
 		})
 	});
+	
+	function writeSave(){
+	    if(document.write_view.title.value == ""){
+
+		document.write_view.title.focus();
+		return false;
+	    }
+	    if(document.write_view.content.value == ""){
+
+		document.write_view.content.focus();
+		return false;
+	    }
+	    if(document.write_view.passwd.value == ""){
+
+		document.write_view.passwd.focus();
+		return false;
+	    }
+	    
+	}
 </script>
 
 
@@ -215,7 +224,7 @@ body {
 
 
 		<div class="container"
-			style="background-color: #00000066; color: #ffffff;">
+			style="color: #ffffff; background-color:#ffffff11;">
 
 			<div class="row">
 				<div class="col-lg-3">
@@ -234,7 +243,7 @@ body {
 								<th class="text-center">사원번호</th>
 								<td><input type="text" name="employeeNumber"
 									class="form-control" value="${employeeNumber}"
-									readonly="readonly"></td>
+									readonly="readonly" style="background-color: #ffffff33;"></td>
 							</tr>
 							<tr>
 								<th class="text-center">제목</th>

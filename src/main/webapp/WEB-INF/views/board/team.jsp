@@ -122,8 +122,8 @@ body {
 
 	});
 
-	$(function() {
-		$('#table').searchable({
+	 $(function() {
+/* 		$('#table').searchable({
 			striped : true,
 			oddRow : {
 				'background-color' : '#f5f5f523'
@@ -132,7 +132,7 @@ body {
 				'background-color' : '#ffffff23'
 			},
 			searchType : 'fuzzy'
-		});
+		});  */
 
 		$('#searchable-container').searchable({
 			searchField : '#container-search',
@@ -210,7 +210,7 @@ body {
 		</nav> <br>
 
 
-		<div class="container" style="background-color: #00000066; color: #ffffff;">
+		<div class="container" style="color: #ffffff; background-color:#ffffff11; ">
 	
 			<div class="row">
 				<div class="col-lg-3">
