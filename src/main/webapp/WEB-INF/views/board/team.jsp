@@ -39,7 +39,15 @@
 }
 
 body {
-	background-color: #ffffff33;
+
+	background: url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg') fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 0;
+	margin: 0;
+	background-repeat: no-repeat;
+		height: 120vh;
+
 }
 
 .form-control {
@@ -173,27 +181,27 @@ body {
 				</div>
 				<ul id="h" class="nav navbar-nav flex-item hidden-xs"
 					style="display: none;">
-					<li><a href="view">Type - A</a></li>
-					<li><a href="#">Type - B</a></li>
+					<li><a href="typeA">Type - A</a></li>
+					<li><a href="typeB">Type - B</a></li>
 
 				</ul>
 
 				<ul id="n" class="nav navbar-nav flex-item hidden-xs"
 					style="display: none;">
-					<li><a href="#">공지사항</a></li>
-					<li><a href="#">행사</a></li>
+					<li><a href="news">공지사항</a></li>
+					<li><a href="event">행사</a></li>
 
 				</ul>
 
 				<ul id="t" class="nav navbar-nav flex-item hidden-xs"
 					style="display: none;">
-					<li><a href="#">경영지원팀</a></li>
-					<li><a href="#">인사팀</a></li>
-					<li><a href="#">개발팀</a></li>
-					<li><a href="#">영업팀</a></li>
+					<li><a href="list?teamNum=1">경영지원팀</a></li>
+					<li><a href="list?teamNum=2">인사팀</a></li>
+					<li><a href="list?teamNum=3">개발팀</a></li>
+					<li><a href="list?teamNum=4">영업팀</a></li>
 				</ul>
 				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-					<li><a href="#">Messenser</a></li>
+					<li><a href="messenser">Messenser</a></li>
 				</ul>
 			</div>
 		</div>
@@ -208,12 +216,14 @@ body {
 					<h3>${listdto.team}[예제] 경영지원팀</</h3>
 				</div>
 			</div>
+			<br>
 			<div class="row">
 				<div class="col-lg-12">
 					<input type="search" id="search" value="" class="form-control"
 						placeholder="검색">
 				</div>
 			</div>
+			<br>
 			<div class="row">
 				<div class="col-lg-12">
 					<table class="table" id="table">
@@ -246,10 +256,6 @@ body {
 	</div>
 
 	</nav>
-	<!--bg img  -->
-	<header> <img
-		src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg"
-		style="width: 100%"> </header>
 
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>

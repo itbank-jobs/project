@@ -7,7 +7,7 @@
 
 $(document).ready(function() {
 		$('#home').click(function() {
-			location.href = 'test';
+			location.href = 'typeA';
 		});
 		$('#news').click(function() {
 			location.href = 'news';

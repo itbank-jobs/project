@@ -85,6 +85,18 @@
 ::-webkit-scrollbar {
 	display: none;
 }
+
+body {
+	background: url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg') fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 0;
+	margin: 0;
+	background-repeat: no-repeat;
+	height: 120vh;
+}
+
+
 </style>
 
 
@@ -105,15 +117,15 @@
 			<!-- left nav top -->
 			<ul class="nav navbar-nav pull-left">
 				<li id="home"><a href="#"><span class="text-white"><i
-							class="fa fa-home"></i>Home</span></a></li>
-				<li id="new"><a href="#"><span class="text-white">New</span></a></li>
-				<li id="team"><a href="#"><span class="text-white">Team</span></a></li>
+							class="fa fa-home"></i>&nbspHome</span></a></li>
+				<li id="new"><a href="#"><span class="text-white"><i class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
+				<li id="team"><a href="#"><span class="text-white"><i class="fa fa-users"></i>&nbsp Team</span></a></li>
 
 			</ul>
 			<!-- right nav top -->
 			<ul class="nav navbar-nav pull-right">
-				<li><a href="#" class="text-white">Settings</a></li>
-				<li><a href="#" class="text-white">Logout</a></li>
+				<li><a href="settings" class="text-white"><i class="fa fa-cog"></i>&nbspSettings</a></li>
+				<li><a href="logout" class="text-white"><i class="fa fa-power-off"></i>&nbspLogout</a></li>
 			</ul>
 		</div>
 		<div class="dividline light-grey"></div>
@@ -125,35 +137,33 @@
 				</div>
 				<ul id="h" class="nav navbar-nav flex-item hidden-xs"
 					style="display: none;">
-					<li><a href="view">Type - A</a></li>
-					<li><a href="#">Type - B</a></li>
+					<li><a href="typeA">Type - A</a></li>
+					<li><a href="typeB">Type - B</a></li>
 
 				</ul>
 
 				<ul id="n" class="nav navbar-nav flex-item hidden-xs"
 					style="display: none;">
-					<li><a href="#">공지사항</a></li>
-					<li><a href="#">행사</a></li>
+					<li><a href="news">공지사항</a></li>
+					<li><a href="event">행사</a></li>
 
 				</ul>
 
 				<ul id="t" class="nav navbar-nav flex-item hidden-xs"
 					style="display: none;">
-					<li><a href="#">경영지원팀</a></li>
-					<li><a href="#">인사팀</a></li>
-					<li><a href="#">개발팀</a></li>
-					<li><a href="#">영업팀</a></li>
+					<li><a href="list?teamNum=1">경영지원팀</a></li>
+					<li><a href="list?teamNum=2">인사팀</a></li>
+					<li><a href="list?teamNum=3">개발팀</a></li>
+					<li><a href="list?teamNum=4">영업팀</a></li>
 				</ul>
 				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-					<li><a href="#">Messenser</a></li>
+					<li><a href="messenser"><span class="text-white"><i
+							class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
 				</ul>
 			</div>
 		</div>
 		</nav> </nav>
-		<!--bg img  -->
-		<header> <img src="https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg"
-			style="width: 100%">
-			 </header>
+	
 	</div>
 		
 </body>

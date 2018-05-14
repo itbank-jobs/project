@@ -19,29 +19,5 @@ Command comm;
 	@Autowired
 	board_Dao dao;
 	
-	@RequestMapping("/view")
-	public String view(Model model) {
-		System.out.println("view()실행");
-		return "main/Type_A";
 
-	}
-	
-	@RequestMapping("/test")
-	public String test(Model model) {
-		System.out.println("test()실행");
-		return "main/Type_B";
-
-	}
-	
-	@RequestMapping("/testlist")
-	public String testlist(Model model, HttpSession session) {
-		System.out.println("testlist()실행");
-		
-		model.addAttribute("session", session);
-		
-		comm = new ListCommand();
-		comm.execute(model, dao);
-		return "board/team";
-		
-	}
 }

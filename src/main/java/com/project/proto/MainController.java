@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.project.proto.command.board.ListCommand;
 import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
 
@@ -69,12 +70,20 @@ public class MainController {
 		session.invalidate();
 	}
 	
-	
-	
-	@RequestMapping("/newstest")
-	public String newstest(Model mv,HttpSession session,HttpServletResponse response) {
-		System.out.println("main페이지()실행");
-		return "newstest";
+	@RequestMapping("/typeA")
+	public String TypeA(Model model) {
+		System.out.println("TypeA()실행");
+		return "main/Type_A";
+
 	}
+	
+	@RequestMapping("/typeB")
+	public String TypeB(Model model) {
+		System.out.println("TypeB()실행");
+		return "main/Type_B";
+
+	}
+	
+	
 	
 }
