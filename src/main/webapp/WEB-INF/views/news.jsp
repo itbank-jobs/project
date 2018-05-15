@@ -26,7 +26,7 @@
 					url : document.location.protocol
 							+ '//api.rss2json.com/v1/api.json?rss_url='
 							+ encodeURIComponent(url),
-					dataType : 'json',
+					dataType : 'text',
 					error : function() {
 						$("#feed")
 								.after(
@@ -217,7 +217,8 @@ li>div {
 						class="post">Post a Job</a> Change theme: <a href="#" class="dark">Dark</a>
 					&mdash; <a href="#" class="light">Light</a>
 				</div>
-				<ul id="feed"></ul>
+				<ul id="feed"></ul>	<!-- 게시글리스트 위치 -->
+				${newsList. }
 				<div
 					style="font-size: 12px; text-align: center; color: #666; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 100vw; opacity: 0.9; padding: 5px 0;">
 

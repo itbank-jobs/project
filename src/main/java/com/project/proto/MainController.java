@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
+import com.project.proto.dao.notice_Dao;
 
 @Controller
 public class MainController {
@@ -19,7 +20,7 @@ public class MainController {
 	
 	@Autowired
 	Dao dao;
-	
+	notice_Dao ndao;
 	
 	//main로그인 성공시, homepage이동
 	
@@ -33,6 +34,7 @@ public class MainController {
 	@RequestMapping("/news")
 	public String news(Model mv,HttpSession session,HttpServletResponse response) {
 		System.out.println("news페이지()실행");
+		mv.addAttribute("newsList", ndao.list());
 		return "news";
 
 	}

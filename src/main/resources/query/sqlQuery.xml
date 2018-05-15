@@ -27,7 +27,7 @@
 	
 	<select id ="List" resultType = "com.project.proto.dto.board_Dto">
 	SELECT * FROM BOARD
-	
+
 	</select>
 	
 	<select id ="contentList" parameterType="com.project.proto.dto.board_Dto" resultType = "com.project.proto.dto.board_Dto">
@@ -38,5 +38,12 @@
 <!-- 	INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, READCOUNT) VALUES(BOARD_SEQ.NEXTVAL,#{writer},#{subject},#{content},0) -->
 	INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, READCOUNT) VALUES( BOARD_SEQ.NEXTVAL, #{writer},#{subject},#{content},0)
 	</select> 
+	
+	<select id = "noticeWrite" parameterType="com.project.proto.dto.notice_Dto" resultType = "int">
+	INSERT INTO NOTICE (TITLE, PUBDATE, LINK, AUTHOR, DESCRIPTION, CONTENT, NUM) VALUES( NOTICE_SEQ.NEXTVAL, #)
+	</select>
+	<select id = "noticeList" parameterType="com.project.proto." resultType="com.project.proto.dto.notice_Dto">
+	SELECT * FROM NOTICE where NUM<5
+	</select>
 </mapper>
 
