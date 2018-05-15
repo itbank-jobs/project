@@ -5,16 +5,15 @@ import java.sql.Timestamp;
 	public class board_Dto {
 		int num;
 		int employeeNumber;
+		int teamNum;
 		String name;
 		String subject;
 		String content;
 		String pass;
 		int readcount;
 		Timestamp regdate;
-		int teamNum;
 	
-		
-		
+
 		public int getTeamNum() {
 			return teamNum;
 		}

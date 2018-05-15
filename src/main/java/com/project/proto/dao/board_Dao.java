@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.project.proto.dto.board_Dto;
+import com.project.proto.dto.reply_Dto;
 
 
 @Repository
@@ -71,6 +72,9 @@ public class board_Dao {
 	
 	}
 	
+	public List<reply_Dto> contentReply(String num) {
+		return sqlSession.selectList("contentReply", num);
+	}
 	
 	
 }

@@ -3,6 +3,7 @@ package com.project.proto.command.reply;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
@@ -17,21 +18,19 @@ public class InsertReplyCommand implements Command {
 		// TODO Auto-generated method stub
 		Map<String, Object>map = model.asMap();//?
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
+		HttpServletResponse rep = (HttpServletResponse) map.get("rep");
 		HttpSession session = (HttpSession) map.get("session");
 		reply_Dto dto = new reply_Dto();
+		System.out.println("replytext : "+req.getParameter("replytext"));
+		System.out.println("comman session : " + session.getAttribute("employeeNumber"));
+		System.out.println("bnum : "+Integer.parseInt(req.getParameter("bnum")));
+
+	
+	
 		
-		System.out.println("bno : "+req.getParameter("bno"));
-		
-		/*String replyer =  (String) session.getAttribute("employeeNumber");
-		String replytext = req.getParameter("replytext");
-		int bno = Integer.parseInt(req.getParameter("num"));
-		
-		System.out.println("replyer : "+ replyer);
-		System.out.println("replytext : "+ replytext);
-		System.out.println("bno : "+ bno);
-		dto.setBno(bno);
-		dto.setReplyer(replyer);
-		dto.setReplytext(replytext);*/
+		dto.setBnum(Integer.parseInt(req.getParameter("bnum")));
+		dto.setEmployeeNumber((int)session.getAttribute("employeeNumber"));
+		dto.setReplytext(req.getParameter("replytext"));
 		
 		
 		dao.create(dto);
