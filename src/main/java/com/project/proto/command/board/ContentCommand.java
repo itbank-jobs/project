@@ -19,9 +19,11 @@ public class ContentCommand implements Command {
 	@Override
 	public void execute(Model model, board_Dao dao) {
 		// TODO Auto-generated method stub
+
 		board_Dto bdto;
 	
 		Map<String, Object>map = model.asMap();//?
+
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 
 		System.out.println(req.getParameter("num"));

@@ -12,8 +12,8 @@ import java.sql.Timestamp;
 		String pass;
 		int readcount;
 		Timestamp regdate;
-		
 	
+
 		public int getTeamNum() {
 			return teamNum;
 		}

@@ -66,3 +66,31 @@
 .text-white,.text-white-hover:hover{color:#fff!important}
 /*fontcolor*/
 .light-grey {color:#000!important;background-color:#E6E9ED!important}
+
+/* 글쓰기 버튼  */
+.btn {
+  flex: 1 1 auto;
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #ffffff8c;
+  padding: 3px 53px;
+  border-radius: 14px;
+ }
+
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+   box-shadow: 0 0 10px #eee;
+    color: #ffffff;
+}
+
+.btn-1 {
+  background-image: linear-gradient(to right, #f6d3659f 0%, #fda0859f 51%, #f6d3659f 100%);
+}
+
+
+tr.a:hover{
+	background-color: rgba(0, 0, 0, 0.35);
+}

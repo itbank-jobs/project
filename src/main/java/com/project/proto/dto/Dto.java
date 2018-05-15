@@ -10,6 +10,8 @@ package com.project.proto.dto;
 		private String email;
 		private String password;
 		private String day;
+
+		
 		
 		public Dto() {
 			
@@ -22,12 +24,6 @@ package com.project.proto.dto;
 			this.password = password;
 
 		}
-		public int getEmployeeNumber() {
-			return employeeNumber;
-		}
-		public void setEmployeeNumber(int employeeNumber) {
-			this.employeeNumber = employeeNumber;
-		}
 		
 		
 		public int getTeamNum() {
@@ -38,6 +34,13 @@ package com.project.proto.dto;
 			this.teamNum = teamNum;
 		}
 
+		public int getEmployeeNumber() {
+			return employeeNumber;
+		}
+		public void setEmployeeNumber(int employeeNumber) {
+			this.employeeNumber = employeeNumber;
+		}
+		
 		public String getName() {
 			return name;
 		}

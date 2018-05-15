@@ -25,18 +25,22 @@ public class writeCommand implements Command {
 
 		int employeeNumber = (int) session.getAttribute("employeeNumber");
 		String subject = req.getParameter("subject");
-		String content = req.getParameter("Content");
-		
-		System.out.println(employeeNumber);
+		String content = req.getParameter("content");
+		int teamNum = Integer.parseInt(req.getParameter("teamNum"));
+		String pass = req.getParameter("pass");
+
 	
 		dto.setSubject(subject);
+		
 		dto.setContent(content);
+		dto.setTeamNum(teamNum);
+		dto.setPass(pass);
 		dto.setEmployeeNumber(employeeNumber);
 		
 		dao.write(dto);
 		
 		try {
-			res.sendRedirect("list");
+			res.sendRedirect("list?teamNum="+teamNum);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
