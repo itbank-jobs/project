@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.project.proto.dto.board_Dto;
+import com.project.proto.dto.reply_Dto;
 
 
 @Repository
@@ -44,6 +45,10 @@ public class board_Dao {
 		sqlSession.update("readcount", num);
 	}
 	
+	public List<reply_Dto> contentReply(String num) {
+		System.out.println("여기까지 오나??");
+		return sqlSession.selectList("contentReply", num);
+	}
 	
 	
 }

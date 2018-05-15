@@ -5,6 +5,7 @@ package com.project.proto.dto;
 	public class Dto{
 		
 		private int employeeNumber;
+		private int teamNum;
 		private String name;
 		private String email;
 		private String password;
@@ -27,6 +28,16 @@ package com.project.proto.dto;
 		public void setEmployeeNumber(int employeeNumber) {
 			this.employeeNumber = employeeNumber;
 		}
+		
+		
+		public int getTeamNum() {
+			return teamNum;
+		}
+
+		public void setTeamNum(int teamNum) {
+			this.teamNum = teamNum;
+		}
+
 		public String getName() {
 			return name;
 		}

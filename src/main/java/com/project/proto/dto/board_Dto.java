@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 	public class board_Dto {
 		int num;
 		int employeeNumber;
+		int teamNum;
 		String name;
 		String subject;
 		String content;
@@ -13,6 +14,12 @@ import java.sql.Timestamp;
 		Timestamp regdate;
 		
 	
+		public int getTeamNum() {
+			return teamNum;
+		}
+		public void setTeamNum(int teamNum) {
+			this.teamNum = teamNum;
+		}
 		public String getName() {
 			return name;
 		}
