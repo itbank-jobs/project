@@ -70,56 +70,22 @@ body {
 	// open link in new tab without ugly target="_blank"
 	$("a[href^='http']").attr("target", "_blank");
 
-	var h = false;
-	var n = false;
-	var t = false;
 	$(document).ready(function() {
 		$("#home").click(function() {
-			h = true;
-			if (h) {
-				setTimeout('$("#h").toggle(700)', '700');
-				h = true;
-				if (n) {
-					$("#n").toggle(1000);
-					n = false;
-				}
-				if (t) {
-					$("#t").toggle(1000);
-					t = false;
-				}
-			}
+			setTimeout('$("#h").toggle(700)', '700');
+			$("#n").hide(1000);
+			$("#t").hide(1000);
 		});
 		$("#new").click(function() {
-			n = true;
-			if (n) {
-				setTimeout('$("#n").toggle(700)', '700');
-				n = true;
-				if (h) {
-					$("#h").toggle(1000);
-					h = false;
-				}
-				if (t) {
-					$("#t").toggle(1000);
-					t = false;
-				}
-			}
+			setTimeout('$("#n").toggle(700)', '700');
+			$("#h").hide(1000);
+			$("#t").hide(1000);
 		});
 		$("#team").click(function() {
-			t = true;
-			if (t) {
-				setTimeout('$("#t").toggle(700)', '700');
-				t = true;
-				if (n) {
-					$("#n").toggle(1000);
-					n = false;
-				}
-				if (h) {
-					$("#h").toggle(1000);
-					h = false;
-				}
-			}
+			setTimeout('$("#t").toggle(700)', '700');
+			$("#n").hide(1000);
+			$("#h").hide(1000);
 		});
-
 	});
 
 	$(function() {
