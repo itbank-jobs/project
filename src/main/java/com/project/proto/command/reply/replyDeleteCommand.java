@@ -1,6 +1,6 @@
 package com.project.proto.command.reply;
 
-import java.io.IOException;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +21,6 @@ public class replyDeleteCommand implements Command {
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
 		
 		String rnum = req.getParameter("rnum");
-		String bnum = req.getParameter("bnum");
 		
 		dao.replyDelete(rnum);
 		
