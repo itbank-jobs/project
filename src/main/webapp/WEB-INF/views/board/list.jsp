@@ -31,7 +31,7 @@
 		
 	
 		
-	<c:forEach var = "listdto" items = "${list }" varStatus="status">
+	<c:forEach var = "listdto" items = "${list }" varStatus="status" >
 	<tr>		
 		<td class = "titletd">${fn:length(list)-status.count+1}</td>
 		<td class = "titletd">${listdto.employeeNumber }</td> 
