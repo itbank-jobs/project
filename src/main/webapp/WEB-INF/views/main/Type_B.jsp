@@ -30,54 +30,21 @@
 	// open link in new tab without ugly target="_blank"
 	$("a[href^='http']").attr("target", "_blank");
 
-	var h = false;
-	var n = false;
-	var t = false;
 	$(document).ready(function() {
 		$("#home").click(function() {
-			h = true;
-			if (h) {
-				setTimeout('$("#h").toggle(700)', '700');
-
-				if (n) {
-					$("#n").toggle(1000);
-					n = false;
-				}
-				if (t) {
-					$("#t").toggle(1000);
-					t = false;
-				}
-			}
+			setTimeout('$("#h").toggle(700)', '700');
+			$("#n").hide(1000);
+			$("#t").hide(1000);
 		});
 		$("#new").click(function() {
-			n = true;
-			if (n) {
-				setTimeout('$("#n").toggle(700)', '700');
-	
-				if (h) {
-					$("#h").toggle(1000);
-					h = false;
-				}
-				if (t) {
-					$("#t").toggle(1000);
-					t = false;
-				}
-			}
+			setTimeout('$("#n").toggle(700)', '700');
+			$("#h").hide(1000);
+			$("#t").hide(1000);
 		});
 		$("#team").click(function() {
-			t = true;
-			if (t) {
-				setTimeout('$("#t").toggle(700)', '700');
-
-				if (n) {
-					$("#n").toggle(1000);
-					n = false;
-				}
-				if (h) {
-					$("#h").toggle(1000);
-					h = false;
-				}
-			}
+			setTimeout('$("#t").toggle(700)', '700');
+			$("#n").hide(1000);
+			$("#h").hide(1000);
 		});
 
 	});
@@ -89,7 +56,9 @@
 }
 
 body {
-	background: url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg') fixed;
+	background:
+		url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg')
+		fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 0;
@@ -97,8 +66,6 @@ body {
 	background-repeat: no-repeat;
 	height: 120vh;
 }
-
-
 </style>
 
 
@@ -108,10 +75,11 @@ body {
 
 <body>
 
-<jsp:include page="chatting.jsp"></jsp:include>
+	<jsp:include page="chatting.jsp"></jsp:include>
 
- <div style="-ms-overflow-style:none;">  <!--스크롤바 없이 스크롤 가능하게 함   -->
-		
+	<div style="-ms-overflow-style: none;">
+		<!--스크롤바 없이 스크롤 가능하게 함   -->
+
 		<nav
 			class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
 		<!-- top nav --> <nav class="navbar navbar-top hidden-xs">
@@ -120,14 +88,18 @@ body {
 			<ul class="nav navbar-nav pull-left">
 				<li id="home"><a href="#"><span class="text-white"><i
 							class="fa fa-home"></i>&nbspHome</span></a></li>
-				<li id="new"><a href="#"><span class="text-white"><i class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
-				<li id="team"><a href="#"><span class="text-white"><i class="fa fa-users"></i>&nbsp Team</span></a></li>
+				<li id="new"><a href="#"><span class="text-white"><i
+							class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
+				<li id="team"><a href="#"><span class="text-white"><i
+							class="fa fa-users"></i>&nbsp Team</span></a></li>
 
 			</ul>
 			<!-- right nav top -->
 			<ul class="nav navbar-nav pull-right">
-				<li><a href="settings" class="text-white"><i class="fa fa-cog"></i>&nbspSettings</a></li>
-				<li><a href="logout" class="text-white"><i class="fa fa-power-off"></i>&nbspLogout</a></li>
+				<li><a href="settings" class="text-white"><i
+						class="fa fa-cog"></i>&nbspSettings</a></li>
+				<li><a href="logout" class="text-white"><i
+						class="fa fa-power-off"></i>&nbspLogout</a></li>
 			</ul>
 		</div>
 		<div class="dividline light-grey"></div>
@@ -159,13 +131,14 @@ body {
 					<li><a href="list?teamNum=4">영업팀</a></li>
 				</ul>
 				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-					<li class="chatON"><span class="text-white"><i	class="fa fa-wechat"></i>&nbsp Messenser</span></li>					
+					<li class="chatON"><span class="text-white"><i
+							class="fa fa-wechat"></i>&nbsp Messenser</span></li>
 				</ul>
 			</div>
 		</div>
 		</nav> </nav>
-	
+
 	</div>
-	
+
 </body>
 </html>
