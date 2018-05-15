@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -39,15 +40,13 @@
 }
 
 body {
-	background:
-		url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg')
-		fixed;
+	background: url('../../../proto/resources/images/background.jpg') fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 0;
 	margin: 0;
 	background-repeat: no-repeat;
-	height: 120vh;
+	height: 130vh;
 }
 
 .form-control {
@@ -89,19 +88,12 @@ body {
 	});
 
 	$(function() {
-		/* 		$('#table').searchable({
-		 striped : true,
-		 oddRow : {
-		 'background-color' : '#f5f5f523'
-		 },
-		 evenRow : {
-		 'background-color' : '#ffffff23'
-		 },
-		 searchType : 'fuzzy'
-		 });  */
+		$('#table').searchable({
+			striped : true
+		});
 
-		$('#searchable-container').searchable({
-			searchField : '#container-search',
+		$('#search').searchable({
+			searchField : '#table',
 			selector : '.row',
 			childSelector : '.col-xs-4',
 			show : function(elem) {
@@ -122,122 +114,172 @@ body {
 
 		<nav
 			class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
-		<!-- top nav --> <nav class="navbar navbar-top hidden-xs">
-		<div class="container">
-			<!-- left nav top -->
-			<ul class="nav navbar-nav pull-left">
-				<li id="home"><a href="#"><span class="text-white"><i
-							class="fa fa-home"></i>&nbspHome</span></a></li>
-				<li id="new"><a href="#"><span class="text-white"><i
-							class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
-				<li id="team"><a href="#"><span class="text-white"><i
-							class="fa fa-users"></i>&nbsp Team</span></a></li>
-			</ul>
-			<!-- right nav top -->
-			<ul class="nav navbar-nav pull-right">
-				<li><a href="settings" class="text-white"><i
-						class="fa fa-cog"></i>&nbspSettings</a></li>
-				<li><a href="logout" class="text-white"><i
-						class="fa fa-power-off"></i>&nbspLogout</a></li>
-			</ul>
-		</div>
-		<div class="dividline light-grey"></div>
-		</nav> <!-- down nav --> <nav class="navbar navbar-down">
-		<div class="container">
-			<div class="flex-container">
-				<div class="navbar-header flex-item">
-					<div class="navbar-brand">Project</div>
+			<!-- top nav -->
+			<nav class="navbar navbar-top hidden-xs">
+				<div class="container">
+					<!-- left nav top -->
+					<ul class="nav navbar-nav pull-left">
+						<li id="home"><a href="#"><span class="text-white"><i
+									class="fa fa-home"></i>&nbspHome</span></a></li>
+						<li id="new"><a href="#"><span class="text-white"><i
+									class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
+						<li id="team"><a href="#"><span class="text-white"><i
+									class="fa fa-users"></i>&nbsp Team</span></a></li>
+					</ul>
+					<!-- right nav top -->
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="settings" class="text-white"><i
+								class="fa fa-cog"></i>&nbspSettings</a></li>
+						<li><a href="logout" class="text-white"><i
+								class="fa fa-power-off"></i>&nbspLogout</a></li>
+					</ul>
 				</div>
-				<ul id="h" class="nav navbar-nav flex-item hidden-xs"
-					style="display: none;">
-					<li><a href="typeA">Type - A</a></li>
-					<li><a href="typeB">Type - B</a></li>
+				<div class="dividline light-grey"></div>
+			</nav>
+			<!-- down nav -->
+			<nav class="navbar navbar-down">
+				<div class="container">
+					<div class="flex-container">
+						<div class="navbar-header flex-item">
+							<div class="navbar-brand">Project</div>
+						</div>
+						<ul id="h" class="nav navbar-nav flex-item hidden-xs"
+							style="display: none;">
+							<li><a href="typeA">Type - A</a></li>
+							<li><a href="typeB">Type - B</a></li>
 
-				</ul>
+						</ul>
 
-				<ul id="n" class="nav navbar-nav flex-item hidden-xs"
-					style="display: none;">
-					<li><a href="news">공지사항</a></li>
-					<li><a href="event">행사</a></li>
+						<ul id="n" class="nav navbar-nav flex-item hidden-xs"
+							style="display: none;">
+							<li><a href="news">공지사항</a></li>
+							<li><a href="event">행사</a></li>
 
-				</ul>
+						</ul>
 
-				<ul id="t" class="nav navbar-nav flex-item hidden-xs"
-					style="display: none;">
-					<li><a href="list?teamNum=1">경영지원팀</a></li>
-					<li><a href="list?teamNum=2">인사팀</a></li>
-					<li><a href="list?teamNum=3">개발팀</a></li>
-					<li><a href="list?teamNum=4">영업팀</a></li>
-				</ul>
-				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-					<li><a href="messenser"><span class="text-white"><i
-								class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
-				</ul>
-			</div>
-		</div>
-		<br>
-		</nav> <br>
-
-
-		<div class="container"
-			style="color: #ffffff; background-color: #ffffff11;">
-
-			<div class="row">
-				<div class="col-lg-3">
-					<h3>${listdto.team}[예제]경영지원팀</h3>
+						<ul id="t" class="nav navbar-nav flex-item hidden-xs"
+							style="display: none;">
+							<li><a href="list?teamNum=1">경영지원팀</a></li>
+							<li><a href="list?teamNum=2">인사팀</a></li>
+							<li><a href="list?teamNum=3">개발팀</a></li>
+							<li><a href="list?teamNum=4">영업팀</a></li>
+						</ul>
+						<ul class="nav navbar-nav flex-item hidden-xs pull-right">
+							<li><a href="messenser"><span class="text-white"><i
+										class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
+						</ul>
+					</div>
 				</div>
+				<br>
+			</nav>
 
-				<div class="col-lg-7"></div>
-				<div class="col-lg-2">
-					<div class="container-1">
-						<a class="btn btn-1" style="margin-top: 18px;"
-							href="write_jy?teamNum=${listdto.teamNum}">글 쓰기</a>
+			<br>
+
+
+			<div class="container"
+				style="color: #ffffff; background-color: #000000ad;">
+
+				<div class="row">
+					<div class="col-lg-3">
+						<h3>
+							<c:choose>
+								<c:when test="${teamNum == 1}"> 경영지원팀 </c:when>
+								<c:when test="${teamNum == 2}"> 인사팀 </c:when>
+								<c:when test="${teamNum == 3}"> 개발팀 </c:when>
+								<c:when test="${teamNum == 4}"> 영업팀 </c:when>
+							</c:choose>
+
+						</h3>
+					</div>
+
+					<div class="col-lg-7"></div>
+					<div class="col-lg-2">
+						<div class="container-1">
+							<a class="btn btn-1" style="margin-top: 18px;"
+								href="write_jy?teamNum=${teamNum}">글 쓰기</a>
+						</div>
+					</div>
+
+				</div>
+				<br>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<input type="search" id="search" value="" class="form-control"
+							placeholder="검색">
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-lg-12">
+						<table class="table" id="table" style="color: #ffffff;">
+							<thead>
+								<tr>
+									<th style="text-align: center" width="10%">번호</th>
+									<th style="text-align: center" width="12%">사원번호</th>
+									<th style="text-align: center" width="13%">작성자</th>
+									<th style="text-align: center" width="35%">제목</th>
+									<th style="text-align: center" width="20%">등록일</th>
+									<th style="text-align: center" width="15%">조회</th>
+								</tr>
+							</thead>
+							<tbody>
+
+
+								<c:forEach var="listdto" items="${list}" varStatus="status">
+									<tr class="a">
+										<td style="text-align: center;"><c:out value="${number}" />
+											<c:set var="number" value="${number-1}" /></td>
+										<td style="text-align: center;">${listdto.employeeNumber }</td>
+										<td style="text-align: center;">${listdto.name }</td>
+										<td style="cursor: pointer"
+											onclick="location='content_jy?num=${listdto.num }'">${listdto.subject }</td>
+										<td style="text-align: center;">${listdto.regdate }</td>
+										<td style="text-align: center;">${listdto.readcount }</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					</div>
 				</div>
 
-			</div>
-			<br>
+				<div align="center">
+					<ul class="pagination">
 
-			<div class="row">
-				<div class="col-lg-12">
-					<input type="search" id="search" value="" class="form-control"
-						placeholder="검색">
-				</div>
-			</div>
-			<br>
-			<div class="row">
-				<div class="col-lg-12">
-					<table class="table" id="table">
-						<thead>
-							<tr style="text-align: center">
-								<th>번호</th>
-								<th>사원번호</th>
-								<th>작성자</th>
-								<th>제목</th>
-								<th>등록일</th>
-								<th>조회</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="listdto" items="${list}" varStatus="status">
-								<tr class="a">
-									<td>${fn:length(list)-status.count+1}</td>
-									<td>${listdto.employeeNumber }</td>
-									<td>${listdto.name }</td>
-									<td style="cursor: pointer"
-										onclick="location='content?num=${listdto.num }'">${listdto.subject }</a></td>
-									<td>${listdto.regdate }</td>
-									<td>${listdto.readcount }</td>
-								</tr>
+						<c:if test="${count > 0}">
+							<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1}" />
+							<c:set var="pageCount" value="${count / pageSize + imsi}" />
+							<c:set var="pageBlock" value="${3}" />
+
+							<fmt:parseNumber var="result" value="${currentPage/ pageBlock}"
+								integerOnly="true" />
+
+							<c:set var="startPage" value="${result * pageBlock + 1}" />
+							<c:set var="endPage" value="${startPage + pageBlock - 1}" />
+
+							<c:if test="${endPage > pageCount}">
+								<li class="active"><a
+									href="list?teamNum=${teamNum}&num=${startPage - pageBlock}">이전</a></li>
+							</c:if>
+
+							<c:forEach var="i" begin="${1}" end="${count / pageSize + imsi}">
+								<li><a href="list?teamNum=${teamNum}&num=${i}">${i}<span
+										class="sr-only"></span></a></li>
 							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
 
+							<c:if test="${endPage < pageCount}">
+								<li class="active"><a
+									href="list?teamNum=${teamNum}&num=${startPage + pageBlock}">다음</a></li>
+							</c:if>
+
+						</c:if>
+					</ul>
+				</div>
+
+			</div>
+	</div>
 	</nav>
+
 
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>

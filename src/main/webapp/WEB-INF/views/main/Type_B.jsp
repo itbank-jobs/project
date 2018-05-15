@@ -56,15 +56,13 @@
 }
 
 body {
-	background:
-		url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg')
-		fixed;
+	background:url('../../../proto/resources/images/background.jpg') fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 0;
 	margin: 0;
 	background-repeat: no-repeat;
-	height: 120vh;
+	height: 130vh;
 }
 </style>
 

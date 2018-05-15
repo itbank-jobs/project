@@ -57,6 +57,7 @@ public class MainController {
 	@RequestMapping("/team")
 	public String team(Model mv,HttpSession session,HttpServletResponse response) {
 		System.out.println("team페이지()실행");
+		
 		return "team";
 
 	}

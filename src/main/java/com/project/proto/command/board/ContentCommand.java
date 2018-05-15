@@ -16,7 +16,7 @@ public class ContentCommand implements Command {
 	public void execute(Model model, board_Dao dao) {
 		// TODO Auto-generated method stub
 		board_Dto dto;
-		Map<String, Object>map = model.asMap();//?
+		Map<String, Object>map = model.asMap();
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 
 		dao.readcount(req.getParameter("num"));

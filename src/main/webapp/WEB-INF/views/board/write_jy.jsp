@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,13 +10,8 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 <link media="all" type="text/css" rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -39,15 +34,13 @@
 }
 
 body {
-	background:
-		url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg')
-		fixed;
+	background: url('../../../proto/resources/images/background.jpg') fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 0;
 	margin: 0;
 	background-repeat: no-repeat;
-	height: 120vh;
+	height: 130vh;
 }
 
 .form-control {
@@ -102,24 +95,24 @@ body {
 			}
 		})
 	});
-	
-	function writeSave(){
-	    if(document.write_view.title.value == ""){
 
-		document.write_view.title.focus();
-		return false;
-	    }
-	    if(document.write_view.content.value == ""){
+	function writeSave() {
+		if (document.write_view.title.value == "") {
 
-		document.write_view.content.focus();
-		return false;
-	    }
-	    if(document.write_view.passwd.value == ""){
+			document.write_view.title.focus();
+			return false;
+		}
+		if (document.write_view.content.value == "") {
 
-		document.write_view.passwd.focus();
-		return false;
-	    }
-	    
+			document.write_view.content.focus();
+			return false;
+		}
+		if (document.write_view.passwd.value == "") {
+
+			document.write_view.passwd.focus();
+			return false;
+		}
+
 	}
 </script>
 
@@ -131,123 +124,129 @@ body {
 
 		<nav
 			class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
-		<!-- top nav --> <nav class="navbar navbar-top hidden-xs">
-		<div class="container">
-			<!-- left nav top -->
-			<ul class="nav navbar-nav pull-left">
-				<li id="home"><a href="#"><span class="text-white"><i
-							class="fa fa-home"></i>&nbspHome</span></a></li>
-				<li id="new"><a href="#"><span class="text-white"><i
-							class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
-				<li id="team"><a href="#"><span class="text-white"><i
-							class="fa fa-users"></i>&nbsp Team</span></a></li>
+			<!-- top nav -->
+			<nav class="navbar navbar-top hidden-xs">
+				<div class="container">
+					<!-- left nav top -->
+					<ul class="nav navbar-nav pull-left">
+						<li id="home"><a href="#"><span class="text-white"><i
+									class="fa fa-home"></i>&nbspHome</span></a></li>
+						<li id="new"><a href="#"><span class="text-white"><i
+									class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
+						<li id="team"><a href="#"><span class="text-white"><i
+									class="fa fa-users"></i>&nbsp Team</span></a></li>
 
-			</ul>
-			<!-- right nav top -->
-			<ul class="nav navbar-nav pull-right">
-				<li><a href="settings" class="text-white"><i
-						class="fa fa-cog"></i>&nbspSettings</a></li>
-				<li><a href="logout" class="text-white"><i
-						class="fa fa-power-off"></i>&nbspLogout</a></li>
-			</ul>
-		</div>
-		<div class="dividline light-grey"></div>
-		</nav> <!-- down nav --> <nav class="navbar navbar-down">
-		<div class="container">
-			<div class="flex-container">
-				<div class="navbar-header flex-item">
-					<div class="navbar-brand">Project</div>
+					</ul>
+					<!-- right nav top -->
+					<ul class="nav navbar-nav pull-right">
+						<li><a href="settings" class="text-white"><i
+								class="fa fa-cog"></i>&nbspSettings</a></li>
+						<li><a href="logout" class="text-white"><i
+								class="fa fa-power-off"></i>&nbspLogout</a></li>
+					</ul>
 				</div>
-				<ul id="h" class="nav navbar-nav flex-item hidden-xs"
-					style="display: none;">
-					<li><a href="typeA">Type - A</a></li>
-					<li><a href="typeB">Type - B</a></li>
+				<div class="dividline light-grey"></div>
+			</nav>
+			<!-- down nav -->
+			<nav class="navbar navbar-down">
+				<div class="container">
+					<div class="flex-container">
+						<div class="navbar-header flex-item">
+							<div class="navbar-brand">Project</div>
+						</div>
+						<ul id="h" class="nav navbar-nav flex-item hidden-xs"
+							style="display: none;">
+							<li><a href="typeA">Type - A</a></li>
+							<li><a href="typeB">Type - B</a></li>
 
-				</ul>
+						</ul>
 
-				<ul id="n" class="nav navbar-nav flex-item hidden-xs"
-					style="display: none;">
-					<li><a href="news">공지사항</a></li>
-					<li><a href="event">행사</a></li>
+						<ul id="n" class="nav navbar-nav flex-item hidden-xs"
+							style="display: none;">
+							<li><a href="news">공지사항</a></li>
+							<li><a href="event">행사</a></li>
 
-				</ul>
+						</ul>
 
-				<ul id="t" class="nav navbar-nav flex-item hidden-xs"
-					style="display: none;">
-					<li><a href="list?teamNum=1">경영지원팀</a></li>
-					<li><a href="list?teamNum=2">인사팀</a></li>
-					<li><a href="list?teamNum=3">개발팀</a></li>
-					<li><a href="list?teamNum=4">영업팀</a></li>
-				</ul>
-				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-					<li><a href="messenser"><span class="text-white"><i
-								class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
-				</ul>
-			</div>
-		</div>
-		<br>
-		</nav> <br>
+						<ul id="t" class="nav navbar-nav flex-item hidden-xs"
+							style="display: none;">
+							<li><a href="list?teamNum=1">경영지원팀</a></li>
+							<li><a href="list?teamNum=2">인사팀</a></li>
+							<li><a href="list?teamNum=3">개발팀</a></li>
+							<li><a href="list?teamNum=4">영업팀</a></li>
+						</ul>
+						<ul class="nav navbar-nav flex-item hidden-xs pull-right">
+							<li><a href="messenser"><span class="text-white"><i
+										class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
+						</ul>
+					</div>
+				</div>
+				<br>
+			</nav>
+			<br>
 
 
-		<div class="container"
-			style="color: #ffffff; background-color:#ffffff11;">
+			<div class="container"
+				style="color: #ffffff; background-color: #000000ad;">
 
-			<div class="row">
-				<div class="col-lg-3">
-					<h3>글 작성</h3>
+				<div class="row">
+					<div class="col-lg-3">
+						<h3>글 작성</h3>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-lg-12">
+						<form action="write" method="post" name="write_view"
+							enctype="multipart/form-data" onsubmit="return writeSave()">
+							<input type="hidden" name="teamNum" value="${teamNum}">
+							<table class="table" id="table" style="color: #ffffffc8">
+								<tbody>
+
+									<tr>
+										<th class="text-center">사원번호</th>
+										<td><input type="text" name="employeeNumber"
+											class="form-control" value="${employeeNumber}"
+											readonly="readonly" style="background-color: #ffffff33;"></td>
+									</tr>
+									<tr>
+										<th class="text-center">제목</th>
+										<td><input type="text" class="form-control" name="subject"
+											size="50"></td>
+									</tr>
+									<tr>
+										<th class="text-center">내용</th>
+										<td><textarea name="content" class="form-control"
+												rows="15"></textarea></td>
+									</tr>
+
+									<tr>
+										<th class="text-center">비밀번호</th>
+										<td><input type="password" placeholder="비밀번호를 입력하세요"
+											class="form-control" name="pass" /></td>
+									</tr>
+									<tr>
+
+										<td colspan="2" style="text-align: center">
+
+											<div class="container-1">
+												<input type="submit" value="&nbsp&nbsp&nbsp등 록 &nbsp&nbsp"
+													class="btn btn-1 pull-right"
+													style="background-color: transparent;" />
+											</div> <a href="list?teamNum=${teamNum}"><input type="button"
+												value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
+												class="btn btn-info pull-left"
+												style="background-color: transparent;" /></a>
+									</tr>
+
+
+
+								</tbody>
+							</table>
+						</form>
+					</div>
 				</div>
 			</div>
-			<br> 
-			<div class="row">
-				<div class="col-lg-12">
-					<table class="table" id="table">
-						<tbody>
-							<form action="write" method="post" name="write_view"
-								enctype="multipart/form-data" onsubmit="return writeSave()">
-								<input type="hidden" name="lectureName" value="${teamNum}">
-							<tr>
-								<th class="text-center">사원번호</th>
-								<td><input type="text" name="employeeNumber"
-									class="form-control" value="${employeeNumber}"
-									readonly="readonly" style="background-color: #ffffff33;"></td>
-							</tr>
-							<tr>
-								<th class="text-center">제목</th>
-								<td><input type="text" class="form-control" name="title"
-									size="50"></td>
-							</tr>
-							<tr>
-								<th class="text-center">내용</th>
-								<td><textarea name="content" class="form-control" rows="15"></textarea></td>
-							</tr>
-							<tr>
-								<th class="text-center">첨부파일</th>
-								<td style="text-align: left;"><input type="file"
-									name="uploadName"></td>
-							<tr>
-							<tr>
-								<th class="text-center">비밀번호</th>
-								<td><input type="password" placeholder="비밀번호를 입력하세요"
-									class="form-control" name="passwd" /></td>
-							</tr>
-							<tr>
-
-								<td colspan="2" style="text-align: center">
-									<div class="container-1">
-										<input type="submit" value="&nbsp&nbsp&nbsp등 록 &nbsp&nbsp"
-											class="btn btn-1 pull-right" />
-									</div> <a href="list"><input type="button"
-										value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
-										class="btn btn-info pull-left" /></a>
-							</tr>
-
-
-
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
 	</div>
 
 	</nav>

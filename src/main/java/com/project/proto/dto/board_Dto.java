@@ -11,8 +11,16 @@ import java.sql.Timestamp;
 		String pass;
 		int readcount;
 		Timestamp regdate;
-		
+		int teamNum;
 	
+		
+		
+		public int getTeamNum() {
+			return teamNum;
+		}
+		public void setTeamNum(int teamNum) {
+			this.teamNum = teamNum;
+		}
 		public String getName() {
 			return name;
 		}

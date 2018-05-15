@@ -25,17 +25,16 @@
 	SELECT EMAIL,PASSWORD FROM MEMBER WHERE EMPLOYEENUMBER = #{employeeNumber}
 	</select>
 	
-	<select id ="List" resultType = "com.project.proto.dto.board_Dto">
-	SELECT a.NAME, b.* FROM MEMBER a LEFT JOIN BOARD b ON a.EMPLOYEENUMBER = b.EMPLOYEENUMBER WHERE a.EMPLOYEENUMBER = b.EMPLOYEENUMBER ORDER BY NUM DESC
-	
+	<select id ="List" resultType = "com.project.proto.dto.board_Dto" parameterType="map">
+	SELECT * FROM (SELECT ROWNUM RNUM, NUM, EMPLOYEENUMBER, SUBJECT,PASS, CONTENT, REGDATE, READCOUNT FROM (SELECT * FROM BOARD WHERE TEAMNUM = #{teamNum} ORDER BY NUM DESC)) <![CDATA[ WHERE RNUM >=#{start} AND RNUM <= #{end}]]>
 	</select>
 	
 	<select id ="content" parameterType="int" resultType = "com.project.proto.dto.board_Dto">
-	SELECT * FROM BOARD WHERE NUM = #{PARAM1}
+	SELECT a.NAME, b.* FROM MEMBER a LEFT JOIN BOARD b ON a.EMPLOYEENUMBER = b.EMPLOYEENUMBER WHERE NUM = #{PARAM1}
 	</select>
 	
 	<select id = "write" parameterType="com.project.proto.dto.board_Dto" resultType = "int">
-	INSERT INTO BOARD (NUM,EMPLOYEENUMBER, SUBJECT, CONTENT, READCOUNT, REGDATE) VALUES( BOARD_SEQ.NEXTVAL,#{employeeNumber},#{subject},#{content},0, sysdate)
+	INSERT INTO BOARD (NUM,EMPLOYEENUMBER, SUBJECT, CONTENT, READCOUNT, REGDATE, TEAMNUM) VALUES( BOARD_SEQ.NEXTVAL,#{employeeNumber},#{subject},#{content},0, sysdate,#{teamNum})
 	</select> 
 	
 	<select id = "modify" parameterType="com.project.proto.dto.Dto" resultType = "int">
@@ -53,6 +52,11 @@
 	<select id = "insertReply">
 	INSERT INTO REPLY(RNO, BNO, REPLYTEXT, REPLYER) VALUES(reply_seq,nextval, #{bno}, #{replytext}, #{replyer})
 	</select>
+	
+	<select id="countteamNum" resultType="int" parameterType="String">
+	SELECT COUNT(*) FROM BOARD WHERE TEAMNUM = #{PARAM1}
+	</select>
+	
 	
 
 </mapper>
