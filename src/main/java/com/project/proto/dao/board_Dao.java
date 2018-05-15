@@ -59,9 +59,8 @@ public class board_Dao {
 	public int count(String teamNum) {
 		// TODO Auto-generated method stub
 		int count = 0;
-	
+
 		try {
-		
 			count = sqlSession.selectOne("countteamNum", teamNum);
 			return count;
 		} catch (Exception e) {

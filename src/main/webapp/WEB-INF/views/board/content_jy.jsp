@@ -220,16 +220,15 @@ body {
 									<td><textarea rows="15" name="content"
 											class="form-control" readonly="readonly"
 											style="background-color: #ffffff33;">${content.content}</textarea></td>
-								</tr>
-
-								<tr>
+					</tr>
+					<tr>
 									<td colspan="2" style="text-align: center">
 										<div class="container-1">
 											<input type="submit" value="&nbsp&nbsp&nbsp수 정 &nbsp&nbsp"
 												class="btn btn-1 pull-right" style="background-color: transparent;" />
 										</div> <a href="list?teamNum=${content.teamNum}"><input type="button"
 											value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
-											class="btn btn-info pull-left" style="background-color: transparent;"/></a> <a href="delete?num=${content.num}"><input
+											class="btn btn-info pull-left" style="background-color: transparent;"/></a> <a href="delete?num=${content.num}&teamNum=${content.teamNum}"><input
 											type="button" value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
 											class="btn btn-info pull-left" style="background-color: transparent;"/></a>
 								</tr>
