@@ -22,10 +22,11 @@ public class DeleteCommand implements Command {
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
 		
 		String num = req.getParameter("num");
-		
+		String teamNum = req.getParameter("teamNum");
+		System.out.println("delTeamNum: "+teamNum);
 		dao.delete(num);
 		try {
-			res.sendRedirect("list");
+			res.sendRedirect("list?teamNum="+teamNum);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

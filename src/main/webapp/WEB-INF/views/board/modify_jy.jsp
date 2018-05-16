@@ -33,7 +33,6 @@
 	display: none;
 }
 
-
 .row-padding {
 	margin-top: 25px;
 	margin-bottom: 25px;
@@ -87,17 +86,6 @@ body {
 		});
 	});
 
-	$(document).ready(function() {
-		$("#delete").click(function() {
-			setTimeout('$("#del_ck").show(700)');
-
-		});
-		$("#no").click(function() {
-			setTimeout('$("#del_ck").hide(700)');
-
-		});
-	});
-
 	$(function() {
 
 		$('#searchable-container').searchable({
@@ -111,6 +99,17 @@ body {
 				elem.slideUp(100);
 			}
 		})
+	});
+	
+	$(document).ready(function() {
+		$("#delete").click(function() {
+			setTimeout('$("#del_ck").show(700)');
+
+		});
+		$("#no").click(function() {
+			setTimeout('$("#del_ck").hide(700)');
+
+		});
 	});
 
 	function writeSave() {
@@ -202,15 +201,23 @@ body {
 		<div class="container"
 			style="color: #ffffff; background-color: #000000ad;">
 
-			<div class="row" style="padding-bottom: 12px">
-				<div class="col-lg-12" style="text-align: center;">
-					<h3 style="margin-top: 28px">${content.subject}</h3>
+			<div class="row"  style="padding-bottom: 12px">
+			<div class="col-lg-1">
+			<h3 style="margin-top: 28px">
+			&nbsp제목:
+			</h3>
+			</div>
+				<div class="col-lg-5">
+					<h3 style="margin-top: 20px">
+						 <input type="text" name="subject" class="form-control"
+							value="${content.subject}" style="background-color: #ffffff33;">
+					</h3>
 				</div>
 			</div>
-
+	
 			<div class="row">
 				<div class="col-lg-12">
-					<form action="modify_jy" method="post">
+					<form action="modify_complete" method="post">
 						<input type="hidden" name="num" value="${content.num}"> <input
 							type="hidden" name="lectureName" value="${teamNum}">
 						<table class="table" id="table">
@@ -230,27 +237,25 @@ body {
 								<tr>
 									<th class="text-center">내용</th>
 									<td><textarea rows="15" name="content"
-											class="form-control" readonly="readonly"
-											style="background-color: #ffffff33;">${content.content}</textarea></td>
+											class="form-control" style="background-color: #ffffff33;">${content.content}</textarea></td>
 								</tr>
 								<tr>
 									<td colspan="2" style="text-align: center"><c:if
 											test="${employeeNumber == content.employeeNumber}">
 											<div class="container-1">
-												<input type="submit" value="&nbsp&nbsp&nbsp수 정 &nbsp&nbsp"
+												<input type="submit" value="&nbsp&nbsp&nbsp완 료 &nbsp&nbsp"
 													class="btn btn-1 pull-right"
 													style="background-color: transparent;" />
 											</div>
-										</c:if> <a href="list?teamNum=${content.teamNum}"> <input
-											type="button" value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
+										</c:if> <a href="javascript:history.back();"> <input type="button"
+											value="&nbsp&nbsp&nbsp취 소 &nbsp&nbsp"
 											class="btn btn-info pull-left"
-											style="background-color: transparent;" /></a> 
-											<c:if test="${employeeNumber == content.employeeNumber}">
-
-											<input type="button" id="delete"
-												value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
+											style="background-color: transparent;" /></a> <c:if
+											test="${employeeNumber == content.employeeNumber}">
+												<input type="button" value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
 												class="btn btn-info pull-left"
 												style="background-color: transparent;" />
+										
 										</c:if>
 
 										<div class="col-lg-6" id="del_ck"
@@ -265,6 +270,7 @@ body {
 												style="background-color: transparent;" />
 
 										</div>
+										
 								</tr>
 							</tbody>
 						</table>

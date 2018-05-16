@@ -8,6 +8,10 @@
 		SELECT * FROM MEMBER
 	</select>
 	
+	<select id="info" resultType="com.project.proto.dto.Dto" parameterType="int">
+	SELECT * FROM MEMBER WHERE EMPLOYEENUMBER = #{PARAM1}
+	</select>
+	
 	<!-- <select id = "emailList" parameterType="String" resultType="com.project.proto.dto.Dto"> -->
 	<select id = "emailList" parameterType="String" resultType = "int">
 	SELECT * FROM MEMBER WHERE EMAIL = #{PARAM1}

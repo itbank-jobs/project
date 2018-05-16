@@ -82,12 +82,17 @@
 
 .btn:hover {
   background-position: right center; /* change the direction of the change here */
-   box-shadow: 0 0 10px #eee;
+   box-shadow: 0 0 20px #eee;
     color: #ffffff;
 }
+.btn-1{
+	border-color: #fda0859f
+	
+}
 
-.btn-1 {
-  background-image: linear-gradient(to right, #f6d3659f 0%, #fda0859f 51%, #f6d3659f 100%);
+
+.btn-1:hover {
+  background-image: linear-gradient(to right, #f6d36500 0%, #fda0859f 51%, #f6d36500 100%);
 }
 
 

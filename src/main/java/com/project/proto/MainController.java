@@ -4,6 +4,7 @@ package com.project.proto;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -13,7 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.proto.chat.EchoHandler;
-
+import com.project.proto.command.settingCommand;
 import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
 import com.project.proto.dto.Dto;
@@ -73,12 +74,6 @@ public class MainController {
 		return "about";
 
 	}
-	@RequestMapping("/settings")
-	public String settings(Model mv,HttpSession session,HttpServletResponse response) {
-		System.out.println("settings페이지()실행");
-		return "settings";
-
-	}
 	
 	
 	/*로그아웃 구현 완료*/
@@ -102,6 +97,19 @@ public class MainController {
 
 	}
 	
+	@RequestMapping("/settings")
+	public String setting(Model model,HttpSession session) {
+		System.out.println("setting()실행");
+		
+		model.addAttribute("session",session);
+		
+		comm = new settingCommand();
+		comm.execute(model, dao);
+		
+		
+		return "setting";
+
+	}
 	
 	
 }
