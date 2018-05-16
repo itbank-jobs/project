@@ -1,6 +1,7 @@
 package com.project.proto;
 
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.proto.chat.EchoHandler;
+import com.project.proto.command.infoCommand;
 import com.project.proto.command.settingCommand;
 import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
@@ -111,5 +113,18 @@ public class MainController {
 
 	}
 	
+	
+	@RequestMapping("/info_modify")
+	public void info_modify(Model model, HttpServletRequest req) throws UnsupportedEncodingException {
+		System.out.println("info_modify()실행");
+		
+		req.setCharacterEncoding("UTF-8");
+		model.addAttribute("req", req);
+		
+		comm = new infoCommand();
+		comm.execute(model, dao);
+		
+
+	}
 	
 }
