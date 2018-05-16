@@ -34,6 +34,21 @@
 	display: none;
 }
 
+/* 페이징  */
+.pagination>.active>a{
+background-color: #00000000;
+}
+.pagination>.active>a:hover{
+background-color: #00000000;
+}
+.pagination>li>a{
+background-color: #fff0;
+color:#00ff39
+}
+.pagination>li>a:hover{
+background-color: #fff0;
+}
+
 .row-padding {
 	margin-top: 25px;
 	margin-bottom: 25px;

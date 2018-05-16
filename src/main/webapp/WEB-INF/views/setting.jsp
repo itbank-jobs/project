@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -10,6 +11,7 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
+
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
@@ -17,15 +19,37 @@
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="resources/css/main.css">
+<link rel="stylesheet" href="resources/css/login.css">
+<script src="resources/js/encoding.js"></script>
+<script src="resources/js/register.js"></script>
+<script src="resources/js/emailCheck.js"></script>
 
-
-
+<script src="resources/js/employeeNumberCheck.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>팀 게시판</title>
+
 
 <style type="text/css">
 ::-webkit-scrollbar {
 	display: none;
+}
+
+/* 페이징  */
+.pagination>.active>a {
+	background-color: #00000000;
+}
+
+.pagination>.active>a:hover {
+	background-color: #00000000;
+}
+
+.pagination>li>a {
+	background-color: #fff0;
+	color: #00ff39
+}
+
+.pagination>li>a:hover {
+	background-color: #fff0;
 }
 
 .row-padding {
@@ -46,6 +70,10 @@ body {
 .form-control {
 	background-color: #ffffff33;
 	color: #8bd8c0;
+}
+
+form:hover {
+	background-color: #1c202900;
 }
 </style>
 <script type="text/javascript">
@@ -82,9 +110,12 @@ body {
 	});
 
 	$(function() {
+		$('#table').searchable({
+			striped : true
+		});
 
-		$('#searchable-container').searchable({
-			searchField : '#container-search',
+		$('#search').searchable({
+			searchField : '#table',
 			selector : '.row',
 			childSelector : '.col-xs-4',
 			show : function(elem) {
@@ -95,25 +126,6 @@ body {
 			}
 		})
 	});
-
-	function writeSave() {
-		if (document.write_view.title.value == "") {
-
-			document.write_view.title.focus();
-			return false;
-		}
-		if (document.write_view.content.value == "") {
-
-			document.write_view.content.focus();
-			return false;
-		}
-		if (document.write_view.passwd.value == "") {
-
-			document.write_view.passwd.focus();
-			return false;
-		}
-
-	}
 </script>
 
 
@@ -135,7 +147,6 @@ body {
 									class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
 						<li id="team"><a href="#"><span class="text-white"><i
 									class="fa fa-users"></i>&nbsp Team</span></a></li>
-
 					</ul>
 					<!-- right nav top -->
 					<ul class="nav navbar-nav pull-right">
@@ -183,68 +194,76 @@ body {
 				</div>
 				<br>
 			</nav>
+
 			<br>
 
 
-			<div class="container"
-				style="color: #ffffff; background-color: #000000ad;">
+			<div class="container" style="color: #ffffff;">
 
-				<div class="row">
-					<div class="col-lg-3">
-						<h3>글 작성</h3>
-					</div>
+				<div class="row"
+					style="margin-left: 300px; margin-right: 300px; background-color: #000000ad">
+					<p class="form-title" id="signUp" style="margin-top: 25px; margin-bottom: 17px">사원
+						정보</p>
+						
+						<form class="login" method="post" name="register" action="info_modify" onsubmit="return inputCheck()">
+
+						<input autocomplete="off" type="text" maxlength="8"
+							placeholder="EmployeeNumber" onkeydown="encodingNum()"
+							onblur="encodingNum()" id="employeeNumber" name="employeeNumber" value="${setting.employeeNumber}" readonly="readonly">
+							
+							
+							 <input
+							autocomplete="off" type="text" maxlength="5" name="name"
+							id="name" placeholder="Name" onkeyup="encodingName(event)" value="${setting.name}"/> 
+							
+							<input
+							autocomplete="off" type="text" name="email" id="email"
+							placeholder="Email" onblur="ck()" onkeyup="encodingEmail(event)" value="${setting.email}">
+
+
+							<label id = "eck" type="hidden" value="false"></label>
+	         			  <input autocomplete="off" type="password" maxlength="15" name="password" id="password" placeholder="Password" >
+             			  <input autocomplete="off" type="password" maxlength="15" name="rePassword" id="rePassword" onkeyup="passwordCheck()" placeholder="Password"  >
+							
+							
+
+						<div id=Message style="color: red">&nbsp</div>
+
+
+						<input type="submit" value="회원 정보 수정"
+							class="btn btn-1 btn-success">
+							
+						<div class="remember-forgot">
+							<div class="row">
+								<div class=" forgot-pass-content">
+								
+								</div>
+							</div>
+						</div>
+					</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
 				</div>
 				<br>
-				<div class="row">
-					<div class="col-lg-12">
-						<form action="write" method="post" name="write_view"
-							enctype="multipart/form-data" onsubmit="return writeSave()">
-							<input type="hidden" name="teamNum" value="${teamNum}">
-							<table class="table" id="table" style="color: #ffffffc8">
-								<tbody>
-
-									<tr>
-										<th class="text-center">사원번호</th>
-										<td><input type="text" name="employeeNumber"
-											class="form-control" value="${employeeNumber}"
-											readonly="readonly" style="background-color: #ffffff33;"></td>
-									</tr>
-									<tr>
-										<th class="text-center">제목</th>
-										<td><input type="text" class="form-control" name="subject"
-											size="50"></td>
-									</tr>
-									<tr>
-										<th class="text-center">내용</th>
-										<td><textarea name="content" class="form-control"
-												rows="15"></textarea></td>
-									</tr>
-
-									<tr>
-
-										<td colspan="2" style="text-align: center">
-
-											<div class="container-1">
-												<input type="submit" value="&nbsp&nbsp&nbsp등 록 &nbsp&nbsp"
-													class="btn btn-1 pull-right"
-													style="background-color: transparent;" />
-											</div> <a href="list?teamNum=${teamNum}"><input type="button"
-												value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
-												class="btn btn-info pull-left"
-												style="background-color: transparent;" /></a>
-									</tr>
 
 
 
-								</tbody>
-							</table>
-						</form>
-					</div>
-				</div>
 			</div>
+		</nav>
 	</div>
 
-	</nav>
+
 
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>

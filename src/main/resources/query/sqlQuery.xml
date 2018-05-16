@@ -5,7 +5,15 @@
 
 	
 	<select id="selectList" resultType="com.project.proto.dto.Dto">
-		SELECT * FROM MEMBER
+	SELECT * FROM MEMBER
+	</select>
+	
+	<select id="info" resultType="com.project.proto.dto.Dto" parameterType="String">
+	SELECT * FROM MEMBER WHERE EMPLOYEENUMBER = #{PARAM1}
+	</select>
+	
+	<select id="info_modify" resultType="com.project.proto.dto.Dto" parameterType="com.project.proto.dto.Dto">
+	UPDATE MEMBER SET NAME = #{name}, EMAIL = #{email}, PASSWORD = #{password} WHERE EMPLOYEENUMBER = #{employeeNumber}
 	</select>
 	
 	<!-- <select id = "emailList" parameterType="String" resultType="com.project.proto.dto.Dto"> -->

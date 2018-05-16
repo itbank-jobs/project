@@ -133,4 +133,17 @@ public class BoardController {
 		return "board/content_jy";
 	}
 	
+	@RequestMapping("/modify_jy")
+	public String modify_jy(HttpServletRequest req, Model model) {
+		System.out.println("modify_jy()실행");
+		
+		model.addAttribute("req", req);
+		
+		comm = new ContentCommand();
+		comm.execute(model, dao);
+		
+		return "board/modify_jy";
+
+	}
+	
 }

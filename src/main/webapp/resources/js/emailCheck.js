@@ -19,7 +19,7 @@ function ck() {
 		atPos + 1 < dotPos &&
 		dotPos + 1 < eMailSize
 	){
-		$.ajax({
+/*		$.ajax({
 		type : 'post',
 		data : {email:vemail},
 		dataType : 'text',
@@ -43,6 +43,7 @@ function ck() {
 		}
 		
 	});//ajax}	
+*/		
 	}
 	else if($('#email').val() == ''){
 		
