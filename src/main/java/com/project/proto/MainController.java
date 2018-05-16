@@ -153,11 +153,12 @@ public class MainController {
 	
 	
 	@RequestMapping("/info_modify")
-	public void info_modify(Model model, HttpServletRequest req) throws UnsupportedEncodingException {
+	public void info_modify(Model model, HttpServletRequest req , HttpServletResponse res) throws UnsupportedEncodingException {
 		System.out.println("info_modify()실행");
 		
 		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("req", req);
+		model.addAttribute("res", res);
 		
 		comm = new infoCommand();
 		comm.execute(model, dao);
