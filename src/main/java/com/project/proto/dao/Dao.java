@@ -1,13 +1,8 @@
 package com.project.proto.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.List;
 
-import javax.activation.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +20,7 @@ public class Dao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-
+	
 	public List<Dao> selectMember() {
 		return sqlSession.selectList("selectList");
 	}
@@ -37,9 +32,9 @@ public class Dao {
 		
 	}
 
-	public int loginCheck(Dto dto) {
+	public List<Dto> loginCheck(Dto dto) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("loginCheckList", dto).size();
+		return sqlSession.selectList("loginCheckList", dto);
 	
 	};
 	
@@ -48,7 +43,9 @@ public class Dao {
 		sqlSession.insert("register", dto);
 	}
 
-	
+	public List<Dto> chatList(){
+		return sqlSession.selectList("selectList");
+	}
 //비밀번호 찾기
 	public Dto find_PW(int employeeNumber) {
 		Dto dto;

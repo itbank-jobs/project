@@ -15,12 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.proto.command.Command;
-
-import com.project.proto.command.loginCheck;
-import com.project.proto.command.registerProc;
-import com.project.proto.dao.Dao;
-import com.project.proto.command.find_PW;;
+import com.project.proto.command.login.Command;
+import com.project.proto.command.login.find_PW;
+import com.project.proto.command.login.loginCheck;
+import com.project.proto.command.login.registerProc;
+import com.project.proto.dao.Dao;;
 
 
 
@@ -33,22 +32,21 @@ public class LoginController {
 	@Autowired
 	Dao dao;
 	
-	//濡쒓렇�씤(main)
+	//로그인(main)
 	@RequestMapping(value = "/")
 	public String login(Model model, HttpSession session) {
 		
 	
-		System.out.println("login()�떎�뻾");
-		session.invalidate();
+		System.out.println("login()실행");
 
 		return "login";
 
 
 	}
-	//濡쒓렇�씤 �븘�씠�뵒 鍮꾨�踰덊샇 泥댄겕
+	//로그인 아이디 비밀번호 체크
 	@RequestMapping("/loginCheck")
 	public void loginCheck(Model model, HttpServletRequest req, HttpSession session, HttpServletResponse res) {
-		System.out.println("loginCheck()�떎�뻾");
+		System.out.println("loginCheck()실행");
 		
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
@@ -59,11 +57,11 @@ public class LoginController {
 		
 	}
 	
-	//�쉶�썝媛��엯, �쉶�썝�젙蹂� �엯�젰李�
+	//회원가입, 회원정보 입력창
 	@RequestMapping("/register")
 	public String register(Model model, HttpSession session) {
 		
-		System.out.println("register()�떎�뻾");
+		System.out.println("register()실행");
 		return "register";
 		
 	}
@@ -71,14 +69,14 @@ public class LoginController {
 	
 	@RequestMapping("/emailCheck")
 	public void emailCheck(HttpServletRequest req, HttpServletResponse res) {
-		System.out.println("emailCheck()�떎�뻾");
+		System.out.println("emailCheck()실행");
 		
 		try {
 			PrintWriter out = res.getWriter();
 			String email = (req.getParameter("email")==null) ? "" : req.getParameter("email");
 			
 			
-			int chk = dao.emailList(email); //�씪移섑븯�뒗 媛믪씠 �뾾�쑝硫� sql�떎�뻾 寃곌낵 0
+			int chk = dao.emailList(email); //일치하는 값이 없으면 sql실행 결과 0
 			
 			out.print(chk); //=result
 			out.flush();
@@ -92,11 +90,11 @@ public class LoginController {
 		
 	}
 	
-	//�쉶�썝�젙蹂� �엯�젰媛� 諛쏄퀬 �씠�룞.
+	//회원정보 입력값 받고 이동.
 	@RequestMapping("/registerProc")
 	public String registerProc(Model model, HttpServletRequest req) throws UnsupportedEncodingException {
 		
-		System.out.println("registerProc()�떎�뻾");
+		System.out.println("registerProc()실행");
 		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("req", req);
 		
@@ -111,14 +109,14 @@ public class LoginController {
 
 	@RequestMapping("/find")
 	public String find(Model model) {
-		System.out.println("find()�떎�뻾");
+		System.out.println("find()실행");
 		return "find";
 
 	}
 
 	@RequestMapping("/find_PW")
 	public String find_PW(Model model , HttpServletRequest req, HttpServletResponse res) {
-		System.out.println("find()�떎�뻾");
+		System.out.println("find()실행");
 		
 		
 		model.addAttribute("req", req);
@@ -130,8 +128,6 @@ public class LoginController {
 		return "login";
 
 	}
-	
-
 
 
 }
