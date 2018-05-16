@@ -25,16 +25,16 @@ public class ContentCommand implements Command {
 		Map<String, Object>map = model.asMap();//?
 
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
-
-		System.out.println(req.getParameter("num"));
-		
+		//조회수
 		dao.readcount(req.getParameter("num"));
+		//게시판 content
 		bdto = dao.content(Integer.parseInt(req.getParameter("num"))).get(0);
+		//댓글 contentList
 		List<reply_Dto>replylist = dao.contentReply(req.getParameter("num"));
 	
 
 		model.addAttribute("content",bdto); 
-		model.addAttribute("reply", replylist);
+		model.addAttribute("reply", replylist);//member table's name, reply table
 
 	}
 

@@ -33,6 +33,12 @@ public class reply_Dao {
 		sqlSession.delete("replyDelete", rnum);
 		
 	}
+	//댓글 입력시 바로 삭제를 위한, rnum들고오기
+	public List<reply_Dto> rnum(reply_Dto dto) {
+		return sqlSession.selectList("rnum", dto);
+		
+		
+	}
 	
 	
 	

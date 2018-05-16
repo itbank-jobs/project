@@ -75,9 +75,9 @@
 	</select>
 	
 
-	<select id = "insertReply"  parameterType="com.project.proto.dto.reply_Dto" >
+	<insert id = "insertReply"  parameterType="com.project.proto.dto.reply_Dto" >
 	INSERT INTO REPLY(RNUM, BNUM, REPLYTEXT, EMPLOYEENUMBER) VALUES(reply_seq.nextval, #{bnum}, #{replytext}, #{employeeNumber})
-	</select>
+	</insert>
 	
 	<select id ="contentReply" parameterType="String" resultType = "com.project.proto.dto.reply_Dto">
 	SELECT a.NAME, b.* FROM MEMBER a LEFT JOIN REPLY b ON a.EMPLOYEENUMBER = b.EMPLOYEENUMBER WHERE BNUM = #{PARAM1}
@@ -88,9 +88,15 @@
 
 	</select>
 	
+	<select id="rnum" resultType="com.project.proto.dto.reply_Dto" parameterType="com.project.proto.dto.reply_Dto">
+	SELECT a.RNUM,a.REGDATE,b.NAME FROM REPLY a LEFT JOIN MEMBER b ON a.EMPLOYEENUMBER = b.EMPLOYEENUMBER WHERE BNUM = #{bnum} AND a.EMPLOYEENUMBER = #{employeeNumber} ORDER BY RNUM DESC
+	</select>
+	
 	<select id="countteamNum" resultType="int" parameterType="String">
 	SELECT COUNT(*) FROM BOARD WHERE TEAMNUM = #{PARAM1}
 	</select>
+	
+	
 	
 	
 

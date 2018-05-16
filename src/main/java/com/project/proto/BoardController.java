@@ -30,7 +30,7 @@ public class BoardController {
 	@RequestMapping("/list")
 	public String list(Model model, HttpServletRequest req, HttpSession session) {
 		System.out.println("list()실행");
-		System.out.println(dao);
+		
 		model.addAttribute("session", session);
 		model.addAttribute("req",req);
 		comm = new ListCommand();
