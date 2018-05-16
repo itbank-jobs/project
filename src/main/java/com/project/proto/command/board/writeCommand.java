@@ -1,8 +1,11 @@
 package com.project.proto.command.board;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
@@ -17,17 +20,29 @@ public class writeCommand implements Command {
 		board_Dto dto = new board_Dto();
 		Map<String, Object>map = model.asMap();
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
-		
-		
-		String writer = req.getParameter("Writer");
+		HttpServletResponse res = (HttpServletResponse) map.get("res");
+		HttpSession session = (HttpSession) map.get("session");
+
+		int employeeNumber = (int) session.getAttribute("employeeNumber");
 		String subject = req.getParameter("subject");
 		String content = req.getParameter("Content");
 		
-		dto.setWriter(writer);
+		System.out.println(employeeNumber);
+	
 		dto.setSubject(subject);
 		dto.setContent(content);
+		dto.setEmployeeNumber(employeeNumber);
 		
 		dao.write(dto);
+		
+		try {
+			res.sendRedirect("list");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 
 	}
 

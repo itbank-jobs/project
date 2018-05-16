@@ -2,7 +2,6 @@ package com.project.proto.dto;
 
 public class notice_Dto {
 	private String title;
-	private String pubDate;
 	private String link;
 	private String author;
 	private String description;
@@ -15,12 +14,6 @@ public class notice_Dto {
 	}
 	public void setTitle(String title) {
 		this.title = title;
-	}
-	public String getPubDate() {
-		return pubDate;
-	}
-	public void setPubDate(String pubDate) {
-		this.pubDate = pubDate;
 	}
 	public String getLink() {
 		return link;

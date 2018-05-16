@@ -13,7 +13,13 @@ public class notice_Dao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<notice_Dto> list() {
-		return sqlSession.selectList("noticeList");
+	public List<notice_Dto> list(int currentPageNum) {
+		System.out.println("list()호출");
+		return sqlSession.selectList("noticeList", currentPageNum);
 	}
+	public List<notice_Dto> list() {
+		System.out.println("list()호출");
+		return sqlSession.selectList("noticeStart");
+	}
+
 }

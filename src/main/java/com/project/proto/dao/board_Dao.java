@@ -15,23 +15,35 @@ public class board_Dao {
 	private SqlSession sqlSession;
 	
 	//글 목록 불러오기
-	/*public List<Object> list() {
-		return sqlSession.selectList("List");
-	}*/
+
 	public List<board_Dto> list() {
 		return sqlSession.selectList("List");
 	}
 	
 	//글 내용 불러오기
-	public board_Dto content(String num) {
-		return (board_Dto) sqlSession.selectList("contentList");
+	public List<board_Dto> content(int num) {
+		return  sqlSession.selectList("content",num);
 	}
 	
 	//글쓰기
 	public void write(board_Dto dto) {
 	sqlSession.insert("write", dto);	
-	
 	}
+	
+	//글수정
+	public void modify(board_Dto dto) {
+		sqlSession.update("modify", dto); 
+	}
+	//글삭제
+	public void delete(String num) {
+		sqlSession.delete("delete", num);
+		
+	}
+	//조회수
+	public void readcount(String num) {
+		sqlSession.update("readcount", num);
+	}
+	
 	
 	
 }

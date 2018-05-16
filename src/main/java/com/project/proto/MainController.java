@@ -1,6 +1,11 @@
 package com.project.proto;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -8,10 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.project.proto.chat.EchoHandler;
 import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
 import com.project.proto.dao.notice_Dao;
+import com.project.proto.dto.Dto;
+import com.project.proto.dto.notice_Dto;
+
 
 @Controller
 public class MainController {
@@ -20,7 +30,11 @@ public class MainController {
 	
 	@Autowired
 	Dao dao;
+	@Autowired
 	notice_Dao ndao;
+	
+	@Autowired
+	EchoHandler echoHandler;
 	
 	//main로그인 성공시, homepage이동
 	
@@ -28,16 +42,50 @@ public class MainController {
 	public String main(Model mv,HttpSession session,HttpServletResponse response) {
 		System.out.println("main페이지()실행");
 		mv.addAttribute("chatList", dao.chatList());
-		return "main";
+		List<Dto> list = new ArrayList<Dto>();
+		for(int i = 0; i<echoHandler.getList().size(); i ++) {
+			Dto dto = new Dto();
+			dto.setName((String)echoHandler.getList().get(i).getAttributes().get("name"));
+			dto.setEmployeeNumber(Integer.parseInt((String)echoHandler.getList().get(i).getAttributes().get("employeeNumber")));
+			list.add(dto);				
+		}
+		
+		mv.addAttribute("chatListLive",list);
+		System.out.println(echoHandler.getList().size()!=0?echoHandler.getList().get(0).getAttributes().get("echoHandler"):null);
+		return "main/Type_B";
 	}
 	
 	@RequestMapping("/news")
-	public String news(Model mv,HttpSession session,HttpServletResponse response) {
-		System.out.println("news페이지()실행");
-		mv.addAttribute("newsList", ndao.list());
+	public String news(Model mv,HttpSession session,HttpServletResponse response){
+		System.out.println("news페이지()실행");	
+		mv.addAttribute("noticeList", ndao.list());
 		return "news";
+	}
+	@RequestMapping("/newsData")
+	public void newsData(@RequestParam(value="num") int currentPageNum, Model mv,HttpSession session,HttpServletResponse response) throws IOException {
+		System.out.println("news페이지()실행");
+		
+		List<notice_Dto> list = ndao.list(currentPageNum);
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+
+//		5; 5!=10 5++
+		for (int i= 0; i<5 ; i++) {
+		out.println("<li><a href='" + list.get(i).getLink() + "' target='_blank'>"
+				+ list.get(i).getTitle()
+				+ "</a><br><i>"
+				+ list.get(i).getAuthor()
+				+ "</i><a href='" + list.get(i).getLink() + "' class='apply'  target='_blank'>APPLY</a><div>"
+				+ list.get(i).getContent()
+				+ "</div></li>"+list.get(i).getNum());
+
+		}
+
+		out.flush();
+		out.close();
 
 	}
+	
 	@RequestMapping("/team")
 	public String team(Model mv,HttpSession session,HttpServletResponse response) {
 		System.out.println("team페이지()실행");
@@ -71,12 +119,20 @@ public class MainController {
 		session.invalidate();
 	}
 	
-	
-	
-	@RequestMapping("/newstest")
-	public String newstest(Model mv,HttpSession session,HttpServletResponse response) {
-		System.out.println("main페이지()실행");
-		return "newstest";
+	@RequestMapping("/typeA")
+	public String TypeA(Model model) {
+		System.out.println("TypeA()실행");
+		return "main/Type_A";
+
 	}
+	
+	@RequestMapping("/typeB")
+	public String TypeB(Model model) {
+		System.out.println("TypeB()실행");
+		return "main/Type_B";
+
+	}
+	
+	
 	
 }

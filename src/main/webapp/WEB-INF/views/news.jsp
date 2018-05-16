@@ -1,57 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page
+	language="java"
+	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib
+	uri="http://java.sun.com/jsp/jstl/core"
+	prefix="c"%>
+<%@ taglib
+	uri="http://java.sun.com/jsp/jstl/functions"
+	prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta
+	http-equiv="Content-Type"
+	content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$(".dark").click(function() { // dark 클래스 클릭하면
-			$("#feed").addClass('dark'); // #dark css적용
-		});
-		$(".light").click(function() {
-			$("#feed").removeClass('dark');
-		});
-		$("#more").click(function() { // dark 클래스 클릭하면
-			$("#feed").addClass('dark'); // #dark css적용
-		});
-		var url = 'https://codepen.io/jobs/feed/';
 
-		$
-				.ajax({
-					type : "GET",
-					url : document.location.protocol
-							+ '//api.rss2json.com/v1/api.json?rss_url='
-							+ encodeURIComponent(url),
-					dataType : 'text',
-					error : function() {
-						$("#feed")
-								.after(
-										"<center>Unable to load feed, Incorrect path or invalid feed</center>");
-					},
-					success : function(result) {
-						values = result.items;
-
-						for (var i = 0, j = 6; i < j; i++) {
-							// console.log(values[i]);
-
-							$("#feed")
-									.append(
-											"<li><a href='" + values[i].link + "' target='_blank'>"
-													+ values[i].title
-													+ "</a><br><i>"
-													+ values[i].author
-													+ "</i><a href='" + values[i].link + "' class='apply'  target='_blank'>APPLY</a><div>"
-													+ values[i].content
-													+ "</div></li>");
-						}
-					}
-				});
-	});
-</script>
 <style type="text/css">
 body {
 	background: #aaa
@@ -207,24 +173,44 @@ li>div {
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row" style="margin-bottom: 3%;">
-			<jsp:include page="main_header.jsp"></jsp:include>
+		<div
+			class="row"
+			style="margin-bottom: 3%;">
 
 			<div class="col-md-9">
 				<h1>News Board</h1>
 				<div class="opt">
-					<a href="https://codepen.io/jobs/post/" target="_blank"
-						class="post">Post a Job</a> Change theme: <a href="#" class="dark">Dark</a>
-					&mdash; <a href="#" class="light">Light</a>
+					<a
+						href="https://codepen.io/jobs/post/"
+						target="_blank"
+						class="post">Post a Job</a> Change theme: <a
+						href="#"
+						class="dark">Dark</a> &mdash; <a
+						href="#"
+						class="light">Light</a>
 				</div>
-				<ul id="feed"></ul>	<!-- 게시글리스트 위치 -->
-				${newsList. }
+				<ul id="feed">
+					<c:forEach items="${noticeList }" var="list" begin="0" end="4">
+					<li><a href='${list.link }' target='_blank'>${list.title }</a><br>
+					<i>${list.author }</i>
+					<a href='${list.link }' class='apply'  target='_blank'>APPLY</a>
+					<div>${list.content }</div></li>
+						<c:out value="${list.num }"></c:out>
+						<c:set var="num" value="${list.num-1 }" />
+					</c:forEach>
+					<c:out value="${num }"></c:out>
+				</ul>
+				<!-- 게시글리스트 위치 -->
 				<div
 					style="font-size: 12px; text-align: center; color: #666; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 100vw; opacity: 0.9; padding: 5px 0;">
 
 
-					Click on this<a id="more" href="https://twitter.com/nodws" target="_b"
-						style="color: #999"><span style="font-size: 14px;"> + More...</span></a>for more posts
+					Click on this<a
+						id="more"
+						href="#"
+						target="_b"
+						style="color: #999"><span style="font-size: 14px;"> +
+							More...</span></a>for more posts
 				</div>
 			</div>
 		</div>
@@ -232,5 +218,47 @@ li>div {
 		<div class="row"></div>
 
 	</div>
+	<script type="text/javascript">
+	$(function() {
+		var currentPageNum = ${num };
+		var data = {"num": currentPageNum};
+			
+		$(".dark").click(function() { // dark 클래스 클릭하면
+			$("#feed").addClass('dark'); // #dark css적용
+		});
+		$(".light").click(function() {
+			$("#feed").removeClass('dark');
+		});
+		$("#more").click(function() { // dark 클래스 클릭하면
+							$.ajax({
+										type : "GET",
+										url : "/proto/newsData",
+										data : data,
+										dataType : 'text',
+										error : function() {
+											$("#feed").after("<center>Unable to load feed, Incorrect path or invalid feed</center>");
+										},
+										success : function(result) {
+											// console.log(values[i]);
+											$("#feed").append(result);
+										}
+									});
+						});
+
+// 		$.ajax({
+// 					type : "GET",
+// 					url : "/proto/newsData?num=currentPageNum",
+// 					data : data,
+// 					dataType : 'text',
+// 					error : function() {
+// 						$("#feed").after("<center>Unable to load feed, Incorrect path or invalid feed</center>");
+// 					},
+// 					success : function(result) {
+// 						// console.log(values[i]);
+// 						$("#feed").append(result);
+// 					}
+// 				});
+	});
+</script>
 </body>
 </html>
