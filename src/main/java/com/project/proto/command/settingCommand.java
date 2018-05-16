@@ -22,11 +22,10 @@ public class settingCommand implements Command {
 		HttpSession session =(HttpSession) map.get("session");
 		
 	
-		int employeeNumber = (int) session.getAttribute("employeeNumber");
-		System.out.println(employeeNumber+"1");
-
-			
-		List<Dto> setting = dao.setting(employeeNumber);
+		String employeeNumber = ""+session.getAttribute("employeeNumber");
+	
+		System.out.println(employeeNumber);
+		Dto setting = dao.setting(employeeNumber);
 		model.addAttribute("setting",setting);
 	}
 

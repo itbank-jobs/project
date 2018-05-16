@@ -25,7 +25,11 @@ public class Dao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-		
+	
+	public List<Dao> selectMember() {
+		return sqlSession.selectList("selectList");
+	}
+	
 //emailCheck
 	public int emailList(String email){ //boolean으로 반환하는거 물어보기
 		return sqlSession.selectList("emailList",email).size();
@@ -62,9 +66,14 @@ public class Dao {
 		
 	}
 	
-//사원 정보 수정
-	public List<Dto> setting(int dto) {
-		return sqlSession.selectList("info",dto);
-	}
+	//사원 정보 가져오기
+		public Dto setting(String dto) {
+			return sqlSession.selectOne("info",dto);
+		}
+	//사원 정보 수정하기
+		public void info(Dto dto) {
+			sqlSession.update("info_modify",dto);
+			
+		}
 	
 }
