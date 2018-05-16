@@ -201,7 +201,7 @@ form:hover {
 			<div class="container" style="color: #ffffff;">
 
 				<div class="row"
-					style="margin-left: 300px; margin-right: 300px; background-color: #000000ad">
+					style="margin-left: 300px; margin-right: 300px; margin-top: 7%; background-color: #000000ad ">
 					<p class="form-title" id="signUp" style="margin-top: 25px; margin-bottom: 17px">사원
 						정보</p>
 						

@@ -96,11 +96,6 @@
 	SELECT COUNT(*) FROM BOARD WHERE TEAMNUM = #{PARAM1}
 	</select>
 	
-	
-	
-	
-
-
 
 </mapper>
 
