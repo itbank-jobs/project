@@ -74,7 +74,10 @@
 	UPDATE BOARD SET READCOUNT = READCOUNT+1 WHERE NUM = #{PARAM1}
 	</select>
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 	<insert id = "insertReply"  parameterType="com.project.proto.dto.reply_Dto" >
 	INSERT INTO REPLY(RNUM, BNUM, REPLYTEXT, EMPLOYEENUMBER) VALUES(reply_seq.nextval, #{bnum}, #{replytext}, #{employeeNumber})
 	</insert>
