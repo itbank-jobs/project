@@ -26,11 +26,11 @@ public class ReplyController {
 	reply_Dao dao;
 	
 	@RequestMapping("/insertReply")
-	public void insertReply(Model model, HttpServletRequest req, HttpServletResponse rep, HttpSession session) {
+	public void insertReply(Model model, HttpServletRequest req, HttpServletResponse res, HttpSession session) {
 		System.out.println("insertReply()실행");
 		
 		model.addAttribute("req", req);
-		model.addAttribute("rep", rep);
+		model.addAttribute("res", res);
 		model.addAttribute("session", session);
 			
 		comm = new InsertReplyCommand();

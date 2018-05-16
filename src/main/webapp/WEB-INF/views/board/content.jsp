@@ -38,7 +38,7 @@
 		</tr>
 		
 		<td colspan="2"><input type = "submit" class = "btn" value = "수정">
-		<button type = "button"><a href = "list">목록</a></button>
+		<button type = "button"><a href = "list?teamNum=${content.teamNum}">목록</a></button>
 		<button type = "button"><a href = "delete?num=${content.num }">삭제</a></button>
 		<br>
 		
@@ -49,7 +49,7 @@
 		</div>
 		
 		
-		<table>
+		<table id ="t">
 		<c:forEach var = "replylist" items = "${reply}">
 		<td><hr></td>
 		<tr>
@@ -64,10 +64,13 @@
 		<td>등록일</td>
 		<td>${replylist.regdate}</td>
 		</tr>
+		
+		<c:if test="${employeeNumber == replylist.employeeNumber}">
 		<tr>
-		<td><button type = "button" id = "deleteReply">삭제</button></td>
-		</td>
+		<td><button type = "button" class = "deleteReply" id = "${replylist.rnum}">삭제</button></td>
 		</tr>
+		</c:if>
+		
 		</c:forEach>
 		</table>
 		
