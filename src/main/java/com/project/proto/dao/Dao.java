@@ -21,12 +21,12 @@ public class Dao {
 	private SqlSession sqlSession;
 	
 		
-//emailCheck
+/*//emailCheck
 	public int emailList(String email){ //boolean으로 반환하는거 물어보기
 		return sqlSession.selectList("emailList",email).size();
 		//일치하는 값이 없으면 0반환?
 		
-	}
+	}*/
 
 	public List<Dto> loginCheck(Dto dto) {
 		// TODO Auto-generated method stub
