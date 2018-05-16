@@ -1,6 +1,7 @@
 package com.project.proto;
 
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,9 +115,10 @@ public class MainController {
 	
 	
 	@RequestMapping("/info_modify")
-	public void info_modify(Model model, HttpServletRequest req) {
+	public void info_modify(Model model, HttpServletRequest req) throws UnsupportedEncodingException {
 		System.out.println("info_modify()실행");
 		
+		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("req", req);
 		
 		comm = new infoCommand();

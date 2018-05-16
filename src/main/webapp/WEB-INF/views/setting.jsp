@@ -209,7 +209,7 @@ form:hover {
 
 						<input autocomplete="off" type="text" maxlength="8"
 							placeholder="EmployeeNumber" onkeydown="encodingNum()"
-							onblur="encodingNum()" id="employeeNumber" value="${setting.employeeNumber}" readonly="readonly">
+							onblur="encodingNum()" id="employeeNumber" name="employeeNumber" value="${setting.employeeNumber}" readonly="readonly">
 							
 							
 							 <input

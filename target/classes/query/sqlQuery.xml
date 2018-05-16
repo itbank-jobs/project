@@ -9,11 +9,11 @@
 	</select>
 	
 	<select id="info" resultType="com.project.proto.dto.Dto" parameterType="String">
-	UPDATE MEMBER SET NAME = #{NAME}, EMAIL = #{EMAIL}, PASSWORD = #{PASSWORD} WHERE EMPLOYEENUMBER = #{EMPLOYEENUMBER}
+	SELECT * FROM MEMBER WHERE EMPLOYEENUMBER = #{PARAM1}
 	</select>
 	
 	<select id="info_modify" resultType="com.project.proto.dto.Dto" parameterType="com.project.proto.dto.Dto">
-	update * FROM MEMBER WHERE EMPLOYEENUMBER = #{PARAM1}
+	UPDATE MEMBER SET NAME = #{name}, EMAIL = #{email}, PASSWORD = #{password} WHERE EMPLOYEENUMBER = #{employeeNumber}
 	</select>
 	
 	<!-- <select id = "emailList" parameterType="String" resultType="com.project.proto.dto.Dto"> -->

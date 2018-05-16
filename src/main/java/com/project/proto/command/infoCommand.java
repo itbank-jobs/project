@@ -1,9 +1,10 @@
 package com.project.proto.command;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.ui.Model;
 
@@ -20,7 +21,7 @@ public class infoCommand implements Command {
 		Map<String, Object> map = model.asMap();
 		
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
-		
+		HttpServletResponse res = (HttpServletResponse) map.get("res");
 		int employeeNumber = Integer.parseInt(req.getParameter("employeeNumber"));
 		String name = req.getParameter("name");
 		String password = req.getParameter("password");
@@ -37,6 +38,12 @@ public class infoCommand implements Command {
 		
 		dao.info(dto);
 		
+		try {
+			res.sendRedirect("typeB");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
