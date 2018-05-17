@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
+<% request.setCharacterEncoding("UTF-8"); %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link
@@ -19,8 +20,6 @@
 <link rel="stylesheet" href="resources/css/main.css">
 
 
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>팀 게시판</title>
 
 <style type="text/css">
@@ -97,9 +96,9 @@ body {
 	});
 
 	function writeSave() {
-		if (document.write_view.title.value == "") {
+		if (document.write_view.subject.value == "") {
 
-			document.write_view.title.focus();
+			document.write_view.subject.focus();
 			return false;
 		}
 		if (document.write_view.content.value == "") {
@@ -107,13 +106,8 @@ body {
 			document.write_view.content.focus();
 			return false;
 		}
-		if (document.write_view.passwd.value == "") {
-
-			document.write_view.passwd.focus();
-			return false;
-		}
-
-	}
+	};
+		
 </script>
 
 
@@ -122,8 +116,7 @@ body {
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
-		<nav
-			class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
+		<nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
 			<!-- top nav -->
 			<nav class="navbar navbar-top hidden-xs">
 				<div class="container">
@@ -197,8 +190,7 @@ body {
 				<br>
 				<div class="row">
 					<div class="col-lg-12">
-						<form action="write" method="post" name="write_view"
-							enctype="multipart/form-data" onsubmit="return writeSave()">
+						<form action="write" method="post" name="write_view" onsubmit="return writeSave()">
 							<input type="hidden" name="teamNum" value="${teamNum}">
 							<table class="table" id="table" style="color: #ffffffc8">
 								<tbody>
@@ -211,7 +203,7 @@ body {
 									</tr>
 									<tr>
 										<th class="text-center">제목</th>
-										<td><input type="text" class="form-control" name="subject"
+										<td><input type="text" class="form-control" name="subject" 
 											size="50"></td>
 									</tr>
 									<tr>
@@ -233,8 +225,6 @@ body {
 												class="btn btn-info pull-left"
 												style="background-color: transparent;" /></a>
 									</tr>
-
-
 
 								</tbody>
 							</table>
