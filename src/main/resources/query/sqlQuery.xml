@@ -36,7 +36,6 @@
 
 	<select id ="List" resultType = "com.project.proto.dto.board_Dto" parameterType="map">
 	SELECT * FROM (SELECT ROWNUM RNUM, NUM, EMPLOYEENUMBER, SUBJECT,PASS, CONTENT, REGDATE, READCOUNT FROM (SELECT * FROM BOARD WHERE TEAMNUM = #{teamNum} ORDER BY NUM DESC)) <![CDATA[ WHERE RNUM >=#{start} AND RNUM <= #{end}]]>
-
 	</select>
 	
 	<select id ="content" parameterType="int" resultType = "com.project.proto.dto.board_Dto">
@@ -73,7 +72,7 @@
 	<select id = "readcount" parameterType="String" resultType = "int">
 	UPDATE BOARD SET READCOUNT = READCOUNT+1 WHERE NUM = #{PARAM1}
 	</select>
-	
+
 	<insert id = "insertReply"  parameterType="com.project.proto.dto.reply_Dto" >
 	INSERT INTO REPLY(RNUM, BNUM, REPLYTEXT, EMPLOYEENUMBER) VALUES(reply_seq.nextval, #{bnum}, #{replytext}, #{employeeNumber})
 	</insert>
@@ -95,6 +94,5 @@
 	SELECT COUNT(*) FROM BOARD WHERE TEAMNUM = #{PARAM1}
 	</select>
 	
-
 </mapper>
 

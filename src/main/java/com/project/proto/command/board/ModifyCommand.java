@@ -21,15 +21,26 @@ public class ModifyCommand implements Command{
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
 		
+		System.out.println("subject : "+req.getParameter("subject"));
+		System.out.println(	"content : "+req.getParameter("content"));
+		System.out.println("num : "+req.getParameter("num"));
+		System.out.println("teamNum : " + req.getParameter("teamNum"));
+		String teamNum = req.getParameter("teamNum");
 		board_Dto dto = new board_Dto();
 		dto.setSubject(req.getParameter("subject"));
 		dto.setContent(req.getParameter("content"));
 		dto.setNum(Integer.parseInt(req.getParameter("num")));
 		
+		
+		
+		
+		
+	
+		
 		dao.modify(dto);
 		
 		try {
-			res.sendRedirect("list");
+			res.sendRedirect("list?teamNum="+teamNum);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
