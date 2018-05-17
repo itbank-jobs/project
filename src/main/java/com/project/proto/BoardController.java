@@ -72,7 +72,7 @@ public class BoardController {
 		return "/board/content";
 	}
 	
-	//글 내용에서 수정하러 가기
+/*	//글 내용에서 수정하러 가기
 	@RequestMapping("/modify")
 	public String modify(HttpServletRequest req, Model model) {
 		System.out.println("modify()실행");
@@ -84,7 +84,7 @@ public class BoardController {
 		
 		return "board/modify";
 
-	}
+	}*/
 	//수정완료
 	@RequestMapping("/modify_complete")
 	public void modify_complete(HttpServletRequest req, HttpServletResponse res, Model model) throws UnsupportedEncodingException {

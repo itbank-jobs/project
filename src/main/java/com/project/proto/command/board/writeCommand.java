@@ -25,10 +25,15 @@ public class writeCommand implements Command {
 		HttpSession session = (HttpSession) map.get("session");
 		
 		int employeeNumber = (int) session.getAttribute("employeeNumber");
+		res.setCharacterEncoding("UTF-8");
 		String subject = req.getParameter("subject");
 		String content = req.getParameter("content");
 		int teamNum = Integer.parseInt(req.getParameter("teamNum"));
 		String pass = req.getParameter("pass");
+		
+
+		System.out.println(subject);
+		System.out.println(content);
 
 	
 		dto.setSubject(subject);

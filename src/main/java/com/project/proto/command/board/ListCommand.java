@@ -27,7 +27,7 @@ public class ListCommand implements Command {
 		
 		String teamNum = req.getParameter("teamNum");	
 		String pageNum = req.getParameter("num");
-		System.out.println(teamNum);
+		System.out.println("teamNum : "+teamNum);
 		
 		
 		if (pageNum == null) {

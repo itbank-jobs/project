@@ -23,7 +23,7 @@ body {
 	background: #aaa
 		url(https://images.unsplash.com/photo-1456428199391-a3b1cb5e93ab?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1425)
 		center no-repeat;
-	background-size: container;
+	background-size: cover;
 	background-attachment: fixed;
 }
 
@@ -71,12 +71,13 @@ body>h1 {
 }
 
 #feed>li {
+	
 	position: relative;
 	padding: 20px 20px 0px 20px;
 	color: #aaa;
 	list-style: none;
 	background: rgba(255, 255, 255, 0.9);
-	margin: 30px 2%;
+	margin: 30px 15%;
 	box-shadow: 5px 5px 6px 0 rgba(0, 0, 0, 0.2);
 	border-radius: 3px;
 	transition: all 0.2s;
@@ -181,7 +182,7 @@ li>div {
 				<h1>News Board</h1>
 				<div class="opt">
 					<a
-						href="https://codepen.io/jobs/post/"
+						href="http://www.saramin.co.kr/zf_user/jobs/list/job-category?cat_key=40427&panel_type=&search_optional_item=n"
 						target="_blank"
 						class="post">Post a Job</a> Change theme: <a
 						href="#"
@@ -198,11 +199,11 @@ li>div {
 						<c:out value="${list.num }"></c:out>
 						<c:set var="num" value="${list.num-1 }" />
 					</c:forEach>
-					<c:out value="${num }"></c:out>
 				</ul>
 				<!-- 게시글리스트 위치 -->
+				<center>
 				<div
-					style="font-size: 12px; text-align: center; color: #666; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 100vw; opacity: 0.9; padding: 5px 0;">
+					style="font-size: 12px; text-align: center; color: #666; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 30vw; opacity: 0.9; padding: 5px 0;">
 
 
 					Click on this<a
@@ -212,6 +213,7 @@ li>div {
 						style="color: #999"><span style="font-size: 14px;"> +
 							More...</span></a>for more posts
 				</div>
+				</center>
 			</div>
 		</div>
 
