@@ -1,10 +1,12 @@
 package com.project.proto.dao;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.project.proto.dto.board_Dto;
+import com.project.proto.dto.reply_Dto;
 
 
 @Repository
@@ -16,9 +18,19 @@ public class board_Dao {
 	
 	//글 목록 불러오기
 
-	public List<board_Dto> list() {
-		return sqlSession.selectList("List");
+	public List<board_Dto> list(int startRow, int endRow, String teamNum) {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+
+		map.put("start", startRow);
+		map.put("end", endRow);
+		map.put("teamNum", teamNum);
+		
+		return sqlSession.selectList("List",map);
 	}
+	
+	
+	
 	
 	//글 내용 불러오기
 	public List<board_Dto> content(int num) {
@@ -43,7 +55,25 @@ public class board_Dao {
 	public void readcount(String num) {
 		sqlSession.update("readcount", num);
 	}
+
+	public int count(String teamNum) {
+		// TODO Auto-generated method stub
+		int count = 0;
+
+		try {
+			count = sqlSession.selectOne("countteamNum", teamNum);
+			return count;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return count;
+		}
 	
+	}
+	
+	public List<reply_Dto> contentReply(String num) {
+		return sqlSession.selectList("contentReply", num);
+	}
 	
 	
 }

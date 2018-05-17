@@ -37,7 +37,8 @@ public class loginCheck implements Command {
 		
 			dto.setEmployeeNumber(Integer.parseInt(employeeNumber));
 			dto.setPassword(password);
-	
+			System.out.println("employeeNumber1 : "+ employeeNumber );
+			System.out.println("password1 : "+ password);
 			list = dao.loginCheck(dto);
 			chk = list.size();
 	

@@ -67,7 +67,7 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping("/emailCheck")
+/*	@RequestMapping("/emailCheck")
 	public void emailCheck(HttpServletRequest req, HttpServletResponse res) {
 		System.out.println("emailCheck()실행");
 		
@@ -88,7 +88,7 @@ public class LoginController {
 			
 		}
 		
-	}
+	}*/
 	
 	//회원정보 입력값 받고 이동.
 	@RequestMapping("/registerProc")

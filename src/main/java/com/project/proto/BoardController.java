@@ -28,11 +28,11 @@ public class BoardController {
 	board_Dao dao;
 	
 	@RequestMapping("/list")
-	public String list(Model model, HttpSession session) {
+	public String list(Model model, HttpServletRequest req, HttpSession session) {
 		System.out.println("list()실행");
 		
 		model.addAttribute("session", session);
-		
+		model.addAttribute("req",req);
 		comm = new ListCommand();
 		comm.execute(model, dao);
 		return "board/team";
@@ -49,6 +49,8 @@ public class BoardController {
 	@RequestMapping("/write")
 	public void write(Model model, HttpSession session, HttpServletRequest req, HttpServletResponse res) throws UnsupportedEncodingException {
 		System.out.println("write()실행");
+		
+		System.out.println("teamnum: "+req.getParameter("teamNum"));
 		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
@@ -113,10 +115,35 @@ public class BoardController {
 
 	
 	@RequestMapping("/write_jy")
-	public String write_jy(Model model, HttpSession session) {
+	public String write_jy(Model model,HttpServletRequest req, HttpSession session) {
 		System.out.println("write_jy()실행");
-		
+		model.addAttribute("teamNum",req.getParameter("teamNum"));
 		return "board/write_jy";
+	}
+	
+	@RequestMapping("/content_jy")
+	public String content_jy(Model model, HttpServletRequest req, HttpSession session) {
+		System.out.println("content_jy()실행");
+		
+		model.addAttribute("req",req);
+
+		comm = new ContentCommand();
+		comm.execute(model, dao);
+		
+		return "board/content_jy";
+	}
+	
+	@RequestMapping("/modify_jy")
+	public String modify_jy(HttpServletRequest req, Model model) {
+		System.out.println("modify_jy()실행");
+		
+		model.addAttribute("req", req);
+		
+		comm = new ContentCommand();
+		comm.execute(model, dao);
+		
+		return "board/modify_jy";
+
 	}
 	
 }

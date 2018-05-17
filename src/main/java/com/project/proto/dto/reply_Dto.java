@@ -3,12 +3,12 @@ package com.project.proto.dto;
 import java.security.Timestamp;
 
 public class reply_Dto {
-	private int rno;
-	private int bno;
+	private int rnum;
+	private int bnum;
 	private String replytext;
-	private String replyer; //사원번호
+	private int employeeNumber; //사원번호
 	private String name; //작성자 이름이자 member 이름
-	private Timestamp regdate;
+	private String regdate;
 	private Timestamp updatedate;
 	private String secret_reply;
 	private String writer;
@@ -31,17 +31,18 @@ public class reply_Dto {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public int getRno() {
-		return rno;
+
+	public int getRnum() {
+		return rnum;
 	}
-	public void setRno(int rno) {
-		this.rno = rno;
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
 	}
-	public int getBno() {
-		return bno;
+	public int getBnum() {
+		return bnum;
 	}
-	public void setBno(int bno) {
-		this.bno = bno;
+	public void setBnum(int bnum) {
+		this.bnum = bnum;
 	}
 	public String getReplytext() {
 		return replytext;
@@ -49,16 +50,18 @@ public class reply_Dto {
 	public void setReplytext(String replytext) {
 		this.replytext = replytext;
 	}
-	public String getReplyer() {
-		return replyer;
+
+
+	public int getEmployeeNumber() {
+		return employeeNumber;
 	}
-	public void setReplyer(String replyer) {
-		this.replyer = replyer;
+	public void setEmployeeNumber(int employeeNumber) {
+		this.employeeNumber = employeeNumber;
 	}
-	public Timestamp getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
-	public void setRegdate(Timestamp regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 	public Timestamp getUpdatedate() {
