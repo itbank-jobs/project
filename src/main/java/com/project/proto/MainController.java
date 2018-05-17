@@ -37,13 +37,16 @@ public class MainController {
 		System.out.println("main페이지()실행");
 		mv.addAttribute("chatList", dao.chatList());
 		List<Dto> list = new ArrayList<Dto>();
+		List<String> liveList = new ArrayList<String>();
 		for(int i = 0; i<echoHandler.getList().size(); i ++) {
 			Dto dto = new Dto();
 			dto.setName((String)echoHandler.getList().get(i).getAttributes().get("name"));
 			dto.setEmployeeNumber(Integer.parseInt((String)echoHandler.getList().get(i).getAttributes().get("employeeNumber")));
+			liveList.add((String)echoHandler.getList().get(i).getAttributes().get("employeeNumber"));
 			list.add(dto);				
 		}
 		mv.addAttribute("chatListLive",list);
+		mv.addAttribute("liveList",liveList);
 		System.out.println(echoHandler.getList().size()!=0?echoHandler.getList().get(0).getAttributes().get("echoHandler"):null);
 		return "main/Type_B";
 	}

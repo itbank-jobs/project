@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -129,8 +129,7 @@ body {
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
-		<nav
-			class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
+		<nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
 		<!-- top nav --> <nav class="navbar navbar-top hidden-xs">
 		<div class="container">
 			<!-- left nav top -->
@@ -200,11 +199,12 @@ body {
 			<br> 
 			<div class="row">
 				<div class="col-lg-12">
-					<table class="table" id="table">
-						<tbody>
-							<form action="write" method="post" name="write_view"
+					<form action="write" method="post" name="write_view"
 								enctype="multipart/form-data" onsubmit="return writeSave()">
 								<input type="hidden" name="lectureName" value="${teamNum}">
+					<table class="table" id="table">
+						<tbody>
+						
 							<tr>
 								<th class="text-center">사원번호</th>
 								<td><input type="text" name="employeeNumber"
@@ -245,12 +245,13 @@ body {
 
 						</tbody>
 					</table>
+					</form>
 				</div>
 			</div>
 		</div>
-	</div>
-
 	</nav>
+	</div>
+	
 
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
