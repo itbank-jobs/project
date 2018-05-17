@@ -21,6 +21,8 @@
 <link media="all" type="text/css" rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
+<script src="resources/js/reply.js"></script>
+
 <link rel="stylesheet" href="resources/css/main.css">
 
 
@@ -32,7 +34,6 @@
 ::-webkit-scrollbar {
 	display: none;
 }
-
 
 .row-padding {
 	margin-top: 25px;
@@ -113,29 +114,14 @@ body {
 		})
 	});
 
-	function writeSave() {
-		if (document.write_view.title.value == "") {
 
-			document.write_view.title.focus();
-			return false;
-		}
-		if (document.write_view.content.value == "") {
-
-			document.write_view.content.focus();
-			return false;
-		}
-		if (document.write_view.passwd.value == "") {
-
-			document.write_view.passwd.focus();
-			return false;
-		}
-
-	}
+		
+	
 </script>
 
 
 </head>
-<body>
+<body style="overflow: auto;">
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
@@ -200,7 +186,7 @@ body {
 
 
 		<div class="container"
-			style="color: #ffffff; background-color: #000000ad;">
+			style="color: #ffffff; background-color: #000000ad; overflow: auto; height: 710px;">
 
 			<div class="row" style="padding-bottom: 12px">
 				<div class="col-lg-12" style="text-align: center;">
@@ -211,8 +197,8 @@ body {
 			<div class="row">
 				<div class="col-lg-12">
 					<form action="modify_jy" method="post">
-						<input type="hidden" name="num" value="${content.num}"> <input
-							type="hidden" name="lectureName" value="${teamNum}">
+						<input type="hidden" name="num" id="num" value="${content.num}">
+						<input type="hidden" name="teamNum" value="${teamNum}">
 						<table class="table" id="table">
 							<tbody>
 								<tr>
@@ -234,7 +220,8 @@ body {
 											style="background-color: #ffffff33;">${content.content}</textarea></td>
 								</tr>
 								<tr>
-									<td colspan="2" style="text-align: center"><c:if
+									<td colspan="2"
+										style="text-align: center; margin-bottom: -13px;"><c:if
 											test="${employeeNumber == content.employeeNumber}">
 											<div class="container-1">
 												<input type="submit" value="&nbsp&nbsp&nbsp수 정 &nbsp&nbsp"
@@ -244,8 +231,8 @@ body {
 										</c:if> <a href="list?teamNum=${content.teamNum}"> <input
 											type="button" value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
 											class="btn btn-info pull-left"
-											style="background-color: transparent;" /></a> 
-											<c:if test="${employeeNumber == content.employeeNumber}">
+											style="background-color: transparent;" /></a> <c:if
+											test="${employeeNumber == content.employeeNumber}">
 
 											<input type="button" id="delete"
 												value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
@@ -271,6 +258,61 @@ body {
 					</form>
 				</div>
 			</div>
+
+			<div class="row">
+				<div class="col-lg-12" style="margin-bottom: -12px">
+					<table class="table">
+						<tbody>
+							<tr>
+								<th><textarea rows="3" cols="100" placeholder="댓글을 입력하세요"
+										id=replytext name="replytext" class="form-control"
+										style="background-color: #ffffff33; margin-top: 9px"></textarea></th>
+								<th><input type="button" value="댓글달기" class="btn btn-danger"
+									id="registerReply"
+									style="background-color: transparent; margin-right: -18px; margin-top: 10px; border-radius: 10px; padding: 25px 50px">
+								</th>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				<table id="Y">
+					<c:forEach var="replylist" items="${reply}">
+						<td colspan="2"><hr></td>
+						<tr style="padding: 5px;">
+							<td style="padding: 3px; padding-left: 40px;" width="90%">
+								${replylist.name } <font size="1px">${replylist.regdate}</font>
+							</td>
+
+							<td rowspan="2" width="10%">
+							<c:if test="${employeeNumber == replylist.employeeNumber}">
+									
+									<button type="button" class="deleteReply btn btn-warning" style="background-color: transparent;"
+												id="${replylist.rnum}">삭제</button>
+				
+								</c:if>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding-left: 40px; width: 970px">내용 :
+								${replylist.replytext}</td>
+						</tr>
+						<td colspan="2"><hr></td>
+
+
+					</c:forEach>
+				</table>
+
+
+
+
+
+
+			</div>
+
+
+
+
 		</div>
 	</div>
 
