@@ -100,7 +100,7 @@ body {
 			}
 		})
 	});
-	
+
 	$(document).ready(function() {
 		$("#delete").click(function() {
 			setTimeout('$("#del_ck").show(700)');
@@ -201,25 +201,27 @@ body {
 		<div class="container"
 			style="color: #ffffff; background-color: #000000ad;">
 
-			<div class="row"  style="padding-bottom: 12px">
-			<div class="col-lg-1">
-			<h3 style="margin-top: 28px">
-			&nbsp제목:
-			</h3>
-			</div>
-				<div class="col-lg-5">
-					<h3 style="margin-top: 20px">
-						 <input type="text" name="subject" class="form-control"
-							value="${content.subject}" style="background-color: #ffffff33;">
-					</h3>
-				</div>
-			</div>
-	
-			<div class="row">
-				<div class="col-lg-12">
-					<form action="modify_complete" method="post">
+			<div class="row" style="padding-bottom: 12px">
+				<form action="modify_complete" method="post">
+					<div class="col-lg-1">
+						<h3 style="margin-top: 28px">&nbsp제목:</h3>
+
+					</div>
+
+					<div class="col-lg-5">
+						<h3 style="margin-top: 20px">
+
+							<input type="text" name="subject" class="form-control"
+								value="${content.subject}" style="background-color: #ffffff33;">
+						</h3>
+					</div>
+
+
+
+					<div class="col-lg-12">
+
 						<input type="hidden" name="num" value="${content.num}"> <input
-							type="hidden" name="lectureName" value="${teamNum}">
+							type="hidden" name="teamNum" value="${content.teamNum}">
 						<table class="table" id="table">
 							<tbody>
 								<tr>
@@ -247,15 +249,15 @@ body {
 													class="btn btn-1 pull-right"
 													style="background-color: transparent;" />
 											</div>
-										</c:if> <a href="javascript:history.back();"> <input type="button"
-											value="&nbsp&nbsp&nbsp취 소 &nbsp&nbsp"
+										</c:if> <a href="javascript:history.back();"> <input
+											type="button" value="&nbsp&nbsp&nbsp취 소 &nbsp&nbsp"
 											class="btn btn-info pull-left"
 											style="background-color: transparent;" /></a> <c:if
 											test="${employeeNumber == content.employeeNumber}">
-												<input type="button" value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
+											<input type="button" value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
 												class="btn btn-info pull-left"
 												style="background-color: transparent;" />
-										
+
 										</c:if>
 
 										<div class="col-lg-6" id="del_ck"
@@ -270,15 +272,15 @@ body {
 												style="background-color: transparent;" />
 
 										</div>
-										
 								</tr>
 							</tbody>
 						</table>
-					</form>
-				</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
+		
 
 	</nav>
 
