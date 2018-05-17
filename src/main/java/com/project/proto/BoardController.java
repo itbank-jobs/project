@@ -115,8 +115,9 @@ public class BoardController {
 
 	
 	@RequestMapping("/write_jy")
-	public String write_jy(Model model,HttpServletRequest req, HttpSession session) {
+	public String write_jy(Model model,HttpServletRequest req, HttpSession session) throws UnsupportedEncodingException {
 		System.out.println("write_jy()실행");
+		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("teamNum",req.getParameter("teamNum"));
 		return "board/write_jy";
 	}
