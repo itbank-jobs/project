@@ -190,7 +190,7 @@ body {
 				<br>
 				<div class="row">
 					<div class="col-lg-12">
-						<form action="write" method="post" name="write_view" onsubmit="return writeSave()">
+						<form action="write" method="post" name="write_view" onsubmit="return writeSave()" >
 							<input type="hidden" name="teamNum" value="${teamNum}">
 							<table class="table" id="table" style="color: #ffffffc8">
 								<tbody>

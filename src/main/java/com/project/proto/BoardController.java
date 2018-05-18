@@ -50,6 +50,7 @@ public class BoardController {
 	public void write(Model model, HttpSession session, HttpServletRequest req, HttpServletResponse res) throws UnsupportedEncodingException {
 		System.out.println("write()실행");
 	
+		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
 		model.addAttribute("session", session);
