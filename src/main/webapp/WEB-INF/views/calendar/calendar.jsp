@@ -2,11 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link
@@ -15,7 +13,7 @@
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <link media="all" type="text/css" rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/main.css">
 <link rel="stylesheet" href="resources/css/calendar.css">
 <script type="text/javascript">
@@ -49,6 +47,7 @@
 			$("#n").hide(1000);
 			$("#h").hide(1000);
 		});
+		
 	     
 		$('.fa-caret-left').click(function(){
 			var tmp = $(this).attr('id').split('-');
@@ -102,13 +101,9 @@
 		      	}
 		   		});
 		     });
+
+
 	});
-	
-	
-
-		
-	
-
 </script>
 
 <style type="text/css">
@@ -117,15 +112,13 @@
 }
 
 body {
-	background:
-		url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg')
-		fixed;
+	background:url('../../../proto/resources/images/background.jpg') fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 0;
 	margin: 0;
 	background-repeat: no-repeat;
-	height: 120vh;
+	height: 130vh;
 }
 </style>
 
@@ -143,66 +136,65 @@ body {
 
 		<nav
 			class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
-			<!-- top nav -->
-			<nav class="navbar navbar-top hidden-xs">
-				<div class="container">
-					<!-- left nav top -->
-					<ul class="nav navbar-nav pull-left">
-						<li id="home"><a href="#"><span class="text-white"><i
-									class="fa fa-home"></i>&nbspHome</span></a></li>
-						<li id="new"><a href="#"><span class="text-white"><i
-									class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
-						<li id="team"><a href="#"><span class="text-white"><i
-									class="fa fa-users"></i>&nbsp Team</span></a></li>
+		<!-- top nav --> <nav class="navbar navbar-top hidden-xs">
+		<div class="container">
+			<!-- left nav top -->
+			<ul class="nav navbar-nav pull-left">
+				<li id="home"><a href="#"><span class="text-white"><i
+							class="fa fa-home"></i>&nbspHome</span></a></li>
+				<li id="new"><a href="#"><span class="text-white"><i
+							class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
+				<li id="team"><a href="#"><span class="text-white"><i
+							class="fa fa-users"></i>&nbsp Team</span></a></li>
 
-					</ul>
-					<!-- right nav top -->
-					<ul class="nav navbar-nav pull-right">
-						<li><a href="settings" class="text-white"><i
-								class="fa fa-cog"></i>&nbspSettings</a></li>
-						<li><a href="logout" class="text-white"><i
-								class="fa fa-power-off"></i>&nbspLogout</a></li>
-					</ul>
+			</ul>
+			<!-- right nav top -->
+			<ul class="nav navbar-nav pull-right">
+				<li><a href="settings" class="text-white"><i
+						class="fa fa-cog"></i>&nbspSettings</a></li>
+				<li><a href="logout" class="text-white"><i
+						class="fa fa-power-off"></i>&nbspLogout</a></li>
+			</ul>
+		</div>
+		<div class="dividline light-grey"></div>
+		</nav> <!-- down nav --> <nav class="navbar navbar-down">
+		<div class="container">
+			<div class="flex-container">
+				<div class="navbar-header flex-item">
+					<div class="navbar-brand">Project</div>
 				</div>
-				<div class="dividline light-grey"></div>
-			</nav>
-			<!-- down nav -->
-			<nav class="navbar navbar-down">
-				<div class="container">
-					<div class="flex-container">
-						<div class="navbar-header flex-item">
-							<div class="navbar-brand">Project</div>
-						</div>
-						<ul id="h" class="nav navbar-nav flex-item hidden-xs"
-							style="display: none;">
-							<li><a href="typeA">Type - A</a></li>
-							<li><a href="typeB">Type - B</a></li>
+				<ul id="h" class="nav navbar-nav flex-item hidden-xs"
+					style="display: none;">
+					<li><a href="typeA">Type - A</a></li>
+					<li><a href="typeB">Type - B</a></li>
 
-						</ul>
+				</ul>
 
-						<ul id="n" class="nav navbar-nav flex-item hidden-xs"
-							style="display: none;">
-							<li><a href="news">공지사항</a></li>
-							<li><a href="event">행사</a></li>
+				<ul id="n" class="nav navbar-nav flex-item hidden-xs"
+					style="display: none;">
+					<li><a href="news">공지사항</a></li>
+					<li><a href="event">행사</a></li>
 
-						</ul>
+				</ul>
 
-						<ul id="t" class="nav navbar-nav flex-item hidden-xs"
-							style="display: none;">
-							<li><a href="list?teamNum=1">경영지원팀</a></li>
-							<li><a href="list?teamNum=2">인사팀</a></li>
-							<li><a href="list?teamNum=3">개발팀</a></li>
-							<li><a href="list?teamNum=4">영업팀</a></li>
-						</ul>
-						<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-							<li class="chatON"><span class="text-white"><i
-									class="fa fa-wechat"></i>&nbsp Messenser</span></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</nav>
+				<ul id="t" class="nav navbar-nav flex-item hidden-xs"
+					style="display: none;">
+					<li><a href="list?teamNum=1">경영지원팀</a></li>
+					<li><a href="list?teamNum=2">인사팀</a></li>
+					<li><a href="list?teamNum=3">개발팀</a></li>
+					<li><a href="list?teamNum=4">영업팀</a></li>
+				</ul>
+				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
+					<li class="chatON"><span class="text-white"><i
+							class="fa fa-wechat"></i>&nbsp Messenser</span></li>
+				</ul>
+			</div>
+		</div>
+		</nav> </nav>
+
 	</div>
+
+
 
 	<div class="calendarContainer">
 		<div class="calendarYear"><i class="fa fa-caret-left" id = "calendarYear-left"></i><div class = "calendarYear-Data">${year}</div><i class="fa fa-caret-right" id = "calendarYear-right"></i></div>

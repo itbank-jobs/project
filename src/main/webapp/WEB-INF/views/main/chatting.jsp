@@ -6,6 +6,9 @@
 <div class="chatContainer" style="display: none">
 	<div class = "chatController"><i class="fa fa-wechat">&nbsp Messenser</i></div>
 	<div id = "chatList" style="display: none" class="chatList">
+	<div class = "memberStyle">
+	<div class="membersN">Name</div><div class="membersE">E-Number</div>
+	</div>
 	<c:forEach items="${chatList}" var="list">
 		<c:if test="${list.employeeNumber!=employeeNumber}">
 			<div class="employeeNumberList" style="cursor:not-allowed">
@@ -14,7 +17,6 @@
 				<div class="chatNumber">${list.employeeNumber}</div>
 			</div>
 			</div>
-			<br>
 		</c:if>
 	</c:forEach>
 	</div>
