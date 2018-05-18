@@ -85,7 +85,7 @@
 		  						countTmp = i-calDWTmp;	
 		  						colorTmp='';
 		  					}else{
-		  						countTmp = i-calDMTmp;
+		  						countTmp = i-calDMTmp*1-calDWTmp*1;
 		  						colorTmp='color:gray';
 		  					}
 		  					$('#'+i).html(countTmp);
@@ -136,7 +136,7 @@
 		  						countTmp = i-calDWTmp;	
 		  						colorTmp='';
 		  					}else{
-		  						countTmp = i-calDMTmp;
+		  						countTmp = i-calDMTmp*1-calDWTmp*1;
 		  						colorTmp='color:gray';
 		  					}
 		  					$('#'+i).html(countTmp);

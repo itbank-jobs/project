@@ -55,7 +55,7 @@ public class CalendarController {
 		PrintWriter out = res.getWriter();
 			out.print(cal.get(Calendar.YEAR)+":"+(cal.get(Calendar.MONTH)+1)+":"+cal.getActualMaximum(Calendar.DAY_OF_MONTH)+":"+(cal.get(Calendar.DAY_OF_WEEK)-1)+":");
 			cal.set(Calendar.MONTH,Calendar.MONTH+1);
-			out.print(cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+			out.print(cal.getActualMaximum(Calendar.DAY_OF_MONTH));			
 			out.flush();
 			out.close();
 	}
