@@ -125,6 +125,7 @@ form:hover {
 
 </head>
 <body>
+	<jsp:include page="main/chatting.jsp"></jsp:include>
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
@@ -159,7 +160,7 @@ form:hover {
 						<div class="navbar-header flex-item">
 							<div class="navbar-brand">Project</div>
 						</div>
-	
+
 
 						<ul id="n" class="nav navbar-nav flex-item hidden-xs"
 							style="display: none;">
@@ -176,8 +177,8 @@ form:hover {
 							<li><a href="list?teamNum=4">영업팀</a></li>
 						</ul>
 						<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-							<li><a href="messenser"><span class="text-white"><i
-										class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
+							<li class="chatON"><span class="text-white"><i
+									class="fa fa-wechat"></i>&nbsp Messenser</span></li>
 						</ul>
 					</div>
 				</div>
@@ -190,43 +191,42 @@ form:hover {
 			<div class="container" style="color: #ffffff;">
 
 				<div class="row"
-					style="margin-left: 300px; margin-right: 300px; margin-top: 7%; background-color: #000000ad ">
-					<p class="form-title" id="signUp" style="margin-top: 25px; margin-bottom: 17px">사원
-						정보</p>
-						
-						<form class="login" method="post" name="register" action="info_modify" onsubmit="return inputCheck()">
+					style="margin-left: 300px; margin-right: 300px; margin-top: 7%; background-color: #000000ad">
+					<p class="form-title" id="signUp"
+						style="margin-top: 25px; margin-bottom: 17px">사원 정보</p>
+
+					<form class="login" method="post" name="register"
+						action="info_modify" onsubmit="return inputCheck()">
 
 						<input autocomplete="off" type="text" maxlength="8"
 							placeholder="EmployeeNumber" onkeydown="encodingNum()"
-							onblur="encodingNum()" id="employeeNumber" name="employeeNumber" value="${setting.employeeNumber}" readonly="readonly">
-							
-							
-							 <input
+							onblur="encodingNum()" id="employeeNumber" name="employeeNumber"
+							value="${setting.employeeNumber}" readonly="readonly"> <input
 							autocomplete="off" type="text" maxlength="5" name="name"
-							id="name" placeholder="Name" onkeyup="encodingName(event)" value="${setting.name}"/> 
-							
-							<input
-							autocomplete="off" type="text" name="email" id="email"
-							placeholder="Email" onblur="ck()" onkeyup="encodingEmail(event)" value="${setting.email}">
+							id="name" placeholder="Name" onkeyup="encodingName(event)"
+							value="${setting.name}" /> <input autocomplete="off" type="text"
+							name="email" id="email" placeholder="Email" onblur="ck()"
+							onkeyup="encodingEmail(event)" value="${setting.email}">
 
 
-							<label id = "eck" type="hidden" value="false"></label>
-	         			  <input autocomplete="off" type="password" maxlength="15" name="password" id="password" placeholder="Password" >
-             			  <input autocomplete="off" type="password" maxlength="15" name="rePassword" id="rePassword" onkeyup="passwordCheck()" placeholder="Password"  >
-							
-							
+						<label id="eck" type="hidden" value="false"></label> <input
+							autocomplete="off" type="password" maxlength="15" name="password"
+							id="password" placeholder="Password"> <input
+							autocomplete="off" type="password" maxlength="15"
+							name="rePassword" id="rePassword" onkeyup="passwordCheck()"
+							placeholder="Password">
+
+
 
 						<div id=Message style="color: red">&nbsp</div>
 
 
 						<input type="submit" value="회원 정보 수정"
 							class="btn btn-1 btn-success">
-							
+
 						<div class="remember-forgot">
 							<div class="row">
-								<div class=" forgot-pass-content">
-								
-								</div>
+								<div class=" forgot-pass-content"></div>
 							</div>
 						</div>
 					</form>

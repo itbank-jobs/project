@@ -39,7 +39,7 @@ public class ReplyController {
 	
 	
 	@RequestMapping("/replyDelete")
-	public void replyDelete(Model model,  HttpServletRequest req, HttpServletResponse res) {
+	public void replyDelete(Model model, HttpServletRequest req, HttpServletResponse res, HttpSession session) {
 		System.out.println("replyDelete()실행");
 		
 		model.addAttribute("req", req);
