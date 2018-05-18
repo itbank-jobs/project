@@ -19,6 +19,7 @@
 	</c:forEach>
 	</div>
 </div>
+
 <div class="liveChatContainer">
 	<c:forEach items="${chatListLive}" var="list" >
 		<c:if test="${list.employeeNumber!=employeeNumber}">
@@ -39,7 +40,7 @@
 	sock.onclose = onClose;
 	sock.onopen = onOpen;
 	var hide = true;
-	var chatListLive =[<c:forEach items="${chatListLive}" var="list" varStatus = "status">'${list.employeeNumber}'<c:if test="${!status.last}">,</c:if></c:forEach>];
+	var chatListLive = ${liveList};
 	for(var i = 0; i<chatListLive.length;i++){
 		if(chatListLive[i]!='${employeeNumber}'){
 			$('#chatInfo'+chatListLive[i]).children('.chatNumber').attr('style','color:#8de08d; cursor : pointer');

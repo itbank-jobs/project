@@ -33,20 +33,21 @@
 	display: none;
 }
 
-
 .row-padding {
 	margin-top: 25px;
 	margin-bottom: 25px;
 }
 
 body {
-	background: url('../../../proto/resources/images/background.jpg') fixed;
+	background:
+		url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg')
+		fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 0;
 	margin: 0;
 	background-repeat: no-repeat;
-	height: 130vh;
+	height: 120vh;
 }
 
 .form-control {
@@ -84,17 +85,6 @@ body {
 			setTimeout('$("#t").toggle(700)', '700');
 			$("#n").hide(1000);
 			$("#h").hide(1000);
-		});
-	});
-
-	$(document).ready(function() {
-		$("#delete").click(function() {
-			setTimeout('$("#del_ck").show(700)');
-
-		});
-		$("#no").click(function() {
-			setTimeout('$("#del_ck").hide(700)');
-
 		});
 	});
 
@@ -200,75 +190,67 @@ body {
 
 
 		<div class="container"
-			style="color: #ffffff; background-color: #000000ad;">
-
-			<div class="row" style="padding-bottom: 12px">
-				<div class="col-lg-12" style="text-align: center;">
-					<h3 style="margin-top: 28px">${content.subject}</h3>
-				</div>
-			</div>
+			style="color: #ffffff; background-color: #ffffff11;">
 
 			<div class="row">
+				<div class="col-lg-3">
+					<h3>${content.subject}</h3>
+				</div>
+			</div>
+			<br>
+			<div class="row">
 				<div class="col-lg-12">
-					<form action="modify_jy" method="post">
-						<input type="hidden" name="num" value="${content.num}"> <input
-							type="hidden" name="lectureName" value="${teamNum}">
-						<table class="table" id="table">
-							<tbody>
-								<tr>
-									<th class="text-center">사원번호</th>
-									<td><input type="text" name="employeeNumber"
-										class="form-control" value="${content.employeeNumber}"
-										readonly="readonly" style="background-color: #ffffff33;"></td>
-								</tr>
-								<tr>
-									<th class="text-center">작성자</th>
-									<td><input type="text" name="name" class="form-control"
-										value="${content.name}" readonly="readonly"
-										style="background-color: #ffffff33;"></td>
-								</tr>
-								<tr>
-									<th class="text-center">내용</th>
-									<td><textarea rows="15" name="content"
-											class="form-control" readonly="readonly"
-											style="background-color: #ffffff33;">${content.content}</textarea></td>
-								</tr>
-								<tr>
-									<td colspan="2" style="text-align: center"><c:if
-											test="${employeeNumber == content.employeeNumber}">
-											<div class="container-1">
-												<input type="submit" value="&nbsp&nbsp&nbsp수 정 &nbsp&nbsp"
-													class="btn btn-1 pull-right"
-													style="background-color: transparent;" />
-											</div>
-										</c:if> <a href="list?teamNum=${content.teamNum}"> <input
-											type="button" value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
-											class="btn btn-info pull-left"
-											style="background-color: transparent;" /></a> 
-											<c:if test="${employeeNumber == content.employeeNumber}">
+					<table class="table" id="table">
+						<tbody>
+							<form action="modify" method="post">
+								<input type="hidden" name="num" value="${content.num}">
+								<input type="hidden" name="lectureName" value="${teamNum}">
+							<tr>
+								<th class="text-center">사원번호</th>
+								<td><input type="text" name="employeeNumber"
+									class="form-control" value="${employeeNumber}"
+									readonly="readonly" style="background-color: #ffffff33;"></td>
+							</tr>
+							<tr>
+								<th class="text-center">작성자</th>
+								<td><input type="text" name="name" class="form-control"
+									value="${content.name}" readonly="readonly"
+									style="background-color: #ffffff33;"></td>
+							</tr>
+							<tr>
+								<th class="text-center">작성자</th>
+								<td><textarea rows="15" name="content" class="form-control"
+										readonly="readonly" style="background-color: #ffffff33;"${content.name}"></textarea></td>
+							</tr>
+							<tr>
+								<th class="text-center">첨부파일</th>
+								<td style="text-align: left;"><c:choose>
+										<c:when test="${content.orgName == null}">
+											<td>첨부 파일이 없습니다.</td>
+										</c:when>
+										<c:when test="${content.orgName != null}">
+											<td style="text-align: left"><input type="button"
+												class="btn btn-info" value="${content.orgName}"
+												onclick="fnAction('download?name=${content.uploadName}')" /></td>
 
-											<input type="button" id="delete"
-												value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
-												class="btn btn-info pull-left"
-												style="background-color: transparent;" />
-										</c:if>
-
-										<div class="col-lg-6" id="del_ck"
-											style="color: red; display: none;">
-											게시글을 삭제 하시겠습니까 ? <a
-												href="delete?num=${content.num}&teamNum=${content.teamNum}">
-												<input type="button" id="yes" value="Yes"
-												class="btn btn-success"
-												style="background-color: transparent;" />
-											</a> <input type="button" id="no" value="No"
-												class="btn btn-danger"
-												style="background-color: transparent;" />
-
-										</div>
-								</tr>
-							</tbody>
-						</table>
-					</form>
+										</c:when>
+									</c:choose></td>
+							</tr>
+	
+							<tr>
+								<td colspan="2" style="text-align: center">
+									<div class="container-1">
+										<input type="submit" value="&nbsp&nbsp&nbsp수 정 &nbsp&nbsp"
+											class="btn btn-1 pull-right" />
+									</div> <a href="list"><input type="button"
+										value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
+										class="btn btn-info pull-left" /></a>
+										 <a href="list"><input type="button"
+										value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
+										class="btn btn-info pull-left" /></a>
+							</tr>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
