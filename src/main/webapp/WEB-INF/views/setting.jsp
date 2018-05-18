@@ -91,12 +91,6 @@ form:hover {
 	// open link in new tab without ugly target="_blank"
 	$("a[href^='http']").attr("target", "_blank");
 
-	$(document).ready(function() {
-		$("#home").click(function() {
-			setTimeout('$("#h").toggle(700)', '700');
-			$("#n").hide(1000);
-			$("#t").hide(1000);
-		});
 		$("#new").click(function() {
 			setTimeout('$("#n").toggle(700)', '700');
 			$("#h").hide(1000);
@@ -141,7 +135,7 @@ form:hover {
 				<div class="container">
 					<!-- left nav top -->
 					<ul class="nav navbar-nav pull-left">
-						<li id="home"><a href="#"><span class="text-white"><i
+						<li id="home"><a href="typeB"><span class="text-white"><i
 									class="fa fa-home"></i>&nbspHome</span></a></li>
 						<li id="new"><a href="#"><span class="text-white"><i
 									class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
@@ -165,12 +159,7 @@ form:hover {
 						<div class="navbar-header flex-item">
 							<div class="navbar-brand">Project</div>
 						</div>
-						<ul id="h" class="nav navbar-nav flex-item hidden-xs"
-							style="display: none;">
-							<li><a href="typeA">Type - A</a></li>
-							<li><a href="typeB">Type - B</a></li>
-
-						</ul>
+	
 
 						<ul id="n" class="nav navbar-nav flex-item hidden-xs"
 							style="display: none;">

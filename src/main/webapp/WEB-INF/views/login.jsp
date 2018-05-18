@@ -23,7 +23,7 @@
 	<div class="wrap">
 		<p class="form-title" id="signUp">Sign In</p>
 
-		<form class="login" name="login" action = "main" onsubmit="loginCheck()">
+		<form class="login" name="login" action = "typeB" onsubmit="loginCheck()">
 			<div class=" forgot-pass-content">
 				<a href="register" class="sign-up">SIGN UP</a>
 			</div>

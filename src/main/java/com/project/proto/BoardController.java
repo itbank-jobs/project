@@ -38,13 +38,7 @@ public class BoardController {
 		return "board/team";
 		
 	}
-	
-	@RequestMapping("/write_view")
-	public String write_view(Model model, HttpSession session) {
-		System.out.println("write_view()실행");
-		
-		return "board/write_view";
-	}
+
 	
 	@RequestMapping("/write")
 	public void write(Model model, HttpSession session, HttpServletRequest req, HttpServletResponse res) throws UnsupportedEncodingException {
@@ -73,20 +67,8 @@ public class BoardController {
 		return "/board/content";
 	}
 	
-/*	//글 내용에서 수정하러 가기
-	@RequestMapping("/modify")
-	public String modify(HttpServletRequest req, Model model) {
-		System.out.println("modify()실행");
-		
-		model.addAttribute("req", req);
-		
-		comm = new ContentCommand();
-		comm.execute(model, dao);
-		
-		return "board/modify";
 
-	}*/
-	//수정완료
+
 	@RequestMapping("/modify_complete")
 	public void modify_complete(HttpServletRequest req, HttpServletResponse res, Model model) throws UnsupportedEncodingException {
 		System.out.println("modify_complete()실행");
@@ -100,7 +82,7 @@ public class BoardController {
 	
 	}
 	
-	@RequestMapping("delete")
+	@RequestMapping("/delete")
 	public void delete(Model model, HttpServletRequest req, HttpServletResponse res) {
 		System.out.println("delete()실행");
 		
@@ -114,36 +96,36 @@ public class BoardController {
 
 
 	
-	@RequestMapping("/write_jy")
-	public String write_jy(Model model,HttpServletRequest req, HttpSession session) throws UnsupportedEncodingException {
-		System.out.println("write_jy()실행");
+	@RequestMapping("/write_view")
+	public String write_view(Model model,HttpServletRequest req, HttpSession session) throws UnsupportedEncodingException {
+		System.out.println("write_view()실행");
 		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("teamNum",req.getParameter("teamNum"));
-		return "board/write_jy";
+		return "board/write_view";
 	}
 	
-	@RequestMapping("/content_jy")
-	public String content_jy(Model model, HttpServletRequest req, HttpSession session) {
-		System.out.println("content_jy()실행");
+	@RequestMapping("/content_view")
+	public String content_view(Model model, HttpServletRequest req, HttpSession session) {
+		System.out.println("content_view()실행");
 		
 		model.addAttribute("req",req);
 
 		comm = new ContentCommand();
 		comm.execute(model, dao);
 		
-		return "board/content_jy";
+		return "board/content_view";
 	}
 	
-	@RequestMapping("/modify_jy")
-	public String modify_jy(HttpServletRequest req, Model model) {
-		System.out.println("modify_jy()실행");
+	@RequestMapping("/modify_view")
+	public String modify_view(HttpServletRequest req, Model model) {
+		System.out.println("modify_view()실행");
 		
 		model.addAttribute("req", req);
 		
 		comm = new ContentCommand();
 		comm.execute(model, dao);
 		
-		return "board/modify_jy";
+		return "board/modify_view";
 
 	}
 	

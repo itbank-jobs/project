@@ -27,7 +27,6 @@ public class infoCommand implements Command {
 		String password = req.getParameter("password");
 		String email = req.getParameter("email");
 		
-		System.out.println(name+"//"+password+"//"+email);
 		
 		Dto dto = new Dto();
 		

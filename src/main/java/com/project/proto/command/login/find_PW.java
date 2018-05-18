@@ -60,20 +60,7 @@ public class find_PW implements Command {
 		}
 	}
 
-	/*
-	 * Dto dto = new Dto();
-	 * dto.setEmployeeNumber(Integer.parseInt(req.getParameter("employeeNumber")));
-	 * int employeeNumber = dto.getEmployeeNumber();
-	 * 
-	 * 
-	 * dto = dao.find_PW(employeeNumber);
-	 * 
-	 * if(dto != null) { sendMail(dto);
-	 * 
-	 * String email = dto.getEmail();
-	 * 
-	 * } else{ System.out.println("dto : "+dto); }
-	 */
+
 
 	private void sendMail(Dto dto) {
 		// TODO Auto-generated method stub

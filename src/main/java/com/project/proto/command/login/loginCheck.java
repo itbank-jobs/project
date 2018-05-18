@@ -47,13 +47,11 @@ public class loginCheck implements Command {
 			System.out.println("CHK : " + chk);
 		
 			if(chk >0) {
-//				System.out.println("커멘드 : 로그인성공");
+
 				dto.setName(list.get(0).getName());
 				session.setAttribute("employeeNumber",dto.getEmployeeNumber());
 				session.setAttribute("name",dto.getName());
-//				session.setAttribute("password", dto.getPassword());
-//				System.out.println("현재 session employeeNumber : "+session.getAttribute("employeeNumber"));
-//				System.out.println("현재 session password : "+session.getAttribute("password"));
+
 			}
 			else {
 				System.out.println("커멘드 : 로그인 실패");
@@ -72,30 +70,7 @@ public class loginCheck implements Command {
 		}
 	
 	
-		
-		
-		
-/*		if(chk >0) {
-			System.out.println("커멘드 : 로그인성공");
-			session.setAttribute("email",dto.getEmail());
-			session.setAttribute("password", dto.getEmail());
-			try {
-				res.sendRedirect("main");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		else {
-			System.out.println("커멘드 : 로그인 실패");
-				try {
-					res.sendRedirect("/proto");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}*/
-		
+
 		
 	}
 
