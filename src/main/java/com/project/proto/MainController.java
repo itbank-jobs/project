@@ -39,6 +39,7 @@ public class MainController {
 	
 	@Autowired
 	Dao dao;
+	
 	@Autowired
 	notice_Dao ndao;
 	
