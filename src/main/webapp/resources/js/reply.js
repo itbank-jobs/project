@@ -2,7 +2,13 @@ $(function(){
    $('#registerReply').on('click',function(){
 
        var replytext = $("#replytext").val();
-       var bnum = $("#num").html();
+      
+       if (replytext == "") {
+    	   $("#replytext").focus();
+    	   return false;
+       }
+       
+       var bnum = $("#num").val();
        /*var param = {"replytext" : replytext, "bno":bno};*/
      
         
@@ -14,13 +20,12 @@ $(function(){
             
             success : function(result){
             	var tmp = result.split('%');
-            	$('#t').append('<tr><td><hr></td><tr>');
-            	$('#t').append('<tr><td>작성자</td><td>'+tmp[0]+'</td>');
-            	$('#t').append('</tr><tr><td>내용</td><td>'+replytext+'</td></tr>');
-            	$('#t').append('<tr><td>등록일</td><td>'+tmp[2]+'</td></tr>');
-            	$('#t').append('<tr><td><button type = \"button\" class = \"deleteReply\" id = \"'+tmp[1]+'">삭제</button></td></tr>');
+            	
+            	$('#Y').append('<tr style=\"padding: 5px;\"><td style=\"padding: 3px; padding-left: 40px;\" width=\"90%\">'+tmp[0]+' <font size=\"1px\">'+tmp[2]+'</font></td><td rowspan="2" width="10%"><button type=\"button\" class=\"deleteReply btn btn-warning\" style=\"background-color: transparent;" id=\"'+tmp[1]+'\">삭제</button></td></tr>');
+            	$('#Y').append('<tr><td style=\"padding-left: 40px; width: 970px\">내용 :'+replytext+'</td></tr><td colspan=\"2\"><hr></td>');
+            	$('.container').scrollTop($(".container")[0].scrollHeight+$("#Y")[0].scrollHeight);
             	$('.deleteReply').on('click',function(){
-         		   var bnum = $("#num").html();
+         		   var bnum = $("#num").val();
          		   var rnum = $(this).attr('id');
          			   
          		   $.ajax({
@@ -30,8 +35,7 @@ $(function(){
          		   		
          		   	 success : function(result){
       
-         	   
-         	              alert("댓글이 삭제 되었습니다.");
+
          	             window.location.reload();
          	             },
          	              error: function(xhr, status, e) {
@@ -50,7 +54,7 @@ $(function(){
    })
    
    $('.deleteReply').on('click',function(){
-	   var bnum = $("#num").html();
+	   var bnum = $("#num").val();
 	   var rnum = $(this).attr('id');
 		   
 	   $.ajax({
@@ -60,8 +64,6 @@ $(function(){
 	   		
 	   	 success : function(result){
           
-
-              alert("댓글이 삭제 되었습니다.");
               window.location.reload();
               
              },
@@ -71,4 +73,7 @@ $(function(){
 	   		
 	   });
    })
+   
+   
 });
+

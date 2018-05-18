@@ -1,6 +1,7 @@
 package com.project.proto.command.board;
 
 import java.io.IOException;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,19 +23,15 @@ public class writeCommand implements Command {
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
 		HttpSession session = (HttpSession) map.get("session");
-
+		
 		int employeeNumber = (int) session.getAttribute("employeeNumber");
 		res.setCharacterEncoding("UTF-8");
 		String subject = req.getParameter("subject");
 		String content = req.getParameter("content");
 		int teamNum = Integer.parseInt(req.getParameter("teamNum"));
 		String pass = req.getParameter("pass");
-		
 
-		System.out.println(subject);
-		System.out.println(content);
 
-	
 		dto.setSubject(subject);
 		
 		dto.setContent(content);

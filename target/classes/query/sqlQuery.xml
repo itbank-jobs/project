@@ -39,7 +39,7 @@
 	</select> 
 	
 	<select id = "modify" parameterType="com.project.proto.dto.Dto" resultType = "int">
-	UPDATE BOARD SET SUBJECT = #{subject}, CONTENT = #{content} WHERE NUM = #{num}
+	UPDATE BOARD SET SUBJECT = #{subject}, CONTENT = #{content} , REGDATE = sysdate WHERE NUM = #{num}
 	</select>
 	
 	<select id = "delete" parameterType="String" resultType = "int">
