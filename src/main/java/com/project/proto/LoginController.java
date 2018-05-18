@@ -15,12 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.project.proto.command.Command;
-
-import com.project.proto.command.loginCheck;
-import com.project.proto.command.registerProc;
-import com.project.proto.dao.Dao;
-import com.project.proto.command.find_PW;;
+import com.project.proto.command.login.Command;
+import com.project.proto.command.login.find_PW;
+import com.project.proto.command.login.loginCheck;
+import com.project.proto.command.login.registerProc;
+import com.project.proto.dao.Dao;;
 
 
 
@@ -39,11 +38,7 @@ public class LoginController {
 		
 	
 		System.out.println("login()실행");
-<<<<<<< HEAD
-		session.invalidate();
-=======
 
->>>>>>> d6c5d91d047d989e5b876d57503156d02ecb0f32
 		return "login";
 
 
@@ -72,7 +67,7 @@ public class LoginController {
 	}
 	
 	
-	@RequestMapping("/emailCheck")
+/*	@RequestMapping("/emailCheck")
 	public void emailCheck(HttpServletRequest req, HttpServletResponse res) {
 		System.out.println("emailCheck()실행");
 		
@@ -93,7 +88,7 @@ public class LoginController {
 			
 		}
 		
-	}
+	}*/
 	
 	//회원정보 입력값 받고 이동.
 	@RequestMapping("/registerProc")
@@ -133,8 +128,6 @@ public class LoginController {
 		return "login";
 
 	}
-	
-
 
 
 }

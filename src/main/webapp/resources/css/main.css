@@ -1,199 +1,101 @@
-@CHARSET "UTF-8";
-       /* Add a black background color to the top navigation */
-html,body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial;
+/*scroll effect*/
+.navbar-trans {
+  background-color: transparent;
+  border: none;
+  transition: top 1s ease;
 }
-#mainimage {
-    /* The image used */
-    background-image: url("../../resources/images/main/mainbuilding.png");
-    -webkit-filter: contrast(150%); /* Safari 6.0 - 9.0 */
-    filter: contrast(150%);
-    /* Full height */
-    height: 850px; 
-    wh
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+ 
+/*double row*/
+.navbar-doublerow > .navbar{
+	display: block;	
+	padding: 0px auto;
+	margin: 0px auto;
+	min-height: 25px;
 }
-.main2{
-    width: 40%;
-    height: 500px;
-    background-color: #E9F3F6;
-    min-width: 450px;
-    position: absolute;
+.navbar-doublerow .nav{
+	padding: 0px auto;
 }
-.blur {
-    top: 100px;
-    position: absolute;
-    bottom: 0;
-    background: rgba(0, 54, 102, 0.7); /* Black background with transparency */
-    color: #f1f1f1;
-    width: 40%;
-    height:850px;
-    min-width: 450px;
+.navbar-doublerow .dividline{
+  margin: 5px 100px;
+  padding-top: 1px;
+  background-color: inherit;
 }
-.blur .blurtext{
-    width: 300px;
-    height: 150px;
-    margin: auto;
-    right: 20px;
-    margin-top: 280px;
-    margin-right: 25px;
-    }
-.topnav {
+/*top nav*/
+.navbar-doublerow .navbar-top ul>li>a {
+	padding: 10px auto;
+	font-size: 12px;
+} 
+/*down nav*/
+.navbar-doublerow .navbar-down .navbar-brand {
+	padding: 0px auto;
+	float: left;
+	color: #fff;
+	font-size: 25px;
+}
+.navbar-doublerow .navbar-down ul>li>a{
+	font-size: 14px;
+	color: #fff;
+	transition: border-bottom .2s ease-in , transform .2s ease-in-out;
+}
+.navbar-doublerow .navbar-down ul>li>a:hover{
+	border-bottom: 1px solid #fff;
+	color: #fff;
+}
+.navbar-doublerow .navbar-down .dropdown{
+    padding: 5px;
+    color: #000;
+}
+.navbar-doublerow .navbar-down .dropdown ul>li>a,
+.navbar-doublerow .navbar-down .dropdown ul>li>a:hover{
+  color: #000;
+  border-bottom: none;
+}
+.navbar-doublerow.navbar-trans.afterscroll {
+}	
+.navbar-doublerow.navbar-trans.afterscroll {
+   top:-50px;
+}	
 
-    background-color: white;
-    overflow: hidden;
-    top: 25px;
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+.flex-item {
+}
+/*text*/
+.text-white,.text-white-hover:hover{color:#fff!important}
+/*fontcolor*/
+.light-grey {color:#000!important;background-color:#E6E9ED!important}
 
-    margin-right:0px;
-}
+/* 글쓰기 버튼  */
+.btn {
+  flex: 1 1 auto;
+  margin: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #ffffff8c;
+  padding: 3px 53px;
+  border-radius: 14px;
+ }
 
-/* Style the links inside the navigation bar */
-.topnav a {
-    float: left;
-    color: #123478;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 14.5px;
+.btn:hover {
+  background-position: right center; /* change the direction of the change here */
+   box-shadow: 0 0 20px #eee;
+    color: #ffffff;
 }
-
-/* Change the color of links on hover */
-.topnav a:hover {
-    color: #6CEEFF;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-.logo {
-float:left;
-vertical-align:baseline;
-    
-}
-.main2 h1 {
-    padding-left: 20%;
-    padding-top: 80px;
-    color: #24466F;
-    font: normal normal normal 42px/1.4em raleway,sans-serif;
-    font-weight: bold;
-    margin-bottom: 0;
-}
-.main2 p {
-    padding-left: 20%;
-    color: #24466F;
-    font: normal normal normal 42px/1.4em raleway,sans-serif;
-    margin-top: 0;
-}
-/*.container {
-    position: relative;
-}*/
-.txtbox1 {
-    display: block;
-    width: 100%;
-    visibility: inherit;
-    object-fit: cover;
-    background-color: #F7F7F7;
-    height :500px;
-    min-width: 900px;
-    margin: auto;
-}
-.txtbox2{
-    margin:auto;
-    display: block;
-    width: 60%;
-    visibility: inherit;
-    object-fit: cover;
-    background-color: #FFFFFF;
-    height :450px;
-    padding-left:40%;
-  /*  border: 1px solid #E1E1E1;*/
-}
-.middle-nav{
-    background-color: #F7F7F7;
-    height: 50px;
-    list-style: none;   
-    padding: 0;
-    margin:0;
-    display: block;
-    margin-top: 0px;
-    margin-bottom: 0px;
-    padding-left: 90px;
+.btn-1{
+	border-color: #fda0859f
+	
 }
 
-#middle-menu {
-    position: relative;
-    padding: 14px 16px;
-    text-decoration: none;
-    color: grey;
-    float: left;
-   
-   
+
+.btn-1:hover {
+  background-image: linear-gradient(to right, #f6d36500 0%, #fda0859f 51%, #f6d36500 100%);
 }
-#middle-menu a:hover{
-    background-color: #EBEBEB;
-    font-weight: bold;
-    font-size: 18px;
-}
-.middle-nav a:hover{
-    /*color:white;*/
-/*    font-size: 18px;*/
-    padding: 0px;
-    margin:0px;
-}
-.middle-list{
-    min-width: 800px;
-    max-width: 60%;
-    display: block;
-    list-style: none;
-    padding: 0px;  
-    position: absolute;
-    padding-top: 80px;
-    margin: auto;
-}
-#noticeList, #noticeList a {
-    text-decoration: none;
-    padding-bottom: 5px;
-}
-#noticeList a:hover{
-    text-decoration: none;
-    font-weight: bold;
-}
-span.ntDPT {
-    display:inline-block;
-    width:100px;
-    color:#00479d;
-    padding-left: 5px;
-}
-.plusList a{
-    position: absolute;
-    background-image: url("../../resources/images/main/plus.png");
-    background-repeat: no-repeat;
-    background-position: left top;
-    height: 30px;
-    width: 30px;
-}
-.plusList a:hover{
-    color: blue;
-}
-.font1 {
-    font: normal normal normal 20px/1.4em 'open sans',sans-serif;
-    color:#00305B;
-    margin-top: 4px;
-    margin: 0;
-}
-.p1{
-    height:20px;
-    margin: 0px;
-    width: auto;
-}
-.blank{
-    height:20px;
-    margin: 0px;
+
+
+tr.a:hover{
+	background-color: rgba(0, 0, 0, 0.35);
 }
