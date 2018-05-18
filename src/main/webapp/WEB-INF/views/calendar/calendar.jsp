@@ -58,18 +58,41 @@
 			}else{
 				month -= 1;
 			}
-	     $.ajax({
-	         type : "post",
-	         url : '/proto/calendarAjax',
-	         data : {month:month,year:year},
-	         error: function() {
-	         },
-	         success : function(result){
-	        	$('.calendarMonth-Data').html(month);
-	    		$('.calendarYear-Data').html(year);
-	        	 $('.calendarDay').html(result);
-	      	}
-	   		});
+			/////////////////////////////////////
+			$.ajax({
+		         type : "post",
+		         url : '/proto/calendarAjax',
+		         data : {month:month,year:year},
+		         error: function() {
+		         },
+		         success : function(result){
+		  				var calendarTmp = result.split(':');
+		  				var yearTmp = calendarTmp[0];
+		  				var monthTmp = calendarTmp[1];
+		  				var calDMTmp = calendarTmp[2];
+		  				var calDWTmp = calendarTmp[3];
+		  				var lastCalDMTmp = calendarTmp[4];
+		  				var countTmp = 0;
+		  				var colorTmp = '';
+		  				console.log(calDWTmp);
+		  				$('.calendarMonth-Data').html(calendarTmp[1]);
+			    		$('.calendarYear-Data').html(calendarTmp[0]);
+		  				for(var i = 1; i<43; i++){
+		  					if(i<=calDWTmp){
+		  						countTmp = lastCalDMTmp-calDWTmp+i;
+		  						colorTmp='color:gray';
+		  					}else if(i>calDWTmp&&i<=calDMTmp*1+calDWTmp*1){
+		  						countTmp = i-calDWTmp;	
+		  						colorTmp='';
+		  					}else{
+		  						countTmp = i-calDMTmp;
+		  						colorTmp='color:gray';
+		  					}
+		  					$('#'+i).html(countTmp);
+		  					$('#'+i).attr('style',colorTmp);
+		  				}
+		      	}
+		   		});
 	     });
 		
 		$('.fa-caret-right').click(function(){
@@ -95,9 +118,30 @@
 		         error: function() {
 		         },
 		         success : function(result){
-		        	 $('.calendarMonth-Data').html(month);
-			    		$('.calendarYear-Data').html(year);
-			        	 $('.calendarDay').html(result);
+		  				var calendarTmp = result.split(':');
+		  				var yearTmp = calendarTmp[0];
+		  				var monthTmp = calendarTmp[1];
+		  				var calDMTmp = calendarTmp[2];
+		  				var calDWTmp = calendarTmp[3];
+		  				var lastCalDMTmp = calendarTmp[4];
+		  				var countTmp = 0;
+		  				var colorTmp = '';
+		  				$('.calendarMonth-Data').html(calendarTmp[1]);
+			    		$('.calendarYear-Data').html(calendarTmp[0]);
+		  				for(var i = 1; i<43; i++){
+		  					if(i<=calDWTmp){
+		  						countTmp = lastCalDMTmp-calDWTmp+i;
+		  						colorTmp='color:gray';
+		  					}else if(i>calDWTmp&&i<=calDMTmp*1+calDWTmp*1){
+		  						countTmp = i-calDWTmp;	
+		  						colorTmp='';
+		  					}else{
+		  						countTmp = i-calDMTmp;
+		  						colorTmp='color:gray';
+		  					}
+		  					$('#'+i).html(countTmp);
+		  					$('#'+i).attr('style',colorTmp);
+		  				}
 		      	}
 		   		});
 		     });
@@ -215,14 +259,14 @@ body {
 						<c:choose>
 							<c:when
 								test="${((status.count-1)*7 +status2.count - calDW) > 0 && ((status.count-1)*7 +status2.count - calDW) <= calDM}">
-								<div class="day">${(status.count-1)*7 +status2.count - calDW}</div>
+								<div class="day" id = "${(status.count-1)*7 +status2.count}">${(status.count-1)*7 +status2.count - calDW}</div>
 							</c:when>
 							<c:when
 								test="${((status.count-1)*7 +status2.count - calDW) <= 0}">
-								<div class="day"style="color: gray">${lastCalDM + (status.count-1)*7 +status2.count-calDW}</div>
+								<div class="day"style="color: gray" id = "${(status.count-1)*7 +status2.count}">${lastCalDM + (status.count-1)*7 +status2.count-calDW}</div>
 							</c:when>
 							<c:otherwise>
-								<div class="day"style="color: gray">${(status.count-1)*7 +status2.count-calDW-calDM}</div>
+								<div class="day"style="color: gray" id = "${(status.count-1)*7 +status2.count}">${(status.count-1)*7 +status2.count-calDW-calDM}</div>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
