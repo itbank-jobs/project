@@ -26,7 +26,7 @@
 	</select>
 		
 	<insert id = "register" parameterType="com.project.proto.dto.Dto">
-	INSERT INTO MEMBER(employeeNumber,name,email,password,day)VALUES(#{employeeNumber},#{name},#{email},#{password},sysdate)
+	INSERT INTO MEMBER(employeeNumber,name,email,password,day,teamNum, team )VALUES(#{employeeNumber},#{name},#{email},#{password},sysdate, #{teamNum}, #{team})
 	</insert>
 	
 	<select id = "find_PW" resultType="com.project.proto.dto.Dto">
