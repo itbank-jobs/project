@@ -35,18 +35,21 @@
 }
 
 /* 페이징  */
-.pagination>.active>a{
-background-color: #00000000;
+.pagination>.active>a {
+	background-color: #00000000;
 }
-.pagination>.active>a:hover{
-background-color: #00000000;
+
+.pagination>.active>a:hover {
+	background-color: #00000000;
 }
-.pagination>li>a{
-background-color: #fff0;
-color:#00ff39
+
+.pagination>li>a {
+	background-color: #fff0;
+	color: #00ff39
 }
-.pagination>li>a:hover{
-background-color: #fff0;
+
+.pagination>li>a:hover {
+	background-color: #fff0;
 }
 
 .row-padding {
@@ -124,6 +127,7 @@ body {
 
 </head>
 <body>
+	<jsp:include page="../main/chatting.jsp"></jsp:include>
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
@@ -180,8 +184,8 @@ body {
 							<li><a href="list?teamNum=4">영업팀</a></li>
 						</ul>
 						<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-							<li><a href="messenser"><span class="text-white"><i
-										class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
+							<li class="chatON"><span class="text-white"><i
+									class="fa fa-wechat"></i>&nbsp Messenser</span></li>
 						</ul>
 					</div>
 				</div>
