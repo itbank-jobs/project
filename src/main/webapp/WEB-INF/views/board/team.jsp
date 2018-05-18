@@ -211,7 +211,7 @@ body {
 					<div class="col-lg-2">
 						<div class="container-1">
 							<a class="btn btn-1" style="margin-top: 18px;"
-								href="write_jy?teamNum=${teamNum}">글 쓰기</a>
+								href="write_view?teamNum=${teamNum}">글 쓰기</a>
 						</div>
 					</div>
 
@@ -248,7 +248,7 @@ body {
 										<td style="text-align: center;">${listdto.employeeNumber }</td>
 										<td style="text-align: center;">${listdto.name }</td>
 										<td style="cursor: pointer"
-											onclick="location='content_jy?num=${listdto.num }'">${listdto.subject }</td>
+											onclick="location='content_view?num=${listdto.num }'">${listdto.subject }</td>
 										<td style="text-align: center;">${listdto.regdate }</td>
 										<td style="text-align: center;">${listdto.readcount }</td>
 									</tr>

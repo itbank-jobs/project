@@ -20,22 +20,14 @@ public class ModifyCommand implements Command{
 		Map<String, Object>map = model.asMap();
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
-		
-		System.out.println("subject : "+req.getParameter("subject"));
-		System.out.println(	"content : "+req.getParameter("content"));
-		System.out.println("num : "+req.getParameter("num"));
-		System.out.println("teamNum : " + req.getParameter("teamNum"));
+
 		String teamNum = req.getParameter("teamNum");
 		board_Dto dto = new board_Dto();
 		dto.setSubject(req.getParameter("subject"));
 		dto.setContent(req.getParameter("content"));
 		dto.setNum(Integer.parseInt(req.getParameter("num")));
 		
-		
-		
-		
-		
-	
+
 		
 		dao.modify(dto);
 		

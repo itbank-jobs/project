@@ -27,7 +27,8 @@ public class ListCommand implements Command {
 		
 		String teamNum = req.getParameter("teamNum");	
 		String pageNum = req.getParameter("num");
-		System.out.println("teamNum : "+teamNum);
+	
+		
 		
 		if (pageNum == null) {
 			pageNum = "1";
@@ -53,8 +54,6 @@ public class ListCommand implements Command {
 
 		number = count - (currentPage - 1) * pageSize;
 
-
-
 		model.addAttribute("currentPage", new Integer(currentPage));
 		model.addAttribute("startRow", new Integer(startRow));
 		model.addAttribute("endRow", new Integer(endRow));
@@ -64,13 +63,6 @@ public class ListCommand implements Command {
 		model.addAttribute("teamNum", teamNum);
 		
 		
-
-		/*
-		 * try { page_DTO paging = new page_DTO(); paging.setPageNo(1);
-		 * paging.setPageSize(5); paging.setTotalCount(dto.size());
-		 * model.addAttribute("paging",paging); } catch (Exception e) { // TODO: handle
-		 * exception throw e; }
-		 */
 
 		model.addAttribute("list", list);
 

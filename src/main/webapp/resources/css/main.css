@@ -50,11 +50,10 @@
   color: #000;
   border-bottom: none;
 }
-.navbar-doublerow.navbar-trans.afterscroll {
-}	
-.navbar-doublerow.navbar-trans.afterscroll {
+
+ .navbar-doublerow.navbar-trans.afterscroll {
    top:-50px;
-}	
+}	 
 
 .flex-container {
     display: flex;
