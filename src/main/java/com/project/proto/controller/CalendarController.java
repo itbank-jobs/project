@@ -1,4 +1,4 @@
-package com.project.proto;
+package com.project.proto.controller;
 
 
 

@@ -14,7 +14,7 @@ import org.aspectj.lang.annotation.Before;
 @Aspect
 public class LoginSessionAOP {
 
-	@Before("within(com.project.proto.*)")
+	@Before("within(com.project.proto.controller.*)")
 	public void LoginSessionCheck(JoinPoint JoinPoint) {
 		
 		HttpServletRequest req = null;
@@ -34,7 +34,7 @@ public class LoginSessionAOP {
 		}
 		System.out.println("AOP[Before] 요청 페이지 = : " + req.getRequestURI());
 		if (session.getAttribute("employeeNumber") == null) {
-			if(req.getRequestURI().equals("/proto/")){
+			if(req.getRequestURI().equals("/proto/")||req.getRequestURI().equals("/proto/register")){
 				System.out.println("req.getRequestURI() == : " + req.getRequestURI());
 			}
 			else {
