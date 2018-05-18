@@ -109,15 +109,12 @@ body {
 			}
 		})
 	});
-
-
-		
-	
 </script>
 
 
 </head>
 <body style="overflow: auto;">
+	<jsp:include page="../main/chatting.jsp"></jsp:include>
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
@@ -166,8 +163,8 @@ body {
 					<li><a href="list?teamNum=4">영업팀</a></li>
 				</ul>
 				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-					<li><a href="messenser"><span class="text-white"><i
-								class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
+					<li class="chatON"><span class="text-white"><i
+							class="fa fa-wechat"></i>&nbsp Messenser</span></li>
 				</ul>
 			</div>
 		</div>
@@ -257,8 +254,8 @@ body {
 								<th><textarea rows="3" cols="100" placeholder="댓글을 입력하세요"
 										id=replytext name="replytext" class="form-control"
 										style="background-color: #ffffff33; margin-top: 9px"></textarea></th>
-								<th><input type="button" value="댓글달기" class="btn btn-danger"
-									id="registerReply"
+								<th><input type="button" value="댓글달기"
+									class="btn btn-danger" id="registerReply"
 									style="background-color: transparent; margin-right: -18px; margin-top: 10px; border-radius: 10px; padding: 25px 50px">
 								</th>
 							</tr>
@@ -274,14 +271,13 @@ body {
 								${replylist.name } <font size="1px">${replylist.regdate}</font>
 							</td>
 
-							<td rowspan="2" width="10%">
-							<c:if test="${employeeNumber == replylist.employeeNumber}">
-									
-									<button type="button" class="deleteReply btn btn-warning" style="background-color: transparent;"
-												id="${replylist.rnum}">삭제</button>
-				
-								</c:if>
-							</td>
+							<td rowspan="2" width="10%"><c:if
+									test="${employeeNumber == replylist.employeeNumber}">
+
+									<button type="button" class="deleteReply btn btn-warning"
+										style="background-color: transparent;" id="${replylist.rnum}">삭제</button>
+
+								</c:if></td>
 						</tr>
 						<tr>
 							<td style="padding-left: 40px; width: 970px">내용 :

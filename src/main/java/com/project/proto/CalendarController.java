@@ -5,6 +5,8 @@ package com.project.proto;
 import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +22,7 @@ public class CalendarController {
 	Dao dao;
 	
 	@RequestMapping(value="/calendar")
-	public String calendar(Model model,HttpServletRequest request) {
+	public String calendar(Model model, HttpServletRequest req, HttpSession session,HttpServletResponse res) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.DATE, 1);
 		int TotalDay;
@@ -38,15 +40,15 @@ public class CalendarController {
 	}
 	
 	@RequestMapping(value="/calendarAjax")
-	public String calendarAjax(Model model,HttpServletRequest request) {
+	public String calendarAjax(Model model, HttpServletRequest req, HttpSession session,HttpServletResponse res) {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.DATE, 1);
 		int TotalDay;
-		if(request.getParameter("year") != null){
-			cal.set(Calendar.YEAR, Integer.parseInt( request.getParameter("year")));
+		if(req.getParameter("year") != null){
+			cal.set(Calendar.YEAR, Integer.parseInt( req.getParameter("year")));
 		}
-		if(request.getParameter("month") != null){
-			cal.set(Calendar.MONTH, Integer.parseInt( request.getParameter("month"))-1);	
+		if(req.getParameter("month") != null){
+			cal.set(Calendar.MONTH, Integer.parseInt( req.getParameter("month"))-1);	
 		}
 		System.out.println(cal.get(Calendar.YEAR));
 		System.out.println(cal.get(Calendar.MONTH)+1);

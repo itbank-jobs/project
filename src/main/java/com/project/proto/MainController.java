@@ -68,13 +68,13 @@ public class MainController {
 	}*/
 	
 	@RequestMapping("/news")
-	public String news(Model model,HttpSession session,HttpServletResponse res){
+	public String news(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res){
 		System.out.println("news페이지()실행");	
 		model.addAttribute("noticeList", ndao.list());
 		return "news";
 	}
 	@RequestMapping("/newsData")
-	public void newsData(@RequestParam(value="num") int currentPageNum, Model model,HttpSession session,HttpServletResponse res) throws IOException {
+	public void newsData(@RequestParam(value="num") int currentPageNum, Model model,HttpSession session,HttpServletResponse res,HttpServletRequest req) throws IOException {
 		System.out.println("news페이지()실행");
 		
 		List<notice_Dto> list = ndao.list(currentPageNum);
@@ -99,20 +99,20 @@ public class MainController {
 	}
 	
 	@RequestMapping("/team")
-	public String team(Model model,HttpSession session,HttpServletResponse response) {
+	public String team(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("team페이지()실행");
 		
 		return "team";
 
 	}
 	@RequestMapping("/messenser")
-	public String messenser(Model model,HttpSession session,HttpServletResponse response) {
+	public String messenser(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("messenser페이지()실행");
 		return "messenser";
 
 	}
 	@RequestMapping("/about")
-	public String about(Model model,HttpSession session,HttpServletResponse response) {
+	public String about(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("about페이지()실행");
 		return "about";
 
@@ -121,7 +121,7 @@ public class MainController {
 	
 	/*로그아웃 구현 완료*/
 	@RequestMapping("/logout")
-	public void logout(Model model,HttpSession session,HttpServletResponse response) {
+	public void logout(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("logout페이지()실행");
 		session.invalidate();
 	}
@@ -129,7 +129,7 @@ public class MainController {
 
 	
 	@RequestMapping("/typeB")
-	public String TypeB(Model model,HttpSession session,HttpServletResponse response) {
+	public String TypeB(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("TypeB()실행");
 		System.out.println("main페이지()실행");
 		model.addAttribute("chatList", dao.chatList());
@@ -152,7 +152,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/settings")
-	public String setting(Model model,HttpSession session,HttpServletResponse res) {
+	public String setting(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("setting()실행");
 		
 		model.addAttribute("session",session);
@@ -167,7 +167,7 @@ public class MainController {
 	
 	
 	@RequestMapping("/info_modify")
-	public void info_modify(Model model, HttpServletRequest req , HttpServletResponse res) throws UnsupportedEncodingException {
+	public void info_modify(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) throws UnsupportedEncodingException {
 		System.out.println("info_modify()실행");
 		
 		req.setCharacterEncoding("UTF-8");
