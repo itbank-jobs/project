@@ -254,7 +254,7 @@ body {
 											class="btn btn-info pull-left"
 											style="background-color: transparent;" /></a> <c:if
 											test="${employeeNumber == content.employeeNumber}">
-											<input type="button" value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
+											<input type="button" id="delete" value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
 												class="btn btn-info pull-left"
 												style="background-color: transparent;" />
 
