@@ -89,7 +89,6 @@ public class LoginController {
 	public String find(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("find()실행");
 		return "find";
-
 	}
 
 	@RequestMapping("/find_PW")
