@@ -21,7 +21,7 @@ import com.project.proto.dao.board_Dao;
 
 @Controller
 public class BoardController {
-	
+	//보드 컨트롤러
 	Command comm;
 	
 	@Autowired
