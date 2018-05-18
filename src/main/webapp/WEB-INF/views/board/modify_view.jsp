@@ -69,11 +69,7 @@ body {
 	$("a[href^='http']").attr("target", "_blank");
 
 	$(document).ready(function() {
-		$("#home").click(function() {
-			setTimeout('$("#h").toggle(700)', '700');
-			$("#n").hide(1000);
-			$("#t").hide(1000);
-		});
+
 		$("#new").click(function() {
 			setTimeout('$("#n").toggle(700)', '700');
 			$("#h").hide(1000);
@@ -112,24 +108,7 @@ body {
 		});
 	});
 
-	function writeSave() {
-		if (document.write_view.title.value == "") {
 
-			document.write_view.title.focus();
-			return false;
-		}
-		if (document.write_view.content.value == "") {
-
-			document.write_view.content.focus();
-			return false;
-		}
-		if (document.write_view.passwd.value == "") {
-
-			document.write_view.passwd.focus();
-			return false;
-		}
-
-	}
 </script>
 
 
@@ -144,7 +123,7 @@ body {
 		<div class="container">
 			<!-- left nav top -->
 			<ul class="nav navbar-nav pull-left">
-				<li id="home"><a href="#"><span class="text-white"><i
+				<li id="home"><a href="typeB"><span class="text-white"><i
 							class="fa fa-home"></i>&nbspHome</span></a></li>
 				<li id="new"><a href="#"><span class="text-white"><i
 							class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
@@ -167,12 +146,7 @@ body {
 				<div class="navbar-header flex-item">
 					<div class="navbar-brand">Project</div>
 				</div>
-				<ul id="h" class="nav navbar-nav flex-item hidden-xs"
-					style="display: none;">
-					<li><a href="typeA">Type - A</a></li>
-					<li><a href="typeB">Type - B</a></li>
-
-				</ul>
+	
 
 				<ul id="n" class="nav navbar-nav flex-item hidden-xs"
 					style="display: none;">
@@ -254,7 +228,7 @@ body {
 											class="btn btn-info pull-left"
 											style="background-color: transparent;" /></a> <c:if
 											test="${employeeNumber == content.employeeNumber}">
-											<input type="button" value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
+											<input type="button" id="delete" value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
 												class="btn btn-info pull-left"
 												style="background-color: transparent;" />
 

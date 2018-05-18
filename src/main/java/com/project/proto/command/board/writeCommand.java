@@ -1,7 +1,7 @@
 package com.project.proto.command.board;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,12 +30,8 @@ public class writeCommand implements Command {
 		String content = req.getParameter("content");
 		int teamNum = Integer.parseInt(req.getParameter("teamNum"));
 		String pass = req.getParameter("pass");
-		
 
-		System.out.println(subject);
-		System.out.println(content);
 
-	
 		dto.setSubject(subject);
 		
 		dto.setContent(content);

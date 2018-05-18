@@ -23,7 +23,7 @@ public class settingCommand implements Command {
 	
 		String employeeNumber = ""+session.getAttribute("employeeNumber");
 	
-		System.out.println(employeeNumber);
+
 		Dto setting = dao.setting(employeeNumber);
 		model.addAttribute("setting",setting);
 	}
