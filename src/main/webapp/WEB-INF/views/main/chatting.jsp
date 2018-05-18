@@ -45,8 +45,8 @@
 	var chatListLive = ${liveList};
 	for(var i = 0; i<chatListLive.length;i++){
 		if(chatListLive[i]!='${employeeNumber}'){
-			$('#chatInfo'+chatListLive[i]).children('.chatNumber').attr('style','color:#8de08d; cursor : pointer');
-			$('#chatInfo'+chatListLive[i]).children('.chatName').attr('style','color:#8de08d; cursor : pointer');
+			$('#chatInfo'+chatListLive[i]).children('.chatNumber').attr('style','color:#00ff00; cursor : pointer');
+			$('#chatInfo'+chatListLive[i]).children('.chatName').attr('style','color:#00ff00; cursor : pointer');
 		}
 	}
 	$(function() {
