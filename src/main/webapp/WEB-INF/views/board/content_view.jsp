@@ -167,11 +167,9 @@ body {
 
 
 		<div class="container"
-<<<<<<< HEAD:src/main/webapp/WEB-INF/views/board/content_jy.jsp
-			style="color: #ffffff; background-color: #ffffff11;">
-=======
+
 			style="color: #ffffff; background-color: #000000ad; overflow: auto; height: 710px;">
->>>>>>> origin/JaeYoung:src/main/webapp/WEB-INF/views/board/content_view.jsp
+
 
 			<div class="row">
 				<div class="col-lg-3">
@@ -181,59 +179,7 @@ body {
 			<br>
 			<div class="row">
 				<div class="col-lg-12">
-<<<<<<< HEAD:src/main/webapp/WEB-INF/views/board/content_jy.jsp
-					<table class="table" id="table">
-						<tbody>
-							<form action="modify" method="post">
-								<input type="hidden" name="num" value="${content.num}">
-								<input type="hidden" name="lectureName" value="${teamNum}">
-							<tr>
-								<th class="text-center">사원번호</th>
-								<td><input type="text" name="employeeNumber"
-									class="form-control" value="${employeeNumber}"
-									readonly="readonly" style="background-color: #ffffff33;"></td>
-							</tr>
-							<tr>
-								<th class="text-center">작성자</th>
-								<td><input type="text" name="name" class="form-control"
-									value="${content.name}" readonly="readonly"
-									style="background-color: #ffffff33;"></td>
-							</tr>
-							<tr>
-								<th class="text-center">작성자</th>
-								<td><textarea rows="15" name="content" class="form-control"
-										readonly="readonly" style="background-color: #ffffff33;"${content.name}"></textarea></td>
-							</tr>
-							<tr>
-								<th class="text-center">첨부파일</th>
-								<td style="text-align: left;"><c:choose>
-										<c:when test="${content.orgName == null}">
-											<td>첨부 파일이 없습니다.</td>
-										</c:when>
-										<c:when test="${content.orgName != null}">
-											<td style="text-align: left"><input type="button"
-												class="btn btn-info" value="${content.orgName}"
-												onclick="fnAction('download?name=${content.uploadName}')" /></td>
 
-										</c:when>
-									</c:choose></td>
-							</tr>
-	
-							<tr>
-								<td colspan="2" style="text-align: center">
-									<div class="container-1">
-										<input type="submit" value="&nbsp&nbsp&nbsp수 정 &nbsp&nbsp"
-											class="btn btn-1 pull-right" />
-									</div> <a href="list"><input type="button"
-										value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
-										class="btn btn-info pull-left" /></a>
-										 <a href="list"><input type="button"
-										value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
-										class="btn btn-info pull-left" /></a>
-							</tr>
-						</tbody>
-					</table>
-=======
 					<form action="modify_view" method="post">
 						<input type="hidden" name="num" id="num" value="${content.num}">
 						<input type="hidden" name="teamNum" value="${teamNum}">
@@ -294,7 +240,7 @@ body {
 							</tbody>
 						</table>
 					</form>
->>>>>>> origin/JaeYoung:src/main/webapp/WEB-INF/views/board/content_view.jsp
+
 				</div>
 			</div>
 
