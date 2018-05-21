@@ -276,9 +276,10 @@ body>h1 {
 		
 		<div class="container">
 		<div class="row" style="margin-bottom: 3%;">
-
-			<div class="col-md-12" style="overflow: auto; height: 910px; padding-bottom: 10px; margin-top: 50px" >
-				<h1 style="color:#00ff68c7;">News Board</h1>
+			<div class="col-md-12" style="overflow: auto; height: 860px; padding-bottom: 10px; margin-top: 50px" >
+				<font size="18" style="color:#00ff68c7; margin-left: 10px; margin-bottom: 20px; width: 30%" >News </font>  
+				<input type="password" placeholder="비밀번호를 입력해주세요" maxlength="8">
+				
 				<div class="opt">
 					 Change theme: <a
 						href="#" class="dark">Dark</a> &mdash; <a href="#" class="light">Light</a>
@@ -295,11 +296,8 @@ body>h1 {
 				<!-- 게시글리스트 위치 -->
 				<center>
 					<div
-						style="font-size: 12px; text-align: center; color: #666; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 30vw; opacity: 0.9; padding: 5px 0;">
-
-
-						Click on this<a id="more" href="#" target="_b" style="color: #999"><span
-							style="font-size: 14px;"> + More...</span></a>for more posts
+						 id="more" style="font-size: 12px; text-align: center; color: #fff; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 30vw; opacity: 0.9; padding: 5px 0;">
+						 <span style="font-size: 14px;"> + More</span>
 					</div>
 				</center>
 			</div>
@@ -337,6 +335,13 @@ body>h1 {
 				$('.dark').css('color','#000000');
 				$('.light').css('color','#000000');
 			
+			});
+			
+			$(document).ready(function() {
+				$("#news").click(function() {
+					setTimeout('$("#news_ck").toggle(700)');
+
+				});
 			});
 			$("#more")
 					.click(
