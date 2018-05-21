@@ -1,30 +1,68 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib
-	uri="http://java.sun.com/jsp/jstl/core"
-	prefix="c"%>
-<%@ taglib
-	uri="http://java.sun.com/jsp/jstl/functions"
-	prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta
-	http-equiv="Content-Type"
-	content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link media="all" type="text/css" rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/css/main.css">
+<script type="text/javascript">
+	//toggle class scroll 
+	$(window).scroll(function() {
+		if ($(this).scrollTop() > 200) {
+			$('.navbar-trans').addClass('afterscroll');
+		} else {
+			$('.navbar-trans').removeClass('afterscroll');
+		}
+
+	});
+
+	// demo only 
+	// open link in new tab without ugly target="_blank"
+	$("a[href^='http']").attr("target", "_blank");
+
+	$(document).ready(function() {
+
+		$("#new").click(function() {
+			setTimeout('$("#n").toggle(700)', '700');
+			$("#h").hide(1000);
+			$("#t").hide(1000);
+		});
+		$("#team").click(function() {
+			setTimeout('$("#t").toggle(700)', '700');
+			$("#n").hide(1000);
+			$("#h").hide(1000);
+		});
+
+	});
+</script>
 
 <style type="text/css">
+::-webkit-scrollbar {
+	display: none;
+}
+
 body {
-	background: #aaa
-		url(https://images.unsplash.com/photo-1456428199391-a3b1cb5e93ab?crop=entropy&fit=crop&fm=jpg&h=975&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1425)
-		center no-repeat;
+	background:url('../../../proto/resources/images/background.jpg') fixed;
 	background-size: cover;
-	background-attachment: fixed;
+	background-repeat: no-repeat;
+	padding: 0;
+	margin: 0;
+	background-repeat: no-repeat;
+	height: 130vh;
 }
 
 body>h1 {
@@ -38,14 +76,17 @@ body>h1 {
 
 .opt {
 	text-align: right;
-	width: 95%;
+	width: 98%;
 	margin: 0 auto;
+	padding-right: 5px;
+	background-color: #ffffffad;
+	color: #000000;
 }
 
 .opt, .opt a {
 	text-transform: uppercase;
-	color: #666;
-	font-size: 9px
+	font-size: 9px;
+	color: #000000;
 }
 
 .opt a:hover {
@@ -71,57 +112,53 @@ body>h1 {
 }
 
 #feed>li {
-	
 	position: relative;
 	padding: 20px 20px 0px 20px;
-	color: #aaa;
+	color: #fff;
 	list-style: none;
-	background: rgba(255, 255, 255, 0.9);
-	margin: 30px 15%;
-	box-shadow: 5px 5px 6px 0 rgba(0, 0, 0, 0.2);
+	background: #000000ad;
+	margin: 20px 1%;
+	box-shadow: 5px 5px 6px 0 rgba(0, 0, 0, 0.5);
 	border-radius: 3px;
 	transition: all 0.2s;
 	overflow: hidden;
 	min-height: 88px
 }
 
-li a {
-	color: #08d;
+.content a {
+	color: #a0a0a0;
 	text-decoration: none;
 	font-weight: bold;
 	max-width: 80%;
 	overflow: hidden
 }
 
-li a:hover {
+.content a:hover {
 	text-decoration: underline
 }
 
-li>div {
+.content>div {
 	opacity: 0;
 	max-height: 0px;
 	overflow: hidden;
 	padding: 0 10px;
 	transition: all 0.2s;
 	box-sizing: border-box;
-	background: #f5f5f5;
+	background: #00000060;
 	font-size: 14px;
 	margin: 20px auto;
-	border: 1px solid #ddd;
-	color: #666;
+	border: 1px solid #968181;
+	color: #dadada;
 	text-align: justify;
 	box-shadow: 3px 5px 6px 0px rgba(0, 0, 0, 0.1) inset;
 	border-radius: 3px
 }
 
-#feed>li:hover {
-	padding-bottom: 5px;
-}
 
 #feed li i {
-	position: absolute;
-	top: 73px;
-	left: 30px;
+	
+	top: -5px;
+	text-align:right;
 	z-index: 3;
 	font-size: 15px;
 	transition: all 0.8s;
@@ -133,13 +170,8 @@ li>div {
 	transition: all 0.2s;
 }
 
-#feed li:hover>div {
-	padding: 10px;
-	max-height: 200px;
-	opacity: 1;
-	overflow: auto;
-	transition: all 0.4s
-}
+ 
+
 
 #feed h1, #feed h2 {
 	font-size: 16px
@@ -162,57 +194,113 @@ li>div {
 }
 
 #feed.dark>li {
-	background: rgba(0, 0, 0, 0.8)
+	background: rgba(0, 0, 0, 0.9)
 }
 
 #feed.dark li>div {
-	background: rgba(0, 0, 0, 0.8);
-	border-color: #000;
-	color: #aaa
+	background: rgba(0, 0, 0);
+	border-color: #fff;
+	color: #fff
 }
+
 </style>
+
+
+
 </head>
 <body>
-	<div class="container-fluid">
-		<div
-			class="row"
-			style="margin-bottom: 3%;">
 
-			<div class="col-md-9">
-				<h1>News Board</h1>
+	<jsp:include page="main/chatting.jsp"></jsp:include>
+
+	<div style="-ms-overflow-style: none;">
+		<!--스크롤바 없이 스크롤 가능하게 함   -->
+
+		<nav
+			class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
+		<!-- top nav --> <nav class="navbar navbar-top hidden-xs">
+		<div class="container">
+			<!-- left nav top -->
+			<ul class="nav navbar-nav pull-left">
+				<li id="home"><a href="typeB"><span class="text-white"><i
+							class="fa fa-home"></i>&nbspHome</span></a></li>
+				<li id="new"><a href="#"><span class="text-white"><i
+							class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
+				<li id="team"><a href="#"><span class="text-white"><i
+							class="fa fa-users"></i>&nbsp Team</span></a></li>
+
+			</ul>
+			<!-- right nav top -->
+			<ul class="nav navbar-nav pull-right">
+				<li><a href="settings" class="text-white"><i
+						class="fa fa-cog"></i>&nbspSettings</a></li>
+				<li><a href="logout" class="text-white"><i
+						class="fa fa-power-off"></i>&nbspLogout</a></li>
+			</ul>
+		</div>
+		<div class="dividline light-grey"></div>
+		</nav> <!-- down nav --> <nav class="navbar navbar-down">
+		<div class="container">
+			<div class="flex-container">
+				<div class="navbar-header flex-item">
+					<div class="navbar-brand">Project</div>
+				</div>
+		
+
+				<ul id="n" class="nav navbar-nav flex-item hidden-xs"
+					style="display: none;">
+					<li><a href="news">공지사항</a></li>
+					<li><a href="event">행사</a></li>
+
+				</ul>
+
+				<ul id="t" class="nav navbar-nav flex-item hidden-xs"
+					style="display: none;">
+					<li><a href="list?teamNum=1">경영지원팀</a></li>
+					<li><a href="list?teamNum=2">인사팀</a></li>
+					<li><a href="list?teamNum=3">개발팀</a></li>
+					<li><a href="list?teamNum=4">영업팀</a></li>
+				</ul>
+				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
+					<li class="chatON"><span class="text-white"><i
+							class="fa fa-wechat"></i>&nbsp Messenser</span></li>
+				</ul>
+			</div>
+		</div>
+		</nav>
+		
+		
+		
+		
+		
+		
+		
+		<div class="container">
+		<div class="row" style="margin-bottom: 3%;">
+
+			<div class="col-md-12" style="overflow: auto; height: 910px; padding-bottom: 10px; margin-top: 50px" >
+				<h1 style="color:#00ff68c7;">News Board</h1>
 				<div class="opt">
-					<a
-						href="http://www.saramin.co.kr/zf_user/jobs/list/job-category?cat_key=40427&panel_type=&search_optional_item=n"
-						target="_blank"
-						class="post">Post a Job</a> Change theme: <a
-						href="#"
-						class="dark">Dark</a> &mdash; <a
-						href="#"
-						class="light">Light</a>
+					 Change theme: <a
+						href="#" class="dark">Dark</a> &mdash; <a href="#" class="light">Light</a>
 				</div>
 				<ul id="feed">
 					<c:forEach items="${noticeList }" var="list" begin="0" end="4">
-					<li><a href='${list.link }' target='_blank'>${list.title }</a><br>
-					<i>${list.author }</i>
-					<a href='${list.link }' class='apply'  target='_blank'>APPLY</a>
-					<div>${list.content }</div></li>
-						<c:out value="${list.num }"></c:out>
+						<li class="content"><a href='${list.link }' target='_blank'>${list.title }</a><br>
+							<i>${list.author }</i> 
+							<%-- <a href='${list.link }' class='apply' target='_blank'>보기</a> --%>
+							<div >${list.content }</div></li>
 						<c:set var="num" value="${list.num-1 }" />
 					</c:forEach>
 				</ul>
 				<!-- 게시글리스트 위치 -->
 				<center>
-				<div
-					style="font-size: 12px; text-align: center; color: #666; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 30vw; opacity: 0.9; padding: 5px 0;">
+					<div
+						style="font-size: 12px; text-align: center; color: #666; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 30vw; opacity: 0.9; padding: 5px 0;">
 
 
-					Click on this<a
-						id="more"
-						href="#"
-						target="_b"
-						style="color: #999"><span style="font-size: 14px;"> +
-							More...</span></a>for more posts
-				</div>
+						Click on this<a id="more" href="#" target="_b" style="color: #999"><span
+							style="font-size: 14px;"> + More...</span></a>for more posts
+					</div>
 				</center>
 			</div>
 		</div>
@@ -221,46 +309,89 @@ li>div {
 
 	</div>
 	<script type="text/javascript">
-	$(function() {
-		var currentPageNum = ${num };
-		var data = {"num": currentPageNum};
+		$(function() {
+			var currentPageNum = ${num};	// 컨트롤 쉬프트f하면 안먹음
+			var data = {
+				"num" : currentPageNum
+			};
+			$('.content').click(function(){
+				if($(this).children('div').attr('class')!='true'){
+				$(this).children('div').attr('class','true');
+				$(this).children('div').css('max-height','fit-content').css('opacity','1').css('overflow','auto').css('transition','all 0.5s').css('padding','10px');															
+				}
+				else{
+					$(this).children('div').css('max-height','0px').css('opacity','0').css('overflow','hidden').css('transition','all 0.5s').css('padding','0 10px');
+					$(this).children('div').attr('class','');
+				}
+			});
 			
-		$(".dark").click(function() { // dark 클래스 클릭하면
-			$("#feed").addClass('dark'); // #dark css적용
-		});
-		$(".light").click(function() {
-			$("#feed").removeClass('dark');
-		});
-		$("#more").click(function() { // dark 클래스 클릭하면
-							$.ajax({
-										type : "GET",
-										url : "/proto/newsData",
-										data : data,
-										dataType : 'text',
-										error : function() {
-											$("#feed").after("<center>Unable to load feed, Incorrect path or invalid feed</center>");
-										},
-										success : function(result) {
-											// console.log(values[i]);
-											$("#feed").append(result);
-										}
-									});
-						});
+			$(".dark").click(function() { // dark 클래스 클릭하면
+				$("#feed").addClass('dark'); // #dark css적용
+				$('.opt').css('background','#000000cc').css('color','#ffffff');
+				$('.dark').css('color','#ffffff');
+				$('.light').css('color','#ffffff');
+			});
+			$(".light").click(function() {
+				$("#feed").removeClass('dark');
+				$('.opt').css('background','#ffffffad').css('color','#000000');
+				$('.dark').css('color','#000000');
+				$('.light').css('color','#000000');
+			
+			});
+			$("#more")
+					.click(
+							function() { // dark 클래스 클릭하면
+								$
+										.ajax({
+											type : "GET",
+											url : "/proto/newsData",
+											data : data,
+											dataType : 'text',
+											error : function() {
+												$("#feed")
+														.after(
+																"<center>Unable to load feed, Incorrect path or invalid feed</center>");
+											},
+											success : function(result) {
+												// console.log(values[i]);
+												$("#feed").append(result);
+												
+											}
+										});
+							
+							});
 
-// 		$.ajax({
-// 					type : "GET",
-// 					url : "/proto/newsData?num=currentPageNum",
-// 					data : data,
-// 					dataType : 'text',
-// 					error : function() {
-// 						$("#feed").after("<center>Unable to load feed, Incorrect path or invalid feed</center>");
-// 					},
-// 					success : function(result) {
-// 						// console.log(values[i]);
-// 						$("#feed").append(result);
-// 					}
-// 				});
-	});
-</script>
+			// 		$.ajax({
+			// 					type : "GET",
+			// 					url : "/proto/newsData?num=currentPageNum",
+			// 					data : data,
+			// 					dataType : 'text',
+			// 					error : function() {
+			// 						$("#feed").after("<center>Unable to load feed, Incorrect path or invalid feed</center>");
+			// 					},
+			// 					success : function(result) {
+			// 						// console.log(values[i]);
+			// 						$("#feed").append(result);
+			// 					}
+			// 				});
+		});
+	</script>
+		
+		 </nav>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+	
+
+	
 </body>
 </html>

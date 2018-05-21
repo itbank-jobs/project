@@ -84,13 +84,13 @@ public class MainController {
 
 
 		for (int i= 0; i<5 ; i++) {
-		out.println("<li><a href='" + list.get(i).getLink() + "' target='_blank'>"
+		out.println("<li class='content'><a href='" + list.get(i).getLink() + "' target='_blank'>"
 				+ list.get(i).getTitle()
 				+ "</a><br><i>"
 				+ list.get(i).getAuthor()
-				+ "</i><a href='" + list.get(i).getLink() + "' class='apply'  target='_blank'>APPLY</a><div>"
+				+ "</i><div>"
 				+ list.get(i).getContent()
-				+ "</div></li>"+list.get(i).getNum());
+				+ "</div></li>");
 
 		}
 
