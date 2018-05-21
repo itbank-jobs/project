@@ -28,7 +28,7 @@ public class replyDeleteCommand implements Command {
 		dao.replyDelete(rnum);
 
 		try {
-			res.sendRedirect("content?num="+bnum);
+			res.sendRedirect("content_view?num="+bnum);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

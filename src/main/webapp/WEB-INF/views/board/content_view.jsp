@@ -41,15 +41,13 @@
 }
 
 body {
-	background:
-		url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg')
-		fixed;
+	background: url('../../../proto/resources/images/background.jpg') fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 0;
 	margin: 0;
 	background-repeat: no-repeat;
-	height: 120vh;
+	height: 130vh;
 }
 
 .form-control {
@@ -83,6 +81,17 @@ body {
 			setTimeout('$("#t").toggle(700)', '700');
 			$("#n").hide(1000);
 			$("#h").hide(1000);
+		});
+	});
+
+	$(document).ready(function() {
+		$("#delete").click(function() {
+			setTimeout('$("#del_ck").show(700)');
+
+		});
+		$("#no").click(function() {
+			setTimeout('$("#del_ck").hide(700)');
+
 		});
 	});
 
@@ -164,18 +173,16 @@ body {
 
 
 		<div class="container"
-			style="color: #ffffff; background-color: #ffffff11;">
+			style="color: #ffffff; background-color: #000000ad; overflow: auto; height: 710px;">
 
-
-			<div class="row">
-				<div class="col-lg-3">
-					<h3>${content.subject}</h3>
+			<div class="row" style="padding-bottom: 12px">
+				<div class="col-lg-12" style="text-align: center;">
+					<h3 style="margin-top: 28px">${content.subject}</h3>
 				</div>
 			</div>
-			<br>
+
 			<div class="row">
 				<div class="col-lg-12">
-
 					<form action="modify_view" method="post">
 						<input type="hidden" name="num" id="num" value="${content.num}">
 						<input type="hidden" name="teamNum" value="${teamNum}">
