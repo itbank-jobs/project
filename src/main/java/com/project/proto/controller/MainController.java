@@ -2,8 +2,7 @@ package com.project.proto.controller;
 
 
 
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.io.UnsupportedEncodingException;
 
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.proto.chat.EchoHandler;
 
@@ -25,10 +23,11 @@ import com.project.proto.command.infoCommand;
 import com.project.proto.command.settingCommand;
 
 import com.project.proto.command.login.Command;
+
 import com.project.proto.dao.Dao;
 import com.project.proto.dao.notice_Dao;
 import com.project.proto.dto.Dto;
-import com.project.proto.dto.notice_Dto;
+
 
 
 
@@ -72,32 +71,9 @@ public class MainController {
 	public String news(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res){
 		System.out.println("news페이지()실행");	
 		model.addAttribute("noticeList", ndao.list());
-		return "news";
+		return "news/news";
 	}
-	@RequestMapping("/newsData")
-	public void newsData(@RequestParam(value="num") int currentPageNum, Model model,HttpSession session,HttpServletResponse res,HttpServletRequest req) throws IOException {
-		System.out.println("news페이지()실행");
-		
-		List<notice_Dto> list = ndao.list(currentPageNum);
-		res.setCharacterEncoding("UTF-8");
-		PrintWriter out = res.getWriter();
 
-
-		for (int i= 0; i<5 ; i++) {
-		out.println("<li class='content'><a href='" + list.get(i).getLink() + "' target='_blank'>"
-				+ list.get(i).getTitle()
-				+ "</a><br><i>"
-				+ list.get(i).getAuthor()
-				+ "</i><div>"
-				+ list.get(i).getContent()
-				+ "</div></li>");
-
-		}
-
-		out.flush();
-		out.close();
-
-	}
 	
 	@RequestMapping("/team")
 	public String team(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
@@ -180,5 +156,8 @@ public class MainController {
 		
 
 	}
+
 	
+
+
 }

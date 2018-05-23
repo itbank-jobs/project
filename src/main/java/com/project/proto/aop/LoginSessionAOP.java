@@ -32,7 +32,7 @@ public class LoginSessionAOP {
 				req = (HttpServletRequest) obj;
 			}
 		}
-		System.out.println("AOP[Before] 요청 페이지 = : " + req.getRequestURI());
+	/*	System.out.println("AOP[Before] 요청 페이지 = : " + req.getRequestURI());*/
 		if (session.getAttribute("employeeNumber") == null) {
 			if(req.getRequestURI().equals("/proto/")||req.getRequestURI().equals("/proto/register")){
 				System.out.println("req.getRequestURI() == : " + req.getRequestURI());

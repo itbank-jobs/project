@@ -94,14 +94,19 @@ body {
 	});
 
 	function writeSave() {
-		if (document.write_view.subject.value == "") {
+		if ($('#author').val() == "") {
 
-			document.write_view.subject.focus();
+			$('#author').focus();
 			return false;
 		}
-		if (document.write_view.content.value == "") {
+		if ($('#title').val() == "") {
 
-			document.write_view.content.focus();
+			$('#title').focus();
+			return false;
+		}
+		if ($('#content').val() == "") {
+
+			$('#content').focus();
 			return false;
 		}
 	};
@@ -110,7 +115,7 @@ body {
 
 </head>
 <body>
-	<jsp:include page="main/chatting.jsp"></jsp:include>
+	<jsp:include page="../main/chatting.jsp"></jsp:include>
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
@@ -178,33 +183,32 @@ body {
 
 				<div class="row">
 					<div class="col-lg-3">
-						<h3>글 작성</h3>
+						<h3>공지사항</h3>
 					</div>
 				</div>
 				<br>
 				<div class="row">
 					<div class="col-lg-12">
-						<form action="write" method="post" name="write_view"
+						<form action="news_write" method="post" name="write_view"
 							onsubmit="return writeSave()">
-							<input type="hidden" name="teamNum" value="${teamNum}">
+						
 							<table class="table" id="table" style="color: #ffffffc8">
 								<tbody>
 
 									<tr>
-										<th class="text-center">사원번호</th>
-										<td><input type="text" name="employeeNumber"
-											class="form-control" value="${employeeNumber}"
-											readonly="readonly" style="background-color: #ffffff33;"></td>
+										<th class="text-center">팀</th>
+										<td><input type="text" id="author" name="author"
+											class="form-control" placeholder="팀명을 입력하세요" style="background-color: #ffffff33;"></td>
 									</tr>
 									<tr>
 										<th class="text-center">제목</th>
-										<td><input type="text" class="form-control"
-											name="subject" size="50"></td>
+										<td><input type="text" id="title"  class="form-control"
+											name="title" placeholder="제목을 입력하세요" size="50"></td>
 									</tr>
 									<tr>
 										<th class="text-center">내용</th>
-										<td><textarea name="content" class="form-control"
-												rows="15"></textarea></td>
+										<td><textarea name="content" id="content" class="form-control"
+												rows="15" placeholder="내용을 입력하세요"></textarea></td>
 									</tr>
 
 									<tr>
@@ -215,7 +219,7 @@ body {
 												<input type="submit" value="&nbsp&nbsp&nbsp등 록 &nbsp&nbsp"
 													class="btn btn-1 pull-right"
 													style="background-color: transparent;" />
-											</div> <a href="list?teamNum=${teamNum}"><input type="button"
+											</div> <a href="news"><input type="button"
 												value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
 												class="btn btn-info pull-left"
 												style="background-color: transparent;" /></a>

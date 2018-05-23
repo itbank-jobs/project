@@ -94,5 +94,15 @@
 	SELECT COUNT(*) FROM BOARD WHERE TEAMNUM = #{PARAM1}
 	</select>
 	
+	<select id = "news_passCK" parameterType="int" resultType = "int">
+	SELECT NEWS_PASS FROM SETTING WHERE NEWS_PASS= #{PARAM1}
+
+	</select>
+	
+	<insert id = "insertNews"  parameterType="com.project.proto.dto.notice_Dto" >
+	INSERT INTO NOTICE(AUTHOR,TITLE,CONTENT,NUM) VALUES(#{author}, #{title}, #{content},notice_seq.nextval)
+	</insert>
+	
+	
 </mapper>
 

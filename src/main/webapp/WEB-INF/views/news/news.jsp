@@ -54,6 +54,9 @@
 ::-webkit-scrollbar {
 	display: none;
 }
+::-webkit-input-placeholder{
+color:#a0a0a0;
+} 
 
 body {
 	background:url('../../../proto/resources/images/background.jpg') fixed;
@@ -75,7 +78,6 @@ body>h1 {
 }
 
 .opt {
-	text-align: right;
 	width: 98%;
 	margin: 0 auto;
 	padding-right: 5px;
@@ -210,7 +212,7 @@ body>h1 {
 </head>
 <body>
 
-	<jsp:include page="main/chatting.jsp"></jsp:include>
+	<jsp:include page="../main/chatting.jsp"></jsp:include>
 
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
@@ -275,30 +277,37 @@ body>h1 {
 		
 		
 		<div class="container">
+		
 		<div class="row" style="margin-bottom: 3%;">
 			<div class="col-md-12" style="overflow: auto; height: 860px; padding-bottom: 10px; margin-top: 50px" >
-				<font size="18" style="color:#00ff68c7; margin-left: 10px; margin-bottom: 20px; width: 30%" >News </font>  
-				<input type="password" placeholder="비밀번호를 입력해주세요" maxlength="8">
+				<font size="18" style="color:#00ff68c7; margin-left: 10px; margin-bottom: 20px; width: 30%" id="news" >News </font>  
+				<input type="password" id="newsPasswd" placeholder="비밀번호를 입력해주세요" maxlength="8" style="display: none; background: inherit;border-radius: 10px;border: solid 1px;padding-left: 8px;border-color: #ffffffad;" onkeyup="pass_ck()">
 				
 				<div class="opt">
-					 Change theme: <a
+						<div id="Message">&nbsp</div>
+					 <div style="text-align: right;margin-top: -15px;">Change theme:</font> <a
 						href="#" class="dark">Dark</a> &mdash; <a href="#" class="light">Light</a>
 				</div>
+				</div>
 				<ul id="feed">
-					<c:forEach items="${noticeList }" var="list" begin="0" end="4">
+					<c:forEach items="${noticeList}" var="list" begin="0" end="4">
 						<li class="content"><a href='${list.link }' target='_blank'>${list.title }</a><br>
 							<i>${list.author }</i> 
 							<%-- <a href='${list.link }' class='apply' target='_blank'>보기</a> --%>
 							<div >${list.content }</div></li>
 						<c:set var="num" value="${list.num-1 }" />
+						<c:set var="count" value="${list.num }" />
 					</c:forEach>
 				</ul>
 				<!-- 게시글리스트 위치 -->
 				<center>
+				${count}
+					<c:if test="${count > 5}">
 					<div
 						 id="more" style="font-size: 12px; text-align: center; color: #fff; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 30vw; opacity: 0.9; padding: 5px 0;">
 						 <span style="font-size: 14px;"> + More</span>
 					</div>
+					</c:if>
 				</center>
 			</div>
 		</div>
@@ -307,11 +316,41 @@ body>h1 {
 
 	</div>
 	<script type="text/javascript">
+	function pass_ck(){
+		
+		var passwd = $("#newsPasswd").val();
+	 	if(passwd.length == 8){
+	$.ajax({
+		type : "post",
+		data : {passwd:passwd},
+		url : '/proto/news_passCK',
+		
+		success : function(result){
+			var chk = result;
+			if(chk == 1){
+				 location.replace("news_writeView");
+			}else{
+
+				 $('#Message').html('<font color = red> Incorrect PASSWORD</font>') 
+				 setTimeout('$("#Message").html("&nbsp")','5000');
+			}
+			
+		},
+		error : function(xhr, status, e){
+			 $('#Message').html('비밀번호를 입력해 주세요.') 
+			 setTimeout('$("#Message").html("&nbsp")','5000');
+		}
+		
+	});
+   } 
+}
+	
 		$(function() {
 			var currentPageNum = ${num};	// 컨트롤 쉬프트f하면 안먹음
 			var data = {
 				"num" : currentPageNum
 			};
+			
 			$('.content').click(function(){
 				if($(this).children('div').attr('class')!='true'){
 				$(this).children('div').attr('class','true');
@@ -339,18 +378,15 @@ body>h1 {
 			
 			$(document).ready(function() {
 				$("#news").click(function() {
-					setTimeout('$("#news_ck").toggle(700)');
+					$("#newsPasswd").toggle(700);
 
 				});
 			});
-			$("#more")
-					.click(
-							function() { // dark 클래스 클릭하면
-								$
-										.ajax({
+			$("#more").click(function() { // dark 클래스 클릭하면
+								$.ajax({
 											type : "GET",
 											url : "/proto/newsData",
-											data : data,
+											data : currentPageNum,
 											dataType : 'text',
 											error : function() {
 												$("#feed")
@@ -360,11 +396,14 @@ body>h1 {
 											success : function(result) {
 												// console.log(values[i]);
 												$("#feed").append(result);
-												
+												currentPageNum -= 5;	
+									
 											}
 										});
-							
-							});
+						
+			});
+		
+		
 
 			// 		$.ajax({
 			// 					type : "GET",
