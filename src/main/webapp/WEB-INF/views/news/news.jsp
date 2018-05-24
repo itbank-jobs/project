@@ -291,18 +291,20 @@ body>h1 {
 				</div>
 				<ul id="feed">
 					<c:forEach items="${noticeList}" var="list" begin="0" end="4">
-						<li class="content"><a href='${list.link }' target='_blank'>${list.title }</a><br>
+					
+						<li class="content" onclick="conCk(this)"><a href='${list.link }' target='_blank'>${list.title }</a><br>
 							<i>${list.author }</i> 
 							<%-- <a href='${list.link }' class='apply' target='_blank'>보기</a> --%>
 							<div >${list.content }</div></li>
 						<c:set var="num" value="${list.num-1 }" />
-						<c:set var="count" value="${list.num }" />
+						
+						
 					</c:forEach>
 				</ul>
 				<!-- 게시글리스트 위치 -->
 				<center>
-				${count}
-					<c:if test="${count > 5}">
+
+					<c:if test="${num > 0}">
 					<div
 						 id="more" style="font-size: 12px; text-align: center; color: #fff; background: rgba(0, 0, 0, 0.8); max-width: 100%; width: 30vw; opacity: 0.9; padding: 5px 0;">
 						 <span style="font-size: 14px;"> + More</span>
@@ -344,23 +346,24 @@ body>h1 {
 	});
    } 
 }
-	
+	function conCk(test){
+		if($(test).children('div').attr('class')!='true'){
+		$(test).children('div').attr('class','true');
+		$(test).children('div').css('max-height','fit-content').css('opacity','1').css('overflow','auto').css('transition','all 0.5s').css('padding','10px');															
+		}
+		else{
+			$(test).children('div').css('max-height','0px').css('opacity','0').css('overflow','hidden').css('transition','all 0.5s').css('padding','0 10px');
+			$(test).children('div').attr('class','');
+		}
+	};
 		$(function() {
-			var currentPageNum = ${num};	// 컨트롤 쉬프트f하면 안먹음
+			var currentPageNum = ${num};// 컨트롤 쉬프트f하면 안먹음
+	
 			var data = {
 				"num" : currentPageNum
 			};
 			
-			$('.content').click(function(){
-				if($(this).children('div').attr('class')!='true'){
-				$(this).children('div').attr('class','true');
-				$(this).children('div').css('max-height','fit-content').css('opacity','1').css('overflow','auto').css('transition','all 0.5s').css('padding','10px');															
-				}
-				else{
-					$(this).children('div').css('max-height','0px').css('opacity','0').css('overflow','hidden').css('transition','all 0.5s').css('padding','0 10px');
-					$(this).children('div').attr('class','');
-				}
-			});
+			
 			
 			$(".dark").click(function() { // dark 클래스 클릭하면
 				$("#feed").addClass('dark'); // #dark css적용
@@ -382,24 +385,40 @@ body>h1 {
 
 				});
 			});
+
 			$("#more").click(function() { // dark 클래스 클릭하면
+				
+	
 								$.ajax({
 											type : "GET",
 											url : "/proto/newsData",
-											data : currentPageNum,
+											data : {currentPageNum : currentPageNum},
 											dataType : 'text',
 											error : function() {
 												$("#feed")
 														.after(
 																"<center>Unable to load feed, Incorrect path or invalid feed</center>");
+											
+												
 											},
 											success : function(result) {
 												// console.log(values[i]);
+		
 												$("#feed").append(result);
+												if(currentPageNum < 5){
+												currentPageNum -= ${num};
+												
+												}else{
 												currentPageNum -= 5;	
-									
+												
+												}
+												if(currentPageNum== 0){
+													$('#more').css('display','none');
+												}
+											
 											}
 										});
+			
 						
 			});
 		

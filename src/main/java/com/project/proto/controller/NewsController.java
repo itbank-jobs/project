@@ -24,7 +24,7 @@ import com.project.proto.dao.notice_Dao;
 import com.project.proto.dto.notice_Dto;
 
 @Controller
-public class newsController {
+public class NewsController {
 
 	Command comm;
 
@@ -53,55 +53,56 @@ public class newsController {
 	@RequestMapping("/news_writeView")
 	public String news_writeView(Model model, HttpSession session, HttpServletRequest req, HttpServletResponse res) {
 		System.out.println("news_writeView()실행");
-		
+
 		return "news/news_writeView";
 	}
-	
+
 	@RequestMapping("/news_write")
-	public void news_write(Model model, HttpSession session, HttpServletRequest req, HttpServletResponse res) throws UnsupportedEncodingException {
+	public void news_write(Model model, HttpSession session, HttpServletRequest req, HttpServletResponse res)
+			throws UnsupportedEncodingException {
 		System.out.println("news_write()실행");
 		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("req", req);
-		model.addAttribute("res",res);
-		
+		model.addAttribute("res", res);
+
 		comm = new news_write();
 		comm.execute(model, dao);
-		
-	
+
 	}
-	
+
 	@RequestMapping("/newsData")
-	public void newsData(Model model,HttpSession session,HttpServletResponse res,HttpServletRequest req) throws IOException {
+	public void newsData(Model model, HttpSession session, HttpServletResponse res, HttpServletRequest req)
+			throws IOException {
 		System.out.println("newsData()실행");
 		
-
 		int num = Integer.parseInt(req.getParameter("currentPageNum"));
-		
+
 		List<notice_Dto> list = ndao.list(num);
-		
+
 		res.setCharacterEncoding("UTF-8");
 		PrintWriter out = res.getWriter();
-		
-		
 
-	if(num > 0 ){
-		 for (int i= 0; i<5 ; i++) {
-		out.println("<li class='content'><a href='" + list.get(i).getLink() + "' target='_blank'>"
-				+ list.get(i).getTitle()
-				+ "</a><br><i>"
-				+ list.get(i).getAuthor()
-				+ "</i><div>"
-				+ list.get(i).getContent()
-				+ "</div></li>");
+		if (num > 5) {
+			for (int i = 0; i < 5; i++) {
+				out.println("<li class='content' onclick='conCk(this)'><a href='" + list.get(i).getLink() + "' target='_blank'>"
+						+ list.get(i).getTitle() + "</a><br><i>" + list.get(i).getAuthor() + "</i><div>"
+						+ list.get(i).getContent() + "</div></li>");
+								
+				
+			}
+		} else {
+			for (int i = 0; i < num ; i++) {
+				out.println("<li class='content' onclick='conCk(this)'><a href='" + list.get(i).getLink() + "' target='_blank'>"
+						+ list.get(i).getTitle() + "</a><br><i>" + list.get(i).getAuthor() + "</i><div>"
+						+ list.get(i).getContent() + "</div></li>");
+			
+				
+			}
 
-	
-	
+			out.flush();
+			out.close();
+
 		}
 	}
 
-	
-		out.flush();
-		out.close();
-
-	}
 }
