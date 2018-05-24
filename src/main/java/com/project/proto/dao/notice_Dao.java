@@ -10,6 +10,7 @@ import com.project.proto.dto.notice_Dto;
 
 @Repository
 public class notice_Dao {
+	
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -18,8 +19,10 @@ public class notice_Dao {
 		return sqlSession.selectList("noticeList", currentPageNum);
 	}
 	public List<notice_Dto> list() {
-		System.out.println("list()호출");
+		System.out.println("listAll()호출");
 		return sqlSession.selectList("noticeStart");
 	}
+	
+
 
 }

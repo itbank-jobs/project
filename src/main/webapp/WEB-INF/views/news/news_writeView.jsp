@@ -2,22 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">
-<link
-	href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
-	rel="stylesheet" id="bootstrap-css">
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 <link media="all" type="text/css" rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -25,31 +22,11 @@
 <link rel="stylesheet" href="resources/css/main.css">
 
 
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>팀 게시판</title>
 
 <style type="text/css">
 ::-webkit-scrollbar {
 	display: none;
-}
-
-/* 페이징  */
-.pagination>.active>a {
-	background-color: #00000000;
-}
-
-.pagination>.active>a:hover {
-	background-color: #00000000;
-}
-
-.pagination>li>a {
-	background-color: #fff0;
-	color: #00ff39
-}
-
-.pagination>li>a:hover {
-	background-color: #fff0;
 }
 
 .row-padding {
@@ -88,11 +65,7 @@ body {
 	$("a[href^='http']").attr("target", "_blank");
 
 	$(document).ready(function() {
-		$("#home").click(function() {
-			setTimeout('$("#h").toggle(700)', '700');
-			$("#n").hide(1000);
-			$("#t").hide(1000);
-		});
+
 		$("#new").click(function() {
 			setTimeout('$("#n").toggle(700)', '700');
 			$("#h").hide(1000);
@@ -106,12 +79,9 @@ body {
 	});
 
 	$(function() {
-		$('#table').searchable({
-			striped : true
-		});
 
-		$('#search').searchable({
-			searchField : '#table',
+		$('#searchable-container').searchable({
+			searchField : '#container-search',
 			selector : '.row',
 			childSelector : '.col-xs-4',
 			show : function(elem) {
@@ -122,12 +92,30 @@ body {
 			}
 		})
 	});
+
+	function writeSave() {
+		if ($('#author').val() == "") {
+
+			$('#author').focus();
+			return false;
+		}
+		if ($('#title').val() == "") {
+
+			$('#title').focus();
+			return false;
+		}
+		if ($('#content').val() == "") {
+
+			$('#content').focus();
+			return false;
+		}
+	};
 </script>
 
 
 </head>
 <body>
-	
+	<jsp:include page="../main/chatting.jsp"></jsp:include>
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
@@ -138,12 +126,13 @@ body {
 				<div class="container">
 					<!-- left nav top -->
 					<ul class="nav navbar-nav pull-left">
-						<li id="home"><a href="#"><span class="text-white"><i
+						<li id="home"><a href="typeB"><span class="text-white"><i
 									class="fa fa-home"></i>&nbspHome</span></a></li>
 						<li id="new"><a href="#"><span class="text-white"><i
 									class="fa fa-newspaper-o"></i>&nbsp New</span></a></li>
 						<li id="team"><a href="#"><span class="text-white"><i
 									class="fa fa-users"></i>&nbsp Team</span></a></li>
+
 					</ul>
 					<!-- right nav top -->
 					<ul class="nav navbar-nav pull-right">
@@ -162,12 +151,7 @@ body {
 						<div class="navbar-header flex-item">
 							<div class="navbar-brand">Project</div>
 						</div>
-						<ul id="h" class="nav navbar-nav flex-item hidden-xs"
-							style="display: none;">
-							<li><a href="typeA">Type - A</a></li>
-							<li><a href="typeB">Type - B</a></li>
 
-						</ul>
 
 						<ul id="n" class="nav navbar-nav flex-item hidden-xs"
 							style="display: none;">
@@ -191,7 +175,6 @@ body {
 				</div>
 				<br>
 			</nav>
-
 			<br>
 
 
@@ -200,106 +183,58 @@ body {
 
 				<div class="row">
 					<div class="col-lg-3">
-						<h3>
-							<c:choose>
-								<c:when test="${teamNum == 1}"> 경영지원팀 </c:when>
-								<c:when test="${teamNum == 2}"> 인사팀 </c:when>
-								<c:when test="${teamNum == 3}"> 개발팀 </c:when>
-								<c:when test="${teamNum == 4}"> 영업팀 </c:when>
-							</c:choose>
-
-						</h3>
-					</div>
-
-					<div class="col-lg-7"></div>
-					<div class="col-lg-2">
-						<div class="container-1">
-							<a class="btn btn-1" style="margin-top: 18px;"
-								href="write_view?teamNum=${teamNum}">글 쓰기</a>
-						</div>
-					</div>
-
-				</div>
-				<br>
-
-				<div class="row">
-					<div class="col-lg-12">
-						<input type="search" id="search" value="" class="form-control"
-							placeholder="검색">
+						<h3>공지사항</h3>
 					</div>
 				</div>
 				<br>
 				<div class="row">
 					<div class="col-lg-12">
-						<table class="table" id="table" style="color: #ffffff;">
-							<thead>
-								<tr>
-									<th style="text-align: center" width="10%">번호</th>
-									<th style="text-align: center" width="12%">사원번호</th>
-									<th style="text-align: center" width="13%">작성자</th>
-									<th style="text-align: center" width="35%">제목</th>
-									<th style="text-align: center" width="20%">등록일</th>
-									<th style="text-align: center" width="15%">조회</th>
-								</tr>
-							</thead>
-							<tbody>
+						<form action="news_write" method="post" name="write_view"
+							onsubmit="return writeSave()">
+						
+							<table class="table" id="table" style="color: #ffffffc8">
+								<tbody>
 
-
-								<c:forEach var="listdto" items="${list}" varStatus="status">
-									<tr class="a">
-										<td style="text-align: center;"><c:out value="${number}" />
-											<c:set var="number" value="${number-1}" /></td>
-										<td style="text-align: center;">${listdto.employeeNumber }</td>
-										<td style="text-align: center;">${listdto.name }</td>
-										<td style="cursor: pointer"
-											onclick="location='content_view?num=${listdto.num }'">${listdto.subject }</td>
-										<td style="text-align: center;">${listdto.regdate }</td>
-										<td style="text-align: center;">${listdto.readcount }</td>
+									<tr>
+										<th class="text-center">팀</th>
+										<td><input type="text" id="author" name="author"
+											class="form-control" placeholder="팀명을 입력하세요" style="background-color: #ffffff33;"></td>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+									<tr>
+										<th class="text-center">제목</th>
+										<td><input type="text" id="title"  class="form-control"
+											name="title" placeholder="제목을 입력하세요" size="50"></td>
+									</tr>
+									<tr>
+										<th class="text-center">내용</th>
+										<td><textarea name="content" id="content" class="form-control"
+												rows="15" placeholder="내용을 입력하세요"></textarea></td>
+									</tr>
+
+									<tr>
+
+										<td colspan="2" style="text-align: center">
+
+											<div class="container-1">
+												<input type="submit" value="&nbsp&nbsp&nbsp등 록 &nbsp&nbsp"
+													class="btn btn-1 pull-right"
+													style="background-color: transparent;" />
+											</div> <a href="news"><input type="button"
+												value="&nbsp&nbsp&nbsp목 록 &nbsp&nbsp"
+												class="btn btn-info pull-left"
+												style="background-color: transparent;" /></a>
+									</tr>
+
+								</tbody>
+							</table>
+						</form>
 					</div>
 				</div>
-
-				<div align="center">
-					<ul class="pagination">
-
-						<c:if test="${count > 0}">
-							<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1}" />
-							<c:set var="pageCount" value="${count / pageSize + imsi}" />
-							<c:set var="pageBlock" value="${3}" />
-
-							<fmt:parseNumber var="result" value="${currentPage/ pageBlock}"
-								integerOnly="true" />
-
-							<c:set var="startPage" value="${result * pageBlock + 1}" />
-							<c:set var="endPage" value="${startPage + pageBlock - 1}" />
-
-							<c:if test="${endPage > pageCount}">
-								<li class="active"><a
-									href="list?teamNum=${teamNum}&num=${startPage - pageBlock}">이전</a></li>
-							</c:if>
-
-							<c:forEach var="i" begin="${1}" end="${count / pageSize + imsi}">
-								<li><a href="list?teamNum=${teamNum}&num=${i}">${i}<span
-										class="sr-only"></span></a></li>
-							</c:forEach>
-
-							<c:if test="${endPage < pageCount}">
-								<li class="active"><a
-									href="list?teamNum=${teamNum}&num=${startPage + pageBlock}">다음</a></li>
-							</c:if>
-
-						</c:if>
-					</ul>
-				</div>
-
 			</div>
-			<jsp:include page="../main/chatting.jsp"></jsp:include>
-		</nav>
-				
 	</div>
+
+	</nav>
+
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 </body>

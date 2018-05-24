@@ -3,9 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<div class="chatContainer" style="display: none">
+<div class="chatContainer"style="${chatListStyle}">
 	<div class = "chatController"><i class="fa fa-wechat">&nbsp Messenser</i></div>
-	<div id = "chatList" style="display: none" class="chatList">
+	<div id = "chatList" <c:if test="${chatControllerHide}"> style="display:none;" </c:if> class="chatList">
+	<div class = "memberStyle">
+	<div class="membersN">Name</div><div class="membersE">E-Number</div>
+	</div>
 	<c:forEach items="${chatList}" var="list">
 		<c:if test="${list.employeeNumber!=employeeNumber}">
 			<div class="employeeNumberList" style="cursor:not-allowed">
@@ -14,7 +17,6 @@
 				<div class="chatNumber">${list.employeeNumber}</div>
 			</div>
 			</div>
-			<br>
 		</c:if>
 	</c:forEach>
 	</div>
@@ -23,9 +25,16 @@
 <div class="liveChatContainer">
 	<c:forEach items="${chatListLive}" var="list" >
 		<c:if test="${list.employeeNumber!=employeeNumber}">
-			<div class="liveChat" style="display: none" id="chatList${list.employeeNumber}">
+			<div class="liveChat" style="${list.style}" id="chatList${list.employeeNumber}">
 				<div class="liveChatName">${list.name}</div><div class="liveChatClose">X</div>
-				<div class="chatArea" id="${list.employeeNumber}"></div>
+				<div class="chatArea" id="${list.employeeNumber}">
+				<c:forEach items="${list.commentList}" var="list2" >
+				<c:choose>
+				<c:when test="${list2.e_from==employeeNumber}"><div class ="myComment">${list2.chat_comment}</div></c:when>
+				<c:otherwise><div class ="yourComment">${list2.chat_comment}</div></c:otherwise>
+				</c:choose>
+				</c:forEach>
+				</div>
 				<input type="text" class="chatMessage" id="input${list.employeeNumber}">
 			</div>
 		</c:if>
@@ -43,38 +52,132 @@
 	var chatListLive = ${liveList};
 	for(var i = 0; i<chatListLive.length;i++){
 		if(chatListLive[i]!='${employeeNumber}'){
-			$('#chatInfo'+chatListLive[i]).children('.chatNumber').attr('style','color:#8de08d; cursor : pointer');
-			$('#chatInfo'+chatListLive[i]).children('.chatName').attr('style','color:#8de08d; cursor : pointer');
+			$('#chatInfo'+chatListLive[i]).children('.chatNumber').attr('style','color:#00ff00; cursor : pointer');
+			$('#chatInfo'+chatListLive[i]).children('.chatName').attr('style','color:#00ff00; cursor : pointer');
+			$('#'+chatListLive[i]).scrollTop($('#'+chatListLive[i])[0].scrollHeight)
 		}
 	}
 	$(function() {
+		
 		var areaTmp;
-		$(".liveChat").draggable();
-		$(".chatContainer").draggable();
+		$(".liveChat").draggable(
+			{stop:function(){ 
+				 $.ajax({
+						type : 'post',
+						dataType : 'text',
+						data : {employeeNumber:$(this).children('.chatArea').attr('id'),style:$(this).attr('style')},
+						url : '/proto/chatCheckStyle',
+						
+						success : function(result){ //LoginController-> loginCheck커멘드 에서 결과 가져옴.
+						},
+						error : function(xhr, status, e){
+							alert(e);
+						}
+						
+					});
+	       }}
+			 
+		);
+		
+		$(".chatContainer").draggable(
+				{stop:function(){ 
+					 $.ajax({
+							type : 'post',
+							dataType : 'text',
+							data : {style:$('.chatContainer').attr('style')},
+							url : '/proto/chatListStyle',
+							
+							success : function(result){ //LoginController-> loginCheck커멘드 에서 결과 가져옴.
+							},
+							error : function(xhr, status, e){
+								alert(e);
+							}
+							
+						});
+		       }});
+		
+		
+		
 		$(".chatON").click(function(){
 			console.log($('.chatContainer').attr('style'));
-			if($('.chatContainer').attr('style')=='display: none'){
-				$('.chatContainer').attr('style','')	
+			if($('.chatContainer').css('display')=='none'){
+				$('.chatContainer').css('display','');	
 					
 			}else{
 				$('.chatContainer').attr('style','display: none')
 			}
-			
+			$.ajax({
+				type : 'post',
+				dataType : 'text',
+				data : {style:$('.chatContainer').attr('style')},
+				url : '/proto/chatListStyle',
+				
+				success : function(result){ //LoginController-> loginCheck커멘드 에서 결과 가져옴.
+				},
+				error : function(xhr, status, e){
+					alert(e);
+				}
+				
+			});
 		})
 		$('.chatController').click(function() {
 			$('#chatList').toggle(500);
+			
+			$.ajax({
+				type : 'post',
+				dataType : 'text',
+				url : '/proto/chatControllerHide',
+				
+				success : function(result){ //LoginController-> loginCheck커멘드 에서 결과 가져옴.
+				},
+				error : function(xhr, status, e){
+					alert(e);
+				}
+				
+			});
 		});
 		
 		$('.liveChatClose').click(function() {
-			$(this).parent('.liveChat').toggle(500);
+			if($(this).parent('.liveChat').css('display')=='none'){
+				$(this).parent('.liveChat').css('display','block');
+			}else{
+				$(this).parent('.liveChat').css('display','none');
+			}
+			$.ajax({
+				type : 'post',
+				data : {employeeNumber:$(this).parent('.liveChat').children('.chatArea').attr('id'),style:'left:'+$(this).parent('.liveChat').css('left')+';top:'+ $(this).parent('.liveChat').css('top')},
+				dataType : 'text',
+				url : '/proto/chatCheckStyle',
+				
+				success : function(){ //LoginController-> loginCheck커멘드 에서 결과 가져옴.
+				},
+				error : function(xhr, status, e){
+					alert(e);
+				}
+				
+			});
 		});
 	
 		$('.employeeNumberList').click(function() {
-			$('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).attr('style', '');
-			$(this).children('.chatInfo').attr('style','')
-			console.log('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html());
-			$('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).children('.liveChatName').attr('style','');
-			
+			if($('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).css('display')=='none'){
+				$('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).css('display','block');
+			}else{
+				$('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).css('display','none');
+			}
+			$(this).children('.chatInfo').attr('style','');						
+			$.ajax({
+				type : 'post',
+				data : {employeeNumber:$(this).children('.chatInfo').children('.chatNumber').html(),style:$('#chatList'+$(this).children('.chatInfo').children('.chatNumber').html()).attr('style')},
+				dataType : 'text',
+				url : '/proto/chatCheckStyle',
+				
+				success : function(result){ //LoginController-> loginCheck커멘드 에서 결과 가져옴.
+				},
+				error : function(xhr, status, e){
+					alert(e);
+				}
+				
+			});
 		});
 		
 		$('.chatMessage').keypress(
@@ -87,7 +190,20 @@
 						$('#' + areaTmp).append(
 								'<div class=\'myComment\'>' + $(this).val()
 										+ '</div>');
-						$('#' + areaTmp).scrollTop($(".chatArea")[0].scrollHeight);
+						$('#' + areaTmp).scrollTop($('#' + areaTmp)[0].scrollHeight);
+						
+						$.ajax({
+							type : 'post',
+							data : {e_from:'${employeeNumber}',e_to:areaTmp,chat_comment:$(this).val()},
+							dataType : 'text',
+							url : '/proto/chattingData',
+							
+							success : function(result){ //LoginController-> loginCheck커멘드 에서 결과 가져옴.
+							},
+							error : function(xhr, status, e){
+								alert(e);
+							}
+					});
 						$(this).val('');
 					}
 				});

@@ -26,7 +26,7 @@
 	</select>
 		
 	<insert id = "register" parameterType="com.project.proto.dto.Dto">
-	INSERT INTO MEMBER(employeeNumber,name,email,password,day)VALUES(#{employeeNumber},#{name},#{email},#{password},sysdate)
+	INSERT INTO MEMBER(employeeNumber,name,email,password,day,teamNum, team )VALUES(#{employeeNumber},#{name},#{email},#{password},sysdate, #{teamNum}, #{team})
 	</insert>
 	
 	<select id = "find_PW" resultType="com.project.proto.dto.Dto">
@@ -94,5 +94,25 @@
 	SELECT COUNT(*) FROM BOARD WHERE TEAMNUM = #{PARAM1}
 	</select>
 	
+
+	<select id = "news_passCK" parameterType="int" resultType = "int">
+	SELECT NEWS_PASS FROM SETTING WHERE NEWS_PASS= #{PARAM1}
+
+	</select>
+	
+	<insert id = "insertNews"  parameterType="com.project.proto.dto.notice_Dto" >
+	INSERT INTO NOTICE(AUTHOR,TITLE,CONTENT,NUM) VALUES(#{author}, #{title}, #{content},notice_seq.nextval)
+	</insert>
+	
+
+	<select id="selectChatList" resultType="com.project.proto.dto.ChatComment_Dto" parameterType="com.project.proto.dto.ChatComment_Dto">
+	SELECT * FROM CHATTINGDATA WHERE (E_FROM = #{e_from} and E_TO = #{e_to})  or  (E_FROM = #{e_to} and E_TO = #{e_from})ORDER BY COMMENTDATE ASC
+	</select>
+	
+	<insert id = "insertChatList"  parameterType="com.project.proto.dto.ChatComment_Dto" >
+	INSERT INTO CHATTINGDATA(E_FROM, E_TO, CHAT_COMMENT,COMMENTDATE) VALUES(#{e_from}, #{e_to}, #{chat_comment},SYSDATE)
+	</insert>
+	
+
 </mapper>
 

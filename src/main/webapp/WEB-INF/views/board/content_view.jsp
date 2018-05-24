@@ -41,15 +41,13 @@
 }
 
 body {
-	background:
-		url('https://d2lm6fxwu08ot6.cloudfront.net/img-thumbs/960w/J70T3LHQ2O.jpg')
-		fixed;
+	background: url('../../../proto/resources/images/background.jpg') fixed;
 	background-size: cover;
 	background-repeat: no-repeat;
 	padding: 0;
 	margin: 0;
 	background-repeat: no-repeat;
-	height: 120vh;
+	height: 130vh;
 }
 
 .form-control {
@@ -86,6 +84,17 @@ body {
 		});
 	});
 
+	$(document).ready(function() {
+		$("#delete").click(function() {
+			setTimeout('$("#del_ck").show(700)');
+
+		});
+		$("#no").click(function() {
+			setTimeout('$("#del_ck").hide(700)');
+
+		});
+	});
+
 	$(function() {
 
 		$('#searchable-container').searchable({
@@ -100,10 +109,6 @@ body {
 			}
 		})
 	});
-
-
-		
-	
 </script>
 
 
@@ -157,8 +162,8 @@ body {
 					<li><a href="list?teamNum=4">영업팀</a></li>
 				</ul>
 				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-					<li><a href="messenser"><span class="text-white"><i
-								class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
+					<li class="chatON"><span class="text-white"><i
+							class="fa fa-wechat"></i>&nbsp Messenser</span></li>
 				</ul>
 			</div>
 		</div>
@@ -171,12 +176,12 @@ body {
 			style="color: #ffffff; background-color: #000000ad; overflow: auto; height: 710px;">
 
 
-			<div class="row">
-				<div class="col-lg-3">
-					<h3>${content.subject}</h3>
+			<div class="row" style="padding-bottom: 12px">
+				<div class="col-lg-12" style="text-align: center;">
+					<h3 style="margin-top: 28px">${content.subject}</h3>
 				</div>
 			</div>
-			<br>
+
 			<div class="row">
 				<div class="col-lg-12">
 
@@ -252,8 +257,8 @@ body {
 								<th><textarea rows="3" cols="100" placeholder="댓글을 입력하세요"
 										id=replytext name="replytext" class="form-control"
 										style="background-color: #ffffff33; margin-top: 9px"></textarea></th>
-								<th><input type="button" value="댓글달기" class="btn btn-danger"
-									id="registerReply"
+								<th><input type="button" value="댓글달기"
+									class="btn btn-danger" id="registerReply"
 									style="background-color: transparent; margin-right: -18px; margin-top: 10px; border-radius: 10px; padding: 25px 50px">
 								</th>
 							</tr>
@@ -269,14 +274,13 @@ body {
 								${replylist.name } <font size="1px">${replylist.regdate}</font>
 							</td>
 
-							<td rowspan="2" width="10%">
-							<c:if test="${employeeNumber == replylist.employeeNumber}">
-									
-									<button type="button" class="deleteReply btn btn-warning" style="background-color: transparent;"
-												id="${replylist.rnum}">삭제</button>
-				
-								</c:if>
-							</td>
+							<td rowspan="2" width="10%"><c:if
+									test="${employeeNumber == replylist.employeeNumber}">
+
+									<button type="button" class="deleteReply btn btn-warning"
+										style="background-color: transparent;" id="${replylist.rnum}">삭제</button>
+
+								</c:if></td>
 						</tr>
 						<tr>
 							<td style="padding-left: 40px; width: 970px">내용 :
@@ -299,9 +303,11 @@ body {
 
 
 		</div>
+		<jsp:include page="../main/chatting.jsp"></jsp:include>
+		</nav>
 	</div>
 
-	</nav>
+	
 
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>

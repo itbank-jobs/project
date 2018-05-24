@@ -1,10 +1,14 @@
 .chatContainer{
 position: fixed;
-    right: 30px;
-    top: 150px;
-    width: 150px;
-    height: auto;
-      border: solid white 2px;
+    right: 120px;
+    top: 160px;
+    width: 180px;
+    overflow: auto;
+    max-height: 500px;
+    border: 2px solid #ffffff4d;
+    background-color: #00000052;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .liveChatContainer{
@@ -14,7 +18,7 @@ position: fixed;
 	    display: inline-block;
     border-color: white;
         cursor: pointer;
-            border-bottom: solid;
+                border-bottom: 2px solid #ffffff4d;
 }
 .chatController{
 	font-size: 20px;
@@ -25,24 +29,32 @@ position: fixed;
     color:white;
 }
 .liveChat{
-	top: 0;
-    left: 0;
+	display:none;
+	bottom: 0;
+    right: 0;
 	position: fixed;
 	width: 300px;
     height: 300px;
-    background-color: #ffffff10;
+    background-color: #0000009e;
    	color: white;
 }
 
 
 .liveChat input{
-    color: black;
-	width: 299px;
+    color: white;
+    width: 299px;
+    border: 2px solid #ffffff4d;
+    background-color: #0000009e;
+}
+.liveChat input:focus{
+    outline: none;
 }
 .chatArea{
 	width: 100%;
-    height: 250px;
+    height: 252px;
     overflow: auto;
+        padding-left: 5px;
+    padding-right: 5px;
 }
 .myComment{
 	text-align: right;
@@ -55,14 +67,14 @@ position: fixed;
 }
 
 .chatList{
-	    margin: 30px 30px 0px 30px;
 	color : white;
+	padding-bottom: 10px;
 }
 .liveChatName{
 width: 96.5%;
-    border-bottom-color: #ffffff;
     display: inline-block;
-        border-bottom: solid;
+        border-bottom: 2px solid #ffffff4d;
+            padding-left: 5px;
 }
 .chatON{
 	margin: 10px;
@@ -70,5 +82,24 @@ width: 96.5%;
 }
 @keyframes flush {
     from {background-color: #e0dada;}
-    to {background-color: #ffffff33;}
+    to {background-color: #00000052;}
+}
+.chatName, .membersN{
+	display: inline-block;
+	width: 60px;
+}
+ .chatNumber, .membersE{
+ display: inline-block;
+     margin-left: 20px;
+ }
+ .memberStyle{
+     margin-top: 15px;
+     padding-left: 17px;
+     border-bottom: 1px solid #ffffff4d; 
+ }
+
+.chatInfo{
+margin-left: 17px;
+    margin-top: 20px;
+    margin-right: 9px;
 }

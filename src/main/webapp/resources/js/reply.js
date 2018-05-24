@@ -39,14 +39,14 @@ $(function(){
          	             window.location.reload();
          	             },
          	              error: function(xhr, status, e) {
-         	                 alert(e);
+         	                 alert('1');
          	              }
          		   		
          		   });
          	   })
               },
                error: function(xhr, status, e) {
-                  alert(e);
+                  alert('2');
                }
             
          

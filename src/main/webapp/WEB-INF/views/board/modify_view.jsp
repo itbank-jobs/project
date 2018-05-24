@@ -107,13 +107,12 @@ body {
 
 		});
 	});
-
-
 </script>
 
 
 </head>
 <body>
+	
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
@@ -146,7 +145,7 @@ body {
 				<div class="navbar-header flex-item">
 					<div class="navbar-brand">Project</div>
 				</div>
-	
+
 
 				<ul id="n" class="nav navbar-nav flex-item hidden-xs"
 					style="display: none;">
@@ -163,8 +162,8 @@ body {
 					<li><a href="list?teamNum=4">영업팀</a></li>
 				</ul>
 				<ul class="nav navbar-nav flex-item hidden-xs pull-right">
-					<li><a href="messenser"><span class="text-white"><i
-								class="fa fa-wechat"></i>&nbsp Messenser</span></a></li>
+					<li class="chatON"><span class="text-white"><i
+							class="fa fa-wechat"></i>&nbsp Messenser</span></li>
 				</ul>
 			</div>
 		</div>
@@ -228,7 +227,8 @@ body {
 											class="btn btn-info pull-left"
 											style="background-color: transparent;" /></a> <c:if
 											test="${employeeNumber == content.employeeNumber}">
-											<input type="button" id="delete" value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
+											<input type="button" id="delete"
+												value="&nbsp&nbsp&nbsp삭 제 &nbsp&nbsp"
 												class="btn btn-info pull-left"
 												style="background-color: transparent;" />
 
@@ -253,10 +253,11 @@ body {
 				</form>
 			</div>
 		</div>
+		<jsp:include page="../main/chatting.jsp"></jsp:include>
+		</nav>
 	</div>
-		
 
-	</nav>
+
 
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>

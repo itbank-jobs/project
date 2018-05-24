@@ -12,6 +12,7 @@
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="resources/js/find.js"></script>
+<script src="resources/js/encoding.js"></script>
 <title>Forgot Password</title>
 
 
@@ -26,7 +27,7 @@
 			<div class=" forgot-pass-content">
 				<a href="/proto" class="sign-up">SIGN IN</a>
 			</div>
-			<input type="text" placeholder="EmployeeNumber" autocomplete="new-password" name = "employeeNumber">
+			<input type="text" placeholder="EmployeeNumber" autocomplete="new-password" name = "employeeNumber" maxlength="8" onkeyup="encodingNum(event)">
 			<div id = "Message">&nbsp</div>
 			
 			<input type="button" id="find-btn" value="FIND" class="btn btn-success btn-sm" onclick="findFunction()" >
