@@ -105,6 +105,11 @@ public class MainController {
 	public void logout(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("logout페이지()실행");
 		session.invalidate();
+		try {
+			res.sendRedirect("/proto");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 

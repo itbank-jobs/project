@@ -116,11 +116,6 @@
 						<li class="active"><a
 							href="list?teamNum=${teamNum}&num=${startPage + pageBlock}">다음</a></li>
 					</c:if>
-				count : ${count} <br>
-				endPage : ${endPage} <br>
-				startPage : ${startPage} <br>
-				pageCount : ${pageCount} <br>
-				pageSize : ${pageSize }
 				</c:if>
 			</ul>
 		</div>
