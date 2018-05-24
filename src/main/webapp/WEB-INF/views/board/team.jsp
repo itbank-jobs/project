@@ -127,7 +127,7 @@ body {
 
 </head>
 <body>
-	<jsp:include page="../main/chatting.jsp"></jsp:include>
+	
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
@@ -296,10 +296,10 @@ body {
 				</div>
 
 			</div>
+			<jsp:include page="../main/chatting.jsp"></jsp:include>
+		</nav>
+				
 	</div>
-	</nav>
-
-
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
 </body>

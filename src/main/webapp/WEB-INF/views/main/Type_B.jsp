@@ -69,14 +69,13 @@ body {
 
 <body>
 
-	<jsp:include page="chatting.jsp"></jsp:include>
+	
 
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
-
-		<nav
-			class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
-		<!-- top nav --> <nav class="navbar navbar-top hidden-xs">
+		<nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
+		<!-- top nav --> 
+		<nav class="navbar navbar-top hidden-xs">
 		<div class="container">
 			<!-- left nav top -->
 			<ul class="nav navbar-nav pull-left">
@@ -96,8 +95,10 @@ body {
 						class="fa fa-power-off"></i>&nbspLogout</a></li>
 			</ul>
 		</div>
+		</nav> 
 		<div class="dividline light-grey"></div>
-		</nav> <!-- down nav --> <nav class="navbar navbar-down">
+		<!-- down nav -->
+		<nav class="navbar navbar-down">
 		<div class="container">
 			<div class="flex-container">
 				<div class="navbar-header flex-item">
@@ -124,10 +125,13 @@ body {
 							class="fa fa-wechat"></i>&nbsp Messenser</span></li>
 				</ul>
 			</div>
+			
 		</div>
-		</nav> </nav>
-
+		</nav>
+		<jsp:include page="chatting.jsp"></jsp:include>
+		</nav> 
 	</div>
+	
 
 </body>
 </html>
