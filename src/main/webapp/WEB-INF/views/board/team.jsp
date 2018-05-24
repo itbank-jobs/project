@@ -89,8 +89,8 @@
 
 		<div align="center">
 			<ul class="pagination">
-
-				<c:if test="${count > 0}">
+			
+				<c:if test="${count > 1}">
 					<c:set var="imsi" value="${count % pageSize == 0 ? 0 : 1}" />
 					<c:set var="pageCount" value="${count / pageSize + imsi}" />
 					<c:set var="pageBlock" value="${3}" />
@@ -101,21 +101,26 @@
 					<c:set var="startPage" value="${result * pageBlock + 1}" />
 					<c:set var="endPage" value="${startPage + pageBlock - 1}" />
 
-					<c:if test="${endPage > pageCount}">
+					<c:if test="${pageBlock < startPage}">
 						<li class="active"><a
 							href="list?teamNum=${teamNum}&num=${startPage - pageBlock}">이전</a></li>
 					</c:if>
 
-					<c:forEach var="i" begin="${1}" end="${count / pageSize + imsi}">
+					<c:forEach var="i" begin="${startPage}" end="${endPage}">
+						<c:if test="${endPage < pageCount+2}">
 						<li><a href="list?teamNum=${teamNum}&num=${i}">${i}<span
-								class="sr-only"></span></a></li>
+								class="sr-only"></span></a></li></c:if>
 					</c:forEach>
 
 					<c:if test="${endPage < pageCount}">
 						<li class="active"><a
 							href="list?teamNum=${teamNum}&num=${startPage + pageBlock}">다음</a></li>
 					</c:if>
-
+				count : ${count} <br>
+				endPage : ${endPage} <br>
+				startPage : ${startPage} <br>
+				pageCount : ${pageCount} <br>
+				pageSize : ${pageSize }
 				</c:if>
 			</ul>
 		</div>
