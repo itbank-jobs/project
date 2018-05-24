@@ -1,3 +1,18 @@
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+body {
+	background:url('../../../proto/resources/images/background.jpg') fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 0;
+	margin: 0;
+	background-repeat: no-repeat;
+	height: 130vh;
+}
+
 /*scroll effect*/
 .navbar-trans {
   background-color: transparent;
@@ -97,4 +112,17 @@
 
 tr.a:hover{
 	background-color: rgba(0, 0, 0, 0.35);
+}
+
+.navbar-default {
+	background-color: #00000000;
+	border-color: #00000000;
+	}
+.row-padding {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+.form-control {
+	background-color: #ffffff33;
+	color: #8bd8c0;
 }
