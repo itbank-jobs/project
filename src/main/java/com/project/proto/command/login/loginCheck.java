@@ -2,6 +2,7 @@ package com.project.proto.command.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 import com.project.proto.dao.Dao;
+import com.project.proto.dto.Chat_Dto;
 import com.project.proto.dto.Dto;
 
 public class loginCheck implements Command {
@@ -51,6 +53,9 @@ public class loginCheck implements Command {
 				dto.setName(list.get(0).getName());
 				session.setAttribute("employeeNumber",dto.getEmployeeNumber());
 				session.setAttribute("name",dto.getName());
+				session.setAttribute("lCAL", new ArrayList<Chat_Dto>());
+				session.setAttribute("chatListStyle","display:none;");
+				session.setAttribute("chatControllerHide",true);			
 
 			}
 			else {

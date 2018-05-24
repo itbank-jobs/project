@@ -29,6 +29,7 @@ position: fixed;
     color:white;
 }
 .liveChat{
+	display:none;
 	bottom: 0;
     right: 0;
 	position: fixed;

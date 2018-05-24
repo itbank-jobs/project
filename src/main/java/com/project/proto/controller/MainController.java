@@ -27,8 +27,12 @@ import com.project.proto.command.settingCommand;
 import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
 import com.project.proto.dao.notice_Dao;
+import com.project.proto.dto.ChatComment_Dto;
+import com.project.proto.dto.Chat_Dto;
 import com.project.proto.dto.Dto;
 import com.project.proto.dto.notice_Dto;
+
+import oracle.net.aso.d;
 
 
 
@@ -133,20 +137,6 @@ public class MainController {
 	public String TypeB(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		System.out.println("TypeB()실행");
 		System.out.println("main페이지()실행");
-		model.addAttribute("chatList", dao.chatList());
-		List<Dto> list = new ArrayList<Dto>();
-		List<String> liveList = new ArrayList<String>();
-		for(int i = 0; i<echoHandler.getList().size(); i ++) {
-			Dto dto = new Dto();
-			dto.setName((String)echoHandler.getList().get(i).getAttributes().get("name"));
-			dto.setEmployeeNumber(Integer.parseInt((String)echoHandler.getList().get(i).getAttributes().get("employeeNumber")));
-			liveList.add((String)echoHandler.getList().get(i).getAttributes().get("employeeNumber"));
-			list.add(dto);				
-		}
-		
-		model.addAttribute("chatListLive",list);
-		model.addAttribute("liveList",liveList);
-		System.out.println(echoHandler.getList().size()!=0?echoHandler.getList().get(0).getAttributes().get("echoHandler"):null);
 		
 		return "main/Type_B";
 
@@ -177,8 +167,8 @@ public class MainController {
 		
 		comm = new infoCommand();
 		comm.execute(model, dao);
-		
-
 	}
+	
+
 	
 }

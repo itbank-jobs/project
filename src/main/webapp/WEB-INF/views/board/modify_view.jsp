@@ -112,7 +112,7 @@ body {
 
 </head>
 <body>
-	<jsp:include page="../main/chatting.jsp"></jsp:include>
+	
 	<div style="-ms-overflow-style: none;">
 		<!--스크롤바 없이 스크롤 가능하게 함   -->
 
@@ -253,6 +253,8 @@ body {
 				</form>
 			</div>
 		</div>
+		<jsp:include page="../main/chatting.jsp"></jsp:include>
+		</nav>
 	</div>
 
 

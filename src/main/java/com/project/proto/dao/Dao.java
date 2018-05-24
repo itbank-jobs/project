@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.proto.dto.ChatComment_Dto;
 import com.project.proto.dto.Dto;
 
 
@@ -21,6 +22,14 @@ public class Dao {
 	private SqlSession sqlSession;
 	
 
+	public List<ChatComment_Dto> selectChatList(ChatComment_Dto dto){
+		
+		return sqlSession.selectList("selectChatList",dto);
+	}
+	
+	public void insertChatList(ChatComment_Dto dto){
+		sqlSession.insert("insertChatList",dto);
+	}
 	
 	public List<Dao> selectMember() {
 		return sqlSession.selectList("selectList");

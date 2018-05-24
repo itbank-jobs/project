@@ -94,5 +94,13 @@
 	SELECT COUNT(*) FROM BOARD WHERE TEAMNUM = #{PARAM1}
 	</select>
 	
+	<select id="selectChatList" resultType="com.project.proto.dto.ChatComment_Dto" parameterType="com.project.proto.dto.ChatComment_Dto">
+	SELECT * FROM CHATTINGDATA WHERE (E_FROM = #{e_from} and E_TO = #{e_to})  or  (E_FROM = #{e_to} and E_TO = #{e_from})ORDER BY COMMENTDATE ASC
+	</select>
+	
+	<insert id = "insertChatList"  parameterType="com.project.proto.dto.ChatComment_Dto" >
+	INSERT INTO CHATTINGDATA(E_FROM, E_TO, CHAT_COMMENT,COMMENTDATE) VALUES(#{e_from}, #{e_to}, #{chat_comment},SYSDATE)
+	</insert>
+	
 </mapper>
 
