@@ -11,3 +11,5 @@
 
 <script src="resources/js/navigation.js"></script>
 <link rel="stylesheet" href="resources/css/main.css">
+
+<link rel="stylesheet" href="resources/css/main_navigation.css">

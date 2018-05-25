@@ -17,14 +17,14 @@
 
 </head>
 <body>
-	<jsp:include page="main/chatting.jsp"></jsp:include>
+
 	<jsp:include page="main_navigation.jsp" />
 	<br>
 	<br>
 	<div class="container" style="color: #ffffff;">
 
-		<div class="row"
-			style="margin-left: 300px; margin-right: 300px; margin-top: 7%; background-color: #000000ad">
+		<div id="setBg" class="row"
+			style="margin-left: 25%; margin-right: 25%; margin-top: 7%;">
 			<p class="form-title" id="signUp"
 				style="margin-top: 25px; margin-bottom: 17px">사원 정보</p>
 
@@ -51,7 +51,7 @@
 				<div id=Message style="color: red">&nbsp</div>
 
 
-				<input type="submit" value="회원 정보 수정" class="btn btn-1 btn-success">
+				<input type="submit" value="회원 정보 수정" style="width: 94%;" class="btn btn-1 btn-success">
 
 				<div class="remember-forgot">
 					<div class="row">
@@ -62,9 +62,8 @@
 		</div>
 		<br>
 	</div>
+	<jsp:include page="main/chatting.jsp"></jsp:include>
 	<jsp:include page="main_footer.jsp" />
-
-
 
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
