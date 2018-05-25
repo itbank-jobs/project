@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+
+@media ( max-width : 768px) {
+	#mobile {
+		display: display !important;
+	}
+	#setBg{
+	background-color: #ffffff00
+	}
+}
+@media ( min-width : 768px) {
+#mobile {
+	display: none !important;
+}
+
+#setBg{
+	 background-color: #000000ad
+	}
+}
+
+@media (max-width: 768px){
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #fff;
+}}
+

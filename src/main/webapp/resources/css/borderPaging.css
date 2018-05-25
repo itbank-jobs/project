@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+/* 페이징  */
+.pagination>.active>a {
+	background-color: #bdca4200;
+    border-color: #ff000063;
+    color : #ffffff63;
+}
+
+.pagination>.active>a:hover {
+	background-color: #00000000;
+	border-color: #ff000063;
+	color : #ff000063;
+}
+
+.pagination>li>a {
+	background-color: #fff0;
+	border-color:#9a8c00;
+	color : #ffffff63;
+}
+
+.pagination>li>a:hover {
+	background-color: #fff0;
+	border-color:#9a8c00;
+	color:#9a8c00;
+	
+			
+}
