@@ -8,6 +8,6 @@ public class ChessTestController {
 	@RequestMapping(value = "/chessTest")
 	public String chess() {
 
-		return "chessTest/chessTest";
+		return "chessTest/chessTest4";
 	}
 }
