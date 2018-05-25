@@ -28,13 +28,13 @@
 				<h3 style="margin-top: 28px">${content.subject}</h3>
 			</div>
 		</div>
-
 		<div class="row">
 			<div class="col-lg-12">
 				<form action="modify_view" method="post">
 					<input type="hidden" name="num" id="num" value="${content.num}">
 					<input type="hidden" name="teamNum" value="${teamNum}">
 					<table class="table" id="table">
+
 						<tbody>
 							<tr>
 								<th class="text-center">사원번호</th>

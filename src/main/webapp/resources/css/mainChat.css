@@ -103,3 +103,87 @@ margin-left: 17px;
     margin-top: 20px;
     margin-right: 9px;
 }
+/* chess */
+.chessController{
+	    border: 2px solid white;
+    color: white;
+}
+.chessTable{
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+    top: 200px;
+    left: 30%;
+}
+#chessboard {
+	/* 	max-height: 504px;
+	max-width: 504px;
+ */
+	
+}
+#chessboard img{
+	width: 50px;
+    height: 50px;
+}
+#cellprefix {
+	width: 100%;
+	height: 100%;
+	max-height: 40px;
+	max-width: 40px;
+	float: left;
+	margin: 5px;
+	padding: 15px 0 0 20px;
+}
+
+.red {
+	background: #C3C3C3;
+}
+
+#result {
+	position: fixed;
+	width: 300px;
+	height: 500px;
+	background-color: #09090a61;
+	top: 0;
+	right: 0;
+}
+
+.chess {
+	border: 1px solid #00a4a2;
+	width: 100%;
+	height: 100%;
+	max-height: 50px;
+	max-width: 50px;
+	float: left;
+	/* margin: 3px; */
+	transition: all 0.5s ease-in-out;
+	border-radius: 5px;
+	/* 	padding: 0 0 0 6px;
+ */
+	font-size: 30pt;
+	cursor: pointer;
+	z-index: 1;
+}
+
+.chess:hover {
+	color: #fff;
+	background: #B1DB4E;
+	z-index: 2;
+	transform: translate(10px, -10px);
+	animation: solution 1.5s ease-in-out infinite alternate;
+}
+
+#see {
+	width: 50px;
+	height: 50px;
+}
+
+#wow {
+	width: 10px;
+	height: 10px;
+}
+
+.availMoveChess, .availMoveRed {
+	background: #B1DB4E;
+}
