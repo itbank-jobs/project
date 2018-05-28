@@ -20,6 +20,8 @@
 								class="fa fa-newspaper-o"></i>&nbsp News</span></a></li>
 					<li id="team"><a href="#"><span class="text-white"><i
 								class="fa fa-users"></i>&nbsp Team</span></a></li>
+					<li id="chessReview"><a href="chessReview"><span class="text-white"><i
+								class="fa fa-delicious"></i>&nbsp Chess-Review</span></a></li>
 				</ul>
 				<!-- right nav top -->
 				<ul class="nav navbar-nav pull-right">
