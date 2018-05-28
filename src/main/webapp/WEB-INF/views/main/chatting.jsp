@@ -26,7 +26,7 @@
 	<c:forEach items="${chatListLive}" var="list" >
 		<c:if test="${list.employeeNumber!=employeeNumber}">
 			<div class="liveChat" style="${list.style}" id="chatList${list.employeeNumber}">
-				<div class="liveChatName">${list.name}</div><div class="chessStart">chessStart</div><div class="liveChatClose">X</div>
+				<div class="liveChatName">${list.name}</div><div class="liveChatClose">X</div>
 				<div class="chatArea" id="${list.employeeNumber}">
 				<c:forEach items="${list.commentList}" var="list2" >
 				<c:choose>
@@ -36,12 +36,13 @@
 				</c:forEach>
 				</div>
 				<input type="text" class="chatMessage" id="input${list.employeeNumber}">
+				<div class="chessStart fa fa-delicious"></div>
 			</div>
 		</c:if>
 	</c:forEach>
 </div>
 <div class="chessTable" style="display: none">
-<div class = "chessController fa fa-delicious"></div>
+<div class = "chessController">chessController</div>
 <div class = "chessTableClose">X</div>
 <div id="chessboard">
 		<c:forEach begin="0" end="7" varStatus="i">
@@ -105,14 +106,14 @@
 		if(chatListLive[i]!='${employeeNumber}'){
 			$('#chatInfo'+chatListLive[i]).children('.chatNumber').attr('style','color:#00ff00; cursor : pointer');
 			$('#chatInfo'+chatListLive[i]).children('.chatName').attr('style','color:#00ff00; cursor : pointer');
-			$('#'+chatListLive[i]).scrollTop($('#'+chatListLive[i])[0].scrollHeight)
 		}
 	}
 	$(function() {
+		
 		$('#result').draggable();
 		$('.chessTable').draggable();
 		var areaTmp;
-		
+		$('.chatArea').scrollTop($('.chatArea')[0].scrollHeight)
 		$(".liveChat").draggable(
 			{stop:function(){ 
 				 $.ajax({
@@ -214,6 +215,8 @@
 		$('.employeeNumberList').click(function() {
 			if($('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).css('display')=='none'){
 				$('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).css('display','block');
+				
+				
 			}else{
 				$('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).css('display','none');
 			}
@@ -260,6 +263,7 @@
 						$(this).val('');
 					}
 				});
+		
 	});
 	$('.chessStart').click(function(){
 		sock.send('chessTable:'+$(this).parent('.liveChat').children('.chatArea').attr('id')+ ':${employeeNumber}:chessStart:request');
