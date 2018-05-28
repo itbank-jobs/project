@@ -41,7 +41,7 @@
 	</c:forEach>
 </div>
 <div class="chessTable" style="display: none">
-<div class = "chessController">chessController</div>
+<div class = "chessController fa fa-delicious"></div>
 <div class = "chessTableClose">X</div>
 <div id="chessboard">
 		<c:forEach begin="0" end="7" varStatus="i">
