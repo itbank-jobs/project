@@ -35,8 +35,6 @@ public class LoginController {
 	@RequestMapping(value = "/")
 	public String login(Model model, HttpSession session,HttpServletRequest req,HttpServletResponse res) {
 		
-	
-	
 		System.out.println("login()실행");
 
 		return "login";

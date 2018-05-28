@@ -176,7 +176,6 @@
 		</dependency>
 
 		<!-- jackson -->
-
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>

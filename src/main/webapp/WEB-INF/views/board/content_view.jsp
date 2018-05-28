@@ -28,7 +28,6 @@
 				<h3 style="margin-top: 28px">${content.subject}</h3>
 			</div>
 		</div>
-
 		<div class="row">
 			<div class="col-lg-12">
 				<form action="modify_view" method="post">
