@@ -8,7 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.proto.dto.ChatComment_Dto;
 import com.project.proto.dto.Dto;
+import com.project.proto.dto.notice_Dto;
 
 
 
@@ -21,6 +23,14 @@ public class Dao {
 	private SqlSession sqlSession;
 	
 
+	public List<ChatComment_Dto> selectChatList(ChatComment_Dto dto){
+		
+		return sqlSession.selectList("selectChatList",dto);
+	}
+	
+	public void insertChatList(ChatComment_Dto dto){
+		sqlSession.insert("insertChatList",dto);
+	}
 	
 	public List<Dao> selectMember() {
 		return sqlSession.selectList("selectList");
@@ -71,5 +81,25 @@ public class Dao {
 			sqlSession.update("info_modify",dto);
 			
 		}
+
+
+		public int news_passCK(int reqPass) {
+			int sql = 1 ;
+			try {
+				int sqlPass = sqlSession.selectOne("news_passCK",reqPass);
+				if(sqlPass == reqPass){
+					sql = 1;
+				};
+				
+			} catch (Exception e) {
+				sql = 0;
+			}
+		 
+		 return sql;
+		}
 	
+	//공지사항 쓰기
+	public void insertNews(notice_Dto dto) {
+			sqlSession.insert("insertNews",dto);
+	}
 }

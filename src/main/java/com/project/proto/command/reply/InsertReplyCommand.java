@@ -18,14 +18,12 @@ public class InsertReplyCommand implements Command {
 	@Override
 	public void execute(Model model, reply_Dao dao) {
 		// TODO Auto-generated method stub
-		Map<String, Object>map = model.asMap();//?
+		Map<String, Object>map = model.asMap();
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
 		HttpSession session = (HttpSession) map.get("session");
 		reply_Dto dto = new reply_Dto();
-		System.out.println("replytext : "+req.getParameter("replytext"));
-		System.out.println("comman session : " + session.getAttribute("employeeNumber"));
-		System.out.println("bnum : "+Integer.parseInt(req.getParameter("bnum")));
+
 		
 		
 		

@@ -48,6 +48,10 @@ $(document).ready(function(){
 				}
 			});
 			</c:forEach></c:forEach>
+			
+		//	for(var i =1 ;i<9;i++){
+			//	$('#2'+i).html('<img src="resources/images/Wpawn.png">')
+	//	}
 });
 
 </script>

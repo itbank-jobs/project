@@ -10,6 +10,7 @@ package com.project.proto.dto;
 		private String email;
 		private String password;
 		private String day;
+		private String team;
 
 		
 		
@@ -26,6 +27,14 @@ package com.project.proto.dto;
 		}
 		
 		
+		public String getTeam() {
+			return team;
+		}
+
+		public void setTeam(String team) {
+			this.team = team;
+		}
+
 		public int getTeamNum() {
 			return teamNum;
 		}

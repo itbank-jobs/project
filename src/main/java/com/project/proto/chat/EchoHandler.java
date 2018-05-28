@@ -23,29 +23,57 @@ public class EchoHandler extends TextWebSocketHandler{
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		// TODO Auto-generated method stub
 		super.handleTextMessage(session, message);
-		
+		String tmp[] = message.getPayload().split(":");
 
 		if(session.getAttributes().get("employeeNumber")!=null) {
-			String tmp[] = message.getPayload().split(":",3);
+			if(tmp[0].equals("chessTable")) {
+				System.out.println("체스확인 : "+tmp[0]);
+				System.out.println("목적지 : "+tmp[1]);
+				System.out.println("보낸넘 : "+tmp[2]);
+				System.out.println("왓 : "+tmp[3]);
+				System.out.println("왓 : "+tmp[4]);
+				for(WebSocketSession sess : list) {				
+					if(sess.getAttributes().get("employeeNumber").equals(tmp[1])) {
+						if(tmp[3].equals("chessStart")) {
+							System.out.println("1");
+								if(tmp[4].equals("request")) {
+									System.out.println("2");
+									sess.sendMessage(new TextMessage(tmp[0]+":"+tmp[1]+":"+tmp[2]+":"+tmp[3]+":"+tmp[4]));	
+								}else {
+									System.out.println("왓 : "+tmp[5]);
+									sess.sendMessage(new TextMessage(tmp[0]+":"+tmp[1]+":"+tmp[2]+":"+tmp[3]+":"+tmp[4]+":"+tmp[5]));
+								}
+								
+						}else {
+							System.out.println("체스확인 : "+tmp[0]);
+							System.out.println("목적지 : "+tmp[1]);
+							System.out.println("보낸넘 : "+tmp[2]);
+							System.out.println("왓 : "+tmp[3]);
+							System.out.println("왓 : "+tmp[4]);
+							System.out.println("왓 : "+tmp[5]);
+							
+							sess.sendMessage(new TextMessage(tmp[0]+":"+tmp[1]+":"+tmp[2]+":"+tmp[3]+":"+tmp[4]+":"+tmp[5]));
+						}
+						}
+				}
+			
+			}else{
+				System.out.println("목적지 : "+tmp[0]);
+				System.out.println("보낸넘 : "+tmp[1]);
+				System.out.println("왓 : "+tmp[2]);
+				for(WebSocketSession sess : list) {				
+					if(sess.getAttributes().get("employeeNumber").equals(tmp[0])) {
+						sess.sendMessage(new TextMessage(tmp[1]+":"+tmp[2]));
 
-			System.out.println("목적지 : "+tmp[0]);
-			System.out.println("보낸넘 : "+tmp[1]);
-			System.out.println("왓 : "+tmp[2]);
-			for(WebSocketSession sess : list) {				
-				if(sess.getAttributes().get("employeeNumber").equals(tmp[0])) {
-					sess.sendMessage(new TextMessage(tmp[1]+":"+tmp[2]));
-
-					}
+						}
+				}
+				
 			}
 		}else {
-			String tmp[] = message.getPayload().split(":",2);
 			session.getAttributes().put("employeeNumber", tmp[0]);
 			session.getAttributes().put("name", tmp[1]);
 		}
-		
-	
-		
-		
+
 	}
 	
 	@Override

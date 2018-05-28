@@ -2,6 +2,7 @@ package com.project.proto.command.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 import com.project.proto.dao.Dao;
+import com.project.proto.dto.Chat_Dto;
 import com.project.proto.dto.Dto;
 
 public class loginCheck implements Command {
@@ -37,8 +39,7 @@ public class loginCheck implements Command {
 		
 			dto.setEmployeeNumber(Integer.parseInt(employeeNumber));
 			dto.setPassword(password);
-			System.out.println("employeeNumber1 : "+ employeeNumber );
-			System.out.println("password1 : "+ password);
+			
 			list = dao.loginCheck(dto);
 			chk = list.size();
 	
@@ -47,13 +48,14 @@ public class loginCheck implements Command {
 			System.out.println("CHK : " + chk);
 		
 			if(chk >0) {
-//				System.out.println("커멘드 : 로그인성공");
+
 				dto.setName(list.get(0).getName());
 				session.setAttribute("employeeNumber",dto.getEmployeeNumber());
 				session.setAttribute("name",dto.getName());
-//				session.setAttribute("password", dto.getPassword());
-//				System.out.println("현재 session employeeNumber : "+session.getAttribute("employeeNumber"));
-//				System.out.println("현재 session password : "+session.getAttribute("password"));
+				session.setAttribute("lCAL", new ArrayList<Chat_Dto>());
+				session.setAttribute("chatListStyle","display:none;");
+				session.setAttribute("chatControllerHide",true);			
+
 			}
 			else {
 				System.out.println("커멘드 : 로그인 실패");
@@ -72,30 +74,7 @@ public class loginCheck implements Command {
 		}
 	
 	
-		
-		
-		
-/*		if(chk >0) {
-			System.out.println("커멘드 : 로그인성공");
-			session.setAttribute("email",dto.getEmail());
-			session.setAttribute("password", dto.getEmail());
-			try {
-				res.sendRedirect("main");
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		else {
-			System.out.println("커멘드 : 로그인 실패");
-				try {
-					res.sendRedirect("/proto");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		}*/
-		
+
 		
 	}
 
