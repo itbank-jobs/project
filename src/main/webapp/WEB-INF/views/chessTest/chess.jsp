@@ -1,73 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE >
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<title>Chess Notation Save Simulator</title>
 <style>
-.chessboard {
-	padding: 0px;
-	border: 1px solid black;
+body {
+	background-color: #fff;
 }
- td {
- 	width : 30px;
-	height : 30px;
-	border: 1px solid #444444;
- }
-th{
-	
-	border: 1px solid #444444;
+
+form fieldset {
+	margin-bottom: 25px;
 }
-.chess{
-	width: 30px;
-	height: 30px;	
+
+form legend {
+	font-size: 15px;
+	font-weight: 600;
 }
-img {
-	width: 30px;
-	height: 30px;	
+
+form label.reg {
+	font-size: 14px;
+	width: 110px;
+	color: #390;
+	font-weight: bold;
+	float: left;
+	text-align: right;
+	margin-right: 10px;
+}
+
+form ul li {
+	list-style: none;
+	margin: 15px 0;
+	font-size: 14px;
 }
 </style>
-<script type = "text/javascript">
-
-$(document).ready(function(){
-	var chess;
-	var clickCK = false;
-	<c:forEach begin="1" end="8" varStatus="Sstatus1">
-	<c:forEach begin="1" end="8" varStatus="Sstatus2">
-			$('#${Sstatus1.count}${Sstatus2.count}').click(function(){				
-				if(clickCK == true){
-					$('#${Sstatus1.count}${Sstatus2.count}').html('<img src="resources/images/Wpawn.png">');
-					$(chess).html('');
-					clickCK = false;
-				}else{
-						if($('#${Sstatus1.count}${Sstatus2.count}').html()=='<img src="resources/images/Wpawn.png">'){
-							chess = '#${Sstatus1.count}${Sstatus2.count}';
-							clickCK = true;
-						}else{}						
-				}
-			});
-			</c:forEach></c:forEach>
-			
-		//	for(var i =1 ;i<9;i++){
-			//	$('#2'+i).html('<img src="resources/images/Wpawn.png">')
-	//	}
-});
-
-</script>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
-	<table class="chessboard">
-	<c:forEach begin="1" end="8" varStatus="status1">
-	<tr>
-	<c:forEach begin="1" end="8" varStatus="status2">
-	<td><div id="${status1.count}${status2.count}" class="chess"><c:if test = "${status1.count==1 && status2.count==1}"><img src="resources/images/Wpawn.png"></c:if></div></td>
-	</c:forEach>
-	</tr>
-	</c:forEach>
-	</table>
+	<h1>체스 기보 저장 시뮬레이터</h1>
+	<form action="NotationList" method=post name="chess">
+		<fieldset>
+			<legend>Nickname(not ID)</legend>
+			<ul>
+				<li>
+					<!-- <label for="id">학번</label>
+        	<input type="text" id="id" autofocus> --> <label for="name">NICKNAME</label>
+					<input type="text" id="nickname" name="nickname">
+				</li>
+				<li><label for="class">Notation</label> <input type="text"
+					id="Notation" name="notation"></li>
+
+			</ul>
+		</fieldset>
+		<input type="submit" value="기보 전송" />
+	</form>
 </body>
 </html>

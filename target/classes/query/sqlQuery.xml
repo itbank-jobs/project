@@ -94,25 +94,23 @@
 	SELECT COUNT(*) FROM BOARD WHERE TEAMNUM = #{PARAM1}
 	</select>
 	
-
-	<select id = "news_passCK" parameterType="int" resultType = "int">
-	SELECT NEWS_PASS FROM SETTING WHERE NEWS_PASS= #{PARAM1}
-
-	</select>
-	
-	<insert id = "insertNews"  parameterType="com.project.proto.dto.notice_Dto" >
-	INSERT INTO NOTICE(AUTHOR,TITLE,CONTENT,NUM) VALUES(#{author}, #{title}, #{content},notice_seq.nextval)
+	<!-- Query for chess -->
+	<insert id = "SaveNotation" parameterType = "com.project.proto.chessdb.ChessDto">
+	INSERT INTO CHESSDTO(NUM, NICKNAME, NOTATION, PLAYDATE)
+	VALUES(CHESSDTO_SEQ.NEXTVAL, #{nickname}, #{notation}, SYSDATE) where (select VSIZE('CHESSDTO') as byteSize from dual);
 	</insert>
 	
-
-	<select id="selectChatList" resultType="com.project.proto.dto.ChatComment_Dto" parameterType="com.project.proto.dto.ChatComment_Dto">
-	SELECT * FROM CHATTINGDATA WHERE (E_FROM = #{e_from} and E_TO = #{e_to})  or  (E_FROM = #{e_to} and E_TO = #{e_from})ORDER BY COMMENTDATE ASC
+	<select id = "NotationView" parameterType = "String" resultType = "com.project.proto.chessdb.ChessDto">
+	SELECT * FROM BOARD WHERE NICKNAME = #{nickname}
 	</select>
 	
-	<insert id = "insertChatList"  parameterType="com.project.proto.dto.ChatComment_Dto" >
-	INSERT INTO CHATTINGDATA(E_FROM, E_TO, CHAT_COMMENT,COMMENTDATE) VALUES(#{e_from}, #{e_to}, #{chat_comment},SYSDATE)
-	</insert>
+	<select id ="NotationList" resultType = "com.project.proto.chessdb.ChessDto" parameterType="map">
+	SELECT * FROM (SELECT ROWNUM RNUM, NUM, NICKNAME, NOTATION FROM (SELECT * FROM CHESSDTO WHERE PLAYDATE = #{playdate} ORDER BY NUM DESC))
+	<![CDATA[ WHERE RNUM >=#{start} AND RNUM <= #{end}]]>
+	</select>
 	
-
+	<select id="CountlistNum" resultType="int" parameterType="String">
+	SELECT COUNT(*) FROM CHESSDTO WHERE LISTNUM = #{PARAM1}
+	</select>
 </mapper>
 
