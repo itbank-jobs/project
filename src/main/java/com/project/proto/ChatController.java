@@ -46,6 +46,7 @@ public class ChatController {
 	public void chatCheckPosition(Model model,HttpSession session,HttpServletRequest req,HttpServletResponse res) throws IOException{
 			ArrayList<Chat_Dto> lCAL = (ArrayList<Chat_Dto>) session.getAttribute("lCAL");
 			boolean check = false;
+			
 			for(int i = 0; i<lCAL.size();i++) {
 				if(req.getParameter("employeeNumber").equals(lCAL.get(i).getEmployeeNumber()+"")) {
 					lCAL.get(i).setStyle(req.getParameter("style"));
