@@ -157,11 +157,11 @@ margin-left: 17px;
 
 #result {
 	position: fixed;
-	width: 300px;
-	height: 500px;
-	background-color: #09090a61;
-	top: 0;
-	right: 0;
+   width: 290px;
+    height: 640px;
+    background-color: #000000e0;
+    top: 0;
+    right: 0;
 }
 
 .chess {
@@ -221,7 +221,8 @@ margin-left: 17px;
     border: 1px solid;
 	
 }
-.chessText{}
+.chessText{
+}
 .chessYes, .chessNo{
 	display: inline-block;
 
@@ -231,10 +232,61 @@ margin-left: 17px;
     border: 1px solid;
 }
 
+#deletedWhite,#deletedBlack{
+	display: block;
+    width: 268px;
+    height: 80px;
+    background-color: #ffffff30;
+    margin-top: 10px;
+    right: 0;
+    border: 1px solid #4e5c68;
+}
+#deletedWhite img,#deletedBlack img{
+
+    width: 15px;
+    height: 20px;
+
+}
+
+.chessTextContainer{
+	    background-color: #ffffff30;
+	        border: 1px solid #4e5c68;
+	            overflow: auto;
+    height: 390px;
+}
 
 
 
 
+.reChessTable{
+     display: inline-block;
+    width: 400px;
+    height: 400px;
+}
 
 
 
+#reChessboard {
+
+	
+}
+#reChessboard img{
+	width: 50px;
+    height: 50px;
+}
+
+.reChess {
+    height: 50px;
+    width: 50px;
+    float: left;
+
+    border-radius: 5px;
+
+}
+.reResult{
+	background-color: #ffffff47;
+    width: 200px;
+    height: 400px;
+    display: inline-block;
+    margin-left: 100px;
+}

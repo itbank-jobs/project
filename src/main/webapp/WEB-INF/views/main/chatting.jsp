@@ -59,12 +59,15 @@
 	<div class="chessRequest">
 	<div class="chessLabel" >chessResult</div>
 	<div class="chessResultClose">close</div>
+	<div class="chessTextContainer">
 	<div class="chessText"></div>
 	<div class="chessYes">yes</div>
-	<div class="chessNo">no</div>
-	
+	<div class="chessNo">no</div> 
 	</div>
+	<div id = "deletedBlack"></div>
+	<div id = "deletedWhite"></div>  
 	</div>
+</div>
 <link rel="stylesheet" href="resources/css/mainChat.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="resources/js/sockjs-0.3.4.js"></script>
@@ -84,7 +87,7 @@
 	var numId;															// id숫자로 변환
 	var pre;
 	var turnWB = 'null';// 나중에 바꾸기 위해 저장 해놓는 기물 좌표값 	
-	var turn = 'B';														// 차례
+	var turn = 'W';														// 차례
 	var piecePath;														// 이미지 소스 경로 저장
 	var pieceFullName;
 	var pieceName;
@@ -120,7 +123,7 @@
 		sock.send('chessTable:'+chessTmp+':${employeeNumber}:chessStart:response:no');
 	});
 	$('.chessResultClose').click(function(){
-		$('.chessResultClose').css('display','none');
+		$('.chessTable').css('display','none');
 		$('#result').css('display','none');
 	});
 	
@@ -131,6 +134,8 @@
 			$('.chessTable').css('display','block');
 			$('.chessYes').css('display','none');
 			$('.chessNo').css('display','none');
+			$('#deletedBlack').html('${name}<br>');
+			$('#deletedWhite').html($('#chatInfo'+chessTmp).children('.chatName').html()+'<br>');
 			turnWB = 'W';
 			init();
 		});
@@ -317,8 +322,8 @@
 				if(tmp[4]=='request'){
 					$('.chessText').append($('#chatInfo'+tmp[2]).children('.chatName').html()+'님이 체스를 신청하셨습니다.')
 					$('#result').css('display','block');
-					$('.chessYes').css('display','block');
-					$('.chessNo').css('display','block');
+					$('.chessYes').css('display','inline-block');
+					$('.chessNo').css('display','inline-block');
 					chessTmp = tmp[2];
 				}else{
 					console.log('오냐?');
@@ -332,6 +337,9 @@
 						$('.chess').each(function(){
 							$(this).attr('id',99-$(this).attr('id'));
 						});
+				
+						$('#deletedBlack').html($('#chatInfo'+tmp[2]).children('.chatName').html()+'<br>');
+						$('#deletedWhite').html('${name}<br>');
 						turnWB = 'B';
 						init();
 					}else{
@@ -353,12 +361,19 @@
 				$('.chessText').append('<br>'+tmp[2]+'님이 체스를'+tmp[4]+'하셨습니다.');
 			}else{
 				console.log('너는 왔냐'+tmp[3]);
+				pre = $(tmp[5]).attr('id');
+				piecePath = $(tmp[5]).children('img').attr('src');
+				id = $(tmp[3]).attr('id');
+				mapId($(tmp[3]).children('img').attr("src"));
 				$(tmp[3]).html(tmp[4]);	
 				$(tmp[5]).html("<img src = ' '>");
 				console.log('가는거 확인?');
 				turn = (turnWB == 'W') ? 'W' : 'B';
 				console.log(turn+":"+turnWB);
+				
+				
 			}
+			$('.chessTextContainer').scrollTop($('.chessTextContainer')[0].scrollHeight);
 		}else{
 			$('#' + tmp[0]).append('<div class=\'yourComment\'>'+tmp[1]+'</div>');
 			$('#' + tmp[0]).scrollTop($('#' + tmp[0])[0].scrollHeight);
@@ -491,6 +506,7 @@
 		
 		for(var i = 0; i < moveable.length; i++){
 			if(id == moveable[i]){
+				mapId($("#" + id).children('img').attr("src"));
 				$("#" + moveable[i]).html("<img src = " + piecePath + ">");	
 				$("#" + pre).html("<img src = ' '>");
 				sendTmp = "#" + moveable[i]+':<img src = "' + piecePath + '">:#' + pre;
@@ -921,6 +937,37 @@
 		$("#15").html("<img src='resources/images/Bking.png'>")
 		$("#84").html("<img src='resources/images/Wqueen.png'>")
 		$("#85").html("<img src='resources/images/Wking.png'>")	
+	}
+	function mapId(iId){
+		
+		//최초 클릭 기물 좌표
+		var numId1 = pre * 1;
+		var FronN1 = String.fromCharCode((numId1%10)+64);
+		var BackN1 = Math.floor((numId1/10)-9)*-1;
+		var result1 = FronN1+""+BackN1;
+		//클릭후  이동후 기물좌표
+		var numId2 = id * 1;
+		var FronN2= String.fromCharCode((numId2%10)+64);
+		var BackN2= Math.floor((numId2/10)-9)*-1;
+		var result2 = FronN2+""+BackN2;	
+		var $div = $("<div>"+"<img src="+piecePath+" id='wow'> " +result1+"→"+result2+"</div>");
+		
+		//기물 잡아먹혔던 기물표시
+		var iIdTmp = iId.split('/');
+		if(iId != " "){
+			var color= 'White';
+			 $div = $("<div>"+"<img src="+piecePath+" id='wow'> " +result1+"→"+result2+"(<img src ="+iId+" id='wow'>)</div>");	
+			 var $div2 = $("<div style=\"display:inline-block;\"><img src ="+iId+" id='wow'></div>");
+			 if(iIdTmp[2][0]!='W'){
+				 color = 'Black';
+			 }
+			
+			$div2.appendTo($('#deleted'+color)); 
+		}
+		
+		$div.appendTo($('.chessText'));
+		$('.chessTextContainer').scrollTop($('.chessTextContainer')[0].scrollHeight);
+		
 	}
 	
 
