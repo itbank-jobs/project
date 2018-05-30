@@ -10,13 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
-import com.project.proto.dao.board_Dao;
+import com.project.proto.dao.Board_Dao;
 import com.project.proto.dto.Board_Dto;
 
 public class WriteCommand implements Command {
 
 	@Override
-	public void execute(Model model, board_Dao dao) {
+	public void execute(Model model, Board_Dao dao) {
 		// TODO Auto-generated method stub
 		Board_Dto dto = new Board_Dto();
 		Map<String, Object>map = model.asMap();

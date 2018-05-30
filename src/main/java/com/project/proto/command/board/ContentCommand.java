@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 
 
-import com.project.proto.dao.board_Dao;
+import com.project.proto.dao.Board_Dao;
 import com.project.proto.dto.Board_Dto;
 
 import com.project.proto.dto.Reply_Dto;
@@ -17,7 +17,7 @@ import com.project.proto.dto.Reply_Dto;
 public class ContentCommand implements Command {
 	
 	@Override
-	public void execute(Model model, board_Dao dao) {
+	public void execute(Model model, Board_Dao dao) {
 		// TODO Auto-generated method stub
 
 		Board_Dto bdto;

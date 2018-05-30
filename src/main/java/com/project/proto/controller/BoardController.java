@@ -17,7 +17,7 @@ import com.project.proto.command.board.DeleteCommand;
 import com.project.proto.command.board.ListCommand;
 import com.project.proto.command.board.ModifyCommand;
 import com.project.proto.command.board.WriteCommand;
-import com.project.proto.dao.board_Dao;
+import com.project.proto.dao.Board_Dao;
 
 @Controller
 public class BoardController {
@@ -25,7 +25,7 @@ public class BoardController {
 	Command comm;
 	
 	@Autowired
-	board_Dao dao;
+	Board_Dao dao;
 	
 	@RequestMapping("/list")
 	public String list(Model model, HttpServletRequest req, HttpSession session,HttpServletResponse res) {

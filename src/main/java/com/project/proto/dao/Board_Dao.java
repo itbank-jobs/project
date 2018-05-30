@@ -10,7 +10,7 @@ import com.project.proto.dto.Reply_Dto;
 
 
 @Repository
-public class board_Dao {
+public class Board_Dao {
 
 	
 

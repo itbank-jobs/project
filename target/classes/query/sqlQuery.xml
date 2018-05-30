@@ -34,29 +34,29 @@
 	</select>
 	
 
-	<select id ="List" resultType = "com.project.proto.dto.board_Dto" parameterType="map">
+	<select id ="List" resultType = "com.project.proto.dto.Board_Dto" parameterType="map">
 	SELECT * FROM (SELECT ROWNUM RNUM, NUM, EMPLOYEENUMBER, SUBJECT,PASS, CONTENT, REGDATE, READCOUNT FROM (SELECT * FROM BOARD WHERE TEAMNUM = #{teamNum} ORDER BY NUM DESC)) <![CDATA[ WHERE RNUM >=#{start} AND RNUM <= #{end}]]>
 	</select>
 	
-	<select id ="content" parameterType="int" resultType = "com.project.proto.dto.board_Dto">
+	<select id ="content" parameterType="int" resultType = "com.project.proto.dto.Board_Dto">
 	SELECT a.NAME, b.* FROM MEMBER a LEFT JOIN BOARD b ON a.EMPLOYEENUMBER = b.EMPLOYEENUMBER WHERE NUM = #{PARAM1}
 	</select>
 	
-	<select id = "write" parameterType="com.project.proto.dto.board_Dto" resultType = "int">
+	<select id = "write" parameterType="com.project.proto.dto.Board_Dto" resultType = "int">
 	INSERT INTO BOARD (NUM,EMPLOYEENUMBER, SUBJECT, CONTENT, READCOUNT, REGDATE, TEAMNUM) VALUES( BOARD_SEQ.NEXTVAL,#{employeeNumber},#{subject},#{content},0, sysdate,#{teamNum})
 	</select> 
 	
 
-	<select id = "noticeWrite" parameterType="com.project.proto.dto.notice_Dto" resultType = "int">
+	<select id = "noticeWrite" parameterType="com.project.proto.dto.Notice_Dto" resultType = "int">
 	INSERT INTO NOTICE (TITLE, PUBDATE, LINK, AUTHOR, DESCRIPTION, CONTENT, NUM) VALUES( NOTICE_SEQ.NEXTVAL, #{title},#{link},${author},${description},${content},${num})
 	</select>
 	
-	<select id = "noticeList" resultType="com.project.proto.dto.notice_Dto" parameterType="int">
+	<select id = "noticeList" resultType="com.project.proto.dto.Notice_Dto" parameterType="int">
 <!-- 	SELECT * FROM NOTICE WHERE <![CDATA[ NUM > 5]]> ORDER BY NUM DESC  -->
 	SELECT * FROM NOTICE WHERE <![CDATA[NUM <= #{currentPageNum}]]> ORDER BY NUM DESC
 	</select>
 		
-	<select id = "noticeStart" resultType="com.project.proto.dto.notice_Dto">
+	<select id = "noticeStart" resultType="com.project.proto.dto.Notice_Dto">
 <!-- 	SELECT * FROM NOTICE WHERE <![CDATA[ NUM > 5]]> ORDER BY NUM DESC  -->
 	SELECT * FROM NOTICE ORDER BY NUM DESC
 	</select>
@@ -73,11 +73,11 @@
 	UPDATE BOARD SET READCOUNT = READCOUNT+1 WHERE NUM = #{PARAM1}
 	</select>
 
-	<insert id = "insertReply"  parameterType="com.project.proto.dto.reply_Dto" >
+	<insert id = "insertReply"  parameterType="com.project.proto.dto.Reply_Dto" >
 	INSERT INTO REPLY(RNUM, BNUM, REPLYTEXT, EMPLOYEENUMBER) VALUES(reply_seq.nextval, #{bnum}, #{replytext}, #{employeeNumber})
 	</insert>
 	
-	<select id ="contentReply" parameterType="String" resultType = "com.project.proto.dto.reply_Dto">
+	<select id ="contentReply" parameterType="String" resultType = "com.project.proto.dto.Reply_Dto">
 	SELECT a.NAME, b.* FROM MEMBER a LEFT JOIN REPLY b ON a.EMPLOYEENUMBER = b.EMPLOYEENUMBER WHERE BNUM = #{PARAM1}
 	</select>
 	
@@ -86,7 +86,7 @@
 
 	</select>
 	
-	<select id="rnum" resultType="com.project.proto.dto.reply_Dto" parameterType="com.project.proto.dto.reply_Dto">
+	<select id="rnum" resultType="com.project.proto.dto.reply_Dto" parameterType="com.project.proto.dto.Reply_Dto">
 	SELECT a.RNUM,a.REGDATE,b.NAME FROM REPLY a LEFT JOIN MEMBER b ON a.EMPLOYEENUMBER = b.EMPLOYEENUMBER WHERE BNUM = #{bnum} AND a.EMPLOYEENUMBER = #{employeeNumber} ORDER BY RNUM DESC
 	</select>
 	
@@ -100,7 +100,7 @@
 
 	</select>
 	
-	<insert id = "insertNews"  parameterType="com.project.proto.dto.notice_Dto" >
+	<insert id = "insertNews"  parameterType="com.project.proto.dto.Notice_Dto" >
 	INSERT INTO NOTICE(AUTHOR,TITLE,CONTENT,NUM) VALUES(#{author}, #{title}, #{content},notice_seq.nextval)
 	</insert>
 	
