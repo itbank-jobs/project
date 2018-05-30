@@ -10,4 +10,14 @@ public class ChessTestController {
 
 		return "chessTest/chessTest4";
 	}
+	@RequestMapping(value = "/chessReview")
+	public String chessReview() {
+
+		return "chessTest/chessReview";
+	}
+	@RequestMapping(value = "/chessReviewResult")
+	public String chessReviewResult() {
+
+		return "chessTest/chessReviewResult";
+	}
 }

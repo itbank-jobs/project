@@ -26,7 +26,7 @@
 	<c:forEach items="${chatListLive}" var="list" >
 		<c:if test="${list.employeeNumber!=employeeNumber}">
 			<div class="liveChat" style="${list.style}" id="chatList${list.employeeNumber}">
-				<div class="liveChatName">${list.name}</div><div class="chessStart">chessStart</div><div class="liveChatClose">X</div>
+				<div class="liveChatName">${list.name}</div><div class="liveChatClose">X</div>
 				<div class="chatArea" id="${list.employeeNumber}">
 				<c:forEach items="${list.commentList}" var="list2" >
 				<c:choose>
@@ -36,13 +36,13 @@
 				</c:forEach>
 				</div>
 				<input type="text" class="chatMessage" id="input${list.employeeNumber}">
+				<div class="chessStart fa fa-delicious"></div>
 			</div>
 		</c:if>
 	</c:forEach>
 </div>
 <div class="chessTable" style="display: none">
-<div class = "chessController">chessController</div>
-<div class = "chessTableClose">X</div>
+<div class = "chessController">chessController<div class = "chessTableClose">X</div></div>
 <div id="chessboard">
 		<c:forEach begin="0" end="7" varStatus="i">
 				<c:forEach begin="0" end="7" varStatus="j">
@@ -59,12 +59,15 @@
 	<div class="chessRequest">
 	<div class="chessLabel" >chessResult</div>
 	<div class="chessResultClose">close</div>
+	<div class="chessTextContainer">
 	<div class="chessText"></div>
 	<div class="chessYes">yes</div>
-	<div class="chessNo">no</div>
-	
+	<div class="chessNo">no</div> 
 	</div>
+	<div id = "deletedBlack"></div>
+	<div id = "deletedWhite"></div>  
 	</div>
+</div>
 <link rel="stylesheet" href="resources/css/mainChat.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="resources/js/sockjs-0.3.4.js"></script>
@@ -77,38 +80,73 @@
 	var hide = true;
 	var chatListLive = ${liveList};
 	var chessTmp;
+	
+	
+	var isClicked = false; 												// 기물 잡고 놓는거 확인 하기 위한 값
+	var id;																// 현재 좌표값
+	var numId;															// id숫자로 변환
+	var pre;
+	var turnWB = 'null';// 나중에 바꾸기 위해 저장 해놓는 기물 좌표값 	
+	var turn = 'W';														// 차례
+	var piecePath;														// 이미지 소스 경로 저장
+	var pieceFullName;
+	var pieceName;
+	var pieceColor = "";														// 기물 색
+
+	var moveable;														// 움직일 수 있는 자리 저장 하는 배열
+	var sendTmp;
+
+// 앙파상 위한 변수	
+	var enPassantId = 0; 
+	var enPassantCount = 0;
+	
+
+// 캐슬링을 위한 변수
+	var rookArr = [false, false, false, false]; 						// 흑 퀸킹, 백 퀸킹
+	var rookIdArr = [11, 18, 81, 88];									// 룩 아이디값. 순서는 위와 동일
+	var kingArr = [false, false];										// 흑 킹, 백 킹
+	
 	$('.chessTableClose').click(function(){
+		sock.send('chessTable:'+chessTmp+':${employeeNumber}:chessEnd:탈주');
 		$('.chessTable').css('display','none');
+		if(turnWB=='B'){
+		$('.chess').each(function(){
+			$(this).attr('id',99-$(this).attr('id'));
+			$(this).html('');
+		});
+		turnWB='null';
+		}
 	});
-	$('.chessYes').click(function(){
-		sock.send('chessTable:'+chessTmp+ ':${employeeNumber}:chessStart:response:yes');
-		if(turnWB=='W')
-			$('.chess').each(function(){
-				$(this).attr('id',99-$(this).attr('id'));
-			});
-		$('.chessTable').css('display','block');
-		$('.chessYes').css('display','none');
-		$('.chessNo').css('display','none');
-		turnWB = 'W';
-		init();
-	});
+
 	$('.chessNo').click(function(){
 		$('#result').css('display','none');
 		sock.send('chessTable:'+chessTmp+':${employeeNumber}:chessStart:response:no');
 	});
 	$('.chessResultClose').click(function(){
-		$('.chessResultClose').css('display','none');
+		$('.chessTable').css('display','none');
 		$('#result').css('display','none');
 	});
 	
-	for(var i = 0; i<chatListLive.length;i++){
-		if(chatListLive[i]!='${employeeNumber}'){
-			$('#chatInfo'+chatListLive[i]).children('.chatNumber').attr('style','color:#00ff00; cursor : pointer');
-			$('#chatInfo'+chatListLive[i]).children('.chatName').attr('style','color:#00ff00; cursor : pointer');
-			$('#'+chatListLive[i]).scrollTop($('#'+chatListLive[i])[0].scrollHeight)
-		}
-	}
+	
 	$(function() {
+		$('.chessYes').click(function(){
+			sock.send('chessTable:'+chessTmp+ ':${employeeNumber}:chessStart:response:yes');
+			$('.chessTable').css('display','block');
+			$('.chessYes').css('display','none');
+			$('.chessNo').css('display','none');
+			$('#deletedBlack').html('${name}<br>');
+			$('#deletedWhite').html($('#chatInfo'+chessTmp).children('.chatName').html()+'<br>');
+			turnWB = 'W';
+			init();
+		});
+		for(var i = 0; i<chatListLive.length;i++){
+			if(chatListLive[i]!='${employeeNumber}'){
+				$('#chatInfo'+chatListLive[i]).children('.chatNumber').attr('style','color:#00ff00; cursor : pointer');
+				$('#chatInfo'+chatListLive[i]).children('.chatName').attr('style','color:#00ff00; cursor : pointer');
+				$('#'+chatListLive[i]).scrollTop($('#' + chatListLive[i])[0].scrollHeight);
+			}
+			
+		}
 		$('#result').draggable();
 		$('.chessTable').draggable();
 		var areaTmp;
@@ -214,6 +252,8 @@
 		$('.employeeNumberList').click(function() {
 			if($('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).css('display')=='none'){
 				$('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).css('display','block');
+				$('#'+$(this).children('.chatInfo').children('.chatNumber').html()).scrollTop($('#' + $(this).children('.chatInfo').children('.chatNumber').html())[0].scrollHeight);
+				
 			}else{
 				$('#chatList' + $(this).children('.chatInfo').children('.chatNumber').html()).css('display','none');
 			}
@@ -260,6 +300,7 @@
 						$(this).val('');
 					}
 				});
+		
 	});
 	$('.chessStart').click(function(){
 		sock.send('chessTable:'+$(this).parent('.liveChat').children('.chatArea').attr('id')+ ':${employeeNumber}:chessStart:request');
@@ -281,8 +322,8 @@
 				if(tmp[4]=='request'){
 					$('.chessText').append($('#chatInfo'+tmp[2]).children('.chatName').html()+'님이 체스를 신청하셨습니다.')
 					$('#result').css('display','block');
-					$('.chessYes').css('display','block');
-					$('.chessNo').css('display','block');
+					$('.chessYes').css('display','inline-block');
+					$('.chessNo').css('display','inline-block');
 					chessTmp = tmp[2];
 				}else{
 					console.log('오냐?');
@@ -291,12 +332,14 @@
 						$('.chessTable').css('display','block');
 						$('.chessYes').css('display','none');
 						$('.chessNo').css('display','none');
+						$('#result').css('display','block');
 						chessTmp = tmp[2];
-						if(turnWB=='B'){
 						$('.chess').each(function(){
 							$(this).attr('id',99-$(this).attr('id'));
 						});
-						}
+				
+						$('#deletedBlack').html($('#chatInfo'+tmp[2]).children('.chatName').html()+'<br>');
+						$('#deletedWhite').html('${name}<br>');
 						turnWB = 'B';
 						init();
 					}else{
@@ -306,15 +349,34 @@
 						$('.chessNo').css('display','none');
 					}
 				}
+			}else if(tmp[3]=='chessEnd'){
+				console.log('너는 왔냐'+tmp[3]);
+				if(turnWB=='B'){
+					$('.chess').each(function(){
+						$(this).attr('id',99-$(this).attr('id'));
+						$(this).html('');
+					});
+					turnWB='null';
+					}
+				$('.chessText').append('<br>'+tmp[2]+'님이 체스를'+tmp[4]+'하셨습니다.');
 			}else{
 				console.log('너는 왔냐'+tmp[3]);
+				pre = $(tmp[5]).attr('id');
+				piecePath = $(tmp[5]).children('img').attr('src');
+				id = $(tmp[3]).attr('id');
+				mapId($(tmp[3]).children('img').attr("src"));
 				$(tmp[3]).html(tmp[4]);	
 				$(tmp[5]).html("<img src = ' '>");
-				turn = (turn == 'W') ? 'B' : 'W';
+				console.log('가는거 확인?');
+				turn = (turnWB == 'W') ? 'W' : 'B';
+				console.log(turn+":"+turnWB);
+				
+				
 			}
+			$('.chessTextContainer').scrollTop($('.chessTextContainer')[0].scrollHeight);
 		}else{
 			$('#' + tmp[0]).append('<div class=\'yourComment\'>'+tmp[1]+'</div>');
-			$('#' + tmp[0]).scrollTop($(".chatArea")[0].scrollHeight);
+			$('#' + tmp[0]).scrollTop($('#' + tmp[0])[0].scrollHeight);
 			console.log($(document.activeElement).attr('id'));
 			if($(document.activeElement).attr('id')!='input'+tmp[0]){
 			$('#chatList' + tmp[0]).children('.liveChatName').attr('style',' animation-name:flush; animation-duration: 1s; animation-iteration-count: infinite;');
@@ -324,35 +386,13 @@
 	}
 
 	function onClose(evt) {
+		sock.send('chessTable:'+chessTmp+':${employeeNumber}:chessEnd:탈주');
 		console.log('close');
 	}
 	
 	
 // chess 
-	
-	var isClicked = false; 												// 기물 잡고 놓는거 확인 하기 위한 값
-	var id;																// 현재 좌표값
-	var numId;															// id숫자로 변환
-	var pre;
-	var turnWB = 'B';// 나중에 바꾸기 위해 저장 해놓는 기물 좌표값 	
-	var turn = "B";														// 차례
-	var piecePath;														// 이미지 소스 경로 저장
-	var pieceFullName;
-	var pieceName;
-	var pieceColor = "";														// 기물 색
 
-	var moveable;														// 움직일 수 있는 자리 저장 하는 배열
-	var sendTmp;
-
-// 앙파상 위한 변수	
-	var enPassantId = 0; 
-	var enPassantCount = 0;
-	
-
-// 캐슬링을 위한 변수
-	var rookArr = [false, false, false, false]; 						// 흑 퀸킹, 백 퀸킹
-	var rookIdArr = [11, 18, 81, 88];									// 룩 아이디값. 순서는 위와 동일
-	var kingArr = [false, false];										// 흑 킹, 백 킹
 	
 	$(document).ready(function(){
 		$('.chess').click(function(){									// 기물 클릭 했을때 기능
@@ -388,7 +428,8 @@
 							castling();
 						}
 						
-						turn = (turn == 'W') ? 'B' : 'W';				// 차례 바꾸기
+						turn = (turnWB == 'W') ? 'B' : 'W';			// 차례 바꾸기
+						console.log(turn+":"+turnWB);
 					} 
 					
 					showAvailMove(2);									// 움직임 가능 위치 표시 다시 지우기
@@ -401,8 +442,9 @@
 				
 			}
 		});
-	
-																// 시작 기물 위치	
+		
+		
+		
 	});
 	//pawn move 추가 ex) 프로모션, king에다가 check, checkmate확인 캐슬링
 	function moveCheck(){
@@ -464,6 +506,7 @@
 		
 		for(var i = 0; i < moveable.length; i++){
 			if(id == moveable[i]){
+				mapId($("#" + id).children('img').attr("src"));
 				$("#" + moveable[i]).html("<img src = " + piecePath + ">");	
 				$("#" + pre).html("<img src = ' '>");
 				sendTmp = "#" + moveable[i]+':<img src = "' + piecePath + '">:#' + pre;
@@ -874,12 +917,16 @@
 		$("#18").html("<img src='resources/images/Brook.png'>")
 		$("#81").html("<img src='resources/images/Wrook.png'>")
 		$("#88").html("<img src='resources/images/Wrook.png'>")
-			
-		
-		$("#12").html("<img src='resources/images/BLknight.png'>")
-		$("#17").html("<img src='resources/images/BRknight.png'>")
-		$("#82").html("<img src='resources/images/WLknight.png'>")
-		$("#87").html("<img src='resources/images/WRknight.png'>")
+		var BCK=0;	
+		if(turnWB=='B'){
+			BCK=5;
+		}else{
+			BCK = 0;
+		}
+		$("#"+(12+BCK)).html("<img src='resources/images/BLknight.png'>")
+		$("#"+(17-BCK)).html("<img src='resources/images/BRknight.png'>")
+		$("#"+(82+BCK)).html("<img src='resources/images/WLknight.png'>")
+		$("#"+(87-BCK)).html("<img src='resources/images/WRknight.png'>")
 		
 		$("#13").html("<img src='resources/images/Bbishop.png'>")
 		$("#16").html("<img src='resources/images/Bbishop.png'>")
@@ -891,6 +938,38 @@
 		$("#84").html("<img src='resources/images/Wqueen.png'>")
 		$("#85").html("<img src='resources/images/Wking.png'>")	
 	}
+	function mapId(iId){
+		
+		//최초 클릭 기물 좌표
+		var numId1 = pre * 1;
+		var FronN1 = String.fromCharCode((numId1%10)+64);
+		var BackN1 = Math.floor((numId1/10)-9)*-1;
+		var result1 = FronN1+""+BackN1;
+		//클릭후  이동후 기물좌표
+		var numId2 = id * 1;
+		var FronN2= String.fromCharCode((numId2%10)+64);
+		var BackN2= Math.floor((numId2/10)-9)*-1;
+		var result2 = FronN2+""+BackN2;	
+		var $div = $("<div>"+"<img src="+piecePath+" id='wow'> " +result1+"→"+result2+"</div>");
+		
+		//기물 잡아먹혔던 기물표시
+		var iIdTmp = iId.split('/');
+		if(iId != " "){
+			var color= 'White';
+			 $div = $("<div>"+"<img src="+piecePath+" id='wow'> " +result1+"→"+result2+"(<img src ="+iId+" id='wow'>)</div>");	
+			 var $div2 = $("<div style=\"display:inline-block;\"><img src ="+iId+" id='wow'></div>");
+			 if(iIdTmp[2][0]!='W'){
+				 color = 'Black';
+			 }
+			
+			$div2.appendTo($('#deleted'+color)); 
+		}
+		
+		$div.appendTo($('.chessText'));
+		$('.chessTextContainer').scrollTop($('.chessTextContainer')[0].scrollHeight);
+		
+	}
 	
+
 	//<c:if test="${(i.count+j.count)%2==1}">style = "background-color : blue"</c:if>
 </script>
