@@ -112,7 +112,30 @@
 	<insert id = "insertChatList"  parameterType="com.project.proto.dto.ChatComment_Dto" >
 	INSERT INTO CHATTINGDATA(E_FROM, E_TO, CHAT_COMMENT,COMMENTDATE) VALUES(#{e_from}, #{e_to}, #{chat_comment},SYSDATE)
 	</insert>
+	<!-- CHESS -->
 	
-
+	<select id="chessSelect" resultType="com.project.proto.dto.ChessDto" parameterType="String">
+	SELECT * FROM CHESSDTO WHERE PLAYER1 = #{PARAM1} OR PLAYER2 = #{PARAM1}
+	</select>
+	<select id="chessNum" resultType="String" parameterType="com.project.proto.dto.ChessDto">
+	SELECT NUM FROM CHESSDTO WHERE PLAYER1 = #{PARAM1} ORDER BY NUM DESC
+	</select>
+		
+	<insert id = "chessInsert"  parameterType="com.project.proto.dto.ChessDto" >
+	INSERT INTO CHESSDTO(NUM, PLAYER1, PLAYER2,PLAYDATE) VALUES(CHESSDTO_SEQ.NEXTVAL,#{player1}, #{player2} ,SYSDATE)
+	</insert>
+	
+	<update id="chessUpdate" parameterType="com.project.proto.dto.ChessDto">
+	UPDATE CHESSDTO SET NOTATION = CONCAT(NOTATION, #{notation}) <where>NUM = #{num}</where>
+	
+	</update>
+	
+	<select id = "writeChess" parameterType="com.project.proto.dto.board_Dto" resultType = "int">
+	INSERT INTO BOARD (NUM,EMPLOYEENUMBER, SUBJECT, CONTENT, READCOUNT, REGDATE, TEAMNUM,PASS) VALUES( BOARD_SEQ.NEXTVAL,#{employeeNumber},#{subject},#{content},0, sysdate,#{teamNum},#{pass})
+	</select> 
+	<select id="chessReplayData" resultType="com.project.proto.dto.ChessDto" parameterType="int">
+		SELECT * FROM CHESSDTO WHERE NUM = #{PARAM1}
+	</select>
+	
 </mapper>
 

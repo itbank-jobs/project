@@ -112,7 +112,9 @@ public class BoardController {
 
 		comm = new ContentCommand();
 		comm.execute(model, dao);
-		
+		if((int)req.getAttribute("check")==5) {
+			return "chessTest/chessContent_view";
+		}
 		return "board/content_view";
 	}
 	

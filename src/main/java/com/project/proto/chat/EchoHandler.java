@@ -41,11 +41,15 @@ public class EchoHandler extends TextWebSocketHandler{
 									sess.sendMessage(new TextMessage(tmp[0]+":"+tmp[1]+":"+tmp[2]+":"+tmp[3]+":"+tmp[4]));	
 								}else {
 									System.out.println("왓 : "+tmp[5]);
-									if(tmp[5]=="yes") {
+									if(tmp[5].equals("yes")) {
 												session.getAttributes().put("chessStart", false);
-												sess.getAttributes().put("chessStart", false);															
+												sess.getAttributes().put("chessStart", false);													
+												sess.sendMessage(new TextMessage(tmp[0]+":"+tmp[1]+":"+tmp[2]+":"+tmp[3]+":"+tmp[4]+":"+tmp[5]+":"+tmp[6]));
+												System.out.println(tmp[6]);
+									}else {
+										sess.sendMessage(new TextMessage(tmp[0]+":"+tmp[1]+":"+tmp[2]+":"+tmp[3]+":"+tmp[4]+":"+tmp[5]));
 									}
-									sess.sendMessage(new TextMessage(tmp[0]+":"+tmp[1]+":"+tmp[2]+":"+tmp[3]+":"+tmp[4]+":"+tmp[5]));
+									
 								}
 							}else {	session.sendMessage(new TextMessage(tmp[1]+":"+tmp[1]+"님은 이미 다른 상대와 체스중입니다."));
 									}

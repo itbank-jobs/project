@@ -76,5 +76,8 @@ public class Board_Dao {
 		return sqlSession.selectList("contentReply", num);
 	}
 	
+	public List<ChessDto> chessReplayData(int pass) {
+		return  sqlSession.selectList("chessReplayData",pass);
+	}
 	
 }

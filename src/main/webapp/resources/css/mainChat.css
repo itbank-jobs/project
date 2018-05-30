@@ -289,4 +289,5 @@ margin-left: 17px;
     height: 400px;
     display: inline-block;
     margin-left: 100px;
+        overflow: auto;
 }

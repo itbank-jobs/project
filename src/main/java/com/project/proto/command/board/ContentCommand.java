@@ -32,10 +32,12 @@ public class ContentCommand implements Command {
 		//댓글 contentList
 		List<Reply_Dto>replylist = dao.contentReply(req.getParameter("num"));
 	
-
+		if(bdto.getTeamNum()==5) {
+			model.addAttribute("chessReplayData",dao.chessReplayData(Integer.parseInt(bdto.getPass())).get(0));
+		}
 		model.addAttribute("content",bdto); 
 		model.addAttribute("reply", replylist);//member table's name, reply table
-
+		req.setAttribute("check", bdto.getTeamNum());
 	}
 
 }
