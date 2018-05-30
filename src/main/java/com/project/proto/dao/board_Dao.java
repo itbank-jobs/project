@@ -13,6 +13,7 @@ import com.project.proto.dto.Reply_Dto;
 public class board_Dao {
 
 	
+
 	@Autowired
 	private SqlSession sqlSession;
 	

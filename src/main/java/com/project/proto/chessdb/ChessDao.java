@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.project.proto.dto.board_Dto;
+
 
 @Repository
 //Repository : dao라는 걸 알려주는 어노테이션.
