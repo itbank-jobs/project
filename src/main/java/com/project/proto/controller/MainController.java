@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.proto.chat.EchoHandler;
 
-import com.project.proto.command.infoCommand;
-import com.project.proto.command.settingCommand;
+import com.project.proto.command.InfoCommand;
+import com.project.proto.command.SettingCommand;
 
 import com.project.proto.command.login.Command;
 
@@ -129,7 +129,7 @@ public class MainController {
 		
 		model.addAttribute("session",session);
 		
-		comm = new settingCommand();
+		comm = new SettingCommand();
 		comm.execute(model, dao);
 		
 		
@@ -146,7 +146,7 @@ public class MainController {
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
 		
-		comm = new infoCommand();
+		comm = new InfoCommand();
 		comm.execute(model, dao);
 	}
 

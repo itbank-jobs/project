@@ -10,7 +10,7 @@ import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
 import com.project.proto.dto.Dto;
 
-public class settingCommand implements Command {
+public class SettingCommand implements Command {
 
 	@Override
 	public void execute(Model model, Dao dao) {

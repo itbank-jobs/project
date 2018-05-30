@@ -12,7 +12,7 @@ import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
 import com.project.proto.dto.Dto;
 
-public class infoCommand implements Command {
+public class InfoCommand implements Command {
 
 	@Override
 	public void execute(Model model, Dao dao) {
