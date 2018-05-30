@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.project.proto.dto.ChatComment_Dto;
+import com.project.proto.dto.ChessDto;
 import com.project.proto.dto.Dto;
+import com.project.proto.dto.board_Dto;
 import com.project.proto.dto.notice_Dto;
 
 
@@ -102,4 +104,23 @@ public class Dao {
 	public void insertNews(notice_Dto dto) {
 			sqlSession.insert("insertNews",dto);
 	}
+	//chess
+	public List<ChessDto> chessSelect(String player) {
+		return sqlSession.selectList("chessSelect",player);
 }
+	public void chessInsert(ChessDto dto) {
+		sqlSession.insert("chessInsert",dto);
+}
+	public void chessUpdate(ChessDto dto) {
+		sqlSession.update("chessUpdate",dto);
+}
+	
+	public List<ChessDto> chessNum(String notation) {
+		return sqlSession.selectList("chessNum",notation);
+}
+	public void write(board_Dto dto) {
+		sqlSession.insert("write", dto);	
+		}
+
+}
+

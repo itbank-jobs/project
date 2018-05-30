@@ -106,6 +106,7 @@
 	var rookIdArr = [11, 18, 81, 88];									// 룩 아이디값. 순서는 위와 동일
 	var kingArr = [false, false];										// 흑 킹, 백 킹
 	
+	var chessNum;
 	$('.chessTableClose').click(function(){
 		sock.send('chessTable:'+chessTmp+':${employeeNumber}:chessEnd:탈주');
 		$('.chessTable').css('display','none');
@@ -130,7 +131,7 @@
 	
 	$(function() {
 		$('.chessYes').click(function(){
-			sock.send('chessTable:'+chessTmp+ ':${employeeNumber}:chessStart:response:yes');
+			
 			$('.chessTable').css('display','block');
 			$('.chessYes').css('display','none');
 			$('.chessNo').css('display','none');
@@ -138,6 +139,23 @@
 			$('#deletedWhite').html($('#chatInfo'+chessTmp).children('.chatName').html()+'<br>');
 			turnWB = 'W';
 			init();
+			
+			$.ajax({
+				type : 'post',
+				data : {player1:chessTmp,player2:'${employeeNumber}'},							
+				dataType : 'text',
+				url : '/proto/chessInsert',
+				success : function(result){
+					chessNum = result;
+					console.log('여기?'+chessNum);
+					sock.send('chessTable:'+chessTmp+ ':${employeeNumber}:chessStart:response:yes:'+chessNum);
+				},
+				error : function(xhr, status, e){
+					alert(e);
+				}
+			});
+			
+			
 		});
 		for(var i = 0; i<chatListLive.length;i++){
 			if(chatListLive[i]!='${employeeNumber}'){
@@ -337,11 +355,13 @@
 						$('.chess').each(function(){
 							$(this).attr('id',99-$(this).attr('id'));
 						});
-				
+						console.log('이게 오류라고?'+tmp[6]);
+						chessNum = tmp[6];
 						$('#deletedBlack').html($('#chatInfo'+tmp[2]).children('.chatName').html()+'<br>');
 						$('#deletedWhite').html('${name}<br>');
 						turnWB = 'B';
 						init();
+						
 					}else{
 						$('#result').css('display','block');
 						$('.chessText').append($('#chatInfo'+tmp[2]).children('.chatName').html()+'님이 체스를 거절하셨습니다.')
@@ -511,6 +531,19 @@
 				$("#" + pre).html("<img src = ' '>");
 				sendTmp = "#" + moveable[i]+':<img src = "' + piecePath + '">:#' + pre;
 				sock.send('chessTable:'+chessTmp+ ':${employeeNumber}:'+sendTmp);
+				console.log(chessNum+':'+'#'+pre+':#'+moveable[i]+',');
+				$.ajax({
+					type : 'post',
+					data : {num:chessNum,notation: '#'+pre+':#'+moveable[i]+','},						
+					dataType : 'text',
+					url : '/proto/chessUpdate',
+					success : function(result){
+						
+					},
+					error : function(xhr, status, e){
+						alert(e);
+					}
+				});
 				return true;
 			}			
 		}
@@ -885,24 +918,49 @@
 		if(numId == pre - 2){
 			rookId = numId - 2;
 			rook = $("#" + rookId).children('img').attr("src");
-			alert(rookId + "src = " + rook);
+			
 			
 			$("#" + (numId + 1)).html('<img src = "' + rook + '">');	
 			$("#" + rookId).html("<img src = ' '>");
 			sendTmp = "#" + (numId + 1)+':<img src = "' + rook + '">:#' + rookId;
 			sock.send('chessTable:'+chessTmp+ ':${employeeNumber}:'+sendTmp);
+			$.ajax({
+				type : 'post',
+				data : {num:chessNum,notation: '#'+rookId+':#'+(numId + 1)+','},						
+				dataType : 'text',
+				url : '/proto/chessUpdate',
+				success : function(result){
+					
+				},
+				error : function(xhr, status, e){
+					alert(e);
+				}
+			});
 		}
 		
 		if(numId == pre + 2){
 			rookId = numId + 1;
 			rook = $("#" + rookId).children('img').attr("src");
 			
-			alert("#" + (numId - 1)+'<img src = "' + rook + '">');
+			
 			
 			$("#" + (numId - 1)).html('<img src = "' + rook + '">');	
 			$("#" + rookId).html("<img src = ' '>");
 			sendTmp = "#" + (numId - 1)+':<img src ="' + rook + '">:#' + rookId;
 			sock.send('chessTable:'+chessTmp+ ':${employeeNumber}:'+sendTmp);
+			
+			$.ajax({
+				type : 'post',
+				data : {num:chessNum,notation: '#'+rookId+':#'+(numId - 1)+','},						
+				dataType : 'text',
+				url : '/proto/chessUpdate',
+				success : function(result){
+					
+				},
+				error : function(xhr, status, e){
+					alert(e);
+				}
+			});
 		}
 	}
 	

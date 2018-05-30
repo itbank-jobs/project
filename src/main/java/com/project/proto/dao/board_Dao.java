@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.project.proto.dto.ChessDto;
 import com.project.proto.dto.board_Dto;
 import com.project.proto.dto.reply_Dto;
 
@@ -75,5 +77,8 @@ public class board_Dao {
 		return sqlSession.selectList("contentReply", num);
 	}
 	
+	public List<ChessDto> chessReplayData(int pass) {
+		return  sqlSession.selectList("chessReplayData",pass);
+	}
 	
 }

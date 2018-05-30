@@ -26,12 +26,8 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<h3>
-					<c:choose>
-						<c:when test="${teamNum == 1}"> 경영지원팀 </c:when>
-						<c:when test="${teamNum == 2}"> 인사팀 </c:when>
-						<c:when test="${teamNum == 3}"> 개발팀 </c:when>
-						<c:when test="${teamNum == 4}"> 영업팀 </c:when>
-					</c:choose>
+		
+					Chess 
 
 				</h3>
 			</div>
