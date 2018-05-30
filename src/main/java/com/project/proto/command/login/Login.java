@@ -6,7 +6,7 @@ import com.project.proto.dao.Dao;
 
 
 //로그인
-public class login implements Command {
+public class Login implements Command {
 
 	@Override
 	public void execute(Model model,Dao dao) {

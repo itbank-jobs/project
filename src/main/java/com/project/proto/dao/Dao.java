@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.proto.dto.ChatComment_Dto;
 import com.project.proto.dto.Dto;
-import com.project.proto.dto.notice_Dto;
+import com.project.proto.dto.Notice_Dto;
 
 
 
@@ -99,7 +99,7 @@ public class Dao {
 		}
 	
 	//공지사항 쓰기
-	public void insertNews(notice_Dto dto) {
+	public void insertNews(Notice_Dto dto) {
 			sqlSession.insert("insertNews",dto);
 	}
 }

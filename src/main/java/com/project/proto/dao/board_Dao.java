@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.project.proto.dto.board_Dto;
-import com.project.proto.dto.reply_Dto;
+import com.project.proto.dto.Board_Dto;
+import com.project.proto.dto.Reply_Dto;
 
 
 @Repository
@@ -18,7 +18,7 @@ public class board_Dao {
 	
 	//글 목록 불러오기
 
-	public List<board_Dto> list(int startRow, int endRow, String teamNum) {
+	public List<Board_Dto> list(int startRow, int endRow, String teamNum) {
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
@@ -33,17 +33,17 @@ public class board_Dao {
 	
 	
 	//글 내용 불러오기
-	public List<board_Dto> content(int num) {
+	public List<Board_Dto> content(int num) {
 		return  sqlSession.selectList("content",num);
 	}
 	
 	//글쓰기
-	public void write(board_Dto dto) {
+	public void write(Board_Dto dto) {
 	sqlSession.insert("write", dto);	
 	}
 	
 	//글수정
-	public void modify(board_Dto dto) {
+	public void modify(Board_Dto dto) {
 		sqlSession.update("modify", dto); 
 	}
 	//글삭제
@@ -71,7 +71,7 @@ public class board_Dao {
 	
 	}
 	
-	public List<reply_Dto> contentReply(String num) {
+	public List<Reply_Dto> contentReply(String num) {
 		return sqlSession.selectList("contentReply", num);
 	}
 	

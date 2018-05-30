@@ -11,14 +11,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
 import com.project.proto.dao.board_Dao;
-import com.project.proto.dto.board_Dto;
+import com.project.proto.dto.Board_Dto;
 
-public class writeCommand implements Command {
+public class WriteCommand implements Command {
 
 	@Override
 	public void execute(Model model, board_Dao dao) {
 		// TODO Auto-generated method stub
-		board_Dto dto = new board_Dto();
+		Board_Dto dto = new Board_Dto();
 		Map<String, Object>map = model.asMap();
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");

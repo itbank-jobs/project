@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 
 
 import com.project.proto.dao.board_Dao;
-import com.project.proto.dto.board_Dto;
+import com.project.proto.dto.Board_Dto;
 
 
 
@@ -42,7 +42,7 @@ public class ListCommand implements Command {
 		int count = 0;
 		int number = 0;
 		count = dao.count(teamNum);
-		List<board_Dto> list = null;
+		List<Board_Dto> list = null;
 		if (count > 0) {
 
 			list = dao.list(startRow, endRow , teamNum);

@@ -22,7 +22,7 @@ import org.springframework.ui.Model;
 import com.project.proto.dao.Dao;
 import com.project.proto.dto.Dto;
 
-public class find_PW implements Command {
+public class Find_PW implements Command {
 
 	@Override
 	public void execute(Model model, Dao dao) {

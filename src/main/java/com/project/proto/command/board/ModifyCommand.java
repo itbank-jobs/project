@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.ui.Model;
 
 import com.project.proto.dao.board_Dao;
-import com.project.proto.dto.board_Dto;
+import com.project.proto.dto.Board_Dto;
 
 public class ModifyCommand implements Command{
 
@@ -22,7 +22,7 @@ public class ModifyCommand implements Command{
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
 
 		String teamNum = req.getParameter("teamNum");
-		board_Dto dto = new board_Dto();
+		Board_Dto dto = new Board_Dto();
 		dto.setSubject(req.getParameter("subject"));
 		dto.setContent(req.getParameter("content"));
 		dto.setNum(Integer.parseInt(req.getParameter("num")));

@@ -6,19 +6,19 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.project.proto.dto.notice_Dto;
+import com.project.proto.dto.Notice_Dto;
 
 @Repository
-public class notice_Dao {
+public class Notice_Dao {
 	
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public List<notice_Dto> list(int currentPageNum) {
+	public List<Notice_Dto> list(int currentPageNum) {
 		System.out.println("list()호출");
 		return sqlSession.selectList("noticeList", currentPageNum);
 	}
-	public List<notice_Dto> list() {
+	public List<Notice_Dto> list() {
 		System.out.println("listAll()호출");
 		return sqlSession.selectList("noticeStart");
 	}

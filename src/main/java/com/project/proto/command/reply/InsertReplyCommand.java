@@ -10,19 +10,19 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
-import com.project.proto.dao.reply_Dao;
-import com.project.proto.dto.reply_Dto;
+import com.project.proto.dao.Reply_Dao;
+import com.project.proto.dto.Reply_Dto;
 
 public class InsertReplyCommand implements Command {
 
 	@Override
-	public void execute(Model model, reply_Dao dao) {
+	public void execute(Model model, Reply_Dao dao) {
 		// TODO Auto-generated method stub
 		Map<String, Object>map = model.asMap();
 		HttpServletRequest req = (HttpServletRequest) map.get("req");
 		HttpServletResponse res = (HttpServletResponse) map.get("res");
 		HttpSession session = (HttpSession) map.get("session");
-		reply_Dto dto = new reply_Dto();
+		Reply_Dto dto = new Reply_Dto();
 
 		
 		

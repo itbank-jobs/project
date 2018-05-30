@@ -16,7 +16,7 @@ import com.project.proto.dao.Dao;
 import com.project.proto.dto.Chat_Dto;
 import com.project.proto.dto.Dto;
 
-public class loginCheck implements Command {
+public class LoginCheck implements Command {
 
 	@Override
 	public void execute(Model model, Dao dao) {

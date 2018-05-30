@@ -10,9 +10,9 @@ import org.springframework.ui.Model;
 
 
 import com.project.proto.dao.board_Dao;
-import com.project.proto.dto.board_Dto;
+import com.project.proto.dto.Board_Dto;
 
-import com.project.proto.dto.reply_Dto;
+import com.project.proto.dto.Reply_Dto;
 
 public class ContentCommand implements Command {
 	
@@ -20,7 +20,7 @@ public class ContentCommand implements Command {
 	public void execute(Model model, board_Dao dao) {
 		// TODO Auto-generated method stub
 
-		board_Dto bdto;
+		Board_Dto bdto;
 	
 		Map<String, Object>map = model.asMap();//?
 
@@ -30,7 +30,7 @@ public class ContentCommand implements Command {
 		//게시판 content
 		bdto = dao.content(Integer.parseInt(req.getParameter("num"))).get(0);
 		//댓글 contentList
-		List<reply_Dto>replylist = dao.contentReply(req.getParameter("num"));
+		List<Reply_Dto>replylist = dao.contentReply(req.getParameter("num"));
 	
 
 		model.addAttribute("content",bdto); 

@@ -25,7 +25,7 @@ import com.project.proto.command.settingCommand;
 import com.project.proto.command.login.Command;
 
 import com.project.proto.dao.Dao;
-import com.project.proto.dao.notice_Dao;
+import com.project.proto.dao.Notice_Dao;
 import com.project.proto.dto.ChatComment_Dto;
 import com.project.proto.dto.Chat_Dto;
 import com.project.proto.dto.Dto;
@@ -44,7 +44,7 @@ public class MainController {
 	Dao dao;
 	
 	@Autowired
-	notice_Dao ndao;
+	Notice_Dao ndao;
 	
 	@Autowired
 	EchoHandler echoHandler;

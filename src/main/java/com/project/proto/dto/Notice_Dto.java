@@ -1,6 +1,6 @@
 package com.project.proto.dto;
 
-public class notice_Dto {
+public class Notice_Dto {
 	private String title;
 	private String link;
 	private String author;

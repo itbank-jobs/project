@@ -2,7 +2,7 @@ package com.project.proto.dto;
 
 import java.security.Timestamp;
 
-public class reply_Dto {
+public class Reply_Dto {
 	private int rnum;
 	private int bnum;
 	private String replytext;

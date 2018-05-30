@@ -2,7 +2,7 @@ package com.project.proto.dto;
 
 import java.sql.Timestamp;
 
-	public class board_Dto {
+	public class Board_Dto {
 		int num;
 		int employeeNumber;
 		int teamNum;

@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.proto.chat.EchoHandler;
 import com.project.proto.command.login.Command;
-import com.project.proto.command.news.news_passCK;
-import com.project.proto.command.news.news_write;
+import com.project.proto.command.news.News_passCK;
+import com.project.proto.command.news.News_write;
 import com.project.proto.dao.Dao;
-import com.project.proto.dao.notice_Dao;
-import com.project.proto.dto.notice_Dto;
+import com.project.proto.dao.Notice_Dao;
+import com.project.proto.dto.Notice_Dto;
 
 @Controller
 public class NewsController {
@@ -32,7 +32,7 @@ public class NewsController {
 	Dao dao;
 
 	@Autowired
-	notice_Dao ndao;
+	Notice_Dao ndao;
 
 	@Autowired
 	EchoHandler echoHandler;
@@ -45,7 +45,7 @@ public class NewsController {
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
 
-		comm = new news_passCK();
+		comm = new News_passCK();
 		comm.execute(model, dao);
 
 	}
@@ -65,7 +65,7 @@ public class NewsController {
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
 
-		comm = new news_write();
+		comm = new News_write();
 		comm.execute(model, dao);
 
 	}
@@ -77,7 +77,7 @@ public class NewsController {
 		
 		int num = Integer.parseInt(req.getParameter("currentPageNum"));
 
-		List<notice_Dto> list = ndao.list(num);
+		List<Notice_Dto> list = ndao.list(num);
 
 		res.setCharacterEncoding("UTF-8");
 		PrintWriter out = res.getWriter();

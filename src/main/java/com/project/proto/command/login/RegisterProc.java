@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import com.project.proto.dao.Dao;
 import com.project.proto.dto.Dto;
 
-public class registerProc implements Command {
+public class RegisterProc implements Command {
 
 	@Override
 	public void execute(Model model, Dao dao) {

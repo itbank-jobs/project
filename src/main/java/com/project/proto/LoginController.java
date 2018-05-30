@@ -15,9 +15,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.proto.command.login.Command;
-import com.project.proto.command.login.find_PW;
-import com.project.proto.command.login.loginCheck;
-import com.project.proto.command.login.registerProc;
+import com.project.proto.command.login.Find_PW;
+import com.project.proto.command.login.LoginCheck;
+import com.project.proto.command.login.RegisterProc;
 import com.project.proto.dao.Dao;;
 
 
@@ -50,7 +50,7 @@ public class LoginController {
 		model.addAttribute("res", res);
 		model.addAttribute("session", session);
 		
-		comm = new loginCheck();
+		comm = new LoginCheck();
 		comm.execute(model, dao);
 		
 	}
@@ -74,7 +74,7 @@ public class LoginController {
 		req.setCharacterEncoding("UTF-8");
 		model.addAttribute("req", req);
 		
-		comm = new registerProc();
+		comm = new RegisterProc();
 		comm.execute(model, dao);
 		
 		return "login";
@@ -96,7 +96,7 @@ public class LoginController {
 		
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
-		comm = new find_PW();
+		comm = new Find_PW();
 		comm.execute(model, dao);
 		
 		

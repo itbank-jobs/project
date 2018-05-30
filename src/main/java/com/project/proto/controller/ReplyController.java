@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.proto.command.reply.Command;
 import com.project.proto.command.reply.InsertReplyCommand;
-import com.project.proto.command.reply.replyDeleteCommand;
-import com.project.proto.dao.reply_Dao;
+import com.project.proto.command.reply.ReplyDeleteCommand;
+import com.project.proto.dao.Reply_Dao;
 
 @RestController // 데이터(json)을 리턴
 @Controller //뷰를 리턴
@@ -23,7 +23,7 @@ public class ReplyController {
 	Command comm;
 	
 	@Autowired
-	reply_Dao dao;
+	Reply_Dao dao;
 	
 	@RequestMapping("/insertReply")
 	public void insertReply(Model model, HttpServletRequest req, HttpServletResponse res, HttpSession session) {
@@ -45,7 +45,7 @@ public class ReplyController {
 		model.addAttribute("req", req);
 		model.addAttribute("res", res);
 		
-		comm = new replyDeleteCommand();
+		comm = new ReplyDeleteCommand();
 		comm.execute(model, dao);
 	}
 }

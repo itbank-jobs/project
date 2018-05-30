@@ -11,10 +11,10 @@ import org.springframework.ui.Model;
 
 import com.project.proto.command.login.Command;
 import com.project.proto.dao.Dao;
-import com.project.proto.dao.notice_Dao;
-import com.project.proto.dto.notice_Dto;
+import com.project.proto.dao.Notice_Dao;
+import com.project.proto.dto.Notice_Dto;
 
-public class news_write implements Command {
+public class News_write implements Command {
 	
 	
 	
@@ -31,7 +31,7 @@ public class news_write implements Command {
 		String content= req.getParameter("content");
 
 		
-		notice_Dto dto = new notice_Dto();
+		Notice_Dto dto = new Notice_Dto();
 		
 		dto.setAuthor(author);
 		dto.setTitle(title);

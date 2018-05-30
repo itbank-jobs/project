@@ -16,7 +16,7 @@ import com.project.proto.command.board.ContentCommand;
 import com.project.proto.command.board.DeleteCommand;
 import com.project.proto.command.board.ListCommand;
 import com.project.proto.command.board.ModifyCommand;
-import com.project.proto.command.board.writeCommand;
+import com.project.proto.command.board.WriteCommand;
 import com.project.proto.dao.board_Dao;
 
 @Controller
@@ -49,7 +49,7 @@ public class BoardController {
 		model.addAttribute("res", res);
 		model.addAttribute("session", session);
 		
-		comm = new writeCommand();
+		comm = new WriteCommand();
 		comm.execute(model, dao);
 		
 	
