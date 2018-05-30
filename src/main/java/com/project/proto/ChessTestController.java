@@ -13,10 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.project.proto.command.board.Command;
-import com.project.proto.command.board.ListCommand;
+
 import com.project.proto.dao.Dao;
+import com.project.proto.dto.Board_Dto;
 import com.project.proto.dto.ChessDto;
-import com.project.proto.dto.board_Dto;
 
 @Controller
 public class ChessTestController {
@@ -46,7 +46,7 @@ public class ChessTestController {
 	
 	@RequestMapping(value = "/chessWrite")
 	public String chessWrite(Model model,HttpServletRequest request,HttpSession session) {
-		board_Dto dto = new board_Dto();
+		Board_Dto dto = new Board_Dto();
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
 		int teamNum = 5;

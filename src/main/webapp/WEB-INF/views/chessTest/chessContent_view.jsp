@@ -22,7 +22,7 @@
 	<br>
 	<br>
 	<div class="container"
-		style="color: #ffffff; background-color: #000000ad; overflow: auto; height: 710px;">
+		style="color: #ffffff; background-color: #000000ad; overflow: auto; height: 850px;">
 
 		<div class="row" style="padding-bottom: 12px">
 			<div class="col-lg-12" style="text-align: center;">
@@ -66,7 +66,7 @@
 							</div>
 							<div class = "reResult"></div>
 								
-								<textarea rows="15" name="content" class="form-control"
+								<textarea rows="5" name="content" class="form-control"
 										readonly="readonly" style="background-color: #ffffff33;">${content.content}</textarea></td>
 									
 				

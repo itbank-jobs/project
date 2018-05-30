@@ -8,7 +8,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.project.proto.dto.Board_Dto;
 import com.project.proto.dto.ChatComment_Dto;
+import com.project.proto.dto.ChessDto;
 import com.project.proto.dto.Dto;
 import com.project.proto.dto.Notice_Dto;
 
@@ -116,7 +118,7 @@ public class Dao {
 	public List<ChessDto> chessNum(String notation) {
 		return sqlSession.selectList("chessNum",notation);
 }
-	public void write(board_Dto dto) {
+	public void write(Board_Dto dto) {
 		sqlSession.insert("write", dto);	
 		}
 

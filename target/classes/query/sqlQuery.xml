@@ -130,7 +130,7 @@
 	
 	</update>
 	
-	<select id = "writeChess" parameterType="com.project.proto.dto.board_Dto" resultType = "int">
+	<select id = "writeChess" parameterType="com.project.proto.dto.Board_Dto" resultType = "int">
 	INSERT INTO BOARD (NUM,EMPLOYEENUMBER, SUBJECT, CONTENT, READCOUNT, REGDATE, TEAMNUM,PASS) VALUES( BOARD_SEQ.NEXTVAL,#{employeeNumber},#{subject},#{content},0, sysdate,#{teamNum},#{pass})
 	</select> 
 	<select id="chessReplayData" resultType="com.project.proto.dto.ChessDto" parameterType="int">
