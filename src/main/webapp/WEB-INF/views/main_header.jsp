@@ -9,7 +9,6 @@
 <link media="all" type="text/css" rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
-<script src="resources/js/navigation.js"></script>
+
 <link rel="stylesheet" href="resources/css/main.css">
 
-<link rel="stylesheet" href="resources/css/main_navigation.css">

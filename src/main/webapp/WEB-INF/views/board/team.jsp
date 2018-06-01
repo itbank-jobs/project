@@ -15,7 +15,7 @@
 
 <body>
 
-	<jsp:include page="../main_navigation.jsp" />
+
 
 	<br>
 	<br>
@@ -121,7 +121,7 @@
 		</div>
 
 	</div>
-	<jsp:include page="../main/chatting.jsp"></jsp:include>
+
 	<jsp:include page="../main_footer.jsp" />
 	<script
 		src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
