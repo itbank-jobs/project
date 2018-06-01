@@ -39,7 +39,7 @@ public class LoginSessionAOP {
 	Dao dao;
 		
 	
-	@Before("within(com.project.proto.controller.*)")
+//	@Before("within(com.project.proto.controller.*)")
 	public void LoginSessionCheck(JoinPoint JoinPoint) {	
 		// String method = JoinPoint.getSignature().getName(); joinpoint method
 		// 확인

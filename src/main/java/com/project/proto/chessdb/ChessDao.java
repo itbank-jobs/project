@@ -16,7 +16,7 @@ public class ChessDao {
 	
 	public void saveNotation(ChessDto cdto) {
 		sqlSession.insert("SaveNotation", cdto);
-		System.out.println("ChessDao : saveNotation method complete.");
+		System.out.println("ChessDao : saveNotation method processing...");
 	}
 	
 /*	public ChessDto selectNotation(String num) {
@@ -25,7 +25,7 @@ public class ChessDao {
 	}*/
 
 	public List<ChessDto> NotationView() {
-		System.out.println("ChessDao : NotationView method complete.");
+		System.out.println("ChessDao : NotationView method processing...");
 		return sqlSession.selectList("NotationView");
 	}
 }

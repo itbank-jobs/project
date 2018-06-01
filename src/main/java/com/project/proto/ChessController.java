@@ -22,35 +22,35 @@ public class ChessController {
 	@Autowired
 	private ChessDao cdao;
 
-	@RequestMapping(value = "/chess")
+	@RequestMapping("/chess")
 	public String chess(Model model, HttpSession session, 
 			HttpServletRequest req) {
-		System.out.println("ChessController : chess play page load complete.");
+		System.out.println("ChessController : chess play page loading...");
 		
 		return "chessTest/chess";
 	}
 	
-	@RequestMapping("/NotationListView")
+	@RequestMapping("/NotationList")
 	public String SaveNotation(Model model, HttpSession session, 
 			HttpServletRequest req) {
-		System.out.println("ChessController : SaveNotation method complete.");
-		System.out.println("ChessController : NotationListView page load complete.");
+		System.out.println("ChessController : SaveNotation method processing...");
+		System.out.println("ChessController : NotationList page loading...");
 		model.addAttribute("req", req);
 		comm = new SaveNotationCommand();
 		comm.execute(model, cdao);
 		
-		return "chessTest/NotationListView";
+		return "chessTest/NotationList";
 	}
 	
 	@RequestMapping("/NotationView")
 	public String list(Model model, HttpSession session) {
-		System.out.println("ChessController : list method complete.");
-		System.out.println("ChessController : NotationView page load complete.");
+		System.out.println("ChessController : list method processing...");
+		System.out.println("ChessController : NotationView page loading...");
 		model.addAttribute("session", session);
 		comm = new NotationViewCommand();
 		comm.execute(model, cdao);
 		
-		return "chesstest/NotationView";
+		return "chessTest/NotationView";
 	}
 	
 }

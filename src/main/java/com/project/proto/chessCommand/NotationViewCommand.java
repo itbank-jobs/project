@@ -14,5 +14,4 @@ public class NotationViewCommand implements Command {
 		model.addAttribute("NotationView", list);
 		System.out.println("NotationViewCommand : execute method 동작중.");
 	}
-	
 }
