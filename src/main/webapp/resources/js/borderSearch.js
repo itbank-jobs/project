@@ -1,10 +1,10 @@
 
 	$(function() {
 
-		$('#searchable-container').searchable({
-			searchField : '#container-search',
-			selector : '.row',
-			childSelector : '.col-xs-4',
+		$('#table').searchable({
+			searchField : '#search',
+			selector : '.a',
+			childSelector : 'td',
 			show : function(elem) {
 				elem.slideDown(100);
 			},
