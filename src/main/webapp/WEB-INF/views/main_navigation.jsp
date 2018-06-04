@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 
+<meta name="viewport" content="whdth=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <div style="-ms-overflow-style: none;">
 	<!--스크롤바 없이 스크롤 가능하게 함   -->

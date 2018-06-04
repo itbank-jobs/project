@@ -34,7 +34,7 @@
 	</select>
 	
 
-<!-- 	<select id ="List" resultType = "com.project.proto.dto.Board_Dto" parameterType="map">
+ 	<select id ="List" resultType = "com.project.proto.dto.Board_Dto" parameterType="map">
 	SELECT * FROM (SELECT ROWNUM RNUM, NUM, EMPLOYEENUMBER, SUBJECT,PASS, CONTENT, REGDATE, READCOUNT FROM (SELECT * FROM BOARD WHERE TEAMNUM = #{teamNum} ORDER BY NUM DESC)) <![CDATA[ WHERE RNUM >=#{start} AND RNUM <= #{end}]]>
 	</select>
 	
@@ -44,7 +44,7 @@
 	
 	<select id = "write" parameterType="com.project.proto.dto.Board_Dto" resultType = "int">
 	INSERT INTO BOARD (NUM,EMPLOYEENUMBER, SUBJECT, CONTENT, READCOUNT, REGDATE, TEAMNUM) VALUES( BOARD_SEQ.NEXTVAL,#{employeeNumber},#{subject},#{content},0, sysdate,#{teamNum})
-	</select>  -->
+	</select> 
 	
 
 	<select id = "noticeWrite" parameterType="com.project.proto.dto.Notice_Dto" resultType = "int">
